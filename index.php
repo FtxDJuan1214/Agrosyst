@@ -73,6 +73,9 @@ require 'php/conexion.php';
   <script src="js/funciones_index.js"></script>
   <!-- sweet_alert -->
   <script src="assets/sweetalert/sweetalert.min.js"></script>
+  <!-- toastr -->
+  <script src="assets/toastr/toastr.min.js"></script>
+  <link type="text/css" href="assets/toastr/toastr.css" rel="stylesheet">
 
   <link rel="stylesheet" href="librerias/Inicio/css/fontAwesome.css">
   <link rel="stylesheet" href="librerias/Inicio/css/templatemo-style.css">
@@ -101,29 +104,29 @@ require 'php/conexion.php';
 
                 <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
-                    <input id="cod_fin" name="cod_fin" type="text" class="form-control" placeholder="N° Escritura" autocomplete="off">
+                    <input id="cod_fin" name="cod_fin" type="text" class="form-control" placeholder="N° Escritura" autocomplete="off" maxlength="17">
                   </div>
                 </div>
 
                 <div class="form-group mb-3">
-                  <div class="input-group input-group-alternative">
-                    <input id="nom_fin" name="nom_fin" type="text" class="form-control" placeholder="Nombre" autocomplete="off">
+                  <div class="input-group input-group-alternative" id="div_nom_fin">
+                    <input style="border-color: #fb6340;" id="nom_fin" name="nom_fin" type="text" class="form-control" placeholder="Nombre" autocomplete="off" maxlength="25">
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="det_fin">Detalle</label>
-                  <textarea id="det_fin" name="det_fin" class="form-control" rows="2"></textarea>
+                <label for="det_fin">Detalle</label>
+                <div class="input-group-alternative" id="div_det_fin" style="margin-bottom: 25px;">
+                  <textarea style="border-color: #fb6340;" id="det_fin" name="det_fin" class="form-control" rows="2" maxlength="45"></textarea>
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-9">
+                  <div class="col-sm-9 col-md-9 col-lg-9">
                    <div id="dueños">
 
                    </div>
                  </div>
-                 <div class="col-sm-3">
-                  <button type="button" class="btn btn-amarillo" onclick="modales();" data-toggle="modal" data-target="#modal-dueño" ><i class="fas fa-user-plus"></i></button>
+                 <div class="col-sm-3 col-md-3 col-lg-3">
+                  <button type="button" class="btn btn-amarillo" data-toggle="modal" data-target="#modal-dueño"><i class="fas fa-user-plus"></i></button>
                 </div>
               </div>
               <div class="form-group mb-3">
@@ -168,8 +171,8 @@ require 'php/conexion.php';
        </div>
 
        <div class="form-group mb-3">
-        <div class="input-group input-group-alternative">
-          <input id="med_fin" name="med_fin" type="number" class="form-control" placeholder="Medida" autocomplete="off">
+        <div class="input-group input-group-alternative" id="div_med_fin" >
+          <input style="border-color: #fb6340;" id="med_fin" name="med_fin" type="text" class="form-control" placeholder="Medida" autocomplete="off">
         </div>
       </div>
 
@@ -179,7 +182,7 @@ require 'php/conexion.php';
       </div>
 
       <div class="text-center">
-        <input name="btnLogA" type="button" id="btn_save" class="btn btn-default my-4" value="Guardar"/>
+        <input name="btnLogB" type="button" id="btn_save" class="btn btn-default my-4" value="Guardar"/>
       </div>
     </form>
     <img src="assets/img/icons/preloader.gif" id="preloader" style="margin: 10px auto;">
@@ -258,7 +261,7 @@ require 'php/conexion.php';
                           <p>Ubicación: <?php echo $ver[4]?>, <?php echo $ver[3]?></p>
                           <p>Medida: <?php echo $ver[6]?> <?php echo $ver[7]?></p>
                           <input name="prueba"  type="hidden" value="<?php echo $ver[0]?>"/>                             
-                          <input name="btnLogA" type="submit" class="btn btn-amarillo" id="btnLogA" value="¡A trabajar!"/>                              
+                          <input name="btnLogA" type="submit" class="btn btn-amarillo" value="¡A trabajar!"/>                              
                         </form>      
                       </div>
                     </div>
@@ -303,83 +306,83 @@ require 'php/conexion.php';
                 <div class="row">
 
                   <div class="col-md-6">
-                   <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative" style="display: none;">
-                      <input id="cod_log" type="text" class="form-control" value="<?php echo $_SESSION['idusuario'] ?>" >
+
+                    <div class="form-group mb-3" style="display: none;">
+                      <div class="input-group input-group-alternative">
+                        <input id="ide_usuario" type="email" class="form-control" placeholder="Correo" value="<?php echo  $_SESSION['idusuario'] ?>">
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <input id="ide_ter" type="number" class="form-control" placeholder="Cédula" autocomplete="off">
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_ide_ter">
+                        <input style="border-color: #fb6340;" id="ide_ter" type="text" class="form-control" placeholder="Cédula" autocomplete="off" maxlength="10">
+                      </div>
                     </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_pno_ter">
+                        <input  style="border-color: #fb6340;" id="pno_ter" type="text" class="form-control" placeholder="Primer nombre" autocomplete="off" maxlength="20">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_sno_ter">
+                        <input style="border-color: #fb6340;" id="sno_ter" type="text" class="form-control" placeholder="Segundo nombre" autocomplete="off" maxlength="20">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_pap_ter">
+                        <input style="border-color: #fb6340;" id="pap_ter" type="text" class="form-control" placeholder="Primer apellido" autocomplete="off" maxlength="20">
+                      </div>
+                    </div>
+
                   </div>
 
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <input id="pno_ter" type="text" class="form-control" placeholder="Primer nombre" autocomplete="off">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_sap_ter">
+                        <input style="border-color: #fb6340;" id="sap_ter" type="text" class="form-control" placeholder="Segundo apellido" autocomplete="off" maxlength="20">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_tel_ter">
+                        <input style="border-color: #fb6340;" id="tel_ter" type="text" class="form-control" placeholder="Telefono" autocomplete="off" maxlength="10">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_eml_ter">
+                        <input style="border-color: #fb6340;" id="eml_ter" type="email" class="form-control" placeholder="Correo" autocomplete="off" maxlength="50">
+                      </div>
+                    </div>
+
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative">
+                        <select id="tipo_per" disabled class="form-control"data-live-search="true">
+                          <option value="1" disabled selected >Dueño</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <input id="sno_ter" type="text" class="form-control" placeholder="Segundo nombre" autocomplete="off">
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <input id="pap_ter" type="text" class="form-control" placeholder="Primer apellido" autocomplete="off">
-                    </div>
-                  </div>
-
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <input id="sap_ter" type="text" class="form-control" placeholder="Segundo apellido" autocomplete="off">
-                    </div>
-                  </div>
 
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <input id="tel_ter" type="number" class="form-control" placeholder="Telefono" autocomplete="off">
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <input id="eml_ter" type="email" class="form-control" placeholder="Correo" autocomplete="off">
-                    </div>
-                  </div>
-                  <div class="form-group mb-3" style="display: none;">
-                    <div class="input-group input-group-alternative">
-                      <input id="ide_usuario" type="email" class="form-control" placeholder="Correo" value="<?php echo  $_SESSION['idusuario'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <select id="tipo_per" disabled class="form-control"data-live-search="true">
-                        <option value="1" disabled selected >Dueño</option>
-                      </select>
-                    </div>
-                  </div>
+                <div class="text-center">
+                  <button type="button" class="btn btn-default my-4" onclick="preloader_d();">Guardar</button>
                 </div>
-              </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-default my-4" onclick="preloader_d();">Guardar</button>
-              </div>
-            </form>
-            <img src="assets/img/icons/preloader.gif" id="preloaderd" style="margin: 10px auto;">
-            <script>
-              jQuery('#preloaderd').hide();
-            </script>
+              </form>
+              <img src="assets/img/icons/preloader.gif" id="preloaderd">
+              <script>
+                jQuery('#preloaderd').hide();
+              </script>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 <input id="rr" type="email" class="form-control" placeholder="rr" autocomplete="off" style="display: none;">
 <!-- ----------------------------------------------------------------------------------- -->
@@ -400,43 +403,3 @@ require 'php/conexion.php';
 </div>
 </body>
 </html>
-<script>
-  $(document).ready(function(){
-    $('#dueños').load('php/componentes/componentes_index/duenios.php');
-  });
-</script>
-
-<script>
-  $(document).ready(function(){
-    $('#dep_fin').change(function(){
-      recargarlista();      
-    });
-
-  });
-</script>
-
-<script >
-  function recargarlista(){
-    cod_dep=$('#dep_fin').val();
-    $.ajax({
-      type:"post",
-      url:"php/componentes/componentes_fincas/select_finc.php",
-      data:"cod_dep="+cod_dep,
-      success:function(r){
-        $('#muni_dep').html(r);
-      }
-    });
-  }
-  function modales(){
-    $('#modal-form').modal('hide');
-  }
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#btn_save').click(function(){
-      preloader();          
-    });
-
-  });
-</script>

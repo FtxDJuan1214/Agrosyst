@@ -1,7 +1,6 @@
 function preloader_d(){
-	jQuery('#preloaderd').show();
-	jQuery('#form-add-ter').hide();
-	ide_ter=$('#cod_log').val()+$('#ide_ter').val();
+
+	ide_ter=$('#ide_ter').val();
 	pno_ter=$('#pno_ter').val();
 	sno_ter=$('#sno_ter').val();
 	pap_ter=$('#pap_ter').val();
@@ -9,7 +8,103 @@ function preloader_d(){
 	tel_ter=$('#tel_ter').val();
 	eml_ter=$('#eml_ter').val();
 	tipo_per=1;
-	setTimeout ("agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter,tipo_per);", 1000);
+
+
+	cond_ide_ter =  Boolean(false);
+	cond_pno_ter =  Boolean(false);
+	cond_sno_ter =  Boolean(false);
+	cond_pap_ter =  Boolean(false);
+	cond_sap_ter =  Boolean(false);
+	cond_tel_ter =  Boolean(false);
+	cond_eml_ter =  Boolean(false);
+	cond_tipo_per =  Boolean(false);
+	expresion= /\w+@\w+\.+[a-z]/;
+	
+	if (ide_ter == "" || pno_ter == "" || pap_ter == "" || sap_ter == "" || tipo_per == null){
+		//alert("id: " + ide_ter + "\nP_nom: " + pno_ter + "\nS_nom: " + sno_ter + "\nS_ape: " + sap_ter + "\nTel: " + tel_ter +"\nTipo: " + tipo_per);
+		toastr.error('Algunos campos son obligatorios','',{
+			"positionClass": "toast-top-center",
+			"closeButton": true,
+			"progressBar":true
+		});
+	}else{
+
+		if (isNaN(ide_ter)){
+			$('#div_ide_ter').removeClass("input-group input-group-alternative");
+			toastr.error('La cédula no puede tener letras','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}else if (ide_ter.length<8 || ide_ter.length>10){
+
+			$('#div_ide_ter').removeClass("input-group input-group-alternative");
+			toastr.error('La cédula debe tener entre 8 y 10 dígitos.','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}else{
+
+			$('#div_ide_ter').addClass("input-group input-group-alternative");
+			cond_ide_ter =  Boolean(true);
+			ide_ter=($('#ide_usuario').val()+$('#ide_ter').val()).trim();
+		}
+
+		if(tel_ter != ""){
+
+			if (isNaN(tel_ter)){
+				$('#div_tel_ter').removeClass("input-group input-group-alternative");
+				toastr.error('El teléfono no puede tener letras','',{
+					"positionClass": "toast-top-center",
+					"closeButton": true,
+					"progressBar":true
+				});
+
+			}else if (tel_ter.length<10){
+
+				$('#div_tel_ter').removeClass("input-group input-group-alternative");
+				toastr.error('El teléfono debe tener entre 10 dígitos.','',{
+					"positionClass": "toast-top-center",
+					"closeButton": true,
+					"progressBar":true
+				});
+
+			}else {
+				$('#div_tel_ter').addClass("input-group input-group-alternative");
+				cond_tel_ter =  Boolean(true);
+			}
+		}else{
+			cond_tel_ter =  Boolean(true);
+		}
+
+		if(eml_ter != ""){
+			if (!expresion.test(eml_ter)) {
+				$('#div_eml_ter').removeClass("input-group input-group-alternative");
+				toastr.error('El correo no es válido','',{
+					"positionClass": "toast-top-center",
+					"closeButton": true,
+					"progressBar":true
+				});
+
+			}else{
+				$('#div_eml_ter').addClass("input-group input-group-alternative");
+				cond_eml_ter =  Boolean(true);
+			}
+		}else{
+			cond_eml_ter =  Boolean(true);
+		}
+
+
+	}
+
+	if (cond_ide_ter == true && cond_tel_ter == true && cond_eml_ter == true){
+		jQuery('#preloaderd').show();
+		jQuery('#form-add-ter').hide();
+		setTimeout ("agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter,tipo_per);", 1000);
+	}
 }
 
 function agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter,tipo_per){
@@ -37,11 +132,9 @@ function agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter
 					var form = document.querySelector('#form-add-ter');
 					form.reset();
 
-					jQuery('#preloader').hide();
+					jQuery('#preloaderd').hide();
 					jQuery('#form-add-ter').show();
-					$('#form-add-ter').modal('show');
-					$('#modal-form').modal('hide');
-				 $('#dueños').load('php/componentes/componentes_index/duenios.php');
+					$('#dueños').load('php/componentes/componentes_index/duenios.php');
 				// Insertar el telefono del tercero
 
 				if(tel_ter==null||tel_ter==" "||tel_ter==""||tel_ter==''){}else{
@@ -90,3 +183,62 @@ function agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter
 
 	}
 }
+
+
+$(document).ready(function(){
+	$('#dueños').load('php/componentes/componentes_index/duenios.php');
+	$('#dep_fin').change(function(){
+		recargarlista();      
+	});
+
+	$('#btn_save').click(function(){
+		preloader();          
+	});
+
+	$('#ide_ter').keydown(function(){
+		$('#div_ide_ter').addClass("input-group input-group-alternative");
+	});
+
+	$('#pno_ter').keydown(function(){
+		$('#div_pno_ter').addClass("input-group input-group-alternative");
+	});
+
+	$('#sno_ter').keydown(function(){
+		$('#div_sno_ter').addClass("input-group input-group-alternative");
+	});
+
+	$('#pap_ter').keydown(function(){
+		$('#div_pap_ter').addClass("input-group input-group-alternative");
+	});
+
+	$('#sap_ter').keydown(function(){
+		$('#div_sap_ter').addClass("input-group input-group-alternative");
+	});
+
+	$('#tel_ter').keydown(function(){
+		$('#div_tel_ter').addClass("input-group input-group-alternative");
+	});
+
+	$('#eml_ter').keydown(function(){
+		$('#div_eml_ter').addClass("input-group input-group-alternative");
+	});
+
+	$('#modal-dueño').on('hidden.bs.modal', function (e) {
+		$('#modal-form').modal('hide');
+	})
+
+
+});
+
+function recargarlista(){
+	cod_dep=$('#dep_fin').val();
+	$.ajax({
+		type:"post",
+		url:"php/componentes/componentes_fincas/select_finc.php",
+		data:"cod_dep="+cod_dep,
+		success:function(r){
+			$('#muni_dep').html(r);
+		}
+	});
+}
+
