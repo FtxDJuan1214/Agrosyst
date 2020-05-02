@@ -46,7 +46,7 @@ body {
             <div class="wrap-login100">
                 <form method="post" action="php/logueo.php" class="formlog">
                     <span class="login100-form-title p-b-26">
-                        Bienvenido
+                        Hola bitch
                     </span>
                     <span class="login100-form-title p-b-48">
                         <img src="imagenes/Logo.png" alt="Logotipo agrosyst" style="width:75px; align-self: center;">
