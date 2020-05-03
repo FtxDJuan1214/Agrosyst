@@ -218,19 +218,31 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                             ?>
                                                             <input type="text" class="form-control" id="num_fact"
                                                                 name="num_fact"
-                                                                value="<?php echo "N° Factura: ".($cod[0]+1);?>"
+                                                                value="<?php echo "Planificación N°: ".($cod[0]+1);?>"
                                                                 autocomplete="off" readonly>
                                                         </div>
+                                                        <!----------------------Tipo de tarea---------------------->
                                                         <div class="form-group">
-                                                            <!-----------------------------Detalle------------------------->
+                                                            <div class="form-group mb-3">
+                                                                <div class="input-group input-group-alternative">
+                                                                    <select id="tip_tar" name="tip_tar" class="form-control" data-live-search="true">
+                                                                    <option value="" disabled selected>Tipo de tarea</option>
+                                                                    <option value="1">Nutrición</option>
+                                                                    <option value="2">Prevención</option>
+                                                                    <option value="3">Combate</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-----------------------------Detalle------------------------->
+                                                        <div class="form-group">                                                            
                                                             <div class="form-group">
-                                                                <label for="det_pla">Detalle</label>
+                                                                <p for="det_pla">Detalle</p>
                                                                 <textarea id="det_pla" class="form-control"
                                                                     rows="2"></textarea>
                                                             </div>
-                                                        </div>
+                                                        </div>                                                        
                                                     </div>
-
                                                     <!--------------------Segunda Columna -------------------------->
                                                     <div class="col-md-4">
                                                         <div class="form-group">
@@ -242,7 +254,6 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                                 $y = date("Y");
                                                                 $fecha = $y . "-" . $m . "-" . $d;
                                                                 ?>
-
                                                                 <?php if (isset($fec)) {
                                                                 ?>
                                                                 <input readonly class="form-control datepicker"
@@ -263,11 +274,8 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                         <!----------------------Select escoger plaga o enfermedad------------------>
                                                         <div class="form-group">
                                                           <div class="input-group">
-                                                            <select id="sel_enf_pla" name="sel_enf_pla" class="form-control" >
-                                                              <option value="" disabled selected>¿Enfermedad o Plaga?</option>
-                                                              <option value="1">Enfermedad</option>
-                                                              <option value="2">Plaga</option>
-                                                            </select>
+                                                            <div class="input-group input-group-alternative" id="sel_enf_pla" name="sel_enf_pla">
+                                                            </div>
                                                           </div>
                                                         </div>
                                                     </div>
@@ -289,79 +297,37 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                       <!-------------------------Escoger plaga o enfermedad------------------>                
                                                         <div class="form-group">
                                                           <div class="input-group">
-                                                            <div class="input-group input-group-alternative" id="enf_o_plaga" name="enf_o_plaga">
-                                                              <select class="form-control"data-live-search="true">
-                                                                <option value="" disabled selected>Escoja la enfermedad o plaga</option>
-                                                             </select>
+                                                            <div class="input-group input-group-alternative" id="enfe_plag" name="enfe_plag">
                                                             </div>
                                                           </div>
                                                         </div>
+
+                                                    </div>
+
+                                                    <!-----------------------------Imagenes de etapas------------------------->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative" id="etapasN" name="etapasN">
+                                                       </div>              
                                                     </div>
 
 
 
-                                                    <!----------------------Aún por organizar--------------------------->
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="float-md-left">
-                                                            <a style="font-size: 18px;" href="terceros.php"
-                                                                class="btn btn-info my-4" data-toggle="tooltip"
-                                                                data-placement="top"
-                                                                title="Agregar nuevo socio o dueño"><i
-                                                                    class="fas fa-user-plus"></i></a>
-
-                                                            <a style="font-size: 18px;" href="compras.php"
-                                                                class="btn btn-info my-4" data-toggle="tooltip"
-                                                                data-placement="top" title="Re-hacer la compra"><i
-                                                                    class="fas fa-redo-alt"></i></a>
-
-                                                            <a style="font-size: 18px;" href="#"
-                                                                class="btn btn-info my-4" data-container="body"
-                                                                data-toggle="popover" data-placement="top"
-                                                                data-content="Si no puede agregar productos a su compra, asegurese de haber elegido el proveedor, el socio que pagará y el insumo que va a comprar."><i
-                                                                    class="far fa-question-circle"></i></a>
-                                                        </div>
-                                                    </div>
-
+                                                    <!----------------------Botón Nueva Planificación------------------------->
+                                                    
                                                     <div class="col-md-6">
                                                         <div class="float-md-right">
                                                             <input type="submit" name="cargar"
-                                                                class="btn btn-default my-4" data-toggle="tooltip"
-                                                                data-placement="top" title="Agregar insumo"
-                                                                value="&#xf217    "
-                                                                style="font-family:'FontAwesome',tahoma; font-size: 21px;">
+                                                                    class="btn btn-default my-4" data-toggle="tooltip"
+                                                                    data-placement="top" title="Planificar otra tarea"
+                                                                    value="&#xf067    "
+                                                                    style="font-family:'FontAwesome',tahoma; font-size: 15px;">
                                                         </div>
-                                                    </div>
+                                                    </div>                                                   
+
+
                                                 </div>
                                             </form>
-
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-
-                                                        <input id="informacion" name="informacion" type="text"
-                                                            style="display: none;" class="form-control"
-                                                            placeholder="información para hacer la compra"
-                                                            autocomplete="off"
-                                                            value="<?php echo $_SESSION['productos'];?>">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-
-                                                        <input id="finca" name="finca" type="text"
-                                                            style="display: none;" class="form-control"
-                                                            placeholder="información para hacer la compra"
-                                                            autocomplete="off"
-                                                            value="<?php echo $_SESSION['ide_finca'] ?>">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="table-responsive" id="tab_productos">
-                                            </div>
+                                            <div class="table-responsive" id="tab_productos"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -379,7 +345,7 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-header border-0">
-                            <strong>Productos de la compra</strong>
+                            <strong>Lista de planificaciones</strong>
                         </div>
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush table-hover">

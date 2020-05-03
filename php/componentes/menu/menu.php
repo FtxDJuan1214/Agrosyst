@@ -122,6 +122,13 @@
             </li>              
           </ul>
         </div>
+        <div class="collapse" id="navbar-dashboards3">
+      <ul class="nav nav-sm flex-column">
+        <li class="nav-item">
+          <a href="planificacion.php" class="nav-link">Planificacion</a>
+        </li>              
+      </ul>
+    </div>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -146,6 +153,25 @@
         </div>
       </li>
     </ul>
+    
+<hr class="my-3">
+
+<ul class="navbar-nav">
+ <li class="nav-item">
+  <a class="nav-link" href="#navbar-dashboards5" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-dashboards4">
+    <i class="fas fa-medkit" style="color: #2dce8a;"></i>
+    <span class="nav-link-text">Fitosanitario</span>
+  </a>
+  <div class="collapse" id="navbar-dashboards5">
+    <ul class="nav nav-sm flex-column">
+      <li class="nav-item">
+        <a href="examples/tipo_produccion.php" class="nav-link">Procesos fitosanitarios</a>
+      </li>              
+    </ul>
+  </div>
+</li>
+</ul>
+
     <!-- Divider -->
     <hr class="my-3">
     <!-- Heading -->

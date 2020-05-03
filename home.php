@@ -263,6 +263,13 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
         </li>              
       </ul>
     </div>
+    <div class="collapse" id="navbar-dashboards3">
+      <ul class="nav nav-sm flex-column">
+        <li class="nav-item">
+          <a href="examples/planificacion.php" class="nav-link">Planificacion</a>
+        </li>              
+      </ul>
+    </div>
   </li>
 </ul>
 <ul class="navbar-nav">
@@ -287,6 +294,26 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
   </div>
 </li>
 </ul>
+
+
+<hr class="my-3">
+
+<ul class="navbar-nav">
+ <li class="nav-item">
+  <a class="nav-link" href="#navbar-dashboards5" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-dashboards4">
+    <i class="fas fa-medkit" style="color: #2dce8a;"></i>
+    <span class="nav-link-text">Fitosanitario</span>
+  </a>
+  <div class="collapse" id="navbar-dashboards5">
+    <ul class="nav nav-sm flex-column">
+      <li class="nav-item">
+        <a href="examples/tipo_produccion.php" class="nav-link">Procesos fitosanitarios</a>
+      </li>              
+    </ul>
+  </div>
+</li>
+</ul>
+
 <!-- Divider -->
 <hr class="my-3">
 <!-- Heading -->
@@ -1727,7 +1754,7 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
       </div>
     </div>
     <div class="form-group mb-3">
-     <label for="Logo_Semillero">Foto de la finca:     </label><br>
+     <label for="Logo_Semillero">Foto de la finca hh:     </label><br>
      <img src="imagenes/<?php echo $vere[15]?>" width="300" style="border-radius: 7px;"><br><br>
        <label>¿Desea cambiar la foto de la finca?:</label><br>
      <input id="foto_fin_up" name="foto_fin_up" type="file" class="validate" autocomplete="off"  accept="image/*">
