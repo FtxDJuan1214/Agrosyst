@@ -79,6 +79,20 @@ function selectEtapa(cod_etapa) {
   
 }
 
+function cargarTablaAdd(cod_agroquimico){
+alert("agroquimico "+ cod_agroquimico);
+cod_eta = cod_agroquimico;
+ajax = objetoAjax();
+ajax.open("POST", "../php/componentes/componentes_planificacion/tabla_agroquimicos_add.php", true);
+ajax.onreadystatechange = function() {
+    if (ajax.readyState == 4) {
+        document.getElementById("tab_agr2").innerHTML = ajax.responseText;
+    }
+}
+ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+ajax.send("cod_eta=" + cod_eta);
+
+}
 
 
 $(document).ready(function() {

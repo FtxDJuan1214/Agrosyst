@@ -311,10 +311,21 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                        </div>              
                                                     </div>
                                                     
-                                                    <!----------------------------Tabla de agroquimicos-------------------------->
-                                                    <div class="table-responsive" id="tab_agr" style="width:600px">                                                        
+                                                    <!------------------------Columna tabla agroquimicos recomendados----------------------->
+                                                    <div class="col-md-6">
+                                                        <!----------------------------Tabla de agroquimicos-------------------------->
+                                                        <div class="table-responsive" id="tab_agr">                                                        
+                                                        </div>  
+                                                    </div> 
+                                                    <!------------------------Columna tabla agroquimicos agregados----------------------->
+                                                    <div class="col-md-1">
                                                     </div>  
-                                                    
+
+                                                    <div class="col-md-4">
+                                                        <!----------------------------Tabla de agroquimicos-------------------------->
+                                                        <div class="table-responsive" id="tab_agr2">                                                        
+                                                        </div>  
+                                                    </div>   
                                                     <!----------------------Botón Nueva Planificación------------------------->
                                                     
                                                     <div class="col-md-12">

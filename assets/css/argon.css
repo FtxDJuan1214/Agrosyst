@@ -21976,6 +21976,11 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
   /* CHECKED STYLES */
   [type=radio]:checked + img {
     box-shadow: 0 0 3pt 1pt #5e72e4;
-    /*border-color: solid rgb(93, 24, 204);
+    /*border-color: solid rgb(93, 24, 204);*/
     
   }
+
+  .left{
+    float: left;
+    background:blue
+}

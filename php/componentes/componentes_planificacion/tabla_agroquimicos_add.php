@@ -9,22 +9,20 @@ $cod_eta=$_POST['cod_eta'];
 
 
 
-<div id="tab_agro" name="tab_agro" style="width:562px">
+<div id="tab_agro" name="tab_agro" style="width:300px">
     <div class="row">
         <div class="col">
             <div class="card shadow">
                 <div class="card-header">
-                    <strong>Agroquímicos Recomendados</strong>
+                    <strong>Agroquímicos Agregados</strong>
                 </div>
                
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th style="width:20px">Nombre</th>
-                                <th style="width:20px">Dosis</th>
-                                <th style="width:10px">Stock</th>
-                                <th style="width:5px">Info</th>
-                                <th style="width:5px">Agregar</th>
+                                <th style="width:30px">Nombre</th>
+                                <th style="width:30px">Info</th>
+                                <th>Quitar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,9 +46,7 @@ $cod_eta=$_POST['cod_eta'];
                             ?>
                             <tr>
                                 <td><?php echo $ver[1] ?></td>
-                                <td><?php echo $ver[3] ?></td>
-                                <td><?php echo $ver[5] ?></td>
-                                <td><input type="button" name="info"
+                                <td><input type="submit" name="cargar"
                                                         class="btn btn-info my-4" data-toggle="tooltip"
                                                         data-placement="top" title="<?php echo $ver[4] ?>"
                                                         value="&#xf05a    "
