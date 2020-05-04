@@ -66,8 +66,17 @@ function cargar_etapas() {
 
 //-----------------------------Mostrar tabla de agroquímicos para enfermedad según etapa--------------------------//
 function selectEtapa(cod_etapa) {
-
-  alert("Cod etp: " + cod_etapa);
+    cod_eta = cod_etapa;
+    ajax = objetoAjax();
+    ajax.open("POST", "../php/componentes/componentes_planificacion/tabla_agroquimicos_rec.php", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4) {
+            document.getElementById("tab_agr").innerHTML = ajax.responseText;
+        }
+    }
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.send("cod_eta=" + cod_eta);
+  
 }
 
 
@@ -87,12 +96,12 @@ $(document).ready(function() {
   $('#menu').load('../php/componentes/menu/menu.php');
 
   $('#tip_tar').change(function() {
-    alert("varible escogida "+ $('#tip_tar').val());
     cargar_select_tip();
 });
 
-
-
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
 });
 

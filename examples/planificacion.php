@@ -221,30 +221,7 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                                 value="<?php echo "Planificación N°: ".($cod[0]+1);?>"
                                                                 autocomplete="off" readonly>
                                                         </div>
-                                                        <!----------------------Tipo de tarea---------------------->
-                                                        <div class="form-group">
-                                                            <div class="form-group mb-3">
-                                                                <div class="input-group input-group-alternative">
-                                                                    <select id="tip_tar" name="tip_tar" class="form-control" data-live-search="true">
-                                                                    <option value="" disabled selected>Tipo de tarea</option>
-                                                                    <option value="1">Nutrición</option>
-                                                                    <option value="2">Prevención</option>
-                                                                    <option value="3">Combate</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-----------------------------Detalle------------------------->
-                                                        <div class="form-group">                                                            
-                                                            <div class="form-group">
-                                                                <p for="det_pla">Detalle</p>
-                                                                <textarea id="det_pla" class="form-control"
-                                                                    rows="2"></textarea>
-                                                            </div>
-                                                        </div>                                                        
-                                                    </div>
-                                                    <!--------------------Segunda Columna -------------------------->
-                                                    <div class="col-md-4">
+                                                        <!-----------------------fecha------------------------------------>
                                                         <div class="form-group">
                                                             <div class="input-group ">
                                                                 <?php
@@ -270,37 +247,61 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                                     ?>
 
                                                             </div>
+                                                        </div>                                                        
+                                                        <!----------------------Epoca---------------------->
+                                                        <div class="form-group">
+                                                            <div class="input-group input-group-alternative">
+                                                                <select id="epoca" class="form-control" data-live-search="true">
+                                                                    <option value="" disabled selected>Epoca</option>
+                                                                    <option value="1">Invierno</option>
+                                                                    <option value="2">Verano</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>                                                                                                                                                                                                                             
+                                                    </div>
+                                                    <!--------------------Segunda Columna -------------------------->
+                                                    <div class="col-md-4">
+                                                    <!-----------------------------Detalle------------------------->
+                                                        <div class="form-group">                                                            
+                                                            <div class="form-group">
+                                                                <textarea id="det_pla" class="form-control" placeholder="Detalle"
+                                                                    rows="1"></textarea>
+                                                            </div>
+                                                        </div> 
+                                                        <!----------------------Tipo de tarea---------------------->
+                                                        <div class="form-group">
+                                                            <div class="form-group mb-3">
+                                                                <div class="input-group input-group-alternative">
+                                                                    <select id="tip_tar" name="tip_tar" class="form-control" data-live-search="true">
+                                                                    <option value="" disabled selected>Tipo de tarea</option>
+                                                                    <option value="1">Nutrición</option>
+                                                                    <option value="2">Prevención</option>
+                                                                    <option value="3">Combate</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <!----------------------Select escoger plaga o enfermedad------------------>
+                                                                                                                  
+                                                    </div>
+
+                                                    <!--------------------Tercera Columna -------------------------->
+                                                    <div class="col-md-4">
+                                                      
+                                                      <!----------------------Select escoger plaga o enfermedad------------------>
                                                         <div class="form-group">
                                                           <div class="input-group">
                                                             <div class="input-group input-group-alternative" id="sel_enf_pla" name="sel_enf_pla">
                                                             </div>
                                                           </div>
                                                         </div>
-                                                    </div>
-
-                                                    <!--------------------Tercera Columna -------------------------->
-                                                    <div class="col-md-4">
-                                                      <!----------------------Epoca---------------------->
-                                                      <div class="form-group">
-                                                        <div class="form-group mb-3">
-                                                          <div class="input-group input-group-alternative">
-                                                            <select id="epoca" class="form-control" data-live-search="true">
-                                                              <option value="" disabled selected>Epoca</option>
-                                                              <option value="1">Invierno</option>
-                                                              <option value="2">Verano</option>
-                                                            </select>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <!-------------------------Escoger plaga o enfermedad------------------>                
+                                                        <!-------------------------Escoger plaga o enfermedad------------------>                
                                                         <div class="form-group">
                                                           <div class="input-group">
                                                             <div class="input-group input-group-alternative" id="enfe_plag" name="enfe_plag">
                                                             </div>
                                                           </div>
                                                         </div>
+                                                      
 
                                                     </div>
 
@@ -309,12 +310,14 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                         <div class="input-group input-group-alternative" id="etapasN" name="etapasN">
                                                        </div>              
                                                     </div>
-
-
-
+                                                    
+                                                    <!----------------------------Tabla de agroquimicos-------------------------->
+                                                    <div class="table-responsive" id="tab_agr" style="width:600px">                                                        
+                                                    </div>  
+                                                    
                                                     <!----------------------Botón Nueva Planificación------------------------->
                                                     
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <div class="float-md-right">
                                                             <input type="submit" name="cargar"
                                                                     class="btn btn-default my-4" data-toggle="tooltip"
@@ -327,7 +330,6 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
 
                                                 </div>
                                             </form>
-                                            <div class="table-responsive" id="tab_productos"></div>
                                         </div>
                                     </div>
                                 </div>
