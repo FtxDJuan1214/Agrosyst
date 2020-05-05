@@ -6,8 +6,8 @@
           <option value="" disabled selected>Cultivo</option>
           <?php 
           session_start();
+          require '../../conexion.php';
           $like = $_SESSION['idusuario'];
-          $conexion=pg_connect("host='localhost' port='5432' dbname='agrosyst' user='postgres' password='123'")or die("Lo sentimos pero no se pudo conectar a nuestra db");
           $query="SELECT * FROM nombre_cultivo  WHERE des_ncu LIKE'$like%'  ORDER BY cod_ncu ASC";
           $result =pg_query($conexion,$query);
           echo $result;
