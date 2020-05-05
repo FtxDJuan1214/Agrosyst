@@ -412,6 +412,7 @@ if (isset($_SESSION['usuario'])) {
   </div>
 </div>
 
+<!-------------------------------------------------------------------------------------------------------------------------------------->
 <div class="modal fade" id="modal-gastos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">

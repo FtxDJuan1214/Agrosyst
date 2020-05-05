@@ -36,52 +36,8 @@ $_SESSION['saber'] = false;
 if (isset($_POST['cargar'])) {
  $_SESSION['saber'] = true;  
 }
-
-if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST['cod_ins'])) && (isset($_POST['cod_ter_soc']))) {
-  if ($_SESSION['saber'] == true) {
-    error_reporting(0);
-    $num_fact = $_POST['num_fact'];
-    $proveedor = $_POST['proveedor'];
-    $can_sto = $_POST['can_sto'];
-    $fec = $_POST['date'];
-    $tip_ins = $_POST['tip_ins'];
-    $cos_uni = $_POST['cos_uni'];
-    $time = $_POST['time'];
-    $cod_ins = $_POST['cod_ins'];
-    $cos_mul = $_POST['cos_mul'];
-    $cod_ter_soc = $_POST['cod_ter_soc'];
-    $cod_cul = $_POST['cod_cul'];
-
-    $string="$tip_ins,$cod_ins,$can_sto,$cos_uni,$cos_mul";
-    require '../php/conexion.php';
-    $sql="SELECT insumos.des_ins,unidad_de_medida.des_unm FROM insumos,unidad_de_medida
-    WHERE insumos.cod_unm=unidad_de_medida.cod_unm AND insumos.cod_ins='$cod_ins'";
-    $result=pg_query($conexion,$sql);
-    $detalle=pg_fetch_row($result);
-
-    $unidad = explode("-",$detalle[1]);
-
-    $ins="$detalle[0],$can_sto $unidad[1],$cos_uni $,$cos_mul";
-
-    $_SESSION['costo_total']=($_SESSION['costo_total']+$cos_mul)."$";
-    $_SESSION['productos']=$_SESSION['productos'].$string."+";
-    $_SESSION['insumo']=$_SESSION['insumo'].$ins."+";
-
-  }else{
-    $_SESSION['productos']= null;
-    $_SESSION['insumo']= null;
-    $_SESSION['costo_total']="";
-  }
-}else{
-  ?>
-
-
-<?php
-  $_SESSION['productos']= null;
-  $_SESSION['insumo']= null;
-  $_SESSION['costo_total']="";
-}
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -274,9 +230,9 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                                 <div class="input-group input-group-alternative">
                                                                     <select id="tip_tar" name="tip_tar" class="form-control" data-live-search="true">
                                                                     <option value="" disabled selected>Tipo de tarea</option>
-                                                                    <option value="1">Nutrición</option>
-                                                                    <option value="2">Prevención</option>
-                                                                    <option value="3">Combate</option>
+                                                                    <option value="Nutrición">Nutrición</option>
+                                                                    <option value="Prevención">Prevención</option>
+                                                                    <option value="Combate">Combate</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -312,34 +268,31 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                                                     </div>
                                                     
                                                     <!------------------------Columna tabla agroquimicos recomendados----------------------->
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-7">
                                                         <!----------------------------Tabla de agroquimicos-------------------------->
                                                         <div class="table-responsive" id="tab_agr">                                                        
                                                         </div>  
                                                     </div> 
                                                     <!------------------------Columna tabla agroquimicos agregados----------------------->
-                                                    <div class="col-md-1">
-                                                    </div>  
-
+                                                     
                                                     <div class="col-md-4">
                                                         <!----------------------------Tabla de agroquimicos-------------------------->
                                                         <div class="table-responsive" id="tab_agr2">                                                        
                                                         </div>  
-                                                    </div>   
-                                                    <!----------------------Botón Nueva Planificación------------------------->
+                                                    </div> 
                                                     
-                                                    <div class="col-md-12">
-                                                        <div class="float-md-right">
-                                                            <input type="submit" name="cargar"
-                                                                    class="btn btn-default my-4" data-toggle="tooltip"
+                                                      
+                                                </div>
+                                                <!----------------------Botón Nueva Planificación------------------------->                                                    
+                                                <div class="col-md-12">
+                                                    <div class="float-md-right">
+                                                            <input type="button" name="cargar"
+                                                                    class="btn btn-success sm-4" data-toggle="tooltip"
                                                                     data-placement="top" title="Planificar otra tarea"
                                                                     value="&#xf067    "
-                                                                    style="font-family:'FontAwesome',tahoma; font-size: 15px;">
+                                                                    style="font-family:'FontAwesome',tahoma; font-size: 12px;" onclick="new_planificacion()">
                                                         </div>
-                                                    </div>                                                   
-
-
-                                                </div>
+                                                    </div>
                                             </form>
                                         </div>
                                     </div>
@@ -351,7 +304,7 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
             </div>
         </div>
         <!-- Page content -->
-        <div class="container-fluid mt--7">
+        <div class="container-fluid mt--7" id="tab_pla">
             <!-- modal para ingresar datos -->
             <!-- Table -->
             <div class="row">
@@ -364,40 +317,22 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                             <table class="table align-items-center table-flush table-hover">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">Insumo</th>
-                                        <th scope="col">Cantidad</th>
-                                        <th scope="col">Costo Unit</th>
-                                        <th scope="col">Costo total</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Agroquímico</th>
+                                    <th scope="col">Ingrediente activo</th>
+                                    <th scope="col">Dosis</th>
+                                    <th scope="col">Stock</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php 
-                                        $array=explode("+", $_SESSION['insumo']);
-                                        $lenght=count($array);
-                                        for ($j=0; $j< ($lenght-1); ++$j) {
-                                            ?>
-                                                                <tr>
-                                                                    <?php 
-                                            $arr2=explode(",",$array[$j]);
-                                            $tam=count($arr2);
-                                            for ($i=0; $i< ($tam); ++$i) {
-                                            ?>
-
-                                        <td><?php echo $arr2[$i] ?></td>
-                                        <?php
-                                            }
-                                            ?>
-                                        <?php
-                                        }
-                                        ?>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div style="display: flex; justify-content: center;">
-                            <a style="align-self: center;" href="#" class="btn btn-success my-4"
-                                onclick="comprar();">Comprar</a>
-                            <a style="align-self: center;" href="compras.php" class="btn btn-warning my-4">Cancelar</a>
+                            <!--<a style="align-self: center;" href="#" class="btn btn-success my-4"
+                                onclick="comprar();">Comprar</a>-->
+                            <a style="align-self: center;" href="planificacion.php" class="btn btn-warning my-4">Cancelar</a>
 
                         </div>
                     </div>

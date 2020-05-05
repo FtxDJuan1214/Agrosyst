@@ -5,7 +5,7 @@ session_start();
 $like = $_SESSION['idusuario'];
 $tip_tar =$_POST['tip_tar']; 
 
-if($tip_tar == '3'){
+if($tip_tar == 'Combate'){
 ?>
 
 <select id="sele_enf_pla" name="sele_enf_pla" class="form-control" data-live-search="true"  onchange="cargarSelecte()">
