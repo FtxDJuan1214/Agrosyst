@@ -9,7 +9,7 @@ $cod_enf_pla=$_POST['enf_o_plaga'];
 <div id="etapas" name="etapas" class="input-group input-group-alternative" data-live-search="true" align="center">
 
     <?php
-$query="SELECT afeccion.cod_afe, etapas_crecimiento.cod_eta, eta_x_afe.ima_eta, etapas_crecimiento.det_eta
+$query="SELECT DISTINCT afeccion.cod_afe, etapas_crecimiento.cod_eta, eta_x_afe.ima_eta, etapas_crecimiento.det_eta
     FROM public.afeccion, public.etapas_crecimiento, public.eta_x_afe
     WHERE afeccion.cod_afe = eta_x_afe.cod_afe
     AND etapas_crecimiento.cod_eta = eta_x_afe.cod_eta

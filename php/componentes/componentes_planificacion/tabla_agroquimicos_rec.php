@@ -3,7 +3,9 @@
 require '../../conexion.php';
 session_start();
 $like = $_SESSION['idusuario'];
-$cod_eta=$_POST['cod_eta'];    
+$cod_eta=$_POST['cod_eta']; 
+$sep = explode('/',$cod_eta);
+
 
 ?>
 
@@ -27,20 +29,21 @@ $cod_eta=$_POST['cod_eta'];
             </thead>
             <tbody>
 
-                            <?php 
+                <?php 
+
+                                if($sep[0] != "Prevención"){
+
                                 $query="SELECT agroquimicos.cod_agr, agroquimicos.nom_agr, ingredientes_activos.des_iac,
-                                agroquimicos.dos_agr, agroquimicos.rap_agr, stock.can_sto, agr_x_iac.cod_eta, etapas_crecimiento.det_eta
+                                agroquimicos.dos_agr, agroquimicos.rap_agr, stock.can_sto
                                 FROM public.agroquimicos, public.stock, public.insumos, public.afeccion, public.etapas_crecimiento, 
-                                public.agr_x_iac, public.eta_x_afe, public.ingredientes_activos
+                                public.eta_x_afe, public.ingredientes_activos
                                 WHERE stock.cod_ins = insumos.cod_ins
                                 AND insumos.cod_ins = agroquimicos.cod_ins 
-                                AND agroquimicos.cod_agr = agr_x_iac.cod_agr
-                                AND agr_x_iac.cod_afe = afeccion.cod_afe 
-                                AND agr_x_iac.cod_eta = etapas_crecimiento.cod_eta
-                                AND ingredientes_activos.cod_iac = agr_x_iac.cod_iac
-                                AND afeccion.cod_afe = eta_x_afe.cod_afe
+                                AND agroquimicos.cod_iac = ingredientes_activos.cod_iac
+                                AND eta_x_afe.cod_afe = afeccion.cod_afe 
                                 AND eta_x_afe.cod_eta = etapas_crecimiento.cod_eta
-                                AND agr_x_iac.cod_eta ='$cod_eta'";
+                                AND eta_x_afe.cod_agr = agroquimicos.cod_agr
+                                AND eta_x_afe.cod_eta ='$sep[0]'";
                                 $result =pg_query($conexion,$query);
                                 while ($ver=pg_fetch_row($result)) {
                             ?>
@@ -54,11 +57,46 @@ $cod_eta=$_POST['cod_eta'];
                     <td><input type="button" name="add" class="btn btn-primary sm-3" data-toggle="tooltip"
                             data-placement="top" title="Agregar" value="&#xf0a5    "
                             style="font-family:'FontAwesome',tahoma; font-size: 10px;"
-                            onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$ver[5].'_'.$ver[6].'_'.$ver[7]?>')">
+                            onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$ver[5]?>')">
                     </td>
 
                     <?php 
                                 }
+                            }else{
+
+                                $query="SELECT agroquimicos.cod_agr, agroquimicos.nom_agr, ingredientes_activos.des_iac,
+                                agroquimicos.dos_agr, agroquimicos.rap_agr, stock.can_sto
+                                FROM public.agroquimicos, public.stock, public.insumos, public.afeccion, public.etapas_crecimiento, 
+                                public.eta_x_afe, public.ingredientes_activos
+                                WHERE stock.cod_ins = insumos.cod_ins
+                                AND insumos.cod_ins = agroquimicos.cod_ins 
+                                AND agroquimicos.cod_iac = ingredientes_activos.cod_iac
+                                AND eta_x_afe.cod_afe = afeccion.cod_afe 
+                                AND eta_x_afe.cod_eta = etapas_crecimiento.cod_eta
+                                AND eta_x_afe.cod_agr = agroquimicos.cod_agr
+                                AND eta_x_afe.cod_eta ='9'
+                                AND agroquimicos.fun_agr = 'Prevención'
+                                AND eta_x_afe.cod_afe = '$sep[1]'";
+                                $result =pg_query($conexion,$query);
+                                while ($ver=pg_fetch_row($result)) {
+                                    ?>
+                <tr>
+                    <td><?php echo $ver[1] ?></td>
+                    <td><?php echo $ver[3] ?></td>
+                    <td><?php echo $ver[5] ?></td>
+                    <td><input type="button" name="info" class="btn btn-info sm-3" data-toggle="tooltip"
+                            data-placement="top" title="<?php echo $ver[4] ?>" value="&#xf05a    "
+                            style="font-family:'FontAwesome',tahoma; font-size: 10px;"></td>
+                    <td><input type="button" name="add" class="btn btn-primary sm-3" data-toggle="tooltip"
+                            data-placement="top" title="Agregar" value="&#xf0a5    "
+                            style="font-family:'FontAwesome',tahoma; font-size: 10px;"
+                            onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$ver[5]?>')">
+                    </td>
+
+                    <?php 
+
+                            }
+                        }
                             ?>
                 </tr>
             </tbody>

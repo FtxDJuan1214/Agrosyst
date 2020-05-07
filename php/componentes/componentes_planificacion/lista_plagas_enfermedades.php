@@ -5,7 +5,7 @@ session_start();
 $like = $_SESSION['idusuario'];
 $enf_pla =$_POST['sele_enf_pla'];    
 ?>
-<select id="enf_o_plaga" name="enf_o_plaga" class="form-control" data-live-search="true" onchange="cargarImagenes()">
+<select id="enf_o_plaga" name="enf_o_plaga" class="form-control" data-live-search="true" onchange="cargar_etapas()">
     <option value="" disabled selected>Escoja la enfermedad o plaga</option>
 
 
