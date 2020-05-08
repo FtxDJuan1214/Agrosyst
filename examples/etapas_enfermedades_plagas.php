@@ -124,7 +124,7 @@ if (isset($_SESSION['usuario'])) {
           $finca=pg_fetch_row($result);
           ?>
                 <a class="h2 mb-0 text-white text-uppercase  d-lg-inline-block"><?php echo $finca[1]." "?><i
-                        class="fas fa-angle-right"></i> Ingredientes Activos</a>
+                        class="fas fa-angle-right"></i> Etapas Plagas & Enfermedades</a>
                 <!-- Form -->
                 <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto">
                     <div class="form-group mb-0" id="date-hour">
@@ -139,14 +139,12 @@ if (isset($_SESSION['usuario'])) {
         <!-- Header -->
         <!-- Header -->
         <div class="header pb-8 pt-5 pt-md-8"
-            style="background: url('../assets/img/theme/ingredientes.jpg'); no-repeat; background-size: cover;">
+            style="background: url('../assets/img/theme/etapas.jpg'); no-repeat; background-size: cover;">
             <span class="mask bg-gradient-fito opacity-8"></span>
             <div class="container-fluid">
                 <div class="header-body">
                     <!-- Card stats -->
                     <div class="row" style="width=50px;">
-                    <br>
-                    <br>
                     <br>
                     <br>
                     </div>
@@ -166,51 +164,24 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="card bg-secondary shadow border-0">
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
-                                            <h3>Agregar Ingrediente Activo</h3>
+                                            <h3>Agregar Etapa</h3>
                                         </div>
-                                        <form role="form" id="form-add-iac">
+                                        <form role="form" id="form-add-eta">
 
                                             <!------------------------Nombre ingrediente activo---------------------->
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
-                                                    <input style="border-color: #fb6340;" id="nom_iac" name ="nom_iac" type="text"
-                                                        class="form-control" placeholder="Nombre Ingrediente" autocomplete="off"
+                                                    <input style="border-color: #fb6340;" id="nom_eta" name ="nom_eta" type="text"
+                                                        class="form-control" placeholder="Nombre Etapa" autocomplete="off"
                                                         maxlength="45">                                                        
                                                 </div>                                                
                                             </div>  
-
-                                            <div class="form-group mb-3">
-                                            <label><input type="checkbox" name ="agr_nom" id="agr_nom" onchange="muestra_oculta('nomd_iac')"> 
-                                            Mezcla de ingredientes activos</label><br> 
-                                            </div> 
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative">
-
-                                                <input style="border-color: #fb6340;" id="nomd_iac" name ="nomd_iac" type="text"
-                                                        class="form-control" placeholder="Segundo Ingrediente" autocomplete="off"
-                                                        maxlength="45">  
-                                                                                                          
-                                                </div>                                                
-                                            </div> 
-
-                                            <!-------------------------Prohibición----------------------------------->
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative">
-                                                    <p>¿Está aprobado por el ICA?:</p>
-                                                    <ul>  
-                                                        <label><input type="checkbox" value="SI" name ="ica1" class="ica" id="ica1">Si</label><br>
-                                                        <label><input type="checkbox" value="NO" name ="ica2" class="ica" id="ica2">No</label><br>
-                                                    </u>
-                                                </div>
-                                            </div> 
 
                                             <!--------------------------Botón guardar-------------------------------->
                                             
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-default my-4" id="btn_save"
-                                                    onclick="guadarIngrediente();">Guardar</button>
+                                                    onclick="guadarEtapa();">Guardar</button>
                                             </div>
                                         </form>
                                         <img src="../assets/img/icons/preloader.gif" id="preloader"
@@ -248,29 +219,16 @@ if (isset($_SESSION['usuario'])) {
                                             <!------------------------Nombre ingrediente activo---------------------->
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
-                                                    <input style="border-color: #fb6340;" id="nom_iac_up" name ="nom_iac" type="text"
-                                                        class="form-control" placeholder="Nombre Ingrediente" autocomplete="off"
+                                                    <input style="border-color: #fb6340;" id="nom_eta_up" name ="nom_eta" type="text"
+                                                        class="form-control" placeholder="Nombre Etapa" autocomplete="off"
                                                         maxlength="45">                                                        
                                                 </div>                                                
                                             </div> 
-
-                                            <!-------------------------Prohibición----------------------------------->
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative">
-                                                    <p>¿Está aprobado por el ICA?:</p>
-                                                    <ul>  
-                                                        <label><input type="checkbox" value="SI" name ="ica1" class="ica" id="ica1up">Si</label><br>
-                                                        <label><input type="checkbox" value="NO" name ="ica2" class="ica" id="ica2up">No</label><br>
-                                                    </u>
-                                                </div>
-                                            </div> 
-                                            <!----------------------------------------------------------------------------> 
-
-                                            
+                                            <!---------------------------------------------------------------------------->                                             
 
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-default my-4" id="btn_up"
-                                                    onclick="actualizarIngrediente_g();">Guardar</button>
+                                                    onclick="actualizarEtapa_g();">Guardar</button>
                                             </div>
                                             <input type="text" name="" id="rrr" style="display: none;">
                                         </form>
@@ -301,7 +259,7 @@ if (isset($_SESSION['usuario'])) {
                                     autocomplete="off">
                             </div>
                         </div>
-                        <div class="table-responsive" id="tab_ingredientes_activos">
+                        <div class="table-responsive" id="tab_etapas">
 
                             </table>
                         </div>
@@ -319,7 +277,7 @@ if (isset($_SESSION['usuario'])) {
     <!-- Argon JS -->
     <script src="../assets/js/argon.js?v=1.0.0"></script>
     <!-- funciones -->
-    <script src="../js/funciones_ingredientes_activos.js"></script>
+    <script src="../js/funciones_etapas.js"></script>
     
 </body>
 

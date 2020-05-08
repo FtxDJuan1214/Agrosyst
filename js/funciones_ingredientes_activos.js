@@ -1,47 +1,4 @@
 
-
-
-//---------------------------------Checklist--------------------------------//
-contar = 0;
-function checks() {
-    if (contar == 0) {
-        marcats = 1;
-    } else {
-        marcats = 0;
-    }
-    checks = document.getElementsByClassName("ica");
-
-    for (let check of checks) {
-        //añadimos un evento a cada check
-        check.addEventListener("click", function() {
-            //si se ha marcado
-            if (this.checked == true) {
-                //si se ha pasado el numero maximo de checks
-                if (marcats == 1) {
-                    toastr.error('Seleccione una sola opicón.','',{
-                        "positionClass": "toast-top-center",
-                        "closeButton": false,
-                        "progressBar": true
-                    });
-                    //descmarcamos el check que marcó usuario
-                    this.checked = false;
-                    //si no se ha pasado el numero maximo de checks
-                } else {
-                    marcats++;
-                }
-                //si se ha desmarcado
-            } else {
-                //si no queda solo uno marcado
-                if (marcats == 1) {
-                    marcats--;
-                }
-            }
-        })
-    }
-    contar++;
-};
-
-
 //----------------------------Segundo Ingrediente-------------------------------------//
 function muestra_oculta(id){
     if (document.getElementById){ 
@@ -52,6 +9,76 @@ function muestra_oculta(id){
     window.onload = function(){
     muestra_oculta('nomd_iac');
     }
+
+    //------------------------------------Guardar Ingrediente Activo----------------------------//
+function guadarIngrediente() {
+
+    ica1 = $('input:checkbox[name=ica1]:checked').val();
+    ica2 = $('input:checkbox[name=ica2]:checked').val();
+    nom_iac = $('#nom_iac').val();
+    nomd_iac = $('#nomd_iac').val();
+
+    if(ica1 == "SI" && ica2 == "NO"){
+
+        toastr.error('Por favor solo seleccione una opción','',{
+            "positionClass": "toast-top-center",
+            "closeButton": false,
+            "progressBar": true
+        });
+
+    }else if(ica1 == "SI" || ica2 == "NO"){ 
+
+    ica = "";
+    if (ica1 != undefined) {
+        ica = ica1;
+    } else if (ica2 != undefined) {
+        ica = ica2;
+    }
+
+    if (nom_iac != "" && ica != "") {
+        nombre = nom_iac;
+
+        if(nomd_iac != ""){
+            nombre = nombre +"-"+nomd_iac;
+        }
+
+        datos ="nombre="+nombre+
+        "&ica="+ica;
+
+        $.ajax({
+            type:"post",
+            url:"../php/crud/ingredientes_activos/crear_ingrediente_activo.php",
+            data:datos,
+            success:function(r){
+                if(r.includes('Resource id')){		
+                
+            swal(
+              'Todo salió bien!',
+              'Ingrediente activo creado!',
+              'success'
+            )
+        
+                $('#tab_ingredientes_activos').load('../php/componentes/componentes_ingredientes_activos/tab_ingredientes_activos.php');
+				$('#modal-form').modal('hide');
+				var form = document.querySelector('#form-add-iac');
+				form.reset();		
+				jQuery('#preloader').hide();
+                jQuery('#form-add-iac').show();
+                
+                
+            }else{
+                swal("Verifica los datos!", r , "error");
+            }
+        }
+    });
+
+
+
+    } else {
+        swal("Advertencia..", "Por favor llene todos los campos.", "warning");
+    }
+}
+}
 
 
 //-------------------------------------Actualizar Ingrediente Activo---------------------------//
@@ -86,9 +113,7 @@ function actualizarIngrediente_g(){
             "progressBar": true
         });
 
-    }else if(ica1 == "SI" || ica2 == "NO"){
-
-        alert("entra");
+    }else if(ica1 == "SI" || ica2 == "NO"){  
 
     ica = "";
     if (ica1 != undefined) {
@@ -129,8 +154,7 @@ function actualizarIngrediente_d(cod_iac,nombre,ica){
                 jQuery('#form-up-sem').show();				       
                 $('#tab_ingredientes_activos').load('../php/componentes/componentes_ingredientes_activos/tab_ingredientes_activos.php');
 
-            }else{
-                alert(r); 
+            }else{ 
                 jQuery('#preloaderup').hide();
                 jQuery('#form-up-sem').show();
                 $('#tab_ingredientes_activos').load('../php/componentes/componentes_ingredientes_activos/tab_ingredientes_activos.php');        
@@ -175,65 +199,6 @@ function eliminarIngrediente(datos){
 
 
 
-//------------------------------------Guardar Ingrediente Activo----------------------------//
-function guadarIngrediente() {
-
-    ica1 = $('input:checkbox[name=ica1]:checked').val();
-    ica2 = $('input:checkbox[name=ica2]:checked').val();
-    nom_iac = $('#nom_iac').val();
-    nomd_iac = $('#nomd_iac').val();
-
-    ica = "";
-    if (ica1 != undefined) {
-        ica = ica1;
-    } else if (ica2 != undefined) {
-        ica = ica2;
-    }
-
-    if (nom_iac != "" && ica != "") {
-        nombre = nom_iac;
-
-        if(nomd_iac != ""){
-            nombre = nombre +"-"+nomd_iac;
-        }
-
-        datos ="nombre="+nombre+
-        "&ica="+ica;
-
-        $.ajax({
-            type:"post",
-            url:"../php/crud/ingredientes_activos/crear_ingrediente_activo.php",
-            data:datos,
-            success:function(r){
-                alert(r);
-                if(r.includes('Resource id')){		
-                
-            swal(
-              'Todo salió bien!',
-              'Ingrediente activo creado!',
-              'success'
-            )
-        
-                $('#tab_ingredientes_activos').load('../php/componentes/componentes_ingredientes_activos/tab_ingredientes_activos.php');
-				$('#modal-form').modal('hide');
-				var form = document.querySelector('#form-add-iac');
-				form.reset();		
-				jQuery('#preloader').hide();
-                jQuery('#form-add-iac').show();
-                
-                
-            }else{
-                swal("Verifica los datos!", r , "error");
-            }
-        }
-    });
-
-
-
-    } else {
-        swal("Advertencia..", "Por favor llene todos los campos.", "warning");
-    }
-}
 
 //--------------------------------------Inicio----------------------------------------//
 $(document).ready(function() {

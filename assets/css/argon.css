@@ -15124,6 +15124,11 @@ button.bg-lighter:focus
   background: rgb(19,36,0);
   background: linear-gradient(52deg, rgba(19,36,0,1) 0%, rgba(52,134,76,1) 0%, rgba(75,147,23,1) 61%);
 }
+.bg-gradient-fito
+{
+    background: rgb(10,12,97);
+    background: linear-gradient(90deg, rgba(10,12,97,0.8214636196275386) 0%, rgba(11,51,135,0.8018557764902836) 44%, rgba(4,24,164,0.8130602582830007) 100%);
+}
 .bg-gradient-secondary
 {
     background: linear-gradient(87deg, #f7fafc 0, #f7f8fc 100%) !important;

@@ -178,6 +178,13 @@
         <div class="collapse" id="navbar-dashboards5">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
+                    <a href="etapas_enfermedades_plagas.php" class="nav-link">Etapas Plagas & Enfermedades</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
                     <a href="examples/tipo_produccion.php" class="nav-link">Procesos fitosanitarios</a>
                 </li>
             </ul>
