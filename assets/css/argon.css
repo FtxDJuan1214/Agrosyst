@@ -21954,6 +21954,16 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
     margin:auto;
 }
 
+#preloader1{
+    display:block; 
+    margin:auto;
+}
+
+#preloader2{
+    display:block; 
+    margin:auto;
+}
+
 #preloaderup{
     display:block; 
     margin:auto;

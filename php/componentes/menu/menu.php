@@ -183,6 +183,13 @@
             </ul>
         </div>
         <div class="collapse" id="navbar-dashboards5">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="plagas_enfermedades.php" class="nav-link">Plagas & Enfermedades</a>
+                                </li>
+                            </ul>
+                        </div>
+        <div class="collapse" id="navbar-dashboards5">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
                     <a href="examples/tipo_produccion.php" class="nav-link">Procesos fitosanitarios</a>

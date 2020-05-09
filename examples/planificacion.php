@@ -147,9 +147,11 @@ if (isset($_POST['cargar'])) {
         </nav>
         <!-- Header -->
         <div class="header pb-8 pt-5 pt-md-8"
-            style="background: url('../assets/img/theme/compras.jpg'); no-repeat; background-size: cover;">
-            <span class="mask bg-gradient-opaco opacity-8"></span>
+            style="background: url('../assets/img/theme/semilleros.jpg'); no-repeat; background-size: cover;">
+            <span class="mask bg-gradient-fito opacity-8"></span>
             <div class="container-fluid">
+            <br>
+            <br>
                 <div class="header-body">
                     <!-- Card stats -->
                     <div class="row">
