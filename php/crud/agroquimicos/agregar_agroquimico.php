@@ -1,6 +1,9 @@
 <?php 
 require_once '../../conexion.php';
 	
+session_start();
+$like = $_SESSION['idusuario'];
+
 $des_ins=$_POST['des_ins'];
 $cod_unm=$_POST['cod_unm'];
 
@@ -28,13 +31,13 @@ $cod_ins = $cod[0] + 1;
 
 
 
-$sql="INSERT INTO insumos(cod_ins, des_ins, cod_unm) VALUES ('$cod_ins','$des_ins', '$cod_unm')";
+$sql="INSERT INTO insumos(cod_ins, des_ins, cod_unm) VALUES ('$cod_ins','$like$des_ins', '$cod_unm')";
 echo $result=pg_query($conexion,$sql);
 
 if($result==true){
 $sql2 ="INSERT INTO public.agroquimicos(
 	cod_agr, cod_ins, nom_agr, rap_agr, pcr_agr, pen_agr, pro_agr, cod_for, cod_tag, cod_tox, est_agr, cod_iac, fun_agr)
-	VALUES ('$cod_agr', $cod_ins, '$nom_agr', '$rap_agr', '$pcr_agr', '$pen_agr', '$pro_agr', '$cod_for', '$cod_tag', '$cod_tox', '$est_agr','$cod_iac','$fun_agr');";
+	VALUES ('$like$cod_agr', $cod_ins, '$nom_agr', '$rap_agr', '$pcr_agr', '$pen_agr', '$pro_agr', '$cod_for', '$cod_tag', '$cod_tox', '$est_agr','$cod_iac','$fun_agr');";
 
 echo $result2 = pg_query($conexion,$sql2);
 if($result2==true){

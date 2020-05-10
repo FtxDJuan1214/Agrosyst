@@ -13,7 +13,8 @@ $query="SELECT DISTINCT afeccion.cod_afe, etapas_crecimiento.cod_eta, eta_x_afe.
     FROM public.afeccion, public.etapas_crecimiento, public.eta_x_afe
     WHERE afeccion.cod_afe = eta_x_afe.cod_afe
     AND etapas_crecimiento.cod_eta = eta_x_afe.cod_eta
-    AND afeccion.cod_afe='$cod_enf_pla'";
+    AND afeccion.cod_afe='$cod_enf_pla'
+    AND (afeccion.cod_afe LIKE '1-%' or afeccion.cod_afe LIKE '$like%')";
 
    $result =pg_query($conexion,$query);
    while ($ver=pg_fetch_row($result)) {

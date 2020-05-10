@@ -85,7 +85,7 @@ function cargar_etapas() {
 }else if(tip_tar == "Prevención"){
 
   selectEtapa("Prevención");
-  alert("lo envio como prevencion");
+  //alert("lo envio como prevencion");
 
 }else if(tip_tar == "Nutrición"){
 
@@ -277,7 +277,7 @@ function agregar_plan() {
 
   if(epoca!= null){
 
-    //alert("HOLAAAAAAAAAA "+ cadena_de_gastos_insertar);
+  alert("HOLAAAAAAAAAA "+ cadena_de_gastos_insertar);
     
   datos ="num_pla="+num_pla+
 	"&det_pla="+det_pla+
@@ -298,7 +298,7 @@ alert("datos:\n "+ datos);
 		data:datos,
 		success:function(r){
       alert("r:\n " + r);
-			if(r=='Resource id #6'){		
+			if(r.includes('Resource id')){	
 			
         swal(
           'Todo salió bien!',

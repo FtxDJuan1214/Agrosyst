@@ -1,6 +1,8 @@
 <?php
 require '../../conexion.php';
 
+session_start();
+$user =  $_SESSION['idusuario'];
 
 ?>
 
@@ -34,6 +36,7 @@ require '../../conexion.php';
     INNER JOIN insumos on agroquimicos.cod_ins=insumos.cod_ins
     INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm
     INNER JOIN toxicidad ON agroquimicos.cod_tox=toxicidad.cod_tox
+    WHERE (agroquimicos.cod_agr LIKE '1-%' or agroquimicos.cod_agr LIKE '$user%')
     ORDER BY agroquimicos.cod_agr"; 
     $result=pg_query($conexion,$sql);
     while($ver=pg_fetch_row($result)){

@@ -1,6 +1,9 @@
 <?php 
 require_once '../../conexion.php';     
 
+session_start();
+$like = $_SESSION['idusuario'];
+
 $num_pla = $_POST['num_pla'];
 $det_pla = $_POST['det_pla'];
 $epoca = $_POST['epoca'];
@@ -17,6 +20,7 @@ $tipo = "";
 for($i = 0; $i < $contarPlanes; $i++){
 
 	$subplan = $num_pla+$i;
+	echo "<script type=\"text/javascript\">alert(\"$subplan \");</script>"; 
    	$sep =explode("/", $planes[$i]); //Uno: Codigo agroquimico - Dos:codigo enfermedad
 
 	if($sep[2]=="Nutrición"){
@@ -33,15 +37,24 @@ for($i = 0; $i < $contarPlanes; $i++){
 		WHERE procesos_fitosanitarios.cod_afe = afeccion.cod_afe
 		AND procesos_fitosanitarios.ffi_pfi is NULL
 		AND procesos_fitosanitarios.tip_pfi = 'Curación'
-		AND procesos_fitosanitarios.cod_afe ='$sep[1]'";
+		AND procesos_fitosanitarios.cod_afe ='$sep[1]'
+		AND (procesos_fitosanitarios.cod_pfi LIKE '1-%' or procesos_fitosanitarios.cod_pfi LIKE '$like%')";
 		$result =pg_query($conexion,$validar);
 		$ver=pg_fetch_row($result);
 
 		//Obtener el ultimo id del proceso
-		$sqx="SELECT cod_pfi FROM procesos_fitosanitarios ORDER BY cod_pfi DESC LIMIT 1";
+		$sqx="SELECT cod_pfi FROM procesos_fitosanitarios WHERE cod_pfi LIKE '$like%' ORDER BY cod_pfi DESC LIMIT 1";
 				$resp=pg_query($conexion,$sqx);
 				$got=pg_fetch_row($resp);
-				$cod_pfi=$got[0];
+				$cod_pfi="";
+				if($got){
+				$div = explode("-", $got[0]);
+				$cod_pfi=$div[1];
+				}else{
+					$cod_pfi='0';
+				}
+
+				
 
 
 		if($ver == ""){
@@ -50,7 +63,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 			$cod_pfi=$cod_pfi+1;
 			$add = "INSERT INTO public.procesos_fitosanitarios(
 				cod_pfi, fin_pfi, ffi_pfi, cod_afe, tip_pfi)
-				VALUES ('$cod_pfi', '$fecha', null, '$sep[1]', 'Curación');";
+				VALUES ('$like$cod_pfi', '$fecha', null, '$sep[1]', 'Curación');";
 
 			echo $result=pg_query($conexion,$add);
 
@@ -58,7 +71,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 			$add = "INSERT INTO public.planificacion(
 				cod_pla, det_pla, fec_pla, epo_pla, cod_ppl, cod_pfi, agr_pla)
-				VALUES ('$subplan', '$det_pla', '$fecha', '$epoca ', '$num_pla', '$cod_pfi', '$sep[3]')";
+				VALUES ('$like$subplan', '$det_pla', '$fecha', '$epoca ', '$like$num_pla', '$like$cod_pfi', '$sep[3]')";
 
 			echo $result=pg_query($conexion,$add);
 
@@ -67,7 +80,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 			$add = "INSERT INTO public.planificacion(
 				cod_pla, det_pla, fec_pla, epo_pla, cod_ppl, cod_pfi, agr_pla)
-				VALUES ('$subplan', '$det_pla', '$fecha', '$epoca ', '$num_pla', '$ver[0]', '$sep[3]')";
+				VALUES ('$like$subplan', '$det_pla', '$fecha', '$epoca ', '$like$num_pla', '$ver[0]', '$sep[3]')";
 
 				echo $result=pg_query($conexion,$add);
 		}
@@ -84,15 +97,22 @@ for($i = 0; $i < $contarPlanes; $i++){
 		WHERE procesos_fitosanitarios.cod_afe = afeccion.cod_afe
 		AND procesos_fitosanitarios.ffi_pfi is NULL
 		AND procesos_fitosanitarios.tip_pfi = 'Prevención'
-		AND procesos_fitosanitarios.cod_afe ='$sep[1]'";
+		AND procesos_fitosanitarios.cod_afe ='$sep[1]'
+		AND (procesos_fitosanitarios.cod_pfi LIKE '1-%' or procesos_fitosanitarios.cod_pfi LIKE '$like%')";
 		$result =pg_query($conexion,$validar);
 		$ver=pg_fetch_row($result);
 
 		//Obtener el ultimo id del proceso
-		$sqx="SELECT cod_pfi FROM procesos_fitosanitarios ORDER BY cod_pfi DESC LIMIT 1";
+		$sqx="SELECT cod_pfi FROM procesos_fitosanitarios WHERE cod_pfi LIKE '$like%' ORDER BY cod_pfi DESC LIMIT 1";
 				$resp=pg_query($conexion,$sqx);
 				$got=pg_fetch_row($resp);
-				$cod_pfi=$got[0];
+				$cod_pfi="";
+				if($got){
+				$div= explode("-", $got[0]);
+				$cod_pfi=$div[1];
+				}else{
+					$cod_pfi='0';
+				}
 
 
 		if($ver == ""){
@@ -101,14 +121,14 @@ for($i = 0; $i < $contarPlanes; $i++){
 			$cod_pfi=$cod_pfi+1;
 			$add = "INSERT INTO public.procesos_fitosanitarios(
 				cod_pfi, fin_pfi, ffi_pfi, cod_afe, tip_pfi)
-				VALUES ('$cod_pfi', '$fecha', null, '$sep[1]', 'Prevención');";
+				VALUES ('$like$cod_pfi', '$fecha', null, '$sep[1]', 'Prevención');";
 
 			echo $result=pg_query($conexion,$add);
 			//Despues la planeación se ingresa
 
 			$add = "INSERT INTO public.planificacion(
 				cod_pla, det_pla, fec_pla, epo_pla, cod_ppl, cod_pfi, agr_pla)
-				VALUES ('$subplan', '$det_pla', '$fecha', '$epoca ', '$num_pla', '$cod_pfi', '$sep[3]')";
+				VALUES ('$like$subplan', '$det_pla', '$fecha', '$epoca ', '$like$num_pla', '$like$cod_pfi', '$sep[3]')";
 
 			echo $result=pg_query($conexion,$add);
 
@@ -117,7 +137,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 			$add = "INSERT INTO public.planificacion(
 				cod_pla, det_pla, fec_pla, epo_pla, cod_ppl, cod_pfi, agr_pla)
-				VALUES ('$subplan', '$det_pla', '$fecha', '$epoca ', '$num_pla', '$ver[0]', '$sep[3]')";
+				VALUES ('$like$subplan', '$det_pla', '$fecha', '$epoca ', '$like$num_pla', '$ver[0]', '$sep[3]')";
 
 				echo $result=pg_query($conexion,$add);
 		}

@@ -8,6 +8,7 @@ $sql1="SELECT cod_iac FROM ingredientes_activos
 WHERE cod_iac LIKE '$user%'
 ORDER BY cod_iac 
 DESC LIMIT 1";
+
 $result =pg_query($conexion,$sql1);
 $cod =pg_fetch_row($result);
 $sep = explode("-", $cod[0]);

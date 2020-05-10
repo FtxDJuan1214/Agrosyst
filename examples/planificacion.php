@@ -168,15 +168,23 @@ if (isset($_POST['cargar'])) {
                                                     <!--------------------Primera Columna -------------------------->
                                                     <div class="col-md-4">
                                                         <!------------------Codigo planificación----------------------->
-                                                        <div class="form-group" id="cod_pla" name="cod_pla">
+                                                        <div class="form-group" id="cod_pla" name="cod_pla" style="display: none">
                                                             <?php   
-                                                              $sql1="SELECT cod_pla::numeric FROM planificacion ORDER BY cod_pla::numeric DESC LIMIT 1";
+                                                              $user =  $_SESSION['idusuario'];
+                                                              $sql1="SELECT cod_pla FROM planificacion ORDER BY cod_pla DESC LIMIT 1";
                                                               $result=pg_query($conexion,$sql1);
-                                                              $cod=pg_fetch_row($result);                    
+                                                              $cod=pg_fetch_row($result);
+                                                              $cod_f="";
+                                                                if($cod[0]){    
+                                                                $sep = explode("-", $cod[0]); 
+                                                                $cod_f=$sep[1] + 1;
+                                                                }else{
+                                                                    $cod_f='1';
+    }                          
                                                             ?>
                                                             <input type="text" class="form-control" id="num_pla"
                                                                 name="num_pla"
-                                                                value="<?php echo "Planificación N°: ".($cod[0]+1);?>"
+                                                                value="<?php echo "Planificación N°: ".($cod_f);?>"
                                                                 autocomplete="off" readonly>
                                                         </div>
                                                         <!-----------------------fecha------------------------------------>

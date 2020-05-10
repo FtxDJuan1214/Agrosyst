@@ -1,10 +1,19 @@
 <?php
 require '../../conexion.php';
 
+    session_start();
+    $like = $_SESSION['idusuario'];
 
-    $sql1="SELECT cod_agr::numeric FROM agroquimicos ORDER BY cod_agr::numeric DESC LIMIT 1";
+    $sql1="SELECT cod_agr FROM agroquimicos WHERE  cod_agr LIKE '$like%' ORDER BY cod_agr DESC LIMIT 1";
     $result=pg_query($conexion,$sql1);
-    $cod=pg_fetch_row($result);                   
+    $cod=pg_fetch_row($result);
+    $cod_agro="";
+    if($cod[0]){    
+    $sep = explode("-", $cod[0]); 
+    $cod_agro=$sep[1] + 1;
+    }else{
+        $cod_agro='1';
+    }            
 ?>
 
 
@@ -27,7 +36,7 @@ require '../../conexion.php';
                                             <!--Div Código-->
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="cod_agr" readonly name="cod_agr"
-                                                    value="<?php echo ($cod[0] + 1) ?>">
+                                                    value="<?php echo  $cod_agro ?>">
                                             </div>
 
                                             <!--Div Nombre Agroquímico-->
@@ -93,9 +102,9 @@ require '../../conexion.php';
                                                     <select id="fun_agr" name="fun_agr" class="form-control"
                                                         data-live-search="true">
                                                         <option value="" disabled selected>Función</option>
-                                                        <option value="Curacion">Curación</option>
-                                                        <option value="prevencion">Prevención</option>
-                                                        <option value="Nutricion">Nutrición</option>
+                                                        <option value="Curación">Curación</option>
+                                                        <option value="Prevención">Prevención</option>
+                                                        <option value="Nutrición">Nutrición</option>
                                                     </select>
                                                 </div>
                                             </div>

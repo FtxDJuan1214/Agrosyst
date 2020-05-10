@@ -13,7 +13,7 @@ $enf_pla =$_POST['sele_enf_pla'];
  if($enf_pla == 1){
 
       $query="SELECT afeccion.cod_afe,afeccion.nom_afe FROM public.afeccion, public.enfermedades
-      WHERE afeccion.cod_afe = enfermedades.cod_afe;";
+      WHERE afeccion.cod_afe = enfermedades.cod_afe AND (afeccion.cod_afe LIKE '1-%' or afeccion.cod_afe LIKE '$like%')";
     $result =pg_query($conexion,$query);
     while ($ver=pg_fetch_row($result)) {
       ?>
@@ -23,7 +23,7 @@ $enf_pla =$_POST['sele_enf_pla'];
  }else if($enf_pla == 2){
 
     $query="SELECT afeccion.cod_afe,afeccion.nom_afe FROM public.afeccion, public.plagas
-    WHERE afeccion.cod_afe = plagas.cod_afe;";
+    WHERE afeccion.cod_afe = plagas.cod_afe AND (afeccion.cod_afe LIKE '1-%' or afeccion.cod_afe LIKE '$like%')";
     $result =pg_query($conexion,$query);
     while ($ver=pg_fetch_row($result)) {
       ?>

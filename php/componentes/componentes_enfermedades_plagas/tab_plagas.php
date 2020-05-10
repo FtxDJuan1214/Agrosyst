@@ -23,14 +23,14 @@ require '../../conexion.php';
           $sql = "";
 
           if($like != '1-'){
-          $sql="SELECT afeccion.cod_afe, plagas.cod_plg, afeccion.nom_afe, afeccion.noc_afe, afeccion.epo_afe, 
+          $sql="SELECT afeccion.cod_afe, afeccion.nom_afe, afeccion.nom_afe, afeccion.noc_afe, afeccion.epo_afe, 
           afeccion.prv_afe, afeccion.eat_afe, afeccion.hat_afe
 		  FROM public.afeccion, public.plagas
 		  WHERE afeccion.cod_afe = plagas.cod_afe
 		  AND afeccion.cod_afe LIKE '$like%' or afeccion.cod_afe LIKE '1-%'"; 
           }else{
 
-          $sql="SELECT afeccion.cod_afe, plagas.cod_plg, afeccion.nom_afe, afeccion.noc_afe, afeccion.epo_afe, 
+          $sql="SELECT afeccion.cod_afe, afeccion.nom_afe, afeccion.nom_afe, afeccion.noc_afe, afeccion.epo_afe, 
           afeccion.prv_afe, afeccion.eat_afe, afeccion.hat_afe
 		  FROM public.afeccion, public.plagas
 		  WHERE afeccion.cod_afe = plagas.cod_afe
