@@ -21999,3 +21999,15 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
     float: left;
     background:blue
 }
+
+
+#rating { list-style:none; }
+#rating li { display:inline; float:left; }
+#rating li a { display:block; width:80px; height:80px; border:1px solid #888; background-color:#333;
+   text-indent:-9999px; box-shadow:0 0 5px #888; border-radius:40px; }
+
+#ratinginfo { clear:left; width:350px; }
+#ratinginfo p { text-align:center; padding:10px;
+   box-shadow:0 0 5px #888; border-radius:40px; }
+
+   

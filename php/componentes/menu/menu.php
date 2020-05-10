@@ -192,7 +192,7 @@
         <div class="collapse" id="navbar-dashboards5">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="examples/tipo_produccion.php" class="nav-link">Procesos fitosanitarios</a>
+                    <a href="procesos_fitosanitarios.php" class="nav-link">Procesos fitosanitarios</a>
                 </li>
             </ul>
         </div>

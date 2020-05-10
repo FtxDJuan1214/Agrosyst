@@ -310,7 +310,7 @@ alert("datos:\n "+ datos);
 			swal("Verifica los datos!", r , "error");
 		}
 	}
-});
+  });
 }else{
   swal("Advertencia..", "Por favor llene todos los campos." , "warning");
 
