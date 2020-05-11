@@ -36,8 +36,8 @@ require '../../conexion.php';
                                                     <option value="<?php echo $datos?>">
                                                         <?php echo $ver[1] ?></option>
                                                     <?php 
-                                                                            }
-                                                                            ?>
+                                                        }
+                                                        ?>
                                                 </select>
                                             </div>
                                         </div>

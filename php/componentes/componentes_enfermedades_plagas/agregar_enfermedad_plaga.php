@@ -22,7 +22,7 @@ require '../../conexion.php';
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative">
                                                     <select id="pla_o_enf" name="pla_o_enf" class="form-control"
-                                                        data-live-search="true" onchange="cargar_select_tip()">
+                                                        data-live-search="true" onchange="cargar_select_tip()" required>
                                                         <option value="" disabled selected>Plaga o
                                                             Enfermedad
                                                         </option>
@@ -34,7 +34,7 @@ require '../../conexion.php';
                                         </div>
                                         <!------------------------Seleccionar patogeno o tipo de plaga---------------------->
                                         <div class="form-group mb-3">
-                                            <div class="input-group input-group-alternative" id="sel_pat_tip">
+                                            <div class="input-group input-group-alternative" id="sel_pat_tip" required>
                                             </div>
                                         </div>
                                         <!------------------------Nombre común Enfermedad o plaga---------------------->
@@ -42,7 +42,9 @@ require '../../conexion.php';
                                             <div class="input-group input-group-alternative" id="div_des_ins">
                                                 <input style="border-color: #fb6340;" id="nom_afe" name="nom_afe"
                                                     type="text" class="form-control" placeholder="Nombre común"
-                                                    autocomplete="off" maxlength="45">
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="Nombre de la enfermedad o plaga."
+                                                    autocomplete="off" maxlength="45" required>
                                             </div>
                                         </div>
 
@@ -59,7 +61,7 @@ require '../../conexion.php';
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative">
                                                     <select id="horario" name="horario" class="form-control"
-                                                        data-live-search="true">
+                                                        data-live-search="true" required>
                                                         <option value="" disabled selected>Horario
                                                             ataque
                                                         </option>
@@ -77,7 +79,7 @@ require '../../conexion.php';
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative">
                                                     <select id="epoca_a" name="epoca_a" class="form-control"
-                                                        data-live-search="true">
+                                                        data-live-search="true" required>
                                                         <option value="" disabled selected>Epoca de
                                                             mayor ataque
                                                         </option>
@@ -96,10 +98,13 @@ require '../../conexion.php';
                                         <div class="form-group mb-6">
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-success center-block"
-                                                    data-toggle="modal" data-target="#modal-partes-afe" style="font-family:'FontAwesome',tahoma; font-size: 11px;">Partes
+                                                    data-toggle="modal" data-target="#modal-partes-afe" style="font-family:'FontAwesome',tahoma; font-size: 11px;" 
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="Partes de la planta que son afectadas por la plaga o enfermedad.">Partes
                                                     Afectadas</button>
 
-                                                <div id="partes-mostrar" class="card-header">
+                                                <div id="partes-mostrar" class="card-header" data-toggle="tooltip" data-placement="top"
+                                                    title="Partes de la planta que son afectadas por la plaga o enfermedad." required>
                                                 </div>                                                
                                             </div>
 
@@ -107,18 +112,24 @@ require '../../conexion.php';
                                             <br>
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-success" data-toggle="modal"
-                                                    data-target="#modal-etapas-afe" style="font-family:'FontAwesome',tahoma; font-size: 11px;">Etapas
+                                                    data-target="#modal-etapas-afe" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="Etapas de la planta en la que son atacadas por la plaga o enfermedad.">Etapas
                                                     Afectadas</button>
 
-                                                <div id="etapas-afe-mostrar" class="card-header">
+                                                <div id="etapas-afe-mostrar" class="card-header" data-toggle="tooltip" data-placement="top"
+                                                    title="Etapas de la planta en la que son atacadas por la plaga o enfermedad." required>
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-success center-block"
-                                                    data-toggle="modal" data-target="#modal-sintomas" style="font-family:'FontAwesome',tahoma; font-size: 11px;">Sintomas</button>
+                                                    data-toggle="modal" data-target="#modal-sintomas" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="Sintomas que presenta la planta a cauda de la plaga o enfermedad.">Sintomas</button>
 
-                                                <div id="sintomas-mostrar" class="card-header">
+                                                <div id="sintomas-mostrar" class="card-header" data-toggle="tooltip" data-placement="top"
+                                                    title="Sintomas que presenta la planta a cauda de la plaga o enfermedad." required>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,7 +138,8 @@ require '../../conexion.php';
                                     <!--------------------Tercera Columna -------------------------->
                                     <div class="col-md-4">
                                         <!--div tabla agre--->
-                                        <div class="form-group" id="tab_met_pre" name="tab_met_pre">
+                                        <div class="form-group" id="tab_met_pre" name="tab_met_pre" data-toggle="tooltip" data-placement="top"
+                                            title="Recomendaciones que nos ayudan a recordarte como evitar la aparición de esta plaga o enfermedad. No es obligatorio.">
                                             <div class="card-shadow form-group">
                                                 <div class="card-header">
                                                 <p style="font-family:'FontAwesome',tahoma; font-size: 16px;"  align="center">Métodos de Prevención</P>
@@ -160,15 +172,17 @@ require '../../conexion.php';
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
-
-                                        <!--------------------------------Tabla Métodos de Prevención Agregados-------------------->
-                                        <div class="form-group" id="tab_met_agre">
-                                        </div>
+                                        </div>                                        
                                     </div>
 
+                                    <!--------------------------------Tabla Métodos de Prevención Agregados-------------------->
+                                    <div class="col-md-12">
+                                    <div class="form-group" id="tab_met_agre">
+                                    </div>
+                                    </div>
+                                    <br>
 
-                                    <!------------------------Columna Etapas plagas y enfermedades----------------------->
+                                    <!------------------------Columna Etapas plagas y enfermedades-----------------------
                                     <div class="col-md-5" hidden>
                                         <div class="form-group">
                                             <h3 align='center'>Etapas</h3>
@@ -197,7 +211,7 @@ require '../../conexion.php';
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                     <!------------------------Columna tabla etapas agregadas y pedir imagen----------------------->
                                     <div class="col-md-7">
@@ -207,16 +221,26 @@ require '../../conexion.php';
                                     </div>
                                 </div>
                                 <!-------------------------------Botón Guardar------------------------->
-                                <div class="col-md-6">
-                                    <br>
-                                    <div class="float-md-right">
-                                        <input type="button" name="cargar" class="btn btn-primary sm-4"
-                                            data-toggle="tooltip" data-placement="top" title="Etapas" value="Etapas"
-                                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"
-                                            onclick="guardarEnfer_Plaga()">
-
+                                <div class="row">    
+                                    <div class="col-md-6">
+                                        <br>
+                                        <center>
+                                            <input type="button" name="cargar" class="btn btn-danger sm-4"
+                                                value="Cancelar"style="font-family:'FontAwesome',tahoma; font-size: 12px;"
+                                                onclick="cancelar()">
+                                        </center>  
                                     </div>
-                                </div>
+                                    <div class="col-md-6">
+                                        <br>
+                                        <center>
+                                            <input type="button" name="cargar" class="btn btn-primary sm-4"
+                                                data-toggle="tooltip" data-placement="top" title="Etapas" value="Seguir"
+                                                style="font-family:'FontAwesome',tahoma; font-size: 12px;"
+                                                onclick="guardarEnfer_Plaga()">
+                                        </center>
+
+                                    </div>                                   
+                                </div>    
                             </form>
                         </div>
                     </div>

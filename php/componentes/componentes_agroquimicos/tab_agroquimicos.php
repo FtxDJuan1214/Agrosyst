@@ -30,7 +30,7 @@ $user =  $_SESSION['idusuario'];
     formulacion.nom_for, formulacion.sig_for, agroquimicos.pcr_agr, agroquimicos.pen_agr, 
     agroquimicos.pro_agr, unidad_de_medida.des_unm, toxicidad.det_tox, 
     ingredientes_activos.cod_iac, tipo_agroquimico.cod_tag, formulacion.cod_for,
-    agroquimicos.dos_agr, toxicidad.cod_tox, agroquimicos.est_agr,unidad_de_medida.cod_tum,
+    agroquimicos.dos_agr, toxicidad.cod_tox,unidad_de_medida.cod_tum,
     insumos.cod_ins, insumos.des_ins, agroquimicos.rap_agr
 
     FROM agroquimicos
@@ -65,8 +65,7 @@ $user =  $_SESSION['idusuario'];
      $ver[18]."||".
      $ver[19]."||".
      $ver[20]."||".
-     $ver[21]."||".
-     $ver[22]."||";
+     $ver[21]."||";
      ?>
      <tr>
 

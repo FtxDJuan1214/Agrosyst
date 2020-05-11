@@ -5,10 +5,20 @@ require '../../conexion.php';
     $like = $_SESSION['idusuario'];
 
     $cont=strlen($like);
+    $cont = "SELECT count(*) FROM agroquimicos WHERE cod_agr LIKE '$like%'";
+    $result=pg_query($conexion,$cont);
+    $tot=pg_fetch_row($result);
+    $sum =0;
+
+    if($tot[0]>=10){
+        $sum=4;
+    }else{
+        $sum=3;
+    }
 
     $sql1="SELECT cod_agr FROM agroquimicos
     WHERE cod_agr LIKE '$like%'
-    ORDER BY (SUBSTRING (cod_agr FROM ($cont+2) FOR 8))
+    ORDER BY (SUBSTRING (cod_agr FROM ($sum) FOR 8))
     DESC LIMIT 1";
 
     $result=pg_query($conexion,$sql1);
@@ -251,7 +261,7 @@ require '../../conexion.php';
                                                 <h4 style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                                     align="center">Sugerencias de aplicacion</h4><br>
                                                 <textarea data-toggle="tooltip" data-placement="top"
-                                                    title="Generalmente en la etiqueta viene esta sugerencia de aplicación, si no viene puede dejar el campo vacío."
+                                                    title="Generalmente en la etiqueta viene esta sugerencia de aplicación, sí no, puede dejar el campo vacío."
                                                     name="rap_agr" id="rap_agr" cols="18" rows="4"
                                                     class="form-control"></textarea>
                                             </div>
@@ -273,7 +283,7 @@ require '../../conexion.php';
                                     <div class="row">
                                         <div class="col-md-6">
                                             <center>
-                                                <button class="tn btn-success btn-lg" onclick="preloader();">Guardar
+                                                <button class="tn btn-success btn-lg" onclick="guardar_agro();">Guardar
                                                 </button>
                                             </center>
                                         </div>

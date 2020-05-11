@@ -10,6 +10,8 @@ $sep_fot = explode("||",$listado_fotos);
 $len_sep_eta = count($sep_eta) - 1;
 $len_sep_fot = count($sep_fot) - 1;
 
+$img = "";
+
 
 for($i=0;$i<$len_sep_eta;$i++){
 
@@ -20,8 +22,6 @@ for($i=0;$i<$len_sep_eta;$i++){
         $sep_fotos = explode("~",$sep_fot[$d]);
 if($sep_etapas[$i] == $sep_fotos[$d]){
     
-    //echo '<script type="text/javascript">alert("' .'Encontrado!!! en '.$sep_fotos[$d].' de: '.$sep_etapas[$i].' es: '.$sep_etapas[$i]. '")</script>';
-
     $nomi=$_FILES[$sep_fotos[$d]]['name'];
     echo 'niomi'.$nomi;
     $ruta=$_FILES[$sep_fotos[$d]]['tmp_name'];
@@ -29,6 +29,8 @@ if($sep_etapas[$i] == $sep_fotos[$d]){
 
     $folder='../../../imagenes/etapas';
     move_uploaded_file($ruta, $folder.'/'.$nomi);
+
+    $img = "etapas/".$nomi;
     
 break;
 }

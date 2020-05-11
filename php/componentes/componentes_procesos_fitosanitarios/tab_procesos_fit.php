@@ -207,6 +207,17 @@ require '../../conexion.php';
                     </div>
                 </div>
             </td>
+            <td>
+                <div class="text-center">
+                    <button type="button" class="btn btn-danger center-block" data-toggle="tooltip"
+                        title="Ver, editar y eliminar comentarios sobre el avance de este proceso fitosanitario"
+                        style="font-family:'FontAwesome',tahoma; font-size: 10px;"
+                        onclick="modalComentarios(' <?php  echo $ver[8] ?> ')">Terminar proceso</button>
+
+                    <div id="sintomas-mostrar">
+                    </div>
+                </div>
+            </td>
 
         </tr>
         <?php   }

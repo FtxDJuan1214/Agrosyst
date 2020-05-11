@@ -16,6 +16,9 @@ $cfotos=count($fotos) - 1;
 
 $coincidir = false;
 $indice = "";
+
+$infor="";
+$name="";
 ?>
 
 
@@ -39,6 +42,8 @@ $indice = "";
                 
                         for($i =0; $i<$lenght; $i++){
                         $ver=explode("~", $array[$i]);
+                        $infor=$ver[0];
+                        $name=$ver[1];
                         $coincidir = false;
                     ?>
 
@@ -61,7 +66,8 @@ $indice = "";
                         if($coincidir == false){
                         ?>
                         <input id="<?php echo $ver[0] ?>" name="<?php echo $ver[0] ?>" type="file" class="validate"
-                            autocomplete="off" accept="image/*" onchange="validateFileType('<?php echo $ver[0]?>','<?php echo $ver[1]?>')">
+                            autocomplete="off" accept="image/*"
+                            onchange="validateFileType('<?php echo $ver[0]?>','<?php echo $ver[1]?>')">
                     </td>
 
                     <?php }else
@@ -73,8 +79,9 @@ $indice = "";
                             }
                         }else{
                             ?>
-                    <input id="<?php echo $ver[0] ?>" name="<?php echo $ver[0] ?>" type="file" class="validate" autocomplete="off"
-                        accept="image/*" onchange="validateFileType('<?php echo $ver[0]?>','<?php echo $ver[1]?>')"></td>
+                    <input id="<?php echo $ver[0] ?>" name="<?php echo $ver[0] ?>" type="file" class="validate"
+                        autocomplete="off" accept="image/*"
+                        onchange="validateFileType('<?php echo $ver[0]?>','<?php echo $ver[1]?>')"></td>
                     <?php
                         }
                     ?>
@@ -89,6 +96,7 @@ $indice = "";
                 }
                 ?>
             </tbody>
-        </table>
+        </table>        
     </div>
+    <button id = "boton-guardar-sin" class="tn btn-success btn-lg" onclick="guardarSinImagen('<?php echo $infor?>','<?php echo $name?>');" style="font-family:'FontAwesome',tahoma; font-size: 12px;">Guardar sin imagen</button>
 </div>

@@ -19,7 +19,7 @@ $lenght = count($array)-1;
             <tbody>
                 <?php
                     for($i=0;$i<$lenght; $i++){
-                        $ver=explode(",",$array[$i]);                                    
+                        $ver=explode("~,",$array[$i]);                                    
                  ?>
                 <tr>
                     <td>
