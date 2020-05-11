@@ -5800,7 +5800,7 @@ input[type='button'].btn-block
     margin-bottom: 0;
     padding: 1.25rem 1.5rem;
 
-    border-bottom: 1px solid rgba(0, 0, 0, .05); 
+    border-bottom: 0.5px solid rgba(0, 0, 0, .05); 
     background-color: #fff;
 }
 .card-header:first-child

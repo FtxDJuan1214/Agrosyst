@@ -13,10 +13,11 @@ $partes_f = $_POST['partes_f'];
 $sintomas_f = $_POST['sintomas_f'];
 $metodos_f = $_POST['metodos_f'];
 
+$cont=strlen($user);
 
     $getc="SELECT cod_afe FROM afeccion
     WHERE cod_afe LIKE '$user%'
-    ORDER BY cod_afe 
+    ORDER BY (SUBSTRING (cod_afe FROM ($cont+2) FOR 8))
     DESC LIMIT 1";
 
     $result =pg_query($conexion,$getc);

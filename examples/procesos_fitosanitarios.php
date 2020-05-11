@@ -192,9 +192,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
             </div>
 
-
-
-            <!-- Table -->
+            <!-- -----------------------------------------Table -------------------------------------------------------------------->
             <div class="row">
                 <div class="col">
                     <div class="card shadow">

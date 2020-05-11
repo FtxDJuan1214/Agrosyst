@@ -60,8 +60,8 @@ $indice = "";
                         
                         if($coincidir == false){
                         ?>
-                        <input id="<?php echo $ver[0] ?>" name="foto_eta" type="file" class="validate"
-                            autocomplete="off" accept="image/*" onchange="validateFileType('<?php echo $ver[0] ?>')">
+                        <input id="<?php echo $ver[0] ?>" name="<?php echo $ver[0] ?>" type="file" class="validate"
+                            autocomplete="off" accept="image/*" onchange="validateFileType('<?php echo $ver[0]?>','<?php echo $ver[1]?>')">
                     </td>
 
                     <?php }else
@@ -73,11 +73,12 @@ $indice = "";
                             }
                         }else{
                             ?>
-                    <input id="<?php echo $ver[0] ?>" name="foto_eta" type="file" class="validate" autocomplete="off"
-                        accept="image/*" onchange="validateFileType('<?php echo $ver[0] ?>')"></td>
+                    <input id="<?php echo $ver[0] ?>" name="<?php echo $ver[0] ?>" type="file" class="validate" autocomplete="off"
+                        accept="image/*" onchange="validateFileType('<?php echo $ver[0]?>','<?php echo $ver[1]?>')"></td>
                     <?php
                         }
                     ?>
+                    <!----Borrar--->
                     <td> <input type="button" name="cargar" class="btn btn-danger sm-3" data-toggle="tooltip"
                             data-placement="top" title="Quitar" value="&#xf00d    "
                             style="font-family:'FontAwesome',tahoma; font-size: 10px;"

@@ -2,17 +2,20 @@
 require_once '../../conexion.php';
 session_start();
 $user =  $_SESSION['idusuario'];
-	
+    
+
+$cont=strlen($user);
+
 $indiv=$_POST['indiv'];
 
 $getc="SELECT cod_afe FROM afeccion
     WHERE cod_afe LIKE '$user%'
-    ORDER BY cod_afe 
+    ORDER BY (SUBSTRING (cod_afe FROM ($cont+2) FOR 8))
     DESC LIMIT 1";
 
 $getd="SELECT cod_enf FROM enfermedades
     WHERE cod_enf LIKE '$user%'
-    ORDER BY cod_enf 
+    ORDER BY (SUBSTRING (cod_enf FROM ($cont+2) FOR 8))
     DESC LIMIT 1";
 
     $result =pg_query($conexion,$getc);
@@ -28,6 +31,8 @@ $getd="SELECT cod_enf FROM enfermedades
 
     if($sep[1]){
         $cod_afe = $sep[1];
+    }else{
+        $cod_afe = "1";
     }
 
     if($sep1[1]){

@@ -1890,15 +1890,15 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                                                             <option value="" selected>Selecciona un departamento
                                                             </option>
                                                             <?php 
-                        $query="SELECT cod_dep,nom_dep FROM departamento";
-                        $result =pg_query($conexion,$query);
-                        while ($ver=pg_fetch_row($result)) {
-                         ?>
+                                                                $query="SELECT cod_dep,nom_dep FROM departamento";
+                                                                $result =pg_query($conexion,$query);
+                                                                while ($ver=pg_fetch_row($result)) {
+                                                                ?>
                                                             <option value="<?php echo intval($ver[0]); ?>">
                                                                 <?php echo $ver[1]; ?></option>
                                                             <?php 
-                       }
-                       ?>
+                                                                }
+                                                                ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1912,15 +1912,15 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                                                             data-live-search="true">
                                                             <option value="">Selecciona municipio</option>
                                                             <?php 
-                      $query="SELECT cod_mun,nom_mun FROM municipio";
-                      $result =pg_query($conexion,$query);
-                      while ($ver=pg_fetch_row($result)) {
-                       ?>
+                                                                $query="SELECT cod_mun,nom_mun FROM municipio";
+                                                                $result =pg_query($conexion,$query);
+                                                                while ($ver=pg_fetch_row($result)) {
+                                                                ?>
                                                             <option value="<?php echo $ver[0]; ?>">
                                                                 <?php echo $ver[1]; ?></option>
                                                             <?php 
-                     }
-                     ?>
+                                                                }
+                                                                ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1931,17 +1931,17 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                                                             data-live-search="true">
                                                             <option value="">Selecciona dueño</option>
                                                             <?php 
-                    $like = $_SESSION['idusuario'];
-                    $query="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter FROM public.terceros INNER JOIN dueño ON terceros.ide_ter=dueño.ide_ter where terceros.ide_ter LIKE '$like%'";
-                    $result =pg_query($conexion,$query);
-                    while ($ver=pg_fetch_row($result)) {
-                     ?>
+                                                                $like = $_SESSION['idusuario'];
+                                                                $query="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter FROM public.terceros INNER JOIN dueño ON terceros.ide_ter=dueño.ide_ter where terceros.ide_ter LIKE '$like%'";
+                                                                $result =pg_query($conexion,$query);
+                                                                while ($ver=pg_fetch_row($result)) {
+                                                                ?>
                                                             <option value="<?php echo $ver[0]; ?>">
                                                                 <?php echo $ver[1]." ".$ver[2]." ".$ver[3]." ".$ver[4]; ?>
                                                             </option>
                                                             <?php 
-                   }
-                   ?>
+                                                                }
+                                                                ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1952,15 +1952,15 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                                                             data-live-search="true">
                                                             <option value="" selected>Selecciona Uni. de medida</option>
                                                             <?php 
-                $query="SELECT cod_unm, des_unm FROM unidad_de_medida WHERE cod_tum='1'";
-                $result =pg_query($conexion,$query);
-                while ($ver=pg_fetch_row($result)) {
-                 ?>
+                                                                $query="SELECT cod_unm, des_unm FROM unidad_de_medida WHERE cod_tum='1'";
+                                                                $result =pg_query($conexion,$query);
+                                                                while ($ver=pg_fetch_row($result)) {
+                                                                ?>
                                                             <option value="<?php echo $ver[0]; ?>">
                                                                 <?php echo $ver[1]; ?></option>
                                                             <?php 
-               }
-               ?>
+                                                                }
+                                                                ?>
                                                         </select>
                                                     </div>
                                                 </div>

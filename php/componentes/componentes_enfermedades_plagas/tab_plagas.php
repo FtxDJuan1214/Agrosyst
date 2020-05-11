@@ -5,7 +5,6 @@ require '../../conexion.php';
 <table class="table align-items-center table-flush table-hover">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Código</th>
             <th scope="col">Nombre</th>
             <th scope="col">Nombre C</th>
             <th scope="col">Epoca</th>
@@ -23,15 +22,15 @@ require '../../conexion.php';
           $sql = "";
 
           if($like != '1-'){
-          $sql="SELECT afeccion.cod_afe, afeccion.nom_afe, afeccion.nom_afe, afeccion.noc_afe, afeccion.epo_afe, 
-          afeccion.prv_afe, afeccion.eat_afe, afeccion.hat_afe
+          $sql="SELECT afeccion.cod_afe, afeccion.nom_afe, afeccion.noc_afe, afeccion.epo_afe, 
+          afeccion.prv_afe, afeccion.eat_afe, afeccion.hat_afe, plagas.tip_plg
 		  FROM public.afeccion, public.plagas
 		  WHERE afeccion.cod_afe = plagas.cod_afe
 		  AND afeccion.cod_afe LIKE '$like%' or afeccion.cod_afe LIKE '1-%'"; 
           }else{
 
-          $sql="SELECT afeccion.cod_afe, afeccion.nom_afe, afeccion.nom_afe, afeccion.noc_afe, afeccion.epo_afe, 
-          afeccion.prv_afe, afeccion.eat_afe, afeccion.hat_afe
+          $sql="SELECT afeccion.cod_afe, afeccion.nom_afe, afeccion.noc_afe, afeccion.epo_afe, 
+          afeccion.prv_afe, afeccion.eat_afe, afeccion.hat_afe, plagas.tip_plg
 		  FROM public.afeccion, public.plagas
 		  WHERE afeccion.cod_afe = plagas.cod_afe
 		  AND afeccion.cod_afe LIKE '$like%'"; 
@@ -47,20 +46,17 @@ require '../../conexion.php';
           $ver[4]."||".
           $ver[5]."||".
           $ver[6]."||".
-          $ver[7]."||".
-          $ver[8]."||";
+          $ver[7]."||";
 
         ?>
         <tr>
 
-            <td><?php echo $ver[0] ?></td>
             <td><?php echo $ver[1] ?></td>
             <td><?php echo $ver[2] ?></td>
             <td><?php echo $ver[3] ?></td>
             <td><?php echo $ver[4] ?></td>
             <td><?php echo $ver[5] ?></td>
             <td><?php echo $ver[6] ?></td>
-            <td><?php echo $ver[8] ?></td>
             <td class="text-right">
                 <div class="dropdown">
                     <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown"

@@ -10,5 +10,5 @@ $partes =$_POST['partes'];
     <p align='center'>Partes afectadas de la planta
         agregadas:</p>
 
-    <textarea readonly id="par_add" class="form-control" placeholder="Partes Afectadas Agregadas" rows="3"><?php echo $partes ?></textarea>
+    <textarea readonly id="par_add" class="form-control" placeholder="Partes Afectadas Agregadas" rows="2"><?php echo $partes ?></textarea>
 </div>

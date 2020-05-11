@@ -171,7 +171,14 @@ if (isset($_POST['cargar'])) {
                                                         <div class="form-group" id="cod_pla" name="cod_pla" style="display: none">
                                                             <?php   
                                                               $user =  $_SESSION['idusuario'];
-                                                              $sql1="SELECT cod_pla FROM planificacion ORDER BY cod_pla DESC LIMIT 1";
+
+                                                              $cont=strlen($like);
+
+                                                              $sql1="SELECT cod_pla FROM planificacion
+                                                              WHERE cod_pla LIKE '$user%'
+                                                              ORDER BY (SUBSTRING (cod_pla FROM ($cont+2) FOR 8))
+                                                              DESC LIMIT 1";
+                                                              
                                                               $result=pg_query($conexion,$sql1);
                                                               $cod=pg_fetch_row($result);
                                                               $cod_f="";

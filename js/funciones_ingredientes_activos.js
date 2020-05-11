@@ -219,5 +219,10 @@ $(document).ready(function() {
         $('#div_det_semup').addClass("input-group-alternative");
     });
 
-
 });
+
+function cerrar_menu() {
+    $('#sidenav-main').remove();
+    jQuery('#ver1').hide();
+    jQuery('#ver2').show();
+  }
