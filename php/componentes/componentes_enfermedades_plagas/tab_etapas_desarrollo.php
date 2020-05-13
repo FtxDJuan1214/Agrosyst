@@ -98,5 +98,12 @@ $name="";
             </tbody>
         </table>        
     </div>
-    <button id = "boton-guardar-sin" class="tn btn-success btn-lg" onclick="guardarSinImagen('<?php echo $infor?>','<?php echo $name?>');" style="font-family:'FontAwesome',tahoma; font-size: 12px;">Guardar sin imagen</button>
+    <br>
+    <center>
+    <input type="button" name="cargar" class="btn btn-success sm-4"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Planificar otra tarea" value="Guardar sin imagen"
+                                                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"
+                                                            onclick="guardarSinImagen('<?php echo $infor ?>','<?php echo $name?>')">
+</center>
 </div>

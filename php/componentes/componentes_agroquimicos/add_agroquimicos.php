@@ -3,22 +3,9 @@ require '../../conexion.php';
 
     session_start();
     $like = $_SESSION['idusuario'];
-
-    $cont=strlen($like);
-    $cont = "SELECT count(*) FROM agroquimicos WHERE cod_agr LIKE '$like%'";
-    $result=pg_query($conexion,$cont);
-    $tot=pg_fetch_row($result);
-    $sum =0;
-
-    if($tot[0]>=10){
-        $sum=4;
-    }else{
-        $sum=3;
-    }
-
-    $sql1="SELECT cod_agr FROM agroquimicos
-    WHERE cod_agr LIKE '$like%'
-    ORDER BY (SUBSTRING (cod_agr FROM ($sum) FOR 8))
+    
+    $sql1="SELECT cod_agr FROM agroquimicos WHERE (cod_agr LIKE '$like%' or cod_agr LIKE '1-%')
+    order by regexp_split_to_array(cod_agr, E'\\-')::integer[]
     DESC LIMIT 1";
 
     $result=pg_query($conexion,$sql1);

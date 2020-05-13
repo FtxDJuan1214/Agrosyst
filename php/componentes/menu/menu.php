@@ -183,12 +183,19 @@
             </ul>
         </div>
         <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="relacion_etapas_agroquimico.php" class="nav-link">Relacion Etapas y Agroquímicos</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse" id="navbar-dashboards5">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="plagas_enfermedades.php" class="nav-link">Plagas & Enfermedades</a>
                                 </li>
                             </ul>
-                        </div>
+            </div>
         <div class="collapse" id="navbar-dashboards5">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">

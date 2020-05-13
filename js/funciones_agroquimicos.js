@@ -83,7 +83,7 @@ function rem_rus(rus_agr) {
 	found = false;
   
 	for (i = 0; i < sep.length - 1; i++) {
-		sepr = sep[i].split(',');
+		sepr = sep[i].split('~');
   
 		for (e = 0; e < sepr.length; e++) {
 			if (rus_agr == sepr[e]) {
@@ -123,8 +123,10 @@ function crear_agroquimico(cadena){
      url:"../php/crud/agroquimicos/agregar_agroquimico.php",
      data:cadena,
      success:function(r){
+		 alert("sdsadsdsadasd "+ r);
 		 if(r.includes('Resource id')){
 			 //No entra
+			 alert("asdad "+ r);
 			 swal("Agroquímico agregado!"," ", "success");
        }else{
 		   
@@ -162,7 +164,7 @@ function llenarform(datos){
 
 function preloaderup(){
 	jQuery('#preloaderup').show();
-	jQuery('#form-up-agroq').hide();
+	jQuery('#form-up-form-up-plaga_enfe').hide();
 	cod_agr = global;
 	cod_ins = global1;
 	nom_agr=$('#nom_agr_up').val();
@@ -227,40 +229,56 @@ function actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,
 
 //-------------------------------------------------Eliminar agroquímico-------------------------------------------------//
 
- function eliminar_agroquimico(datos){
-	 cod=datos.split('||');	 
-	 cod_ins=cod[1];
-	 cod_agr=cod[0];
+function eliminar_agroquimico(datos) {
+    cod = datos.split('||');
+    cod_ins = cod[1];
+    cod_agr = cod[0];
 
-   swal({
-     title: "¿Estás seguro?",
-     text: "¿Deseas eliminar este agroquímico?",
-     icon: "warning",
-     buttons: true,
-     dangerMode: false,
-   })
-   .then((willDelete) => {
-     if (willDelete) {
-	   cadena="cod_ins="+cod_ins+
-	   "&cod_agr="+cod_agr.trim();
-       $.ajax({
-         type:"post",
-         url:"../php/crud/agroquimicos/eliminar_agroquimico.php",
-         data:cadena,
-         success:function(r){
-		   location.reload();
-		   
-         }
-       });
-       swal("El agroquímico se eliminó!", {
-         icon: "success",
-       });
-     } else {
-       swal("¡Cancelado!");
-     }
-   });
- }
- 
+    swal({
+            title: "¿Estás seguro?",
+            text: "¿Deseas eliminar este agroquímico?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: false,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                cadena = "cod_ins=" + cod_ins.trim() +
+                    "&cod_agr=" + cod_agr.trim();
+
+                $.ajax({
+                    type: "post",
+                    url: "../php/crud/agroquimicos/comprobar_agroquimico.php",
+                    data: cadena,
+                    success: function(r) {
+                        if (r.trim() == "") {
+                            $.ajax({
+                                type: "post",
+                                url: "../php/crud/agroquimicos/eliminar_agroquimico.php",
+                                data: cadena,
+                                success: function(res) {
+                                    alert(res);
+                                    if (res.includes('Resource id')) {
+
+                                        swal("El agroquímico se eliminó!", {
+                                            icon: "success",
+                                        });
+                                        location.reload();
+                                    }
+                                }
+                            });
+                        } else {
+                            swal(r, {
+                                icon: "info",
+                            });
+                        }
+                    }
+                });
+            } else {
+                swal("¡Cancelado!");
+            }
+        });
+}
  //--------------------------------------------------Inicio---------------------------------------------------------//
  function objetoAjax(){
 	var xmlhttp= false;

@@ -147,12 +147,12 @@ if (isset($_POST['cargar'])) {
         </nav>
         <!-- Header -->
         <div class="header pb-8 pt-5 pt-md-8"
-            style="background: url('../assets/img/theme/semilleros.jpg'); no-repeat; background-size: cover;">
+            style="background: url('../assets/img/theme/plan.jpg'); no-repeat; background-size: cover;">
             <span class="mask bg-gradient-fito opacity-8"></span>
             <div class="container-fluid">
-            <br>
-            <br>
-                <div class="header-body">
+                <br>
+                <br>
+                <div class="header-body" id="mostrar_todo" name="mostrar_todo">
                     <!-- Card stats -->
                     <div class="row">
                         <div class="col 12 ">
@@ -160,23 +160,22 @@ if (isset($_POST['cargar'])) {
                                 <div class="card-body">
                                     <div class="row d-block">
                                         <div class="col">
+                                           
 
-                                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>"
-                                                method="post">
-                                                <div class="row">
 
-                                                    <!--------------------Primera Columna -------------------------->
-                                                    <div class="col-md-4">
-                                                        <!------------------Codigo planificación----------------------->
-                                                        <div class="form-group" id="cod_pla" name="cod_pla" style="display: none">
-                                                            <?php   
+                                                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>"
+                                                    method="post">
+                                                    <div class="row">
+
+                                                        <!--------------------Primera Columna -------------------------->
+                                                        <div class="col-md-4">
+                                                            <!------------------Codigo planificación----------------------->
+                                                            <div class="form-group" id="cod_pla" name="cod_pla">
+                                                                <?php   
                                                               $user =  $_SESSION['idusuario'];
 
-                                                              $cont=strlen($like);
-
-                                                              $sql1="SELECT cod_pla FROM planificacion
-                                                              WHERE cod_pla LIKE '$user%'
-                                                              ORDER BY (SUBSTRING (cod_pla FROM ($cont+2) FOR 8))
+                                                              $sql1="SELECT cod_pla FROM planificacion WHERE (cod_pla LIKE '$user%' or cod_pla LIKE '1-%')
+                                                              order by regexp_split_to_array(cod_pla, E'\\-')::integer[]
                                                               DESC LIMIT 1";
                                                               
                                                               $result=pg_query($conexion,$sql1);
@@ -187,137 +186,146 @@ if (isset($_POST['cargar'])) {
                                                                 $cod_f=$sep[1] + 1;
                                                                 }else{
                                                                     $cod_f='1';
-    }                          
+                                                                    }                          
                                                             ?>
-                                                            <input type="text" class="form-control" id="num_pla"
-                                                                name="num_pla"
-                                                                value="<?php echo "Planificación N°: ".($cod_f);?>"
-                                                                autocomplete="off" readonly>
-                                                        </div>
-                                                        <!-----------------------fecha------------------------------------>
-                                                        <div class="form-group">
-                                                            <div class="input-group ">
-                                                                <?php
+                                                                <input type="text" class="form-control" id="num_pla"
+                                                                    name="num_pla"
+                                                                    value="<?php echo "Planificación N°: ".($cod_f);?>"
+                                                                    autocomplete="off" readonly>
+                                                            </div>
+                                                            <!-----------------------fecha------------------------------------>
+                                                            <div class="form-group">
+                                                                <div class="input-group ">
+                                                                    <?php
                                                                 date_default_timezone_set('America/Bogota');
                                                                 $d = date("d");
                                                                 $m = date("m");
                                                                 $y = date("Y");
                                                                 $fecha = $y . "-" . $m . "-" . $d;
                                                                 ?>
-                                                                <?php if (isset($fec)) {
+                                                                    <?php if (isset($fec)) {
                                                                 ?>
-                                                                <input readonly class="form-control datepicker"
-                                                                    id="date" name="date" placeholder="Select date"
-                                                                    type="text" value="<?php echo $fec ?>" readonly>
-                                                                <?php
+                                                                    <input readonly class="form-control datepicker"
+                                                                        id="date" name="date" placeholder="Select date"
+                                                                        type="text" value="<?php echo $fec ?>" readonly>
+                                                                    <?php
                                                                   } else {
                                                                   ?>
-                                                                <input class="form-control datepicker" id="date"
-                                                                    name="date" placeholder="Select date" type="text"
-                                                                    value="<?php echo $fecha ?>" readonly>
-                                                                <?php
+                                                                    <input class="form-control datepicker" id="date"
+                                                                        name="date" placeholder="Select date"
+                                                                        type="text" value="<?php echo $fecha ?>"
+                                                                        readonly>
+                                                                    <?php
                                                                     }
                                                                     ?>
 
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <!----------------------Epoca---------------------->
-                                                        <div class="form-group">
-                                                            <div class="input-group input-group-alternative"
-                                                                id="epocaD">
-                                                                <select id="epoca" class="form-control"
-                                                                    data-live-search="true" required>
-                                                                    <option value="" disabled selected>Epoca</option>
-                                                                    <option value="Invierno">Invierno</option>
-                                                                    <option value="Verano">Verano</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--------------------Segunda Columna -------------------------->
-                                                    <div class="col-md-4">
-                                                        <!-----------------------------Detalle------------------------->
-                                                        <div class="form-group">
+                                                            <!----------------------Epoca---------------------->
                                                             <div class="form-group">
-                                                                <textarea id="det_pla" class="form-control"
-                                                                    placeholder="Detalle" rows="1"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <!----------------------Tipo de tarea---------------------->
-                                                        <div class="form-group">
-                                                            <div class="form-group mb-3">
-                                                                <div class="input-group input-group-alternative">
-                                                                    <select id="tip_tar" name="tip_tar"
-                                                                        class="form-control" data-live-search="true">
-                                                                        <option value="" disabled selected>Tipo de tarea
+                                                                <div class="input-group input-group-alternative"
+                                                                    id="epocaD">
+                                                                    <select id="epoca" class="form-control"
+                                                                        data-live-search="true" required>
+                                                                        <option value="" disabled selected>Epoca
                                                                         </option>
-                                                                        <option value="Nutrición">Nutrición</option>
-                                                                        <option value="Prevención">Prevención</option>
-                                                                        <option value="Curación">Curación</option>
+                                                                        <option value="Invierno">Invierno</option>
+                                                                        <option value="Verano">Verano</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                    </div>
-
-                                                    <!--------------------Tercera Columna -------------------------->
-                                                    <div class="col-md-4">
-
-                                                        <!----------------------Select escoger plaga o enfermedad------------------>
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <div class="input-group input-group-alternative"
-                                                                    id="sel_enf_pla" name="sel_enf_pla">
+                                                        <!--------------------Segunda Columna -------------------------->
+                                                        <div class="col-md-4">
+                                                            <!-----------------------------Detalle------------------------->
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <textarea id="det_pla" class="form-control"
+                                                                        placeholder="Detalle" rows="1"></textarea>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <!-------------------------Escoger plaga o enfermedad------------------>
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <div class="input-group input-group-alternative"
-                                                                    id="enfe_plag" name="enfe_plag">
+                                                            <!----------------------Tipo de tarea---------------------->
+                                                            <div class="form-group">
+                                                                <div class="form-group mb-3">
+                                                                    <div class="input-group input-group-alternative">
+                                                                        <select id="tip_tar" name="tip_tar"
+                                                                            class="form-control"
+                                                                            data-live-search="true">
+                                                                            <option value="" disabled selected>Tipo de
+                                                                                tarea
+                                                                            </option>
+                                                                            <option value="Nutrición">Nutrición</option>
+                                                                            <option value="Prevención">Prevención
+                                                                            </option>
+                                                                            <option value="Curación">Curación</option>
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!--------------------Tercera Columna -------------------------->
+                                                        <div class="col-md-4">
+
+                                                            <!----------------------Select escoger plaga o enfermedad------------------>
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group input-group-alternative"
+                                                                        id="sel_enf_pla" name="sel_enf_pla">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-------------------------Escoger plaga o enfermedad------------------>
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group input-group-alternative"
+                                                                        id="enfe_plag" name="enfe_plag">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <!-----------------------------Imagenes de etapas------------------------->
+                                                        <div class="form-group">
+                                                            <div class="input-group input-group-alternative"
+                                                                id="etapasN" name="etapasN">
+                                                            </div>
+                                                        </div>
+
+                                                        <!------------------------Columna tabla agroquimicos recomendados----------------------->
+                                                        <div class="col-md-7">
+                                                            <!----------------------------Tabla de agroquimicos-------------------------->
+                                                            <div class="table-responsive" id="tab_agr">
+                                                            </div>
+                                                        </div>
+                                                        <!------------------------Columna tabla agroquimicos agregados----------------------->
+
+                                                        <div class="col-md-4">
+                                                            <!----------------------------Tabla de agroquimicos-------------------------->
+                                                            <div class="table-responsive" id="tab_agr2">
                                                             </div>
                                                         </div>
 
 
                                                     </div>
-
-                                                    <!-----------------------------Imagenes de etapas------------------------->
-                                                    <div class="form-group">
-                                                        <div class="input-group input-group-alternative" id="etapasN"
-                                                            name="etapasN">
+                                                    <!----------------------Botón Nueva Planificación------------------------->
+                                                    <div class="col-md-12">
+                                                        <div class="float-md-right">
+                                                            <input type="button" name="cargar"
+                                                                class="btn btn-success sm-4" data-toggle="tooltip"
+                                                                data-placement="top" title="Planificar otra tarea"
+                                                                value="&#xf067    "
+                                                                style="font-family:'FontAwesome',tahoma; font-size: 12px;"
+                                                                onclick="new_planificacion()">
                                                         </div>
                                                     </div>
-
-                                                    <!------------------------Columna tabla agroquimicos recomendados----------------------->
-                                                    <div class="col-md-7">
-                                                        <!----------------------------Tabla de agroquimicos-------------------------->
-                                                        <div class="table-responsive" id="tab_agr">
-                                                        </div>
-                                                    </div>
-                                                    <!------------------------Columna tabla agroquimicos agregados----------------------->
-
-                                                    <div class="col-md-4">
-                                                        <!----------------------------Tabla de agroquimicos-------------------------->
-                                                        <div class="table-responsive" id="tab_agr2">
-                                                        </div>
-                                                    </div>
+                                                </form>
+                                            
 
 
-                                                </div>
-                                                <!----------------------Botón Nueva Planificación------------------------->
-                                                <div class="col-md-12">
-                                                    <div class="float-md-right">
-                                                        <input type="button" name="cargar" class="btn btn-success sm-4"
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="Planificar otra tarea" value="&#xf067    "
-                                                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"
-                                                            onclick="new_planificacion()">
-                                                    </div>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>

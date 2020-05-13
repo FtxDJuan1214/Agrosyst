@@ -32,13 +32,13 @@ $cod_ins = $cod[0] + 1;
 $sql="INSERT INTO insumos(cod_ins, des_ins, cod_unm) VALUES ('$cod_ins','$des_ins', '$cod_unm')";
 echo $result=pg_query($conexion,$sql);
 
-if($result==true){
+
 $sql2 ="INSERT INTO public.agroquimicos(
 	cod_agr, cod_ins, nom_agr, rap_agr, pcr_agr, pen_agr, pro_agr, cod_for, cod_tag, cod_tox, cod_iac, fun_agr)
 	VALUES ('$like$cod_agr', $cod_ins, '$nom_agr', '$rap_agr', '$pcr_agr', '$pen_agr', '$pro_agr', '$cod_for', '$cod_tag', '$cod_tox','$cod_iac','$fun_agr');";
 
 echo $result2 = pg_query($conexion,$sql2);
-if($result2==true){
+
 	for($i=0;$i<$length;$i++){
 		$arreglo1 = explode(",",$arreglo[$i]);
 		$sql3="INSERT INTO public.recomendaciones_uso_agr(
@@ -47,7 +47,7 @@ if($result2==true){
 
 		echo $result2=pg_query($conexion,$sql3);
 	}
-}
-}
+
+
 
 ?>

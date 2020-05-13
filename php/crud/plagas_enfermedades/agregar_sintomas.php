@@ -7,9 +7,8 @@ $codigo_sintoma=$_POST['codigo_sintoma'];
 $codigos = explode("~", $codigo_sintoma);
 $contar=count($codigos);
 
-$getc="SELECT cod_afe FROM afeccion
-    WHERE cod_afe LIKE '$user%'
-    ORDER BY cod_afe 
+$getc="SELECT cod_afe FROM afeccion WHERE (cod_afe LIKE '$user%')
+    order by regexp_split_to_array(cod_afe, E'\\-')::integer[]
     DESC LIMIT 1";
 
     $result =pg_query($conexion,$getc);

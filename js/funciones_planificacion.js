@@ -283,7 +283,8 @@ function agregar_plan() {
 	"&det_pla="+det_pla+
 	"&epoca="+epoca+
 	"&fecha="+fecha+  
-  "&info="+cadena_de_gastos_insertar;
+  "&info="+cadena_de_gastos_insertar+
+  "&num_plan="+num_pla;
 
    /*sep = cadena_de_gastos_insertar.split('||');
    for(i=0;i<sep.length-1;i++){
@@ -292,19 +293,56 @@ alert("separar "+sep[i]);
    }*/
 
 alert("datos:\n "+ datos);
+
+
   $.ajax({
 		type:"post",
 		url:"../php/crud/planificacion/agregar_planificacion.php",
 		data:datos,
 		success:function(r){
-      alert("r:\n " + r);
+
+      swal(
+        'Todo salió bien!',
+        'Planificación creada!',
+        'success'
+      );
+      
 			if(r.includes('Resource id')){	
-			
-        swal(
-          'Todo salió bien!',
-          'Planificación creada!',
-          'success'
-        )
+        document.getElementById("mostrar").innerHTML = "";
+        
+        
+
+          ajax1 = objetoAjax();
+          ajax1.open("POST", "../php/componentes/componentes_planificacion/vista_planificacion.php", true);
+          ajax1.onreadystatechange = function() {
+          if (ajax1.readyState == 4) {
+              document.getElementById("mostrar_todo").innerHTML = ajax1.responseText;
+              document.getElementById("tab_pla").innerHTML = "";
+              //actualizar_codigo();
+              alert("entrooo");
+          }
+          }
+          ajax1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          ajax1.send("datos=" + datos);
+
+       
+        //-----------------------------------------------Aquí muestra la planificación terminada---------------------------------//
+
+        ajax1 = objetoAjax();
+        ajax1.open("POST", "../php/componentes/componentes_planificacion/vista_planificacion.php", true);
+        ajax1.onreadystatechange = function() {
+        if (ajax1.readyState == 4) {
+            document.getElementById("mostrar_todo").innerHTML = ajax1.responseText;
+            //actualizar_codigo();
+            alert("entrooo");
+        }
+  }
+        ajax1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ajax1.send("info=" + datos);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------//
+
+
 			
 		}else{
 			swal("Verifica los datos!", r , "error");

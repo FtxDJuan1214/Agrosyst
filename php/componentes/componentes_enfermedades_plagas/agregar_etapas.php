@@ -13,7 +13,7 @@ require '../../conexion.php';
                             <form role="form" id="form-add-eta" method="POST" enctype="multipart/form-data">
                                 <div class="row"> 
                                     <!------------------------Columna Etapas plagas y enfermedades----------------------->
-                                    <div class="col-md-5">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <h3 align='center'>Etapas</h3>
                                             <p>Escoja todas las etapas de crecimiento que tiene la
@@ -44,32 +44,33 @@ require '../../conexion.php';
                                     </div>
 
                                     <!------------------------Columna tabla etapas agregadas y pedir imagen----------------------->
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
                                         <div class="table-responsive" id="tab_eta_ima">
 
                                         </div>
                                     </div>
                                 </div>
                                 <!-------------------------------Botón Guardar------------------------->
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <br>                                    
-                                    <div class="float-md-right">
+                                    <div class="float-md-center">
 
-                                    <div class="float-md-right">
+                                    <div class="float-md-center">
                                     <div id="etapas-des-mostrar" class="card-header">
                                     </div>
 
                                     </div>
                                     <br>
                                     <br>
-                                        <input type="button" name="cargar" class="btn btn-primary sm-4"
+                                    <center>
+                                        <input type="button" name="cargar" class="btn btn-primary btn-lg"
                                             data-toggle="tooltip" data-placement="top" title="Terminar" value="Terminar"
                                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                             onclick="finalizarall()">
 
                                         <input type="text" name="listado_etapas" id="listado_etapas" hidden>
                                         <input type="text" name="listado_fotos" id="listado_fotos" hidden>
-
+                                        </center>
                                     </div>
                                 </div>
                             </form>

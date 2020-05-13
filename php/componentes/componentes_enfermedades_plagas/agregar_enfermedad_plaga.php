@@ -138,6 +138,7 @@ require '../../conexion.php';
                                     <!--------------------Tercera Columna -------------------------->
                                     <div class="col-md-4">
                                         <!--div tabla agre--->
+                                        <div class="form-group" id="tab_rus">
                                         <div class="form-group" id="tab_met_pre" name="tab_met_pre" data-toggle="tooltip" data-placement="top"
                                             title="Recomendaciones que nos ayudan a recordarte como evitar la aparición de esta plaga o enfermedad. No es obligatorio.">
                                             <div class="card-shadow form-group">
@@ -172,8 +173,10 @@ require '../../conexion.php';
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            </div>
                                         </div>                                        
                                     </div>
+                                    
 
                                     <!--------------------------------Tabla Métodos de Prevención Agregados-------------------->
                                     <div class="col-md-12">

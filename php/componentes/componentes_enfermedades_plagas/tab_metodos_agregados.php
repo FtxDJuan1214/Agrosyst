@@ -1,7 +1,7 @@
 <?php
 require '../../conexion.php';
 $cad = $_POST['cad'];
-$array = explode("||",$cad);
+$array = explode("~",$cad);
 $lenght = count($array)-1; 
 ?>
 <div id="tab_rus_add" name="tab_rus_add">
@@ -19,19 +19,19 @@ $lenght = count($array)-1;
             <tbody>
                 <?php
                     for($i=0;$i<$lenght; $i++){
-                        $ver=explode("~,",$array[$i]);                                    
+                                                            
                  ?>
                 <tr>
                     <td>
                         <?php 
-                            echo $ver[1];                                
+                            echo $array[$i];                                
                             ?>
                     </td>
                     <td>
                         <input type="button" name="add" class="btn btn-danger sm-3" data-toggle="tooltip" value="&#xf00d"
                             data-placement="rigth" title="Agregar"
                             style="font-family:'FontAwesome', tahoma; font-size:10px;"
-                            onclick="rem_rus('<?php echo $ver[1]?>')">
+                            onclick="rem_rus('<?php echo $array[$i]?>')">
                     </td>
                     <?php }
                         ?>

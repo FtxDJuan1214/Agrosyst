@@ -89,7 +89,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 	}else if($sep[2] == "Prevención"){
 
-//Debo buscar si ya hay un proceso fitosanitario de la enfermedad en cuestión, 
+		//Debo buscar si ya hay un proceso fitosanitario de la enfermedad en cuestión, 
 		//si ya esta creado se agrega normal al proceso de lo contrario se crea uno nuevo
 
 		$validar = "SELECT procesos_fitosanitarios.cod_pfi, procesos_fitosanitarios.cod_afe 

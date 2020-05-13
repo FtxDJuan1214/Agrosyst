@@ -3,19 +3,15 @@ require_once '../../conexion.php';
 session_start();
 $user =  $_SESSION['idusuario'];
 
-$cont=strlen($user);
-	
 $indiv=$_POST['indiv'];
 
-$getc="SELECT cod_afe FROM afeccion
-    WHERE cod_afe LIKE '$user%'
-    ORDER BY (SUBSTRING (cod_afe FROM ($cont+2) FOR 8))
-    DESC LIMIT 1";
+$getc="SELECT cod_afe FROM afeccion WHERE (cod_afe LIKE '$user%')
+order by regexp_split_to_array(cod_afe, E'\\-')::integer[]
+DESC LIMIT 1";   
 
-$getd="SELECT cod_plg FROM plagas
-    WHERE cod_plg LIKE '$user%'
-    ORDER BY (SUBSTRING (cod_plg FROM ($cont+2) FOR 8))
-    DESC LIMIT 1";
+$getd="SELECT cod_plg FROM plagas WHERE (cod_plg LIKE '$user%')
+order by regexp_split_to_array(cod_plg, E'\\-')::integer[]
+DESC LIMIT 1";   
 
     $result =pg_query($conexion,$getc);
     $cod =pg_fetch_row($result);
