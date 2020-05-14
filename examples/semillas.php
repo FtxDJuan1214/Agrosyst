@@ -36,78 +36,81 @@ if (isset($_SESSION['usuario'])) {
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
-  <title>Agrosyst</title>
-  <!-- Favicon -->
-  <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <!-- Icons -->
-  <link href="../assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <!-- Argon CSS -->
-  <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../assets/css/scrollbar.css">
-  <!-- jquery -->
-  <script src="../assets/jquery/jquery-3.4.1.min.js"></script>
-  <!-- sweet_alert -->
-  <script src="../assets/sweetalert/sweetalert.min.js"></script>
-   <!-- toastr -->
-  <script src="../assets/toastr/toastr.min.js"></script>
-  <link type="text/css" href="../assets/toastr/toastr.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Agrosyst</title>
+    <!-- Favicon -->
+    <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Icons -->
+    <link href="../assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!-- Argon CSS -->
+    <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../assets/css/scrollbar.css">
+    <!-- jquery -->
+    <script src="../assets/jquery/jquery-3.4.1.min.js"></script>
+    <!-- sweet_alert -->
+    <script src="../assets/sweetalert/sweetalert.min.js"></script>
+    <!-- toastr -->
+    <script src="../assets/toastr/toastr.min.js"></script>
+    <link type="text/css" href="../assets/toastr/toastr.css" rel="stylesheet">
 
 </head>
 </head>
 
 <body>
-  <!-- Sidenav -->
-  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white " id="sidenav-main">
-    <div class="container-fluid">
-      <!-- Toggler -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Brand -->
-      <a class="navbar-brand pt-0" href="../home.php">
-        <img src="../assets/img/brand/agrosyst.gif" class="navbar-brand-img" alt="...">
-      </a>
-      <!-- User -->
-      <ul class="nav align-items-center d-md-none" id="actions-sm-scr">
+    <!-- Sidenav -->
+    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white " id="sidenav-main">
+        <div class="container-fluid">
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main"
+                aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Brand -->
+            <a class="navbar-brand pt-0" href="../home.php">
+                <img src="../assets/img/brand/agrosyst.gif" class="navbar-brand-img" alt="...">
+            </a>
+            <!-- User -->
+            <ul class="nav align-items-center d-md-none" id="actions-sm-scr">
 
-      </ul>
-      <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-        <!-- Collapse header -->
-        <div class="navbar-collapse-header d-md-none">
-          <div class="row">
-            <div class="col-6 collapse-brand">
-              <a href="index.html">
-                <img src="../assets/img/brand/agrosyst.gif">
-              </a>
-            </div>
-            <div class="col-6 collapse-close">
-              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
-                <span></span>
-                <span></span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div id="menu">
+            </ul>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                <!-- Collapse header -->
+                <div class="navbar-collapse-header d-md-none">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="index.html">
+                                <img src="../assets/img/brand/agrosyst.gif">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false"
+                                aria-label="Toggle sidenav">
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="menu">
 
-        </div>
-      </div>
+                </div>
+            </div>
     </nav>
     <!-- Main content -->
     <div class="main-content">
-      <!-- Top navbar -->
-      <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-        <div class="container-fluid">
-          <!-- Brand -->
-          <?php 
+        <!-- Top navbar -->
+        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+            <div class="container-fluid">
+                <!-- Brand -->
+                <?php 
           require '../php/conexion.php';
           $ide_ter= $_SESSION['ide_finca'];
           $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
@@ -120,223 +123,250 @@ if (isset($_SESSION['usuario'])) {
           $result=pg_query($conexion,$sql);
           $finca=pg_fetch_row($result);
           ?>
-          <a class="h2 mb-0 text-white text-uppercase  d-lg-inline-block"><?php echo $finca[1]." "?><i class="fas fa-angle-right"></i> semillas</a>
-          <!-- Form -->
-          <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto">
-            <div class="form-group mb-0" id="date-hour">
-            </div>
-          </form>
-          <!-- User -->
-          <ul class="navbar-nav align-items-center d-none d-md-flex" id="actions-lg-scr">
-
-          </ul>
-        </div>
-      </nav>
-      <!-- Header -->
-      <!-- Header -->
-      <div class="header pb-8 pt-5 pt-md-8" style="background: url('../assets/img/theme/semillas.jpg'); no-repeat; background-size: cover;">
-        <span class="mask bg-gradient-opaco opacity-8"></span>
-        <div class="container-fluid">
-          <div class="header-body">
-            <!-- Card stats -->
-            <div class="row" id="contadores">
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Page content -->
-      <div class="container-fluid mt--7">
-
-        <!-- modal para ingresar datos -->
-        <div class="col-md-4">
-          <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-            <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-              <div class="modal-content">
-
-                <div class="modal-body p-0">
-
-
-                  <div class="card bg-secondary shadow border-0">
-                    <div class="card-body px-lg-5 py-lg-5">
-                      <div class="text-center text-muted mb-4">
-                        <h3>Agregar semilla</h3>
-                      </div>
-                      <form role="form" id="form-add-sem">
-
-
-                        <div class="form-group mb-3">
-                          <div class="input-group input-group-alternative"  id="div_des_ins">
-                            <input  style="border-color: #fb6340;"  id="des_ins" type="text" class="form-control" placeholder="Nombre" autocomplete="off" maxlength="45">
-                          </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                          <div class="input-group input-group-alternative">
-                            <select id="cod_tsa" name="cod_tsa" class="form-control"data-live-search="true">
-                              <option value="" disabled selected>Selecciona tipo de semilla</option>
-                              <?php 
-                              require '../php/conexion.php';
-                              $query="SELECT * FROM public.tipo_semilla";
-                              $result =pg_query($conexion,$query);
-                              while ($ver=pg_fetch_row($result)) {
-                               ?>
-                               <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
-                               <?php 
-                             }
-                             ?>
-                           </select>
-                         </div>
-                       </div>
-
-                       <div class="form-group mb-3">
-                        <div class="input-group input-group-alternative">
-                         <select id="cod_unm" name="cod_unm" class="form-control"data-live-search="true">
-                          <option value="" disabled selected>Selecciona Uni. de medida</option>
-                          <?php 
-                          $query="SELECT cod_unm, des_unm FROM unidad_de_medida WHERE cod_tum='4'";
-                          $result =pg_query($conexion,$query);
-                          while ($ver=pg_fetch_row($result)) {
-                           ?>
-                           <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
-                           <?php 
-                         }
-                         ?>
-                       </select>
-                     </div>
-                   </div>
-
-                    <label for="det_sem">Detalle</label>
-                   <div class=" input-group-alternative" id="div_det_sem">
-                    <textarea  style="border-color: #fb6340;"  id="det_sem" class="form-control" rows="2" maxlength="45"></textarea>
-                  </div>
-
-
-                  <div class="text-center">
-                    <button type="button" class="btn btn-default my-4" id="btn_save" onclick="preloader();">Guardar</button>
-                  </div>
-                </form>
-                <img src="../assets/img/icons/preloader.gif" id="preloader" style="margin: 10px auto;">
-                <script>
-                  jQuery('#preloader').hide();
-                </script>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- modal para editar datos -->
-
-  <div class="col-md-4">
-    <div class="modal fade" id="modal-form-up" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-      <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-body p-0">
-            <div class="card bg-secondary shadow border-0">
-              <a href="#"  data-dismiss="modal" aria-label="Close" style="margin: 10px 20px 0 0; text-align: right;">
-                <span aria-hidden="true" style="left: 0;">×</span>
-              </a>
-              <div class="card-body px-lg-5 py-lg-5">
-                <div class="text-center text-muted mb-4">
-                  <h2>Editar Datos</h2>
-                </div>
-                <form role="form" id="form-up-sem">
-
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative" id="div_des_insup"> 
-                      <input  style="border-color: #fb6340;" id="des_insup" type="text" class="form-control " placeholder="Nombre" autocomplete="off">
+                <a class="h2 mb-0 text-white text-uppercase  d-lg-inline-block"><?php echo $finca[1]." "?><i
+                        class="fas fa-angle-right"></i> semillas</a>
+                <!-- Form -->
+                <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto">
+                    <div class="form-group mb-0" id="date-hour">
                     </div>
-                  </div>
+                </form>
+                <!-- User -->
+                <ul class="navbar-nav align-items-center d-none d-md-flex" id="actions-lg-scr">
 
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <select id="cod_tsaup" name="cod_tsa" class="form-control"data-live-search="true">
-                        <option value="" disabled selected>Selecciona tipo de semilla</option>
-                        <?php 
-                        require '../php/conexion.php';
-                        $query="SELECT * FROM public.tipo_semilla";
-                        $result =pg_query($conexion,$query);
-                        while ($ver=pg_fetch_row($result)) {
-                         ?>
-                         <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
-                         <?php 
-                       }
-                       ?>
-                     </select>
-                   </div>
-                 </div>
+                </ul>
+            </div>
+        </nav>
+        <!-- Header -->
+        <!-- Header -->
+        <div class="header pb-8 pt-5 pt-md-8"
+            style="background: url('../assets/img/theme/semillas.jpg'); no-repeat; background-size: cover;">
+            <span class="mask bg-gradient-opaco opacity-8"></span>
+            <div class="container-fluid">
+                <div class="header-body">
+                    <!-- Card stats -->
+                    <div class="row" id="contadores">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div class="container-fluid mt--7">
 
-                 <div class="form-group mb-3">
-                  <div class="input-group input-group-alternative">
-                   <select id="cod_unmup" name="cod_unm" class="form-control"data-live-search="true">
-                    <option value="" disabled selected>Selecciona Uni. de medida</option>
-                    <?php 
-                    $query="SELECT cod_unm, des_unm FROM unidad_de_medida WHERE cod_tum='4'";
-                    $result =pg_query($conexion,$query);
-                    while ($ver=pg_fetch_row($result)) {
-                     ?>
-                     <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
-                     <?php 
-                   }
-                   ?>
-                 </select>
-               </div>
-             </div>
+            <!-- modal para ingresar datos -->
+            <div class="col-md-4">
+                <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary shadow border-0">
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                        <div class="text-center text-muted mb-4">
+                                            <h3>Agregar semilla</h3>
+                                        </div>
+                                        <form role="form" id="form-add-sem">
 
-             <label for="det_sem">Detalle</label>
-             <div class="input-group-alternative" id="div_det_semup">
-              <textarea  style="border-color: #fb6340;" id="det_semup" class="form-control" rows="2"></textarea>
+
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-alternative" id="div_des_ins">
+                                                    <input style="border-color: #fb6340;" id="des_ins" type="text"
+                                                        class="form-control" placeholder="Nombre" autocomplete="off"
+                                                        maxlength="45">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-alternative">
+                                                    <select id="cod_tsa" name="cod_tsa" class="form-control"
+                                                        data-live-search="true">
+                                                        <option value="" disabled selected>Selecciona tipo de semilla
+                                                        </option>
+                                                        <?php 
+                                                          require '../php/conexion.php';
+                                                          $query="SELECT * FROM public.tipo_semilla";
+                                                          $result =pg_query($conexion,$query);
+                                                          while ($ver=pg_fetch_row($result)) {
+                                                          ?>
+                                                        <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?>
+                                                        </option>
+                                                        <?php 
+                                                          }
+                                                          ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-alternative">
+                                                    <select id="cod_unm" name="cod_unm" class="form-control"
+                                                        data-live-search="true">
+                                                        <option value="" disabled selected>Selecciona Uni. de medida
+                                                        </option>
+                                                        <?php 
+                                                          $query="SELECT cod_unm, des_unm FROM unidad_de_medida WHERE cod_tum='4'";
+                                                          $result =pg_query($conexion,$query);
+                                                          while ($ver=pg_fetch_row($result)) {
+                                                          ?>
+                                                        <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?>
+                                                        </option>
+                                                        <?php 
+                                                          }
+                                                          ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <label for="det_sem">Detalle</label>
+                                            <div class=" input-group-alternative" id="div_det_sem">
+                                                <textarea style="border-color: #fb6340;" id="det_sem"
+                                                    class="form-control" rows="2" maxlength="45"></textarea>
+                                            </div>
+
+
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-default my-4" id="btn_save"
+                                                    onclick="preloader();">Guardar</button>
+                                            </div>
+                                        </form>
+                                        <img src="../assets/img/icons/preloader.gif" id="preloader"
+                                            style="margin: 10px auto;">
+                                        <script>
+                                        jQuery('#preloader').hide();
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="text-center">
-              <button type="button" class="btn btn-default my-4" id="btn_up" onclick="preloaderup();">Guardar</button>
+            <!-- modal para editar datos -->
+
+            <div class="col-md-4">
+                <div class="modal fade" id="modal-form-up" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary shadow border-0">
+                                    <a href="#" data-dismiss="modal" aria-label="Close"
+                                        style="margin: 10px 20px 0 0; text-align: right;">
+                                        <span aria-hidden="true" style="left: 0;">×</span>
+                                    </a>
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                        <div class="text-center text-muted mb-4">
+                                            <h2>Editar Datos</h2>
+                                        </div>
+                                        <form role="form" id="form-up-sem">
+
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-alternative" id="div_des_insup">
+                                                    <input style="border-color: #fb6340;" id="des_insup" type="text"
+                                                        class="form-control " placeholder="Nombre" autocomplete="off">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-alternative">
+                                                    <select id="cod_tsaup" name="cod_tsa" class="form-control"
+                                                        data-live-search="true">
+                                                        <option value="" disabled selected>Selecciona tipo de semilla
+                                                        </option>
+                                                        <?php 
+                                                          require '../php/conexion.php';
+                                                          $query="SELECT * FROM public.tipo_semilla";
+                                                          $result =pg_query($conexion,$query);
+                                                          while ($ver=pg_fetch_row($result)) {
+                                                          ?>
+                                                        <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?>
+                                                        </option>
+                                                        <?php 
+                                                          }
+                                                          ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group mb-3">
+                                                <div class="input-group input-group-alternative">
+                                                    <select id="cod_unmup" name="cod_unm" class="form-control"
+                                                        data-live-search="true">
+                                                        <option value="" disabled selected>Selecciona Uni. de medida
+                                                        </option>
+                                                        <?php 
+                                                          $query="SELECT cod_unm, des_unm FROM unidad_de_medida WHERE cod_tum='4'";
+                                                          $result =pg_query($conexion,$query);
+                                                          while ($ver=pg_fetch_row($result)) {
+                                                          ?>
+                                                        <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?>
+                                                        </option>
+                                                        <?php 
+                                                          }
+                                                          ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <label for="det_sem">Detalle</label>
+                                            <div class="input-group-alternative" id="div_det_semup">
+                                                <textarea style="border-color: #fb6340;" id="det_semup"
+                                                    class="form-control" rows="2"></textarea>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-default my-4" id="btn_up"
+                                                    onclick="preloaderup();">Guardar</button>
+                                            </div>
+                                            <input type="text" name="" id="rrr" style="display: none;">
+                                        </form>
+                                        <img src="../assets/img/icons/preloader.gif" id="preloaderup"
+                                            style="margin: 10px auto;">
+                                        <script>
+                                        jQuery('#preloaderup').hide();
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <input type="text" name="" id="rrr" style="display: none;">
-          </form>
-          <img src="../assets/img/icons/preloader.gif" id="preloaderup" style="margin: 10px auto;">
-          <script>
-            jQuery('#preloaderup').hide();
-          </script>
+
+            <!-- Table -->
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div class="float-md-left" style="margin-top: 5px;">
+                                <button type="button" class="btn btn-default" data-toggle="modal"
+                                    data-target="#modal-form">Agregar</button>
+                            </div>
+                            <div class="float-md-right" style="margin-top: 5px;">
+                                <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text"
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="table-responsive" id="tab_semillas">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+
         </div>
-      </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
-
-<!-- Table -->
-<div class="row">
-  <div class="col">
-    <div class="card shadow">
-      <div class="card-header border-0">
-        <div class="float-md-left" style="margin-top: 5px;">
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-form">Agregar</button>
-        </div>
-        <div class="float-md-right" style="margin-top: 5px;">
-          <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text" autocomplete="off">
-        </div>
-      </div>
-      <div class="table-responsive"  id="tab_semillas">
-
-      </table>
-    </div>
-  </div>
-</div>
-</div>
-<!-- Footer -->
-
-</div>
-</div>
-<!-- Argon Scripts -->
-<!-- Core -->
-<script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Argon JS -->
-<script src="../assets/js/argon.js?v=1.0.0"></script>
-<!-- funciones -->
-<script src="../js/funciones_semillas.js"></script>
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Argon JS -->
+    <script src="../assets/js/argon.js?v=1.0.0"></script>
+    <!-- funciones -->
+    <script src="../js/funciones_semillas.js"></script>
 </body>
+
 </html>

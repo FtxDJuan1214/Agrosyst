@@ -1,33 +1,47 @@
 <?php
 require '../../conexion.php';
+
+session_start();
+$user =  $_SESSION['idusuario'];
+
 ?>
 
 <table class="table align-items-center table-flush table-hover">
   <thead class="thead-light">
     <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Detalles</th>
-      <th scope="col">Recomendacioes</th>
-      <th scope="col">Estado</th>
-      <th scope="col">Periodo de Carencia</th>
-      <th scope="col">Periodo de Entrada</th>
-      <th scope="col">Prohibido por ICA</th>
-      <th scope="col">Formulación</th> 
-      <th scope="col">Unidad de medida</th>     
-      <th scope="col">Toxicidad</th>
-      <th scope="col">Tipo</th>
+      <th style="width:10px">Nombre</th>
+      <th style="width:20px">Tipo</th>
+      <th style="width:20px">Función</th>
+      <th style="width:20px">Ingrediete activo</th>
+      <th style="width:20px">Formulación</th>
+      <th style="width:20px">Per. Carencia</th>
+      <th style="width:20px">Per. Entrada</th>
+      <th style="width:20px">Prohibido por ICA</th> 
+      <th style="width:20px">Unidad de medida</th>     
+      <th style="width:20px">Toxicidad</th>
 
       <th></th>
     </tr>
   </thead>
   <tbody>
     <?php 
-    $sql="SELECT cod_agr,agroquimicos.cod_ins,det_agr,rec_agr,est_agr,pcr_agr,pen_agr,pro_agr,for_agr,unidad_de_medida.cod_unm,des_unm,tipo_unidad_medida.cod_tum, toxicidad.det_tox, tipo_agroquimico.det_tag, insumos.des_ins  from public.insumos 
-    INNER JOIN agroquimicos ON insumos.cod_ins=agroquimicos.cod_ins
+    $sql="SELECT agroquimicos.cod_agr, agroquimicos.cod_ins, agroquimicos.nom_agr, 
+    tipo_agroquimico.det_tag, agroquimicos.fun_agr, ingredientes_activos.des_iac, 
+    formulacion.nom_for, formulacion.sig_for, agroquimicos.pcr_agr, agroquimicos.pen_agr, 
+    agroquimicos.pro_agr, unidad_de_medida.des_unm, toxicidad.det_tox, 
+    ingredientes_activos.cod_iac, tipo_agroquimico.cod_tag, formulacion.cod_for,
+    agroquimicos.dos_agr, toxicidad.cod_tox,unidad_de_medida.cod_tum,
+    insumos.cod_ins, insumos.des_ins, agroquimicos.rap_agr
+
+    FROM agroquimicos
+    INNER JOIN tipo_agroquimico on agroquimicos.cod_tag=tipo_agroquimico.cod_tag
+    INNER JOIN ingredientes_activos on agroquimicos.cod_iac=ingredientes_activos.cod_iac
+    INNER JOIN formulacion on agroquimicos.cod_for=formulacion.cod_for
+    INNER JOIN insumos on agroquimicos.cod_ins=insumos.cod_ins
     INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm
-    INNER JOIN tipo_unidad_medida ON unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum
     INNER JOIN toxicidad ON agroquimicos.cod_tox=toxicidad.cod_tox
-    INNER JOIN tipo_agroquimico ON agroquimicos.cod_tag=tipo_agroquimico.cod_tag ORDER BY agroquimicos.cod_agr"; 
+    WHERE (agroquimicos.cod_agr LIKE '1-%' or agroquimicos.cod_agr LIKE '$user%')
+    ORDER BY agroquimicos.cod_agr"; 
     $result=pg_query($conexion,$sql);
     while($ver=pg_fetch_row($result)){
      $datos=$ver[0]."||".
@@ -44,21 +58,36 @@ require '../../conexion.php';
      $ver[11]."||".
      $ver[12]."||".
      $ver[13]."||".
-     $ver[14];
+     $ver[14]."||".
+     $ver[15]."||".
+     $ver[16]."||".
+     $ver[17]."||".
+     $ver[18]."||".
+     $ver[19]."||".
+     $ver[20]."||".
+     $ver[21]."||";
      ?>
      <tr>
 
       <td><?php echo $ver[2] ?></td>
-      <td><?php echo $ver[14] ?></td>
       <td><?php echo $ver[3] ?></td>
       <td><?php echo $ver[4] ?></td>
       <td><?php echo $ver[5] ?></td>
-      <td><?php echo $ver[6] ?></td>
-      <td><?php echo $ver[7] ?></td>
-      <td><?php echo $ver[8] ?></td>
+      <td><?php echo $ver[6]." - ".$ver[7]?></td>
+      <td><?php echo $ver[8]." hrs" ?></td>
+      <td><?php echo $ver[9]." hrs" ?></td>
       <td><?php echo $ver[10] ?></td>
+      <td><?php echo $ver[11] ?></td>
       <td><?php echo $ver[12] ?></td>
-      <td><?php echo $ver[13] ?></td>
+      <!--<td><?php $sql1="SELECT det_rus from recomendaciones_uso_agr where cod_agr='$ver[0]'";
+                $result1=pg_query($conexion,$sql1);
+                while($ver1=pg_fetch_row($result1)){
+                  echo $ver1[0]; ?><br><?php
+                  
+
+                }
+       ?></td>-->
+      
       
        
       <td class="text-right">
