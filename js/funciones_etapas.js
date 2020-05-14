@@ -132,6 +132,78 @@ function eliminarEtapa(datos){
 }
 
 
+//--------------------------------------Asociar a etapa----------------------------------//
+cod_etap = "";
+cod_afec="";
+function asociar(cod_eta){
+    cod_etap=cod_eta;
+
+}
+
+function seleccion_afe(cod_afe){
+alert(cod_afe);
+cod_afec=cod_afe;
+$('#modal-list-dos').modal('toggle');
+$('#modal-list').modal('hide');
+
+$('#codi_afe').val(cod_afec);
+$('#codi_eta').val(cod_etap);
+}
+
+function validateFileType(){
+
+    var datos = new FormData($("#form-list-dos")[0]);
+    $.ajax({
+        type: "post",
+        url: "../php/crud/etapas/agregar_etapa_imagen.php",
+        data: datos,
+        contentType: false,
+        processData: false,
+        success: function(r) {
+            alert(r);
+            if (r.includes('Resource id')) {                
+                
+                toastr.success('¡Todo salió bien!','',{
+                    "positionClass": "toast-bottom-right",
+                    "closeButton": false,
+                    "progressBar": true
+                });
+            }else{
+                swal("Verifica los datos!", r , "error");
+            }
+        }
+    });
+}
+
+function guardarSinImagen(info,nombre){
+
+    cadena ="cod_eta="+cod_etap+
+    "&cod_afe="+cod_afec;
+    $.ajax({
+      type:"post",
+      url:"../php/crud/etapas/agregar_etapa_no_imagen.php",
+      data:cadena,
+      success:function(r){
+          alert(r);
+       if(r.includes('utilizado')){
+        swal("Esta etapa ya tiene un registro de esta plaga o enfermedad", {
+            icon: "error",
+        });
+
+       }else if(r.includes('Resource id')){
+          toastr.success('¡Todo salió bien!','',{
+              "positionClass": "toast-bottom-right",
+              "closeButton": false,
+              "progressBar": true
+          });  
+       }else{
+          swal("Verifica los datos!", r , "error");
+       }
+      }
+      });
+  
+    }
+  
 
 
 //--------------------------------------Inicio----------------------------------------//
@@ -149,9 +221,37 @@ $(document).ready(function() {
         });
     });    
 
+    $("#myInput1").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable1 tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });  
+
     $('#det_semup').keydown(function() {
         $('#div_det_semup').addClass("input-group-alternative");
     });
 
+    $('#modal-list-dos').on('hidden.bs.modal', function (e) {
+        $('#modal-list').modal('toggle');
+      })
+
 
 });
+
+function objetoAjax() {
+    var xmlhttp = false;
+    try {
+        xmlhttp = new ActiveXObject("MsxmL2.XMLHTTP");
+    } catch (e) {
+        try {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (E) {
+            xmlhttp = false;
+        }
+    }
+    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+        xmlhttp = new XMLHttpRequest();
+    }
+    return xmlhttp;
+  }

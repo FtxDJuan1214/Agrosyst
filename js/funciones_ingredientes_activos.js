@@ -213,7 +213,7 @@ $(document).ready(function() {
         $("#myTable tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
-    });    
+    });  
 
     $('#det_semup').keydown(function() {
         $('#div_det_semup').addClass("input-group-alternative");

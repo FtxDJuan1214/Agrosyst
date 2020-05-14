@@ -145,8 +145,8 @@ if (isset($_SESSION['usuario'])) {
                 <div class="header-body">
                     <!-- Card stats -->
                     <div class="row" style="width=50px;">
-                    <br>
-                    <br>
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -164,21 +164,23 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="card bg-secondary shadow border-0">
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
-                                            <h3>Agregar Etapa</h3>
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Etapas
+                                    </h4>
                                         </div>
                                         <form role="form" id="form-add-eta">
 
                                             <!------------------------Nombre ingrediente activo---------------------->
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
-                                                    <input style="border-color: #fb6340;" id="nom_eta" name ="nom_eta" type="text"
-                                                        class="form-control" placeholder="Nombre Etapa" autocomplete="off"
-                                                        maxlength="45">                                                        
-                                                </div>                                                
-                                            </div>  
+                                                    <input style="border-color: #fb6340;" id="nom_eta" name="nom_eta"
+                                                        type="text" class="form-control" placeholder="Nombre Etapa"
+                                                        autocomplete="off" maxlength="45">
+                                                </div>
+                                            </div>
 
                                             <!--------------------------Botón guardar-------------------------------->
-                                            
+
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-default my-4" id="btn_save"
                                                     onclick="guadarEtapa();">Guardar</button>
@@ -198,7 +200,6 @@ if (isset($_SESSION['usuario'])) {
             </div>
 
             <!-- modal para editar datos -->
-
             <div class="col-md-4">
                 <div class="modal fade" id="modal-form-up" tabindex="-1" role="dialog" aria-labelledby="modal-form"
                     aria-hidden="true">
@@ -212,19 +213,21 @@ if (isset($_SESSION['usuario'])) {
                                     </a>
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
-                                            <h2>Editar Datos</h2>
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Editar datos
+                                    </h4>
                                         </div>
                                         <form role="form" id="form-up-sem">
 
                                             <!------------------------Nombre ingrediente activo---------------------->
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
-                                                    <input style="border-color: #fb6340;" id="nom_eta_up" name ="nom_eta" type="text"
-                                                        class="form-control" placeholder="Nombre Etapa" autocomplete="off"
-                                                        maxlength="45">                                                        
-                                                </div>                                                
-                                            </div> 
-                                            <!---------------------------------------------------------------------------->                                             
+                                                    <input style="border-color: #fb6340;" id="nom_eta_up" name="nom_eta"
+                                                        type="text" class="form-control" placeholder="Nombre Etapa"
+                                                        autocomplete="off" maxlength="45">
+                                                </div>
+                                            </div>
+                                            <!---------------------------------------------------------------------------->
 
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-default my-4" id="btn_up"
@@ -245,40 +248,158 @@ if (isset($_SESSION['usuario'])) {
                 </div>
             </div>
 
-            <!-- Table -->
-            <div class="row">
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="card-header border-0">
-                            <div class="float-md-left" style="margin-top: 5px;">
-                                <button type="button" class="btn btn-default" data-toggle="modal"
-                                    data-target="#modal-form">Agregar</button>
-                            </div>
-                            <div class="float-md-right" style="margin-top: 5px;">
-                                <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text"
-                                    autocomplete="off">
-                            </div>
-                        </div>
-                        <div class="table-responsive" id="tab_etapas">
 
-                            </table>
+            <!-- modal para mostrar lista de plagas y enfermedades -->
+            <div class="col-md-4">
+                <div class="modal fade" id="modal-list" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary shadow border-0">
+                                    <a href="#" data-dismiss="modal" aria-label="Close"
+                                        style="margin: 10px 20px 0 0; text-align: right;">
+                                        <span aria-hidden="true" style="left: 0;">×</span>
+                                    </a>
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                        <div class="text-center text-muted mb-4">
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Lista de plagas y enfermedades
+                                    </h4>
+                                        </div>
+                                        <form role="form" id="form-list">
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="card shadow">
+                                                        <div class="card-header border-0">
+                                                            <div class="float-md-right" style="margin-top: 5px;">
+                                                                <input class="form-control"
+                                                                    placeholder="Buscar en la tabla" id="myInput1"
+                                                                    type="text" autocomplete="off">
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-responsive" id="tabla_afecciones">
+
+                                                            <table
+                                                                class="table align-items-center table-flush table-hover">
+                                                                <thead class="thead-light">
+                                                                    <tr>
+                                                                        <th scope="col">Nombre</th>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="myTable1">
+                                                                    <?php 
+                                                            $like = $_SESSION['idusuario'];
+
+                                                            $sql="SELECT nom_afe, cod_afe FROM afeccion WHERE (cod_afe LIKE '$like%' or cod_afe LIKE '1-%')"; 
+                                                            
+                                                            $result=pg_query($conexion,$sql);
+                                                            while($ver=pg_fetch_row($result)){  
+                                                            ?>
+                                                                    <tr>
+                                                                        <td
+                                                                            onclick="seleccion_afe('<?php echo $ver[1] ?>')">
+                                                                            <?php echo $ver[0] ?></td>
+                                                                    </tr>
+                                                                    <?php 
+                                                        }
+                                                        ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Footer -->
 
-        </div>
-    </div>
-    <!-- Argon Scripts -->
-    <!-- Core -->
-    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Argon JS -->
-    <script src="../assets/js/argon.js?v=1.0.0"></script>
-    <!-- funciones -->
-    <script src="../js/funciones_etapas.js"></script>
-    
+
+
+            <!-- Segundo modal -->
+            <div class="col-md-4">
+                <div class="modal fade" id="modal-list-dos" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-md" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary shadow border-0">
+                                    <a href="#" data-dismiss="modal" aria-label="Close"
+                                        style="margin: 10px 20px 0 0; text-align: right;">
+                                        <span aria-hidden="true" style="left: 0;">×</span>
+                                    </a>
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                        <div class="text-center text-muted mb-4">
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Imagen de la etapa
+                                    </h4>
+                                        </div>
+                                        <form role="form" id="form-list-dos">
+                                        <div class="card shadow">
+                                            <input style="font-family:'FontAwesome',tahoma; font-size: 14px;"
+                                            id="imagen_esc" name="imagen_esc" type="file" class="validate"
+                                                autocomplete="off" accept="image/*" onchange="validateFileType()">
+                                                <input id="codi_eta" name="codi_eta"></input>
+                                                <input id="codi_afe" name="codi_afe"></input>
+                                        </div>
+                                        <br>
+                                        <center>
+                                        <input type="button" name="cargar" class="btn btn-success sm-4"
+                                            data-toggle="tooltip" data-placement="top"
+                                            title="Planificar otra tarea" value="Guardar sin imagen"
+                                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"
+                                            onclick="guardarSinImagen()">
+                                        </center>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+
+                    <!-- Table -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="card-header border-0">
+                                    <div class="float-md-left" style="margin-top: 5px;">
+                                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                            data-target="#modal-form">Agregar</button>
+                                    </div>
+                                    <div class="float-md-right" style="margin-top: 5px;">
+                                        <input class="form-control" placeholder="Buscar en la tabla" id="myInput"
+                                            type="text" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="table-responsive" id="tab_etapas">
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+
+                </div>
+            </div>
+            <!-- Argon Scripts -->
+            <!-- Core -->
+            <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+            <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Argon JS -->
+            <script src="../assets/js/argon.js?v=1.0.0"></script>
+            <!-- funciones -->
+            <script src="../js/funciones_etapas.js"></script>
+
 </body>
 
 </html>

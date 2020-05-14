@@ -133,7 +133,8 @@ if (isset($_POST['cargar'])) {
         $finca=pg_fetch_row($result);
         ?>
                 <a class="h2 mb-0 text-white text-uppercase  d-lg-inline-block"><?php echo $finca[1]." "?><i
-                        class="fas fa-angle-right"></i> Relación entre etapas de la plaga o enfermedad y los agroquímicos</a>
+                        class="fas fa-angle-right"></i> Relación entre etapas de la plaga o enfermedad y los
+                    agroquímicos</a>
                 <!-- Form -->
                 <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto">
                     <div class="form-group mb-0" id="date-hour">
@@ -147,7 +148,7 @@ if (isset($_POST['cargar'])) {
         </nav>
         <!-- Header -->
         <div class="header pb-8 pt-5 pt-md-8"
-            style="background: url('../assets/img/theme/semilleros.jpg'); no-repeat; background-size: cover;">
+            style="background: url('../assets/img/theme/relacion.jpg'); no-repeat; background-size: cover;">
             <span class="mask bg-gradient-fito opacity-8"></span>
             <div class="container-fluid">
                 <br>
@@ -155,101 +156,138 @@ if (isset($_POST['cargar'])) {
                 <div class="header-body">
                     <!-- Card stats -->
                     <div class="row">
-                        <div class="col 12 ">
-                            <div class="card ">
-                                <div class="card-body">
-                                    <div class="row d-block">
-                                        <div class="col">
+                        <div class="col-md-6">
+                            <div class="card shadow">
+                                <div class="card-header border-0">
+                                    <div class="float-md-right" style="margin-top: 5px;">
+                                        <input class="form-control" placeholder="Buscar en la tabla" id="myInput"
+                                            type="text" autocomplete="off">
+                                    </div>
+                                </div>
+                                <!-----------------------------Mostrar tabla de agroquimicos asociados------------------------->
+                                <div class="table-responsive" id="principal">
+                                    <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Enfermedades y sus respectivas etapas
+                                    </h4>
+                                    <table class="table align-items-center table-flush table-hover">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Imagen de la etapa</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="myTable">
+                                            <?php 
+                                                $like = $_SESSION['idusuario'];
+                                                $sql = "";
 
-                                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>"
-                                                method="post">
-                                                <div class="row">
+                                                $sql="SELECT afeccion.cod_afe, afeccion.nom_afe
+                                                FROM public.afeccion
+                                                WHERE (afeccion.cod_afe LIKE '1-%' or afeccion.cod_afe LIKE '$like%')";
+                                                
+                                                $result=pg_query($conexion,$sql);
+                                                while($ver=pg_fetch_row($result)){  
+                                                    
+                                                $datos=$ver[0]."||".
+                                                $ver[1]."||";
 
-                                                    <!--------------------Primera Columna -------------------------->
-                                                    <div class="col-md-6">
-                                                        <div class="table-responsive">
-                                                            <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
-                                                                align="center">Enfermedades y sus respectivas etapas
-                                                            </h4>
-                                                            <table
-                                                                class="table align-items-center table-flush table-hover">
-                                                                <thead class="thead-light">
-                                                                    <tr>
-                                                                        <th scope="col">Nombre</th>
-                                                                        <th scope="col">Imagen</th>
-                                                                        <th></th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody id="myTable">
-                                                                    <?php 
-                                                                    $like = $_SESSION['idusuario'];
-                                                                    $sql = "";
+                                                ?>
+                                            <tr>
+                                                <td><?php echo $ver[1] ?></td>
 
-                                                                    $sql="SELECT afeccion.cod_afe, afeccion.nom_afe
-                                                                    FROM public.afeccion
-                                                                    WHERE (afeccion.cod_afe LIKE '1-%' or afeccion.cod_afe LIKE '$like%')";
-                                                                    
-                                                                    $result=pg_query($conexion,$sql);
-                                                                    while($ver=pg_fetch_row($result)){  
-                                                                        
-                                                                    $datos=$ver[0]."||".
-                                                                    $ver[1]."||";
+                                                <td>
 
-                                                                    ?>
-                                                                    <tr>
-                                                                        <td><?php echo $ver[1] ?></td>
 
-                                                                        <td><?php $sql1="SELECT DISTINCT etapas_crecimiento.cod_eta, etapas_crecimiento.det_eta, eta_x_afe.ima_eta
-                                                                        FROM public.etapas_crecimiento, public.eta_x_afe, public.afeccion
-                                                                        WHERE afeccion.cod_afe = eta_x_afe.cod_afe
-                                                                        AND etapas_crecimiento.cod_eta = eta_x_afe.cod_eta
-                                                                        AND eta_x_afe.cod_afe = '$ver[0]'";
-                                                                                $result1=pg_query($conexion,$sql1);
-                                                                                while($ver1=pg_fetch_row($result1)){
-                                                                                ?>
-                                                                            <br>
-                                                                            <center>
-                                                                                <a title="<?php echo $ver1[1] ?>"
-                                                                                    href="#"
-                                                                                    onclick="tablaAgro('<?php echo $ver1[0] ?>')"><?php echo $ver1[1] ?></a>
-                                                                            </center>
-                                                                            <br>
-                                                                            <?php if($ver1[2] != null){?>
-                                                                            <center>
-                                                                                <a title="<?php echo $ver1[1] ?>"
-                                                                                    href="#"
-                                                                                    onclick="tablaAgro('<?php echo $ver1[0] ?>','<?php echo $ver[0] ?>')">
-                                                                                    <img width="100" height="100"
-                                                                                        src="../imagenes/<?php echo $ver1[2]?>"
-                                                                                        alt="<?php echo $ver1[1] ?>" /></a>
-                                                                            </center>
-                                                                            <a
-                                                                                style="color:#D9E2D5">_______________________________________________________</a>
-                                                                            <?php 
-                                                                                    }
-                                                                                }
-                                                                    ?>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <?php 
-                                                                    }
-                                                                    ?>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                    <!--------------------Segunda Columna -------------------------->
-                                                    <div class="col-md-6">
-                                                        <!-----------------------------Detalle------------------------->
-                                                        <div class="table-responsive" id="tablaAgro" name="tablaAgro">
-                                                        </div>
+                                                    <?php $sql1="SELECT DISTINCT etapas_crecimiento.cod_eta, etapas_crecimiento.det_eta, eta_x_afe.ima_eta
+                                                            FROM public.etapas_crecimiento, public.eta_x_afe, public.afeccion
+                                                            WHERE afeccion.cod_afe = eta_x_afe.cod_afe
+                                                            AND etapas_crecimiento.cod_eta = eta_x_afe.cod_eta
+                                                            AND eta_x_afe.cod_afe = '$ver[0]'";
+                                                            $result1=pg_query($conexion,$sql1);
+                                                            while($ver1=pg_fetch_row($result1)){
+                                                                ?>
+                                                    <br>
+                                                    <center>
+                                                        <a style="font-family:'FontAwesome',tahoma; font-size: 16px;"
+                                                            title="<?php echo $ver1[1] ?>" href="#"
+                                                            onclick="tablaAgro('<?php echo $ver1[0] ?>','<?php echo $ver[0] ?>')"><?php echo $ver1[1] ?></a>
+                                                    </center>
+                                                    <input type="button" name="eliminar_etapa"
+                                                        class="btn btn-danger sm-4" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="Eliminar etapa: <?php echo $ver1[1] ?>"
+                                                        value="&#xf00d    "
+                                                        style="font-family:'FontAwesome',tahoma; font-size: 10px;"
+                                                        onclick="eliminarEtapa('<?php echo $ver1[0] ?>','<?php echo $ver[0] ?>')">
 
-                                                    </div>
-                                                </div>
-                                                <!----------------------Botón Nueva Planificación------------------------->
+                                                    <?php if($ver1[2] != null){?>
+                                                    <center>
+                                                        <a title="<?php echo $ver1[1] ?>" href="#"
+                                                            onclick="tablaAgro('<?php echo $ver1[0] ?>','<?php echo $ver[0] ?>')">
+                                                            <img width="100" height="100"
+                                                                src="../imagenes/<?php echo $ver1[2]?>"
+                                                                alt="<?php echo $ver1[1] ?>" /></a>
+                                                    </center>
+                                                    <a
+                                                        style="color:#7A7894">_______________________________________________________</a>
+                                                    <?php 
+                                                                                                }else{
+                                                                                                    ?>
+                                                    <center>
+                                                        <a title="<?php echo $ver1[1] ?>" href="#"
+                                                            onclick="tablaAgro('<?php echo $ver1[0] ?>','<?php echo $ver[0] ?>')">
+                                                            <img width="100" height="100"
+                                                                src="../imagenes/etapas/sinimagen.jpg"
+                                                                alt="<?php echo $ver1[1] ?>" /></a>
+                                                    </center>
+                                                    <a
+                                                        style="color:#7A7894">_______________________________________________________</a>
 
-                                            </form>
-                                        </div>
+                                                    <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                </td>
+                                            </tr>
+                                            <?php 
+                                                }
+                                                ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow">
+                                <div class="card-header border-0">
+                                    <div class="float-md-right" style="margin-top: 5px;">
+                                        <input class="form-control" placeholder="Buscar en la tabla" id="myInput1"
+                                            type="text" autocomplete="off">
+                                    </div>
+                                </div>
+                                <!-----------------------------Mostrar tabla de agroquimicos asociados------------------------->
+                                <div class="table-responsive" id="tablaAgro" name="tablaAgro">
+                                    <div class="form-group">
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                            Agroquímicos asociados por etapa</h4>
+                                        <table class="table align-items-center table-flush table-hover">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Nombre Agroquímico</th>
+                                                    <th scope="col">Tipo de agroquímico</th>
+                                                    <th scope="col">Eliminar</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <br>
+                                        <center>
+                                            <input type="button" name="Asociar" class="btn btn-success sm-4"
+                                                data-toggle="tooltip" data-placement="top" title="Asociar"
+                                                value="Asociar"
+                                                style="font-family:'FontAwesome',tahoma; font-size: 12px;">
+                                        </center>
                                     </div>
                                 </div>
                             </div>
@@ -274,7 +312,8 @@ if (isset($_POST['cargar'])) {
                                     </a>
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
-                                            <h3>Listado de agroquímicos</h3>
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                            Listado de Agroquímicos</h4>
                                         </div>
                                         <form role="form" id="form-mostrar">
 
@@ -293,9 +332,6 @@ if (isset($_POST['cargar'])) {
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
                                         </form>
                                     </div>
                                 </div>
@@ -304,7 +340,13 @@ if (isset($_POST['cargar'])) {
                     </div>
                 </div>
             </div>
-            <!-- Table -->
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        
+                    </div>
+                </div>
+            </div>
 
             <!-- Footer -->
             <footer class="footer">

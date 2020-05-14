@@ -12,6 +12,13 @@ $(document).ready(function(){
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
   });  
+
+  $("#myInput1").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
 });
 
 function cerrar_menu() {
@@ -128,5 +135,34 @@ function eliminarAsociacion(cod_agr){
 		}
 	}
   });
+
+}
+
+//--------------------------Eliminar etapa-------------------------------------//
+function eliminarEtapa(cod_etapa, codi_afe){
+
+  datos ="cod_eta="+cod_etapa+
+  "&cod_afe="+codi_afe;
+  alert("datos "+datos);
+  $.ajax({
+		type:"post",
+		url:"../php/crud/relacion_etapas_agroquimico/eliminar_etapa.php",
+		data:datos,
+		success:function(r){
+      alert(r);
+      if(r.includes('Resource id')){	
+			
+        swal(
+          '¡Etapa de la plaga o enfermedad eliminada!',
+          '',
+          'success'
+        )	
+        location.reload();		
+		}else{
+			swal("Verifica los datos!", r , "error");
+		}
+	}
+  });
+
 
 }

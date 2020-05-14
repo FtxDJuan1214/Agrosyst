@@ -178,24 +178,98 @@
         <div class="collapse" id="navbar-dashboards5">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="etapas_enfermedades_plagas.php" class="nav-link">Etapas Plagas & Enfermedades</a>
+                    <a href="agroquimicos.php" class="nav-link">Agroquímicos</a>
                 </li>
             </ul>
         </div>
         <div class="collapse" id="navbar-dashboards5">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="relacion_etapas_agroquimico.php" class="nav-link">Relacion Etapas y Agroquímicos</a>
+                    <a href="etapas_enfermedades_plagas.php" class="nav-link">Etapas de Plagas y Enfermedades</a>
+                </li>
+            </ul>
+        </div> 
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="plagas_enfermedades.php" class="nav-link">Plagas y Enfermedades</a>
                 </li>
             </ul>
         </div>
         <div class="collapse" id="navbar-dashboards5">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="plagas_enfermedades.php" class="nav-link">Plagas & Enfermedades</a>
-                                </li>
-                            </ul>
-            </div>
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="relacion_etapas_agroquimico.php" class="nav-link">Etapas y Agroquímicos</a>
+                </li>
+            </ul>
+        </div> 
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="planificacion.php" class="nav-link">Planificacion</a>
+                </li>
+            </ul>
+        </div>       
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="procesos_fitosanitarios.php" class="nav-link">Procesos fitosanitarios</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>
+<hr class="my-3">
+
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="#navbar-dashboards5" data-toggle="collapse" role="button" aria-expanded="false"
+            aria-controls="navbar-dashboards4">
+            <i class="fas fa-medkit" style="color: #2dce8a;"></i>
+            <span class="nav-link-text">Fitosanitario</span>
+        </a>
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="Ingredientes_activos.php" class="nav-link">Ingredientes Activos</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="agroquimicos.php" class="nav-link">Agroquímicos</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="etapas_enfermedades_plagas.php" class="nav-link">Etapas de Plagas y Enfermedades</a>
+                </li>
+            </ul>
+        </div> 
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="plagas_enfermedades.php" class="nav-link">Plagas y Enfermedades</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="relacion_etapas_agroquimico.php" class="nav-link">Etapas y Agroquímicos</a>
+                </li>
+            </ul>
+        </div> 
+        <div class="collapse" id="navbar-dashboards5">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="planificacion.php" class="nav-link">Planificacion</a>
+                </li>
+            </ul>
+        </div>       
         <div class="collapse" id="navbar-dashboards5">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">

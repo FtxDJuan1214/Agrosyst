@@ -16,7 +16,7 @@ function objetoAjax() {
 }
 
 
-//-----------Select escoger que tipo de interfaz mostrar según tipo de tarea-------------//
+//------------------------Select escoger que tipo de interfaz mostrar según tipo de tarea--------------------//
 function cargar_select_tip() {
   tip_tar = $('#tip_tar').val();
 
@@ -301,15 +301,14 @@ alert("datos:\n "+ datos);
 		data:datos,
 		success:function(r){
 
-      swal(
+     /* swal(
         'Todo salió bien!',
         'Planificación creada!',
         'success'
-      );
+      );*/
       
 			if(r.includes('Resource id')){	
-        document.getElementById("mostrar").innerHTML = "";
-        
+        document.getElementById("mostrar_todo").innerHTML = "";        
         
 
           ajax1 = objetoAjax();
@@ -323,22 +322,7 @@ alert("datos:\n "+ datos);
           }
           }
           ajax1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          ajax1.send("datos=" + datos);
-
-       
-        //-----------------------------------------------Aquí muestra la planificación terminada---------------------------------//
-
-        ajax1 = objetoAjax();
-        ajax1.open("POST", "../php/componentes/componentes_planificacion/vista_planificacion.php", true);
-        ajax1.onreadystatechange = function() {
-        if (ajax1.readyState == 4) {
-            document.getElementById("mostrar_todo").innerHTML = ajax1.responseText;
-            //actualizar_codigo();
-            alert("entrooo");
-        }
-  }
-        ajax1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        ajax1.send("info=" + datos);
+          ajax1.send("datos=" + datos);      
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------//
 
