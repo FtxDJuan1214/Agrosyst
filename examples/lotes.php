@@ -40,7 +40,7 @@ if (isset($_SESSION['usuario'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Agrosyst</title>
+  <title>Agrosyst Co</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -117,10 +117,10 @@ if (isset($_SESSION['usuario'])) {
         $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
         fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
         FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
-        public.municipio, public.dueño, public.tipo_unidad_medida
+        public.municipio, public.duenio, public.tipo_unidad_medida
         WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
         AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
-        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
+        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
         $result=pg_query($conexion,$sql);
         $finca=pg_fetch_row($result);
         ?>
@@ -339,13 +339,14 @@ if (isset($_SESSION['usuario'])) {
 </footer> -->
 </div>
 </div>
+
 <div class="contenedor">
   <button class="botonF1">
     <span><i class="material-icons" style="margin-top: 7px;">settings</i></span>
   </button>
   <a href="#">
     <button class="flotante botonF3">
-      <span><i class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Conversor de unidades" style="margin-top: 5px;">swap_horiz</i></span>
+      <span><i class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ayuda" style="margin-top: 5px;">info_outline</i></span>
     </button>
   </a>
   <a href="#">

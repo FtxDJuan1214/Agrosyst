@@ -8,13 +8,13 @@ $like = $_SESSION['idusuario'];
 <div class="col-sm-4" style="margin-top: 10px;">
   <div class="card card-stats ">
     <div class="card-body">
-      <a href="#" onclick="ver_dueños();">
+      <a href="#" onclick="ver_duenios();">
         <div class="row">
           <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Dueños</h5>
+            <h5 class="card-title text-uppercase text-muted mb-0">Duenios</h5>
             <span class="h2 font-weight-bold mb-0">
               <?php 
-              $sql="SELECT count(ide_ter) FROM dueño where ide_ter like '$like%'";
+              $sql="SELECT count(ide_ter) FROM duenio where ide_ter like '$like%'";
               $result=pg_query($conexion,$sql);
               $ver=pg_fetch_row($result);
               echo $ver[0];
@@ -173,8 +173,8 @@ $like = $_SESSION['idusuario'];
     });
   }
 
-  function ver_dueños(){
-    $('#myInput').val('Dueño');
+  function ver_duenios(){
+    $('#myInput').val('Duenio');
     buscador();
   }
 

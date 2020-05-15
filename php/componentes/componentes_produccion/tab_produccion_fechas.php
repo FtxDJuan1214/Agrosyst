@@ -25,15 +25,15 @@ $ffin = $_POST['ffin'];
     <?php 
  
     $cod_fin=$_SESSION['ide_finca'];
-    $sql=" SELECT DISTINCT produccion.cod_pro, tipo_de_produccion.cod_tpr, tipo_de_produccion.des_tpr, 
+    $sql="SELECT DISTINCT produccion.cod_pro, tipo_de_produccion.cod_tpr, tipo_de_produccion.des_tpr, 
     gozar.fec_goz, gozar.cpt_goz,gozar.ctp_goz, gozar.pre_goz, cultivos.cod_cul, nombre_cultivo.des_ncu,
-    unidad_de_medida.des_unm, produccion.ide_ter, terceros.pno_ter, terceros.sno_ter, terceros.pap_ter, terceros.sap_ter
+    unidad_de_medida.des_unm, produccion.ide_ter, terceros.pno_ter, terceros.sno_ter, terceros.pap_ter, terceros.sap_ter, cultivos.npl_cul,lotes.nom_lot
     FROM public.tipo_de_produccion, public.produccion, public.gozar, public.cultivos, 
     public.nombre_cultivo, public.ejecutar,public.lotes, public.fincas, public.unidad_de_medida, public.terceros
     WHERE tipo_de_produccion.cod_tpr=gozar.cod_tpr AND gozar.cod_pro=produccion.cod_pro
     AND produccion.cod_cul=cultivos.cod_cul AND cultivos.cod_cul=ejecutar.cod_cul AND nombre_cultivo.cod_ncu=cultivos.cod_ncu
     AND cultivos.cod_lot = lotes.cod_lot AND lotes.cod_fin = fincas.cod_fin AND tipo_de_produccion.cod_unm = unidad_de_medida.cod_unm 
-    AND produccion.ide_ter = terceros.ide_ter AND fincas.cod_fin = '$cod_fin'  and gozar.fec_goz between '$fini' and '$ffin' ORDER BY  produccion.cod_pro ASC"; 
+    AND produccion.ide_ter = terceros.ide_ter AND fincas.cod_fin = '$cod_fin' and gozar.fec_goz between '$fini' and '$ffin' ORDER BY  produccion.cod_pro ASC"; 
     $result=pg_query($conexion,$sql);
     $result1=pg_query($conexion,$sql);
     $result2=pg_query($conexion,$sql);
@@ -135,7 +135,7 @@ $ffin = $_POST['ffin'];
     <td><?php echo $ver[5] ?></td>
     <td><?php echo '$'.(floatval($ver[5]) * floatval($ver[6])) ?></td>
     <td rowspan="<?php echo $totales[$i][1] ?> "><?php echo "$".$totales[$i][2]?></td>
-    <td rowspan="<?php echo $totales[$i][1] ?> "><?php $array=explode("-", $ver[8]); echo $array[1] ?></td>
+    <td rowspan="<?php echo $totales[$i][1] ?> "><?php $array=explode("-", $ver[8]); echo $array[1]."<br>".$ver[15]." Plantas<br>En lote: ".$ver[16] ?></td>
     <td rowspan="<?php echo $totales[$i][1] ?> "><?php echo $ver[11]." ".$ver[12]."<br>".$ver[13]." ".$ver[14]?></td>
     <td rowspan="<?php echo $totales[$i][1]?>" class="text-right">
       <div class="dropdown">

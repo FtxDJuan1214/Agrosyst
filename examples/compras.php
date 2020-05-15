@@ -54,49 +54,59 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
     $cod_cul = $_POST['cod_cul'];
 
     $valido = true;
-    $mensaje = "Error! algunos campos icorrectos, por favor vuelva a intentar verificando los datos";
+  //   $mensaje = "Error! algunos campos icorrectos, por favor vuelva a intentar verificando los datos";
 
-    if ($fec == "") {
-      $valido = false;
-      unset ($fec);
-    }
+  //   if ($fec == "") {
+  //     $valido = false;
+  //     unset ($fec);
+  //   }
 
-    if ($cos_uni != "" && $can_sto!="") {
-     if(!is_numeric($can_sto) || $can_sto==0 ){
-      $valido = false;
-      $mensaje = "Error! La cantidad ingresada no es valida, asegurese de ingresar los datos correctamente.";
-    }
+  //   if (intval($cos_uni) != 0 && intval($can_sto) != 0 ) {
+  //     $valido = false;
+  //   }
 
-    if(!is_numeric($cos_uni) || $cos_uni==0 ){
-      $valido = false;
-      $mensaje = "Error! El costo unitario no es valido, asegurese de ingresar los datos correctamente.";
-    }
-  }
+  //   if ($cos_uni != "" && $can_sto!="") {
+  //    if(!is_numeric($can_sto) || $can_sto==0 ){
+  //     $valido = false;
+  //     $mensaje = "Error! La cantidad ingresada no es valida, asegurese de ingresar los datos correctamente.";
+  //   }
 
-   if($cos_mul==NaN){
-      $valido = false;
-      $mensaje = "Error! Valores incorrectos, verifique.";
-    }
+  //   if(!is_numeric($cos_uni) || $cos_uni==0 ){
+  //     $valido = false;
+  //     $mensaje = "Error! El costo unitario no es valido, asegurese de ingresar los datos correctamente.";
+  //   }
+  // }
 
-  
+  // if($cos_mul==NaN){
+  //   $valido = false;
+  //   $mensaje = "Error! Valores incorrectos, verifique.";
+  // }
 
-  if ($valido == true) {
 
-    $string="$tip_ins,$cod_ins,$can_sto,$cos_uni,$cos_mul";
-    require '../php/conexion.php';
-    $sql="SELECT insumos.des_ins,unidad_de_medida.des_unm FROM insumos,unidad_de_medida
-    WHERE insumos.cod_unm=unidad_de_medida.cod_unm AND insumos.cod_ins='$cod_ins'";
-    $result=pg_query($conexion,$sql);
-    $detalle=pg_fetch_row($result);
 
-    $unidad = explode("-",$detalle[1]);
+    if ($valido == true) {
 
-    $ins="$detalle[0],$can_sto $unidad[1],$cos_uni $,$cos_mul";
+      $string="$tip_ins,$cod_ins,$can_sto,$cos_uni,$cos_mul";
+      require '../php/conexion.php';
+      $sql="SELECT insumos.des_ins,unidad_de_medida.des_unm FROM insumos,unidad_de_medida
+      WHERE insumos.cod_unm=unidad_de_medida.cod_unm AND insumos.cod_ins='$cod_ins'";
+      $result=pg_query($conexion,$sql);
+      $detalle=pg_fetch_row($result);
 
-    $_SESSION['costo_total']=($_SESSION['costo_total']+$cos_mul)."$";
-    $_SESSION['productos']=$_SESSION['productos'].$string."+";
-    $_SESSION['insumo']=$_SESSION['insumo'].$ins."+";
-  }else{
+      $unidad = explode("-",$detalle[1]);
+
+      $ins="$detalle[0],$can_sto $unidad[1],$cos_uni $,$cos_mul";
+
+      $validar = explode("+", $_SESSION['productos']);
+
+      if ($validar[count($validar) - 2] === $string) {
+        
+      }else{
+       $_SESSION['costo_total']=($_SESSION['costo_total']+$cos_mul)."$";
+       $_SESSION['productos']=$_SESSION['productos'].$string."+";
+       $_SESSION['insumo']=$_SESSION['insumo'].$ins."+";
+     }
+   }else{
     echo "<script type=\"text/javascript\">alert(\"$mensaje\");</script>";  
   }
 
@@ -121,7 +131,7 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Agrosyst</title>
+  <title>Agrosyst Co</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -196,10 +206,10 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
         $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
         fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
         FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
-        public.municipio, public.dueño, public.tipo_unidad_medida
+        public.municipio, public.duenio, public.tipo_unidad_medida
         WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
         AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
-        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
+        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
         $result=pg_query($conexion,$sql);
         $finca=pg_fetch_row($result);
         ?>
@@ -235,9 +245,16 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                               <?php   
                               $sql1="SELECT cod_com FROM compras ORDER BY cod_com DESC LIMIT 1";
                               $result=pg_query($conexion,$sql1);
-                              $cod=pg_fetch_row($result);                    
+                              $cod=pg_fetch_row($result);
+
+
+                              $cod_fac= 1;
+                              if (pg_num_rows($result) != 0) {
+                                $cod_fac=$cod[0] + 1;
+                              }
+
                               ?>
-                              <input type="text" class="form-control" id="num_fact" name="num_fact" value="<?php echo "N° Factura: ".($cod[0]+1);?>" autocomplete="off" readonly>
+                              <input type="text" class="form-control" id="num_fact" name="num_fact" value="<?php echo "N° Factura: ".($cod_fac);?>" autocomplete="off" readonly>
                             </div>
                             <div class="form-group">
                               <div class="input-group ">
@@ -388,9 +405,9 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
                   <div class="input-group">
                     <select id="tip_ins" name="tip_ins" class="form-control"data-live-search="true" require>
                       <option value="" disabled selected>Tipo de Insumo</option>
-                      <option value="1">Semillas</option>
                       <option value="2">Semilleros</option>
-                      <option value="3">Agroquímicos/Fertilizantes</option>
+                      <option value="1">Fertilizantes</option>
+                      <option value="3">Agroquímicos</option>
                     </select>
                   </div>
                 </div>
@@ -445,21 +462,26 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
               </div>
 
             </div>
+            <div class="row" id="aportes_chart">
+
+            </div>
 
             <div class="row">
               <div class="col-md-6">
                 <div class="float-md-left">
-                  <a style="font-size: 18px;" href="terceros.php" class="btn btn-info my-4" data-toggle="tooltip" data-placement="top" title="Agregar nuevo socio o dueño"><i class="fas fa-user-plus"></i></a>
+                  <a style="font-size: 18px;" href="terceros.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Agregar nuevo socio o duenio"><i class="fas fa-user-plus"></i></a>
 
-                  <a style="font-size: 18px;" href="compras.php" class="btn btn-info my-4" data-toggle="tooltip" data-placement="top" title="Re-hacer la compra"><i class="fas fa-redo-alt"></i></a>
+                  <a style="font-size: 18px;" href="cultivos.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Crear cultivos"><i class="fas fa-spa"></i></a>
 
-                  <a style="font-size: 18px;" href="#" class="btn btn-info my-4" data-container="body" data-toggle="popover" data-placement="top" data-content="Si no puede agregar productos a su compra, asegurese de haber elegido el proveedor, el socio que pagará y el insumo que va a comprar."><i class="far fa-question-circle"></i></a>
+                  <a style="font-size: 18px;" href="#" class="btn btn-info bg-gradient-green" data-container="body" data-toggle="popover" data-placement="top" data-content="Si no puede agregar productos a su compra, asegurese de haber elegido el proveedor, el socio que pagará y el insumo que va a comprar."><i class="far fa-question-circle"></i></a>
+
+                  <a style="font-size: 18px;" href="compras.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Re-hacer la compra"><i class="fas fa-redo-alt"></i></a>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="float-md-right">        
-                  <input type="submit" id="cargar" name="cargar" class="btn btn-default my-4" data-toggle="tooltip" data-placement="top" title="Agregar insumo" value="&#xf217    " style="font-family:'FontAwesome',tahoma; font-size: 21px;">
+                  <input type="submit" disabled id="cargar" name="cargar" class="btn btn-default my-4" data-toggle="tooltip" data-placement="top" title="Agregar insumo" value="&#xf217    " style="font-family:'FontAwesome',tahoma; font-size: 21px;">
                 </div>
               </div>
             </div>
@@ -548,7 +570,7 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
   <div class="row align-items-center justify-content-xl-between">
     <div class="col-xl-6">
       <div class="copyright text-center text-xl-left text-muted">
-        &copy; 2019 <a href="#" class="font-weight-bold ml-1" target="_blank">Agrosyst</a>
+        &copy; 2019 <a href="#" class="font-weight-bold ml-1" target="_blank">Agrosyst Co</a>
       </div>
     </div>
     <div class="col-xl-6">

@@ -4,7 +4,7 @@ $ide_ter = $_POST['ide_ter'];
 $tipo_per = $_POST['global'];
 
 if($tipo_per==1){
-     $sql ="DELETE FROM public.dueño
+     $sql ="DELETE FROM public.duenio
     WHERE ide_ter='$ide_ter'";
     echo $result = pg_query($conexion,$sql);
 

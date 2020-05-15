@@ -40,7 +40,7 @@ if (isset($_SESSION['usuario'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Agrosyst</title>
+  <title>Agrosyst Co</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -112,10 +112,10 @@ if (isset($_SESSION['usuario'])) {
           $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
           fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
           FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
-          public.municipio, public.dueño, public.tipo_unidad_medida
+          public.municipio, public.duenio, public.tipo_unidad_medida
           WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
           AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
-          AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
+          AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
           $result=pg_query($conexion,$sql);
           $finca=pg_fetch_row($result);
           ?>
@@ -171,21 +171,23 @@ if (isset($_SESSION['usuario'])) {
                         </div>                 
 
 
+                        <div style="display: none;">
+                          <div class="form-group mb-3">
+                            <div class="input-group input-group-alternative">
+                             <select id="tip_uni_med" name="tip_uni_med" class="form-control"data-live-search="true" disabled>
+                              <option value="0"  disabled>Selecciona un tipo de medida</option>
+                              <option value="7" selected>Cantidad</option>
+                            </select>
+                          </div>
+                        </div>
+
                         <div class="form-group mb-3">
                           <div class="input-group input-group-alternative">
-                           <select id="tip_uni_med" name="tip_uni_med" class="form-control"data-live-search="true" disabled>
-                            <option value="0"  disabled>Selecciona un tipo de medida</option>
-                            <option value="7" selected>Cantidad</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div class="form-group mb-3">
-                        <div class="input-group input-group-alternative">
-                          <select id="uni_med" class="form-control" data-live-search="true" disabled>
-                            <option value="" disabled >Selecciona Uni. de medida</option>
-                            <option selected value="6">Unidad - Uni</option>
-                          </select>
+                            <select id="uni_med" class="form-control" data-live-search="true" disabled>
+                              <option value="" disabled >Selecciona Uni. de medida</option>
+                              <option selected value="6">Unidad - Uni</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
 
@@ -236,43 +238,45 @@ if (isset($_SESSION['usuario'])) {
                       </div>                 
 
 
-                      <div class="form-group mb-3">
-                        <div class="input-group input-group-alternative">
-                         <select id="tip_uni_medup" name="tip_uni_med" class="form-control"data-live-search="true"  disabled> 
-                          <option value="" disabled selected>Selecciona un tipo de medida</option>
-                          <?php 
-                          $query="SELECT cod_tum,des_tum FROM tipo_unidad_medida";
-                          $result =pg_query($conexion,$query);
-                          while ($ver=pg_fetch_row($result)) {
+                      <div style="display: none;">
+                        <div class="form-group mb-3">
+                          <div class="input-group input-group-alternative">
+                           <select id="tip_uni_medup" name="tip_uni_med" class="form-control"data-live-search="true"  disabled> 
+                            <option value="" disabled selected>Selecciona un tipo de medida</option>
+                            <?php 
+                            $query="SELECT cod_tum,des_tum FROM tipo_unidad_medida";
+                            $result =pg_query($conexion,$query);
+                            while ($ver=pg_fetch_row($result)) {
+                             ?>
+                             <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
+
+                             <?php 
+                           }
                            ?>
-                           <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
-
-                           <?php 
-                         }
-                         ?>
-                       </select>
+                         </select>
+                       </div>
                      </div>
-                   </div>
 
-                   <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                     <select id="uni_medup" name="tip_uni_med" class="form-control"data-live-search="true" disabled>
-                      <option value="" disabled selected>Selecciona Uni. de medida</option>
-                      <?php 
-                      $query="SELECT cod_unm,des_unm FROM unidad_de_medida";
-                      $result =pg_query($conexion,$query);
-                      while ($ver=pg_fetch_row($result)) {
+                     <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative">
+                       <select id="uni_medup" name="tip_uni_med" class="form-control"data-live-search="true" disabled>
+                        <option value="" disabled selected>Selecciona Uni. de medida</option>
+                        <?php 
+                        $query="SELECT cod_unm,des_unm FROM unidad_de_medida";
+                        $result =pg_query($conexion,$query);
+                        while ($ver=pg_fetch_row($result)) {
+                         ?>
+                         <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
+
+                         <?php 
+                       }
                        ?>
-                       <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
-
-                       <?php 
-                     }
-                     ?>
-                   </select>
+                     </select>
+                   </div>
                  </div>
-               </div>
 
-                <label for="det_otr">Detalle</label>
+               </div>
+               <label for="det_otr">Detalle</label>
                <div class="input-group-alternative" id="div_det_otrup">
                 <textarea style="border-color: #fb6340;" maxlength="48" id="det_otrup" class="form-control" rows="2"></textarea>
               </div>

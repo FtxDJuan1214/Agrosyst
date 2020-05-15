@@ -11,7 +11,6 @@
         <table class="table align-items-center table-dark table-flush">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">Código</th>
               <th scope="col">Insumo</th>
               <th scope="col">Disponible</th>
               <th scope="col">Cantidad</th>
@@ -24,10 +23,10 @@
             $sql="SELECT DISTINCT stock.cod_sto, stock.can_sto, insumos.cod_ins,insumos.des_ins,
             unidad_de_medida.des_unm,terceros.ide_ter, 
             terceros.pno_ter, terceros.sno_ter, terceros.pap_ter, terceros.sap_ter
-            FROM insumos, stock, registrar, compras, comprar, terceros, dueño, unidad_de_medida,  cultivos, act_cul
+            FROM insumos, stock, registrar, compras, comprar, terceros, duenio, unidad_de_medida,  cultivos, act_cul
             WHERE insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
             AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
-            AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter
+            AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter
             AND unidad_de_medida.cod_unm=insumos.cod_unm AND terceros.ide_ter=act_cul.ide_ter  AND stock.can_sto != '0'
             AND act_cul.cod_cul=cultivos.cod_cul AND cultivos.cod_cul = '$cod_cul'
             AND  terceros.ide_ter LIKE '$like%'";
@@ -39,9 +38,7 @@
               if ($filas == 0) {
                 ?>
                 <tr>
-
-                  <td><?php echo $ver[0] ?></td>
-                  <td><?php echo $ver[3] ?></td>
+                  <td><?php echo $ver[3] ?><br>de: <?php echo $ver[6]." ".$ver[8] ?></td>
                   <td><?php 
                   $unm=explode("-",$ver[4]);
                   echo $ver[1]." ".$unm[0]?>
@@ -94,9 +91,7 @@
             if ($filas == 0) {
               ?>
               <tr>
-
-                <td><?php echo $ver[0] ?></td>
-                <td><?php echo $ver[3] ?></td>
+                <td><?php echo $ver[3] ?> <br>de: <?php echo $ver[6]." ".$ver[8] ?></td>
                 <td><?php 
                 $unm=explode("-",$ver[4]);
                 echo $ver[1]." ".$unm[0]?>

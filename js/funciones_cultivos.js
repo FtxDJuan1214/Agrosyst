@@ -7,14 +7,13 @@ function n_cul(){
 function agregar_nom_cul(){
   nomb_cultivo=$('#nomb_cultivo').val();
   if (nomb_cultivo != "") {
-
-    if (nomb_cultivo.lenght > 3 ) {
+    if (nomb_cultivo.length > 3 ) {
       $.ajax({
         type:"post",
         url:"../php/crud/cultivos/add_nom_cul.php",
         data:"nomb_cultivo="+nomb_cultivo,
         success:function(r){
-          if(r=='Resource id #6'){
+          if(r.includes('Resource id')){
             var form = document.querySelector('#form-nom-cultivo');
             form.reset();
             $('#nombre_cultivo').load('../php/componentes/componentes_cultivos/nom_cul.php');
@@ -55,7 +54,7 @@ function actualizar_nom_cul(){
     url:"../php/crud/cultivos/up_nom_cul.php",
     data:"nomb_cultivo="+nomb_cultivo+"&cod_cul="+codigo_cul,
     success:function(r){
-      if(r=='Resource id #6'){
+      if(r.includes('Resource id')){
         var form = document.querySelector('#form-nom-cultivo');
         form.reset();
         jQuery('#btn_actualizar').hide();
@@ -83,7 +82,7 @@ function eliminar_nom_cul(cod_ncu){
         url:"../php/crud/cultivos/del_nom_cul.php",
         data:"cod_ncu="+cod_ncu,
         success:function(r){
-          if(r=='Resource id #6'){
+          if(r.includes('Resource id')){
             swal("se elimino!", {
               icon: "success",
             });
@@ -131,12 +130,23 @@ function preloader(){
     });
   }else{
 
+    var fechaInicio = new Date(fin_cul.trim()).getTime();
+    var fechaFin    = new Date(fif_cul.trim()).getTime();
+
     if(fif_cul == fin_cul){
       toastr.error('La fechas de duración del cultivo no pueden ser las mismas.','',{
         "positionClass": "toast-top-center",
         "closeButton": true,
         "progressBar":true
       });
+    }else if(parseFloat(fechaInicio) > parseFloat(fechaFin)){
+
+      toastr.error('La fecha de finalización no puede ser anterior a la inicial','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+      bien = false;
     }else{
 
       if (isNaN(npl_cul)){
@@ -170,7 +180,7 @@ function preloader(){
 }
 
 function agregar_cultivo(fin_cul,fif_cul,npl_cul,tip_cul,dur_cul,est_cul,nom_cul,cod_lot,dia_cul,mod_cul){
-	cadena ="fin_cul="+fin_cul+
+  cadena ="fin_cul="+fin_cul+
   "&fif_cul="+fif_cul+
   "&npl_cul="+npl_cul+
   "&tip_cul="+tip_cul+
@@ -186,13 +196,14 @@ function agregar_cultivo(fin_cul,fif_cul,npl_cul,tip_cul,dur_cul,est_cul,nom_cul
     url:"../php/crud/cultivos/crear_cultivos.php",
     data:cadena,
     success:function(r){
-      if(r=='Resource id #6'){
-        var form = document.querySelector('#form-add-cultivo');
-        form.reset();
-        jQuery('#preloader').hide();
-        jQuery('#form-add-cultivo').show();
-        $('#modal-form').modal('hide');
-        swal("Cultivo agregado!"," ", "success");
+        //alert(r);
+        if(r.includes('Resource id')){
+          var form = document.querySelector('#form-add-cultivo');
+          form.reset();
+          jQuery('#preloader').hide();
+          jQuery('#form-add-cultivo').show();
+          $('#modal-form').modal('hide');
+          swal("Cultivo agregado!"," ", "success");
 
          //--------------------saber el id agregado-------------------------------------------------------------
          $.ajax({
@@ -321,8 +332,6 @@ function preloaderup(){
     }
 
   }
-
-
   
 }
 
@@ -343,7 +352,7 @@ function actualizar_cultivo(cod_cul,fin_cul,fif_cul,npl_cul,tip_cul,dur_cul,est_
     url:"../php/crud/cultivos/actualizar_cultivos.php",
     data:cadena,
     success:function(r){
-      if(r=='Resource id #6'){
+      if(r.includes('Resource id')){
         var form = document.querySelector('#form-up-cultivo');
         form.reset();
         jQuery('#preloaderup').hide();
@@ -353,7 +362,7 @@ function actualizar_cultivo(cod_cul,fin_cul,fif_cul,npl_cul,tip_cul,dur_cul,est_
         $('#tab_cultivos').load('../php/componentes/componentes_cultivos/tab_cultivos.php');
 
       }else{
-        alert(r); 
+        //alert(r); 
         jQuery('#preloaderup').hide();
         jQuery('#form-up-cultivo').show();
         $('#tab_cultivos').load('../php/componentes/componentes_cultivos/tab_cultivos.php');        
@@ -379,14 +388,14 @@ function eliminar_cultivo(cod_cul){
         url:"../php/crud/cultivos/confrim_del.php",
         data:"cod_cul="+cod_cul,
         success:function(r){
-          if (r=="") {
+          if (r.trim()=="") {
 
             $.ajax({
               type:"post",
               url:"../php/crud/cultivos/eliminar_cultivo.php",
               data:"cod_cul="+parseFloat(cod_cul),
               success:function(r){
-                if(r=='Resource id #7'){
+                if(r.includes('Resource id')){
                   $('#tab_cultivos').load('../php/componentes/componentes_cultivos/tab_cultivos.php');    
                   swal("El cultivo elimino!", { 
                     icon: "success",
@@ -462,7 +471,7 @@ function guardar_soc(){
       url:"../php/crud/cultivos/add_socio.php",
       data:"cod_cul="+cod_cul+"&cod_ter_soc="+cod_ter_soc,
       success:function(r){
-        if(r=='Resource id #6'){
+        if(r.includes('Resource id')){
           table_socios(cod_cul);
           $('#tab_cultivos').load('../php/componentes/componentes_cultivos/tab_cultivos.php');
           var form = document.querySelector('#form-crud_soc');
@@ -487,12 +496,18 @@ function eliminar_socio(ide_ter){
     url:"../php/crud/cultivos/del_socio.php",
     data:"ide_ter="+ide_ter.trim()+"&cod_cul="+cod_cul,
     success:function(r){
-      if(r=='Resource id #6'){
-        table_socios(cod_cul);
-        $('#tab_cultivos').load('../php/componentes/componentes_cultivos/tab_cultivos.php');
-      }
+      if(r.includes('Resource id')){
+       table_socios(cod_cul);
+       $('#tab_cultivos').load('../php/componentes/componentes_cultivos/tab_cultivos.php');
+     }else{
+      toastr.warning('',r,{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
     }
-  });
+  }
+});
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -559,7 +574,7 @@ $(function () {
 })
 
 
-var total_dias=14;
+var total_dias=0;
 
 function intervaloa(){
   fin_cul=$('#fin_cul').val();
@@ -572,9 +587,10 @@ function intervaloa(){
    success:function(r){
     tiempo = r.split("||");
     $('#dur_cul').val(tiempo[0]+' años '+tiempo[1]+' meses '+tiempo[2]+' dias');
-    total_dias=tiempo[3];
+    total_dias=parseFloat(tiempo[3]);
+    dias_actuales = parseFloat(tiempo[4]);
     anios=parseFloat(tiempo[0]);
-
+    $('#borrar').text("dias: " + total_dias + "dias hoy: " + dias_actuales);
     if (tiempo[0] < 1) {
 
       $('#tip_cul').val(1);
@@ -593,6 +609,26 @@ function intervaloa(){
   if (anios >=2) {
    $('#tip_cul').val(2);
  }
+
+ if (dias_actuales > 0 && dias_actuales != total_dias) {
+
+  if(dias_actuales > 0 && dias_actuales <= 3){
+    $('#est_cul').val(1);
+  }else if(dias_actuales > 3 && dias_actuales <=210){
+    $('#est_cul').val(2);
+  }else if (dias_actuales > 210 && dias_actuales <= 240) {
+    $('#est_cul').val(3);
+  }else if (dias_actuales > 240 && dias_actuales <= 300) {
+    $('#est_cul').val(4);
+  }else if (dias_actuales > 300 && dias_actuales <= 365) {
+    $('#est_cul').val(5);
+  }else if (dias_actuales > 365 && dias_actuales < total_dias) {
+    $('#est_cul').val(6);
+  }
+}else if(dias_actuales > 0 && dias_actuales == total_dias){
+ $('#est_cul').val(7);
+}
+
 }
 })
 }

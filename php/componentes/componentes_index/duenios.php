@@ -6,9 +6,9 @@
 <div class="form-group mb-3">
   <div class="input-group input-group-alternative">
     <select id="due_fin" name="due_fin" class="form-control"data-live-search="true">
-      <option value="" disabled selected>Selecciona dueño</option>
+      <option value="" disabled selected>Selecciona duenio</option>
       <?php 
-      $query="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter FROM public.terceros INNER JOIN dueño ON terceros.ide_ter=dueño.ide_ter where terceros.ide_ter LIKE '$like%'";
+      $query="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter FROM public.terceros INNER JOIN duenio ON terceros.ide_ter=duenio.ide_ter where terceros.ide_ter LIKE '$like%'";
       $result =pg_query($conexion,$query);
       while ($ver=pg_fetch_row($result)) {
        ?>

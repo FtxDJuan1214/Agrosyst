@@ -17,5 +17,5 @@ $user =  $_SESSION['idusuario'];
 
 $sql="UPDATE public.semillero
 SET cod_tso='$cod_tsoup', det_smr='$user$det_smrup'WHERE cod_smr='$cod_smr'";
-echo $$result=pg_query($conexion,$sql);
+echo $result=pg_query($conexion,$sql);
 ?>

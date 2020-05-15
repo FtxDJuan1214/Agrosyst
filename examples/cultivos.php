@@ -40,7 +40,7 @@ if (isset($_SESSION['usuario'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Agrosyst</title>
+  <title>Agrosyst Co</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -114,10 +114,10 @@ if (isset($_SESSION['usuario'])) {
         $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
         fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
         FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
-        public.municipio, public.dueño, public.tipo_unidad_medida
+        public.municipio, public.duenio, public.tipo_unidad_medida
         WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
         AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
-        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
+        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
         $result=pg_query($conexion,$sql);
         $finca=pg_fetch_row($result);
         ?>
@@ -161,7 +161,11 @@ if (isset($_SESSION['usuario'])) {
                     <h3>Crear Cultivo</h3>
                   </div>
                   <form role="form" id="form-add-cultivo">
-
+                    <div class="row " style="margin-bottom: 10px;">
+                      <div class="col-md-12 c">
+                        <a style="font-size: 1em;" href="lotes.php" class="btn btn-info btn-sm bg-gradient-green" data-toggle="tooltip" data-placement="top" title="" data-original-title="Crear lostes"><i class="fas fa-map"></i></a>
+                      </div>
+                    </div>
                     <div class="row">
                       <div class="col-sm-6">
                         <div id="nombre_cultivo">
@@ -216,17 +220,20 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                         <div class="form-group mb-3">
                           <div class="input-group input-group-alternative">
-                            <select id="est_cul" class="form-control"data-live-search="true">
+                            <select id="est_cul" disabled class="form-control"data-live-search="true">
                               <option value="" disabled selected>Estado del cultivo</option>
                               <option value="1">Inicio</option>
                               <option value="2">Crecimiento</option>
-                              <option value="3">Produccion</option>
-                              <option value="4">Finalización</option>
+                              <option value="3">Inicio afloración</option>
+                              <option value="4">Maxima afloración</option>
+                              <option value="5">Inicio fructificación</option>
+                              <option value="6">Cosecha</option>
+                              <option value="7">Finalización</option>
                             </select>
                           </div>
                         </div>
 
-                        <div class="form-group mb-3" data-toggle="tooltip" data-placement="top" title="Tipo de cultivo">
+                        <div class="form-group mb-3" >
                           <div class="input-group input-group-alternative">
                             <select id="tip_cul" disabled class="form-control"data-live-search="true" >
                               <option value="" disabled selected>Tipo de cultivo</option>
@@ -300,7 +307,11 @@ if (isset($_SESSION['usuario'])) {
                   <h3>Editar Cultivo</h3>
                 </div>
                 <form role="form" id="form-up-cultivo">
-
+                  <div class="row " style="margin-bottom: 10px;">
+                    <div class="col-md-12 c">
+                      <a style="font-size: 1em;" href="lotes.php" class="btn btn-info btn-sm bg-gradient-green" data-toggle="tooltip" data-placement="top" title="" data-original-title="Crear lostes"><i class="fas fa-map"></i></a>
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="col-sm-6">
 
@@ -324,17 +335,20 @@ if (isset($_SESSION['usuario'])) {
                       </div>
                       <div class="form-group mb-3">
                         <div class="input-group input-group-alternative">
-                          <select id="est_cul_up" class="form-control"data-live-search="true">
+                          <select id="est_cul_up" disabled class="form-control"data-live-search="true">
                             <option value="" disabled selected>Estado del cultivo</option>
                             <option value="1">Inicio</option>
                             <option value="2">Crecimiento</option>
-                            <option value="3">Produccion</option>
-                            <option value="4">Finalización</option>
+                            <option value="3">Inicio afloración</option>
+                            <option value="4">Maxima afloración</option>
+                            <option value="5">Inicio fructificación</option>
+                            <option value="6">Cosecha</option>
+                            <option value="7">Finalización</option>
                           </select>
                         </div>
                       </div>
 
-                      <div class="form-group mb-3" data-toggle="tooltip" data-placement="top" title="Tipo de cultivo">
+                      <div class="form-group mb-3">
                         <div class="input-group input-group-alternative">
                           <select id="tip_cul_up" disabled class="form-control"data-live-search="true" >
                             <option value="" disabled selected>Tipo de cultivo</option>
@@ -472,8 +486,8 @@ if (isset($_SESSION['usuario'])) {
                        }
                        ?>
                        <?php 
-                       $query="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter FROM terceros,dueño
-                       where terceros.ide_ter=dueño.ide_ter AND  terceros.ide_ter LIKE'$like%'";
+                       $query="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter FROM terceros,duenio
+                       where terceros.ide_ter=duenio.ide_ter AND  terceros.ide_ter LIKE'$like%'";
                        $result =pg_query($conexion,$query);
                        while ($ver=pg_fetch_row($result)) {
                          ?>

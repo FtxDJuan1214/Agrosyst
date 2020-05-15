@@ -145,9 +145,7 @@ function agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter
 			data:cadena,
 			url:"../php/crud/terceros/agregar_tercero.php",
 			success:function(r){
-				$('#rr').val(r);
-				result=$('#rr').val();
-				if(result=='Resource id #6'){
+				if(r.includes('Resource id')){
 
 					swal("Tercero agregado!"," ", "success");
 
@@ -273,8 +271,7 @@ function agregar_telefono(){
 				url:"../php/crud/terceros/agregar_telefono.php",
 				data:cadena,
 				success:function(r){
-					result =toString(r);
-					if (result=='Resource id #6'){
+					if (r.includes('Resource id')){
 						llenar_contacto(ide_ter);
 						actualizar_tabla();
 					}else{
@@ -327,8 +324,7 @@ function agregar_email(){
 				url:"../php/crud/terceros/agregar_email.php",
 				data:cadena,
 				success:function(r){
-					result =toString(r);
-					if (result=='Resource id #6'){
+					if (r.includes('Resource id')){
 						llenar_contacto(ide_ter);
 					}else{
 						llenar_contacto(ide_ter);
@@ -392,7 +388,7 @@ function eliminar_tel(eml){
 	})
 	.then((willDelete) => {
 		if (willDelete) {
-			cadena="eml_ter="+eml;
+			cadena="tel_ter="+eml;
 			$.ajax({
 				type:"post",
 				url:"../php/crud/terceros/eliminar_tel.php",
@@ -512,9 +508,7 @@ function actualizar_tercero(ide_terup,pno_terup,sno_terup,pap_terup,sap_terup,te
 		data:cadena,
 		url:"../php/crud/terceros/actualizar_tercero.php",
 		success:function(r){
-			$('#rrr').val(r);
-			result=$('#rr').val();
-			if (result='Resource id #6'){
+			if (r.includes('Resource id')){
 				actualizar_tabla();
 				$('#modal-form-up').modal('hide');
 

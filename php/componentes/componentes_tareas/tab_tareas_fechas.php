@@ -16,16 +16,18 @@ $ffin = $_POST['ffin'];
       <th scope="col">Insumos</th>
       <th scope="col">Gastos</th>
       <th scope="col">Valor</th>
+      <th scope="col">Labor</th>
+      <th scope="col">Cultivo</th>
       <th></th>
     </tr>
   </thead>
   <tbody id="myTable">
     <?php 
-    $sql="SELECT DISTINCT tarea.cod_tar, tarea.des_tar, tarea.val_tar, tarea.fin_tar, tarea.ffi_tar, fincas.cod_fin, cultivos.cod_cul
-    FROM fincas, lotes, cultivos, ejecutar, convenio, efectuar, tarea
-    WHERE fincas.cod_fin=lotes.cod_fin AND lotes.cod_lot=cultivos.cod_lot 
+    $sql="SELECT DISTINCT tarea.cod_tar, tarea.des_tar, tarea.val_tar, tarea.fin_tar, tarea.ffi_tar, fincas.cod_fin, cultivos.cod_cul,nombre_cultivo.des_ncu, cultivos.npl_cul,lotes.nom_lot, labores.nom_lab, labores.cod_lab 
+    FROM fincas, lotes, cultivos, ejecutar, convenio, efectuar, tarea,  nombre_cultivo, labores
+    WHERE fincas.cod_fin=lotes.cod_fin AND lotes.cod_lot=cultivos.cod_lot AND nombre_cultivo.cod_ncu = cultivos.cod_ncu 
     AND cultivos.cod_cul=ejecutar.cod_cul AND ejecutar.cod_con=convenio.cod_con 
-    AND convenio.cod_con=efectuar.cod_con AND efectuar.cod_tar=tarea.cod_tar and fincas.cod_fin = '$codi_fin'
+    AND convenio.cod_con=efectuar.cod_con AND efectuar.cod_tar=tarea.cod_tar AND tarea.cod_lab = labores.cod_lab  and fincas.cod_fin = '$codi_fin'
     and tarea.fin_tar between '$fini' and '$ffin' ORDER BY tarea.fin_tar DESC "; 
     $result=pg_query($conexion,$sql);
     while($ver=pg_fetch_row($result)){
@@ -35,7 +37,8 @@ $ffin = $_POST['ffin'];
      $ver[3]."||".
      $ver[4]."||".
      $ver[5]."||".
-     $ver[6];
+     $ver[6]."||".
+     $ver[11];
      ?>
      <tr> 
       <td><?php echo $ver[1] ?></td>
@@ -56,14 +59,14 @@ $ffin = $_POST['ffin'];
         $datos = $datos."||Cultural";
       }
 
-      $tipo = "SELECT enf_fit FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
-      $res=pg_query($conexion,$tipo);
-      $filas=pg_num_rows($res);
-      $enf=pg_fetch_row($res);
-      if($filas !=0){
-        echo "Fitosanitaria<br>Enfermedad: $enf[0]";
-        $datos = $datos."||Fitosanitaria. Enfermedad: $enf[0]";
-      }
+      // $tipo = "SELECT enf_fit FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
+      // $res=pg_query($conexion,$tipo);
+      // $filas=pg_num_rows($res);
+      // $enf=pg_fetch_row($res);
+      // if($filas !=0){
+      //   echo "Fitosanitaria<br>Enfermedad: $enf[0]";
+      //   $datos = $datos."||Fitosanitaria. Enfermedad: $enf[0]";
+      // }
 
       ?></td> 
       <td>Inicio: <?php echo $ver[3] ?><br>Fin: <?php echo $ver[4] ?></td>    
@@ -122,10 +125,10 @@ $ffin = $_POST['ffin'];
             $erre=pg_query($conexion,$terceros);
             while($pers=pg_fetch_row($erre)){
               if ($i == 1){
-                echo 'Trabajador: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
+                echo 'Socio: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
                 $i++;
                 }else{
-                 echo '<br>Socio: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
+                 echo '<br>Trabajador: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
                }
              }
              ?><br>
@@ -142,10 +145,10 @@ $ffin = $_POST['ffin'];
       $sql1="SELECT DISTINCT insumos.des_ins, utilizar.cin_tar, unidad_de_medida.des_unm,  
       utilizar.pin_tar, terceros.pno_ter, terceros.sno_ter, 
       terceros.pap_ter, terceros.sap_ter, stock.cod_sto, stock.cod_ins,  utilizar.cod_uti
-      FROM insumos, stock, registrar, compras, comprar, terceros, dueño, unidad_de_medida, utilizar
+      FROM insumos, stock, registrar, compras, comprar, terceros, duenio, unidad_de_medida, utilizar
       WHERE insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
       AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
-      AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter
+      AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter
       AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
       AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
       $result1=pg_query($conexion,$sql1);
@@ -187,10 +190,10 @@ $ffin = $_POST['ffin'];
       <td><?php 
       $sql1="SELECT DISTINCT insumos.des_ins, utilizar.pin_tar,terceros.pno_ter, terceros.sno_ter, 
       terceros.pap_ter, terceros.sap_ter, stock.cod_sto
-      FROM insumos, stock, registrar, compras, comprar, terceros, dueño, unidad_de_medida, utilizar, otros
+      FROM insumos, stock, registrar, compras, comprar, terceros, duenio, unidad_de_medida, utilizar, otros
       WHERE otros.cod_ins = stock.cod_ins AND insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
       AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
-      AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter
+      AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter
       AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
       AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
       $result1=pg_query($conexion,$sql1);
@@ -216,7 +219,9 @@ $ffin = $_POST['ffin'];
       }
 
       ?></td>
-      <td><?php echo "$".$ver[2] ?></td>
+      <td><span style="border: dashed #2dce89; border-radius: 5px; padding: 4px; font-size: 1.1em; color: #2dce89;"><?php echo "$".$ver[2] ?></span></td>
+      <td><?php echo $ver[10] ?></td>
+      <td><?php echo  explode("-",$ver[7])[1]."<br>".$ver[8]." plantas<br> En lote: ".$ver[9]?></td>
       <td class="text-right">
         <div class="dropdown">
           <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

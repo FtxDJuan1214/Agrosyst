@@ -55,9 +55,9 @@
               $like =  $_SESSION['idusuario'];
               $codi_fin=$_SESSION['ide_finca'];
               $query="SELECT insumos.cod_ins,des_ins,des_unm from public.insumos 
-              INNER JOIN otros ON insumos.cod_ins=otros.cod_ins
-              INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm
-              where otros.det_otr LIKE '$like%'";
+                INNER JOIN otros ON insumos.cod_ins=otros.cod_ins
+                INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm
+                where otros.det_otr LIKE '$like%' or otros.det_otr LIKE '1-%'";
               $result =pg_query($conexion,$query);
               while ($ver=pg_fetch_row($result)) {
                ?>

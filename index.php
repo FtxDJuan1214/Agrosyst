@@ -41,7 +41,7 @@ require 'php/conexion.php';
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Agrosyst</title>
+  <title>Agrosyst Co</title>
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -121,12 +121,12 @@ require 'php/conexion.php';
 
                 <div class="row">
                   <div class="col-sm-9 col-md-9 col-lg-9">
-                   <div id="dueños">
+                   <div id="duenios">
 
                    </div>
                  </div>
                  <div class="col-sm-3 col-md-3 col-lg-3">
-                  <button type="button" class="btn btn-amarillo" data-toggle="modal" data-target="#modal-dueño"><i class="fas fa-user-plus"></i></button>
+                  <button type="button" class="btn btn-amarillo" data-toggle="modal" data-target="#modal-duenio"><i class="fas fa-user-plus"></i></button>
                 </div>
               </div>
               <div class="form-group mb-3">
@@ -212,7 +212,7 @@ require 'php/conexion.php';
 
     <li class="selected">
       <div class="heading">
-        <h1>AGROSYST</h1>
+        <h1>Agrosyst Co</h1>
         <span>¡Bienvenido a tu sistema Agro!</span>
         <?php 
         date_default_timezone_set('America/Bogota');
@@ -286,7 +286,7 @@ require 'php/conexion.php';
 </section> <!-- .cd-hero -->
 <!-- modal para ingresar datos -->
 <div class="col-md-4">
-  <div class="modal fade" id="modal-dueño" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+  <div class="modal fade" id="modal-duenio" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
     <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
 
@@ -299,7 +299,7 @@ require 'php/conexion.php';
             </a>
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <h3>Agregar terero</h3>
+                <h3>Agregar tercero</h3>
               </div>
               <form role="form" id="form-add-ter" >
 
@@ -362,7 +362,7 @@ require 'php/conexion.php';
                     <div class="form-group mb-3">
                       <div class="input-group input-group-alternative">
                         <select id="tipo_per" disabled class="form-control"data-live-search="true">
-                          <option value="1" disabled selected >Dueño</option>
+                          <option value="1" disabled selected >Duenio</option>
                         </select>
                       </div>
                     </div>
@@ -391,7 +391,7 @@ require 'php/conexion.php';
 <script src="librerias/Inicio/js/plugins.js"></script>
 <script src="librerias/Inicio/js/main.js"></script>
 <footer style="position:fied;">
-  <p>Copyright &copy; 2019
+  <p>Agrosyst Co &copy; 2020
   </footer>
 
   <div class="contenedor" style="position: absolute; z-index: 300;">

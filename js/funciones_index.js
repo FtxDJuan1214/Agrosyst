@@ -122,9 +122,7 @@ function agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter
 			data:cadena,
 			url:"php/crud/terceros/agregar_tercero.php",
 			success:function(r){
-				$('#rr').val(r);
-				result=$('#rr').val();
-				if(result=='Resource id #6'){
+				if(r.includes('Resource id')){
 
 					swal("Tercero agregado!"," ", "success");
 
@@ -134,7 +132,7 @@ function agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter
 
 					jQuery('#preloaderd').hide();
 					jQuery('#form-add-ter').show();
-					$('#dueños').load('php/componentes/componentes_index/duenios.php');
+					$('#duenios').load('php/componentes/componentes_index/duenios.php');
 				// Insertar el telefono del tercero
 
 				if(tel_ter==null||tel_ter==" "||tel_ter==""||tel_ter==''){}else{
@@ -160,12 +158,12 @@ function agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter
      				url:"php/crud/terceros/agregar_tipo_per.php",
      				data:cadena,
      				success:function(r){
-     					// alert(r);
-     					$('#dueños').load('php/componentes/componentes_index/duenios.php');
+     					//alert("tipo: " + r);
+     					$('#duenios').load('php/componentes/componentes_index/duenios.php');
      				}
      			});
-     			$('#dueños').load('php/componentes/componentes_index/duenios.php');
-     			$('#modal-dueño').modal('hide');
+     			$('#duenios').load('php/componentes/componentes_index/duenios.php');
+     			$('#modal-duenio').modal('hide');
 
 
      		}else{
@@ -179,14 +177,14 @@ function agregar_tercero(ide_ter,pno_ter,sno_ter,pap_ter,sap_ter,tel_ter,eml_ter
 	}else{
 		jQuery('#preloaderd').hide();
 		jQuery('#form-add-ter').show();
-		$('#modal-dueño').modal('hide');
+		$('#modal-duenio').modal('hide');
 
 	}
 }
 
 
 $(document).ready(function(){
-	$('#dueños').load('php/componentes/componentes_index/duenios.php');
+	$('#duenios').load('php/componentes/componentes_index/duenios.php');
 	$('#dep_fin').change(function(){
 		recargarlista();      
 	});
@@ -223,7 +221,7 @@ $(document).ready(function(){
 		$('#div_eml_ter').addClass("input-group input-group-alternative");
 	});
 
-	$('#modal-dueño').on('hidden.bs.modal', function (e) {
+	$('#modal-duenio').on('hidden.bs.modal', function (e) {
 		$('#modal-form').modal('hide');
 	})
 
@@ -240,5 +238,9 @@ function recargarlista(){
 			$('#muni_dep').html(r);
 		}
 	});
+}
+
+for (var i = 0 ; i<10; i++) {
+	console.log("hola");
 }
 

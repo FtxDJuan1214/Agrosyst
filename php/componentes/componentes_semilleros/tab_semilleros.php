@@ -20,7 +20,7 @@ require '../../conexion.php';
     INNER JOIN semillero ON insumos.cod_ins=semillero.cod_ins  
     INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm  
     INNER JOIN tipo_semillero ON semillero.cod_tso=tipo_semillero.cod_tso
-    WHERE det_smr LIKE '$like%'"; 
+    WHERE det_smr LIKE '$like%' OR det_smr LIKE '1-%'"; 
     $result=pg_query($conexion,$sql);
     while($ver=pg_fetch_row($result)){
 
@@ -45,8 +45,21 @@ require '../../conexion.php';
             <i class="fas fa-ellipsis-v"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-            <a class="dropdown-item" href="#" onclick="llenarform(' <?php  echo $datos ?> ')"><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
+             <?php  
+              if ($partes[0] != '1') {
+                ?>
+                 <a class="dropdown-item" href="#" onclick="llenarform(' <?php  echo $datos ?> ')"><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
             <a class="dropdown-item" href="#" onclick="eliminar_semillero(' <?php  echo $datos ?> ')"><div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div></a>
+                <?php
+              }else{
+                ?>
+                <div class="text-center">
+                  <i class="fa fa-ban text-danger" aria-hidden="true" style="font-size: 1.1rem;"></i>
+                </div>
+                
+                <?php
+              }
+              ?>
           </div>
         </div>
       </td>

@@ -164,7 +164,7 @@ function agregar_producciones(cod_tpr,cod_pro,fec_goz,ctp_goz,pre_goz,cpt_goz,co
 		url:"../php/crud/produccion/crear_producciones.php",
 		data:cadena,
 		success:function(r){
-			if(r.trim() =='Resource id #6'){
+			if(r.includes('Resource id')){
 
 				swal("Producción agregada!"," ", "success");
 				var form = document.querySelector('#form-add-producciones');
@@ -192,7 +192,7 @@ function agregar_producciones(cod_tpr,cod_pro,fec_goz,ctp_goz,pre_goz,cpt_goz,co
 
 			}else{
 				Produccion = $("#tip_prod option:selected").text().split("-")[0].toLowerCase();
-				swal("la producción de tomate "+ Produccion +" ya está registrada, si quiere aumentar o cambiar la cantidad debe editar esta producción!","", "warning");
+				swal("la producción de tomate "+ Produccion +" ya está registrada, si quiere aumentar o cambiar la cantidad debe editar esa producción!","", "warning");
 			}
 		}
 	});
@@ -233,7 +233,7 @@ function editar_producciones(cod_tpr,cod_pro,fec_goz,ctp_goz,pre_goz,cpt_goz,cod
 		url:"../php/crud/produccion/editar_producciones.php",
 		data:cadena,
 		success:function(r){
-			if(r.trim() =='Resource id #6'){
+			if(r.includes('Resource id')){
 
 				ajax2 = objetoAjax();
 				ajax2.open("POST","../php/componentes/componentes_produccion/tab_producciones.php", true);
@@ -315,7 +315,7 @@ function eliminar_produccion(cod_pro,cod_tpr){
 				url:"../php/crud/produccion/eliminar_producciones.php",
 				data:cadena,
 				success:function(r){
-					if(r.trim() =='Resource id #6'){
+					if(r.includes('Resource id')){
 						ajax2 = objetoAjax();
 						ajax2.open("POST","../php/componentes/componentes_produccion/tab_producciones.php", true);
 						ajax2.onreadystatechange=function(){
@@ -381,7 +381,7 @@ function eliminar_todo(cod_pro,cod_cuñ){
 				url:"../php/crud/produccion/eliminar_produccion.php",
 				data:cadena,
 				success:function(r){
-					if(r.trim() =='Resource id #6' || r.trim() =='Resource id #7'){
+					if(r.includes('Resource id')){
 						$('#tab_tipo_prod').load('../php/componentes/componentes_produccion/tab_produccion.php');						
 						swal("La producción se elimino!", {
 							icon: "info",
@@ -413,7 +413,7 @@ function editar_toda_produccion(){
 			url:"../php/crud/produccion/actualizar_cliente.php",
 			data:cadena,
 			success:function(r){
-				if(r.trim() =='Resource id #6'){
+				if(r.includes('Resource id')){
 					$('#tab_tipo_prod').load('../php/componentes/componentes_produccion/tab_produccion.php');					
 				}					
 			}
@@ -462,7 +462,7 @@ function Cargar_tab_fechas(){
 
 
 $(document).ready(function(){
-	alert("Arreglar lo de los selects");
+	//alert("Arreglar lo de los selects");
 	jQuery('#ver2').hide();
 
 	$(function () {

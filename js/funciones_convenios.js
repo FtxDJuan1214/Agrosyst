@@ -77,9 +77,29 @@
         }
 
         if(bien == true){
-          jQuery('#preloader').show();
-          jQuery('#form-add-convenio').hide();
-          setTimeout ("crear_convenio(fec_con,trabajador,socio,cod_cul,tipo_con,des_cont,val_cont,ffi_con,hor_jor,vho_hor);", 1000);
+
+          swal({
+            title: "Si no está seguro, por favor verifique el formulario antes dar OK.",
+            text: "¡Una vez creado el convenio no podrá ser editado,\ny solo se podrá eliminar si no ha sido efectuado!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+
+              jQuery('#preloader').show();
+              jQuery('#form-add-convenio').hide();
+              setTimeout ("crear_convenio(fec_con,trabajador,socio,cod_cul,tipo_con,des_cont,val_cont,ffi_con,hor_jor,vho_hor);", 1000);
+
+            } else {
+              swal("Revise la información ingresada!", {
+                icon: "info",
+              });
+            }
+          });
+
+          
         }
 
       }   
@@ -128,10 +148,26 @@
 
 
         if(bien == true){
-          jQuery('#preloader').show();
-          jQuery('#form-add-convenio').hide();
-          setTimeout ("crear_convenio(fec_con,trabajador,socio,cod_cul,tipo_con,des_cont,val_cont,ffi_con,hor_jor,vho_hor);", 1000);
+          swal({
+            title: "Si no está seguro, por favor verifique el formulario antes dar OK.",
+            text: "¡Una vez creado el convenio no podrá ser editado,\ny solo se podrá eliminar si no ha sido efectuado!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
 
+             jQuery('#preloader').show();
+             jQuery('#form-add-convenio').hide();
+             setTimeout ("crear_convenio(fec_con,trabajador,socio,cod_cul,tipo_con,des_cont,val_cont,ffi_con,hor_jor,vho_hor);", 1000);
+
+           } else {
+            swal("Revise la información ingresada!", {
+              icon: "info",
+            });
+          }
+        });
         }
 
       }   
@@ -158,7 +194,7 @@ function crear_convenio(fec_con,trabajador,socio,cod_cul,tipo_con,des_cont,val_c
    url:"../php/crud/convenios/crear_convenio.php",
    data:cadena,
    success:function(r){
-     if(r=='Resource id #6'){
+     if(r.includes('Resource id')){
 
        var form = document.querySelector('#form-add-convenio');
        form.reset();
@@ -206,14 +242,16 @@ function crear_convenio(fec_con,trabajador,socio,cod_cul,tipo_con,des_cont,val_c
        });
 
        $('#tab_convenios').load('../php/componentes/componentes_convenio/tab_convenio.php');
+       document.getElementById("aportes_chart").innerHTML="";
 
      }else{
-      jQuery('#preloader').show();
-      jQuery('#form-add-convenio').hide();
-      setTimeout ("crear_convenio(fec_con,trabajador,socio,cod_cul,tipo_con,des_cont,val_cont,ffi_con,hor_jor,vho_hor);", 1000);
-    }
-  }
-});
+       alert(r);
+       jQuery('#preloader').show();
+       jQuery('#form-add-convenio').hide();
+       setTimeout ("crear_convenio(fec_con,trabajador,socio,cod_cul,tipo_con,des_cont,val_cont,ffi_con,hor_jor,vho_hor);", 1000);
+     }
+   }
+ });
  $('#tab_convenios').load('../php/componentes/componentes_convenio/tab_convenio.php');
 
 }
@@ -230,17 +268,33 @@ function eliminar_convenio(cod_con){
      cadena="cod_con="+cod_con;
      $.ajax({
        type:"post",
-       url:"../php/crud/convenios/eliminar_convenio.php",
+       url:"../php/crud/convenios/confirmar_convenio.php",
        data:cadena,
        success:function(r){
-        alert(r);
-        $('#tab_convenios').load('../php/componentes/componentes_convenio/tab_convenio.php');
+        if(r.trim()==""){
+         $.ajax({
+           type:"post",
+           url:"../php/crud/convenios/eliminar_convenio.php",
+           data:cadena,
+           success:function(r){
+            if (r.includes('Resource id')) {
+             swal("El convenio se elimino!", {
+               icon: "success",
+             });
+           }else{
+            alert(r);
+          }
+          $('#tab_convenios').load('../php/componentes/componentes_convenio/tab_convenio.php');
+        }
+      });
+       }else{
+        swal(r, {
+          icon: "info",
+        });
       }
-    });
-
-     swal("El convenio se elimino!", {
-       icon: "success",
-     });
+      $('#tab_convenios').load('../php/componentes/componentes_convenio/tab_convenio.php');
+    }
+  });
    } else {
      swal("Cancelado!");
    }
@@ -337,7 +391,7 @@ function actualizar_convenio(cod_conup,fec_con_up,ide_ter_up,cod_cul_up,des_cont
    url:"../php/crud/convenios/actualizar_convenio.php",
    data:cadena,
    success:function(r){
-     if(r=='Resource id #6'){
+     if(r.includes('Resource id')){
        $('#tab_convenios').load('../php/componentes/componentes_convenio/tab_convenio.php');
        swal("Convenio agregado!"," ", "success");
        $.ajax({
@@ -345,7 +399,7 @@ function actualizar_convenio(cod_conup,fec_con_up,ide_ter_up,cod_cul_up,des_cont
          url:"../php/crud/convenios/actualizar_tipo_convenio.php",
          data:cadena,
          success:function(e){
-           if(e=='Resource id #6'){
+           if(e.includes('Resource id')){
            }else{
              alert(r);
            }
@@ -498,4 +552,19 @@ function cerrar_menu(){
   $('#sidenav-main').remove();
   jQuery('#ver1').hide();
   jQuery('#ver2').show();
+}
+
+function cargar_aportes(){
+  document.getElementById("aportes_chart").innerHTML="";
+  if ($('#cod_cul').val() != null) {
+   ajax2 = objetoAjax();
+   ajax2.open("POST","../php/componentes/aportes/aporte_socios_form.php", true);
+   ajax2.onreadystatechange=function(){
+    if ( ajax2.readyState==4 ) {
+      document.getElementById("aportes_chart").innerHTML=ajax2.responseText;
+    }
+  }
+  ajax2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  ajax2.send("cod_cul="+$('#cod_cul').val()+ "&nom_cul=" + $("#cod_cul option:selected").text());
+}
 }

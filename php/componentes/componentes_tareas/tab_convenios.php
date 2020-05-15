@@ -5,8 +5,9 @@
   $fif_tar =$_POST['fif_tar'];
   ?>
   <div class="row">
+
     <h3 class="modal-title centered">Convenios desde <?php echo $fin_tar." a ".$fif_tar; ?></h3><br><br>
-    <div class="card bg-default shadow" style="width: 100%; ">
+     <div class="card bg-default shadow" style="width: 100%; ">
       <div class="table-responsive">
         <table class="table align-items-center table-dark table-flush">
           <thead class="thead-dark">
@@ -37,64 +38,64 @@
              $rex=pg_query($conexion,$validar);
              $filas=pg_num_rows($rex);
              if ($filas == 0) {
-             $datos=$ver[0].",Fecha: ".$ver[1];
-             ?>
-             <tr>
-               <td><?php echo $ver[1] ?></td>
+               $datos=$ver[0].",Fecha: ".$ver[1];
+               ?>
+               <tr>
+                 <td><?php echo $ver[1] ?></td>
 
 
-               <?php
-               $sql1="SELECT  ide_ter
-               FROM public.act_con where cod_con='$ver[0]'"; 
-               $r=pg_query($conexion,$sql1);
-               $persona="";
-               $cont = 0;
-               while($se=pg_fetch_row($r)){
-                ?>
-                <td><?php
-                $q="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter
-                FROM public.terceros WHERE terceros.ide_ter ='$se[0]'";
-                $ress =pg_query($conexion,$q);
-                $noms=pg_fetch_row($ress);
-                if($cont==0){
-                  $datos = $datos."<br>Trabajador: ".$noms[1]." ".$noms[2]." ".$noms[3]." ".$noms[4];
-                  $cont++;
-                }
-                echo $noms[1]." ".$noms[2]."<br>".$noms[3]." ".$noms[4];
-                $persona=$se[0]."*".$persona;
-                ?>
-              </td>
-              <?php 
-            }
-            ?>
+                 <?php
+                 $sql1="SELECT  ide_ter
+                 FROM public.act_con where cod_con='$ver[0]'"; 
+                 $r=pg_query($conexion,$sql1);
+                 $persona="";
+                 $cont = 0;
+                 while($se=pg_fetch_row($r)){
+                  ?>
+                  <td><?php
+                  $q="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter
+                  FROM public.terceros WHERE terceros.ide_ter ='$se[0]'";
+                  $ress =pg_query($conexion,$q);
+                  $noms=pg_fetch_row($ress);
+                  if($cont==0){
+                    $datos = $datos."<br>Trabajador: ".$noms[1]." ".$noms[2]." ".$noms[3]." ".$noms[4];
+                    $cont++;
+                  }
+                  echo $noms[1]." ".$noms[2]."<br>".$noms[3]." ".$noms[4];
+                  $persona=$se[0]."*".$persona;
+                  ?>
+                </td>
+                <?php 
+              }
+              ?>
 
 
-            <td><?php 
-            $sql2=" SELECT hor_jor,vho_jor FROM jornales WHERE cod_con='$ver[0]'"; 
-            $result1=pg_query($conexion,$sql2);
-            $see=pg_fetch_row($result1);
-            if($see!=0){
-              $datos = $datos."<br>Jornal por : ".($see[0]*$see[1]).",".($see[0]*$see[1]);
-              echo "Pago jornal: <br>".($see[0]*$see[1]);
-            }
+              <td><?php 
+              $sql2=" SELECT hor_jor,vho_jor FROM jornales WHERE cod_con='$ver[0]'"; 
+              $result1=pg_query($conexion,$sql2);
+              $see=pg_fetch_row($result1);
+              if($see!=0){
+                $datos = $datos."<br>Jornal por : ".($see[0]*$see[1]).",".($see[0]*$see[1]);
+                echo "Pago jornal: <br>".($see[0]*$see[1]);
+              }
 
-            $sql2="SELECT val_cot,convenio.fec_con,ffi_con,des_cot FROM contratos INNER JOIN convenio on contratos.cod_con=convenio.cod_con 
-            and contratos.cod_con='$ver[0]'"; 
-            $result1=pg_query($conexion,$sql2);
-            $see=pg_fetch_row($result1);
-            if($see!=0){
-             $datos = $datos."<br>Contrato por : ".$see[0].",".$see[0];
-             echo 'Valor contrato: <br>'.$see[0];
-           }
-           ?></td>
-           <td> <button class="btn btn-sm btn-secondary btn-icon-only rounded-circle" type="button" 
-            onclick="stringconvenios('<?php  echo $datos ?> ')">
-            <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-          </button></td>
+              $sql2="SELECT val_cot,convenio.fec_con,ffi_con,des_cot FROM contratos INNER JOIN convenio on contratos.cod_con=convenio.cod_con 
+              and contratos.cod_con='$ver[0]'"; 
+              $result1=pg_query($conexion,$sql2);
+              $see=pg_fetch_row($result1);
+              if($see!=0){
+               $datos = $datos."<br>Contrato por : ".$see[0].",".$see[0];
+               echo 'Valor contrato: <br>'.$see[0];
+             }
+             ?></td>
+             <td> <button class="btn btn-sm btn-secondary btn-icon-only rounded-circle" type="button" 
+              onclick="stringconvenios('<?php  echo $datos ?> ')">
+              <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+            </button></td>
 
-        </tr>
-        <?php 
-      }
+          </tr>
+          <?php 
+        }
       }
       ?>
     </tbody>

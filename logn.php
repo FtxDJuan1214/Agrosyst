@@ -13,7 +13,7 @@ body {
  
 </style>
 <head>
-    <title>Login Agrosyst</title>
+    <title>Login Agrosyst Co</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->  
@@ -56,7 +56,7 @@ body {
                         Bienvenido
                     </span>
                     <span class="login100-form-title p-b-48">
-                        <img src="imagenes/Logo.png" alt="Logotipo agrosyst" style="width:75px; align-self: center;">
+                        <img src="imagenes/Logo.png" alt="Logotipo Agrosyst Co Co Co Co Co" style="width:75px; align-self: center;">
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">

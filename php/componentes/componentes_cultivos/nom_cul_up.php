@@ -8,7 +8,7 @@
           session_start();
           $like = $_SESSION['idusuario'];
           require '../../conexion.php';
-          $query="SELECT * FROM nombre_cultivo  WHERE des_ncu LIKE'$like%' ORDER BY cod_ncu ASC";
+          $query="SELECT * FROM nombre_cultivo  WHERE des_ncu LIKE'$like%' OR des_ncu LIKE'1-%' ORDER BY cod_ncu ASC";
           $result =pg_query($conexion,$query);
           echo $result;
           while ($ver=pg_fetch_row($result)) {

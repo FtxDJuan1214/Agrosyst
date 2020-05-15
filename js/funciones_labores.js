@@ -51,8 +51,7 @@ function agregar_labor(nom_lab,det_lab){
 		data:cadena,
 		url:"../php/crud/labores/agregar_labor.php",
 		success:function(r){
-			result=r.trim();
-			if(result=='Resource id #6'){
+			if(r.includes('Resource id')){
 				actualizar_tabla();
 				$('#modal-form').modal('hide');
 
@@ -63,7 +62,7 @@ function agregar_labor(nom_lab,det_lab){
 				jQuery('#preloader').hide();
 				jQuery('#form-add-lab').show();
 
-				swal("Labor Agregada!"," ", "success");
+				swal("Labor Agregada!","", "success");
 			}else{
 				swal("Verifica los datos!", r , "error");
 				jQuery('#preloader').hide();
@@ -135,8 +134,7 @@ function actualizar_labor(global,nom_labup,det_labup){
 		url:"../php/crud/labores/actualizar_labor.php",
 		data:cadena,
 		success:function(r){
-			result=r.trim();
-			if(result=='Resource id #6'){
+			if(r.includes('Resource id')){
 				swal("¡Labor Editada!"," ", "success");
 				var form = document.querySelector('#form-up-lab');
 				form.reset();
@@ -146,7 +144,6 @@ function actualizar_labor(global,nom_labup,det_labup){
 				$('#tab_lab').load('../php/componentes/componentes_labores/tab_lab.php');
 
 			}else{
-				alert(r); 
 				jQuery('#preloaderup').hide();
 				jQuery('#form-up-lab').show();
 				$('#tab_lab').load('../php/componentes/componentes_labores/tab_lab.php');        

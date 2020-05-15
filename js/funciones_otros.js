@@ -55,8 +55,7 @@ function agregar_insumo(des_ins,cod_unm,det_otr){
 		data:cadena,
 		url:"../php/crud/otros/agregar_insumo.php",
 		success:function(r){
-			result= r.trim();
-			if(result=='Resource id #6'){				
+			if(r.includes('Resource id')){				
 
 				actualizar_tabla();
 				$('#modal-form').modal('hide');
@@ -163,8 +162,7 @@ function actualizar_otro(global,global1,des_insup,tip_uni_medup,uni_medup,det_ot
 		url:"../php/crud/otros/actualizar_otro.php",
 		data:cadena,
 		success:function(r){
-			result= r.trim();
-			if(result=='Resource id #6' || result=='Resource id #7'){
+			if(r.includes('Resource id')){
 				swal("¡Gato Editado!"," ", "success");
 				var form = document.querySelector('#form-up-otr');
 				form.reset();

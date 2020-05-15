@@ -104,11 +104,11 @@ require '../../conexion.php';
                     }
 
                     $sql2="SELECT cod_due
-                    FROM public.dueño where ide_ter='$ver[0]'"; 
+                    FROM public.duenio where ide_ter='$ver[0]'"; 
                     $result1=pg_query($conexion,$sql2);
                     $see=pg_fetch_row($result1);
                     if($see!=0){
-                        echo 'Dueño';
+                        echo 'Duenio';
                         $datos=$ver[0]."||".
                         $ver[1]."||".
                         $ver[2]."||".

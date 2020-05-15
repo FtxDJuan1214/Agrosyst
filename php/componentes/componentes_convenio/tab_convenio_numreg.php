@@ -15,6 +15,7 @@ $num_reg = $_POST['num_reg'];
       <th scope="col">Socio</th>
       <th scope="col">Tipo de convenio</th>
       <th acope="col">Cultivo</th>
+      <th acope="col">Estado</th>
       <th scope="col">Eliminar</th>
     </tr>
   </thead>
@@ -47,7 +48,7 @@ $num_reg = $_POST['num_reg'];
         $ress =pg_query($conexion,$q);
         $noms=pg_fetch_row($ress);
 
-        echo $noms[1]." ".$noms[2]." ".$noms[3]." ".$noms[4];
+        echo $noms[1]." ".$noms[2]."<br>".$noms[3]." ".$noms[4];
         $persona=$se[0]."*".$persona;
         ?>
       </td>
@@ -90,7 +91,20 @@ $num_reg = $_POST['num_reg'];
   ?>
 </td>
 <td><?php $array=explode("-", $ver[5]); echo $array[1]."<br>".$ver[6]."<br>".$ver[7]." Plantas"?></td>
+<td>
+  <?php 
 
+  $consulta5= "SELECT * FROM public.efectuar WHERE  cod_con='$ver[0]'";
+  $result5=pg_query($conexion,$consulta5);
+  $filas5=pg_num_rows($result5);
+  if($filas5 > 0 ){
+    echo "<p class='text-success' style='font-size: 0.9rem;' >Efectuado</>";
+  }else{
+    echo "<p class='text-warning' style='font-size: 0.9rem;' >Sin efectuar</>";
+  }
+
+  ?>
+</td>
 <td>
  <a href="#"  onclick="eliminar_convenio(' <?php  echo $ver[0] ?> ')"><div class="icon-sm icon-shape bg-gradient-red text-white rounded-circle "><i class="fas fa-backspace text-white"></i></div></a>
 </td>

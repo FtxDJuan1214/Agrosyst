@@ -18,8 +18,17 @@ move_uploaded_file($ruta, $folder.'/'.$nomi);
 
 $img = "fincas/".$nomi;
 
+$sqx="SELECT cnt_fin FROM public.fincas ORDER BY cnt_fin DESC LIMIT 1";
+$res=pg_query($conexion,$sqx);
+$ver=pg_fetch_row($res);
+
+$cnt_fin= 1;
+if (pg_num_rows($res) != 0) {
+	$cnt_fin=$ver[0] + 1;
+}
+
 $sql="INSERT INTO public.fincas(
-cod_fin, nom_fin, det_fin, cod_dep, cod_mun, ide_ter, cod_unm, med_fin,fot_fin)
-VALUES ('$cod_fin','$nom_fin', '$det_fin', '$cod_dep','$cod_mun','$ide_ter','$cod_unm', '$med_fin','$img')";		 
+cod_fin, nom_fin, det_fin, cod_dep, cod_mun, ide_ter, cod_unm, med_fin,fot_fin, cnt_fin)
+VALUES ('$cod_fin','$nom_fin', '$det_fin', '$cod_dep','$cod_mun','$ide_ter','$cod_unm', '$med_fin','$img', '$cnt_fin')";		 
 echo $result=pg_query($conexion,$sql); 
 ?>

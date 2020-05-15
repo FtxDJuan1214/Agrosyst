@@ -33,10 +33,19 @@ $codi_fin=$_SESSION['ide_finca'];
     ORDER BY cultivos.cod_cul ASC"; 
     $result=pg_query($conexion,$sql);
     while($ver=pg_fetch_row($result)){
-      $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
-      $ver[6]."||".$ver[7]."||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
+
+      $sq1="SELECT cod_cul,act_cul.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter 
+      FROM act_cul INNER JOIN terceros ON terceros.ide_ter=act_cul.ide_ter
+      WHERE cod_cul='$ver[0]'"; 
+      $resul1=pg_query($conexion,$sq1);
+      $socios=pg_num_rows($resul1);
+      $datos = "";
       ?>
-      <tr>
+      <tr 
+      <?php if($socios== 0){
+        echo "style='background: rgba(232,170,27,.3)'";
+      } ?>
+      >
         <td><?php $array=explode("-", $ver[9]); echo $array[1];?></td>
         <td>
          <div class=" icon-sm icon-shape bg-gradient-verde text-white rounded-circle " data-toggle="tooltip" data-placement="bottom" title="<?php
@@ -65,9 +74,8 @@ $codi_fin=$_SESSION['ide_finca'];
 
     $Dias_totales = $ver[3] ;
     $Dias_actuales = $tiempo[11];
-      // echo "dias totales = ".$Dias_totales."<br>";
-      // echo "dias actuales = ".$Dias_actuales."<br>";
-
+    // echo "dias totales = ".$Dias_totales."<br>";
+    // echo "dias actuales = ".$Dias_actuales."<br>";
 
     $porcentaje=intval((($Dias_actuales*100)/$Dias_totales));;
 
@@ -149,22 +157,83 @@ if ($ver[5] == 1) {
 
 </td>
 <td><?php echo $ver[6] ?></td>
-<td><?php  if ($ver[7] == 1) {
- echo "Inicio";
-}elseif ($ver[7] == 2) {
- echo "Crecimiento";
-}elseif ($ver[7] == 3) {
- echo "Producción";
-} elseif ($ver[7] == 4) {
+<td><?php
+if($ver[7] != 7){
+
+  if($Dias_actuales >= 0 && $Dias_actuales <= 3){
+
+    $sqlet = "UPDATE public.cultivos SET est_cul='1' WHERE cod_cul='$ver[0]'";
+    $resultet=pg_query($conexion,$sqlet);
+
+    $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
+    $ver[6]."||1||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
+
+    echo "Inicio";
+
+  }else if($Dias_actuales > 3 && $Dias_actuales <=210){
+
+    $sqlet = "UPDATE public.cultivos SET est_cul='2' WHERE cod_cul='$ver[0]'";
+    $resultet=pg_query($conexion,$sqlet);
+
+    $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
+    $ver[6]."||2||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
+
+    echo "Crecimiento";
+  }else if($Dias_actuales > 210 && $Dias_actuales <=240){
+
+    $sqlet = "UPDATE public.cultivos SET est_cul='3' WHERE cod_cul='$ver[0]'";
+    $resultet=pg_query($conexion,$sqlet);
+
+    $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
+    $ver[6]."||3||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
+
+    echo "Inicio afloración";
+  }else if($Dias_actuales > 240 && $Dias_actuales <=300){
+
+    $sqlet = "UPDATE public.cultivos SET est_cul='4' WHERE cod_cul='$ver[0]'";
+    $resultet=pg_query($conexion,$sqlet);
+
+    $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
+    $ver[6]."||4||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
+
+    echo "Maxima afloración";
+  }else if($Dias_actuales > 300 && $Dias_actuales <=365){
+
+    $sqlet = "UPDATE public.cultivos SET est_cul='5' WHERE cod_cul='$ver[0]'";
+    $resultet=pg_query($conexion,$sqlet);
+
+    $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
+    $ver[6]."||5||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
+
+    echo "Inicio fructificación";
+  }else if ($Dias_actuales > 365 && $Dias_actuales < $Dias_totales ) {
+
+    $sqlet = "UPDATE public.cultivos SET est_cul='6' WHERE cod_cul='$ver[0]'";
+    $resultet=pg_query($conexion,$sqlet);
+
+    $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
+    $ver[6]."||6||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
+
+    echo "Cosecha";
+  }else if($Dias_actuales >= $Dias_totales ){
+
+    $sqlet = "UPDATE public.cultivos SET est_cul='7' WHERE cod_cul='$ver[0]'";
+    $resultet=pg_query($conexion,$sqlet);
+
+    $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
+    $ver[6]."||7||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
+
+    echo "Finalización";
+  }
+}else{
+ $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
+ $ver[6]."||".$ver[7]."||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
  echo "Finalización";
-}  ?></td>
+}
+?></td>
 <td><?php echo $ver[11] ?></td>
 <td>
  <?php 
- $sq1="SELECT cod_cul,act_cul.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter 
- FROM act_cul INNER JOIN terceros ON terceros.ide_ter=act_cul.ide_ter
- WHERE cod_cul='$ver[0]'"; 
- $resul1=pg_query($conexion,$sq1);
  while($see=pg_fetch_row($resul1)){
   echo $see[2]." ".$see[3]." ".$see[4]." ".$see[5];
   ?>
@@ -189,8 +258,7 @@ if ($ver[5] == 1) {
 }
 ?>
 </tbody>
-
-
+</table>
 <script>
   $(function () {
     $("[data-toggle='tooltip']").tooltip();

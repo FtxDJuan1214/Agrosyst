@@ -38,8 +38,8 @@
        url:"../php/componentes/componentes_lotes/unidad_medida.php",
        data:"uni_med="+UniMedida,
        success:function(r){
-         med_lot=(r*medi_lote);
-       // alert("medida del lote: "+med_lot);
+       med_lot=(r*medi_lote);
+       //alert("medida del lote: "+med_lot);
        if (med_lot <= area_free) {
          jQuery('#preloader').show();
          jQuery('#form-add-lote').hide();
@@ -77,7 +77,7 @@ function crear_lote(nomb_lote,NFinca,UniMedida,medi_lote){
    url:"../php/crud/lotes/crear_lote.php",
    data:cadena,
    success:function(r){
-     if(r=='Resource id #6'){
+     if(r.includes('Resource id')){
        swal("Lote agregado!"," ", "success");
        $('#tab_lotes').load('../php/componentes/componentes_lotes/tab_lotes.php');
        var form = document.querySelector('#form-add-lote');
@@ -87,6 +87,7 @@ function crear_lote(nomb_lote,NFinca,UniMedida,medi_lote){
        $('#modal-form').modal('hide');
 
      }else{
+       swal("Error!",r, "error");
       jQuery('#preloader').hide();
       jQuery('#form-add-lote').show();
     }
@@ -189,7 +190,7 @@ function preloaderup(){
            url:"../php/crud/lotes/actualizar_lote.php",
            data:cadena,
            success:function(r){
-             if(r=='Resource id #6'|| r=='Resource id #7'){
+             if(r.includes('Resource id')){
                swal("Lote Editado!"," ", "success");
                $('#tab_lotes').load('../php/componentes/componentes_lotes/tab_lotes.php');
                var form = document.querySelector('#form-up-lote');
@@ -198,6 +199,7 @@ function preloaderup(){
                jQuery('#form-up-lote').show();
                $('#modal-form-up').modal('hide');
              }else{
+               swal("Error!",r, "error");
                jQuery('#preloaderup').hide();
                jQuery('#form-up-lote').show();
              }
@@ -216,7 +218,7 @@ function preloaderup(){
              url:"../php/crud/lotes/actualizar_lote.php",
              data:cadena,
              success:function(r){
-               if(r=='Resource id #6'|| r=='Resource id #7'){
+               if(r.includes('Resource id')){
                  swal("Lote Editado!"," ", "success");
                  $('#tab_lotes').load('../php/componentes/componentes_lotes/tab_lotes.php');
                  var form = document.querySelector('#form-up-lote');

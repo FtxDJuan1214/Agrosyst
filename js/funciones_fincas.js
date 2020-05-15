@@ -55,10 +55,9 @@
  }
 
  if(bien == true){
-  alert("Todo bien.");
-  // jQuery('#preloader').show();
-  // jQuery('#form-add-finca').hide();
-  // setTimeout ("crear_finca(cod_fin,nom_fin,det_fin,due_fin,dep_fin,mun_dep,uni_med,med_fin);", 1000);
+  jQuery('#preloader').show();
+  jQuery('#form-add-finca').hide();
+  setTimeout ("crear_finca(cod_fin,nom_fin,det_fin,due_fin,dep_fin,mun_dep,uni_med,med_fin);", 1000);
 }
 }
 
@@ -75,7 +74,8 @@ function crear_finca(cod_fin,nom_fin,det_fin,due_fin,dep_fin,mun_dep,uni_med,med
    contentType: false,
    processData: false,
    success:function(r){
-    if(r=='Resource id #4' || r=='Resource id #6'){
+     //alert("erre: " +r);
+    if(r.includes('Resource id')){
      var form = document.querySelector('#form-add-finca');
      form.reset();
      jQuery('#preloader').hide();
@@ -188,10 +188,9 @@ function actualizar_finca(){
     data:datos,
     contentType: false,
     processData: false,
-    success:function(r){
-      $('#result').val(r);
-      e=$('#result').val();
-      if(e=='Resource id #4' || e=='Resource id #6' || e=='Resource id #7'){
+    success:function(e){
+        r=e.trim();
+      if(r.includes('Resource id')){
         swal("¡Finca Editada!"," ", "success");
         var form = document.querySelector('#form-up-fin');
         form.reset();

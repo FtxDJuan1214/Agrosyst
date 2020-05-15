@@ -5,7 +5,11 @@ session_start();
 $sqx="SELECT cod_tpr FROM tipo_de_produccion ORDER BY cod_tpr DESC LIMIT 1";
 $res=pg_query($conexion,$sqx);
 $ver=pg_fetch_row($res);
-$cod = intval($ver[0]) + 1;
+
+$cod= 1;
+if (pg_num_rows($res) != 0) {
+	$cod = $ver[0] + 1;
+}
 
 $des_tpr=$_POST['des_tpr'];
 $cod_unm=$_POST['cod_unm'];

@@ -55,7 +55,7 @@ function agregar_insumo(des_ins,cod_tso,det_smr){
 		data:cadena,
 		url:"../php/crud/semilleros/agregar_insumo.php",
 		success:function(r){
-			if(r.trim()=='Resource id #6'){	
+			if(r.includes('Resource id')){	
 				actualizar_tabla();	
 				$('#modal-form').modal('hide');
 				var form = document.querySelector('#form-add-smr');
@@ -69,7 +69,7 @@ function agregar_insumo(des_ins,cod_tso,det_smr){
 					url:"../php/crud/semilleros/agregar_semillero.php",
 					data:cadena,
 					success:function(r){
-							alert("Semillero: " + r);
+							//alert("Semillero: " + r);
 						}						
 					});
 				$('#tab_semilleros').load('../php/componentes/componentes_semilleros/tab_semilleros.php');
@@ -154,7 +154,7 @@ function actualizar_semillero(global,global1,des_insup,cod_tsoup,det_smrup){
 		url:"../php/crud/semilleros/actualizar_semillero.php",
 		data:cadena,
 		success:function(r){
-			if(r.trim() =='Resource id #6' || r.trim() =='Resource id #7'){
+			if(r.includes('Resource id')){
 				swal("¡Semillero Editado!"," ", "success");
 				var form = document.querySelector('#form-up-smr');
 				form.reset();

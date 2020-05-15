@@ -1,8 +1,9 @@
 <?php
 require '../../conexion.php';
 $cod_pro=$_POST['cod_pro'];
+$total=0;
 ?>
-<div class="row">
+<div class="row" id="imprimir">
   <div class="card bg-default shadow" style="width: 100%; ">
     <div class="table-responsive">
       <table class="table align-items-center table-dark table-flush table-hover">
@@ -53,7 +54,7 @@ $cod_pro=$_POST['cod_pro'];
             <td><?php echo $ver[4].' Kg' ?></td>
             <td><?php echo $ver[5] ?></td>
             <td><?php echo '$'.$ver[6] ?></td>
-            <td><?php echo '$'.(floatval($ver[5]) * floatval($ver[6])) ?></td>
+            <td><?php echo '$'.(floatval($ver[5]) * floatval($ver[6])); $total = $total + (floatval($ver[5]) * floatval($ver[6]));?></td>
             <td><?php
             $array=explode("-", $ver[8]);
             echo $array[1] ?></td>
@@ -77,4 +78,7 @@ $cod_pro=$_POST['cod_pro'];
     </table>
   </div>
 </div>
+</div>
+<div class="text-right">
+  <H2 class="text-success"> Total recaudo: $<?php echo $total ?></H2>
 </div>

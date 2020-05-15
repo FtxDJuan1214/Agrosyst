@@ -36,8 +36,10 @@ echo $cadena;
 			success:function(r){
 				tiempo = r.split("||");
 				$('#dur_cul_up').val(tiempo[0]+' años '+tiempo[1]+' meses '+tiempo[2]+' dias');
-				total_dias=tiempo[3];
-
+				total_dias=parseFloat(tiempo[3]);
+				dias_actuales = parseFloat(tiempo[4]);
+				anios=parseFloat(tiempo[0]);
+				$('#borrar').text("dias: " + total_dias + "dias hoy: " + dias_actuales);
 				if (tiempo[0] < 1) {
 
 					$('#tip_cul_up').val(1);
@@ -49,16 +51,33 @@ echo $cadena;
 						$('#tip_cul_up').val(2);
 
 					} else if (( tiempo[1] = 0) && ( tiempo[2] = 0)){
-
 						$('#tip_cul_up').val(1);
 					}
 
 				} 
-				anios=parseInt(tiempo[0]);
-
 				if (anios >=2) {
-					$('#tip_cul').val(2);
+					$('#tip_cul_up').val(2);
 				}
+
+				if (dias_actuales > 0 && dias_actuales != total_dias) {
+
+					if(dias_actuales > 0 && dias_actuales <= 3){
+						$('#est_cul_up').val(1);
+					}else if(dias_actuales > 3 && dias_actuales <=210){
+						$('#est_cul_up').val(2);
+					}else if (dias_actuales > 210 && dias_actuales <= 240) {
+						$('#est_cul_up').val(3);
+					}else if (dias_actuales > 240 && dias_actuales <= 300) {
+						$('#est_cul_up').val(4);
+					}else if (dias_actuales > 300 && dias_actuales <= 365) {
+						$('#est_cul_up').val(5);
+					}else if (dias_actuales > 365 && dias_actuales < total_dias) {
+						$('#est_cul_up').val(6);
+					}
+				}else if(dias_actuales > 0 && dias_actuales == total_dias){
+					$('#est_cul_up').val(7);
+				}
+
 			}
 		})
 	}

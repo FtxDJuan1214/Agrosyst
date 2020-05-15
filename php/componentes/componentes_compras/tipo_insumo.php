@@ -6,9 +6,9 @@ $like = $_SESSION['idusuario'];
 
 if($tip_ins == "1"){
 
-	$query="SELECT insumos.cod_ins,des_ins,des_unm,det_sem from public.insumos 
-	INNER JOIN semillas ON insumos.cod_ins=semillas.cod_ins
-	INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm and det_sem LIKE '$like%'";
+	$query="SELECT insumos.cod_ins,des_ins,des_unm,det_fer from public.insumos 
+	INNER JOIN fertilizantes ON insumos.cod_ins=fertilizantes.cod_ins
+	INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm WHERE det_fer LIKE '$like%' or det_fer LIKE '1-%'";
 	$result =pg_query($conexion,$query);
 
 	$cadena="<select id='cod_ins' name='cod_ins' class='form-control' data-live-search='true'>
@@ -25,7 +25,7 @@ else if($tip_ins == "2"){
 
 	$query="SELECT insumos.cod_ins,des_ins,des_unm,det_smr  from public.insumos 
 	INNER JOIN semillero ON insumos.cod_ins=semillero.cod_ins
-	INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm and det_smr LIKE '$like%'";
+	INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm WHERE det_smr LIKE '$like%' or det_smr LIKE '1-%'";
 	$result =pg_query($conexion,$query);
 
 	$cadena="<select id='cod_ins' name='cod_ins' class='form-control' data-live-search='true'>
@@ -57,7 +57,7 @@ else if($tip_ins == "4"){
 
 	$query="SELECT insumos.cod_ins,des_ins,des_unm,des_otr from public.insumos 
 	INNER JOIN otros ON insumos.cod_ins=otros.cod_ins
-	INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm and des_otr LIKE '$like%'";
+	INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm WHERE des_otr LIKE '$like%' or des_otr LIKE '1-%'";
 	$result =pg_query($conexion,$query);
 
 	$cadena="<select id='cod_ins' name='cod_ins' class='form-control' data-live-search='true'>

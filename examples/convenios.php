@@ -43,7 +43,7 @@ if (isset($_SESSION['usuario'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Agrosyst</title>
+  <title>Agrosyst Co</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -116,10 +116,10 @@ if (isset($_SESSION['usuario'])) {
         $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
         fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
         FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
-        public.municipio, public.dueño, public.tipo_unidad_medida
+        public.municipio, public.duenio, public.tipo_unidad_medida
         WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
         AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
-        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
+        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
         $result=pg_query($conexion,$sql);
         $finca=pg_fetch_row($result);
         ?>
@@ -166,6 +166,15 @@ if (isset($_SESSION['usuario'])) {
                     <h3>Agregar Convenio</h3>
                   </div>
                   <form role="form" id="form-add-convenio">
+                  <div class="row " style="margin-bottom: 10px;">
+                    <div class="col-md-12 c">
+                      <a style="font-size: 1em;" href="terceros.php" class="btn btn-info btn-sm bg-gradient-green" data-toggle="tooltip" data-placement="top" title="" data-original-title="Agregar nuevo socio o duenio"><i class="fas fa-user-plus"></i></a>
+
+                      <a style="font-size: 1em;" href="cultivos.php" class="btn btn-info btn-sm bg-gradient-green" data-toggle="tooltip" data-placement="top" title="" data-original-title="Crear un cultivo"><i class="fas fa-spa"></i></a>
+
+                      <a style="font-size: 1em;" href="#" class="btn btn-info btn-sm bg-gradient-green" data-container="body" data-toggle="popover" data-placement="top" data-content="Los convenios serán efectuados cuando se utilicen en las tareas, hasta entonces no cuentan como aporte de los socios." data-original-title="" title=""><i class="far fa-question-circle"></i></a>
+                    </div>
+                  </div>
 
                     <div class="form-group">
                       <label > fecha del convenio:</label>
@@ -185,7 +194,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                     <div class="form-group mb-3">
                       <div class="input-group input-group-alternative">
-                        <select id="cod_cul" class="form-control"data-live-search="true">
+                        <select id="cod_cul" class="form-control"data-live-search="true" onclick="cargar_aportes();">
                           <option value="0" disabled selected>Selecciona Cultivo</option>
                           <?php 
                           $codi_fin=$_SESSION['ide_finca'];
@@ -286,6 +295,10 @@ if (isset($_SESSION['usuario'])) {
                       <input style="border-color: #fb6340;" id="vho_hor" type="number" class="form-control" placeholder="Valor por hora de contrato" autocomplete="off">
                     </div>
                   </div>
+                </div>
+
+                <div class="row" id="aportes_chart">
+
                 </div>
 
                 <div class="text-center">
