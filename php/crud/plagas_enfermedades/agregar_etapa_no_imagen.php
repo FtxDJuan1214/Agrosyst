@@ -25,11 +25,7 @@ $info =$_POST['info'];
 
     $sql="INSERT INTO public.eta_x_afe(
         cod_afe, cod_eta, ima_eta, cod_agr)
-<<<<<<< HEAD
         VALUES ('$user$cod_afe', '$info', 'etapas/sinimagen.jpg', '1-1');";		 
-=======
-        VALUES ('$user$cod_afe', '$info', null, '1-1');";		 
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         echo $result=pg_query($conexion,$sql);
     
 

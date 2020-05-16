@@ -34,12 +34,10 @@ error_reporting(0);
     $result=pg_query($conexion,$sql);
     $result1=pg_query($conexion,$sql);
     $result2=pg_query($conexion,$sql);
-
     $cont = 0;
     $veces = 0;
     $anterior = 0;
     $indice = 0;
-    
     while($fila=pg_fetch_row($result1)){
      $Lista[] = [$fila[0],(floatval($fila[5]) * floatval($fila[6]))];
 

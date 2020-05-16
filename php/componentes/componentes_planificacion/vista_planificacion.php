@@ -57,29 +57,20 @@ for($i = 0; $i < $contarPlanes; $i++){
         <div class="col 6">
             <div class="card ">
                 <div class="card-body">
-<<<<<<< HEAD
                 <a class="btn btn-primary sm-4" data-toggle="tooltip"
                         data-placement="top" title="Listado de planificaciones"
                         value="Inicio"
                         style="font-family:'FontAwesome',tahoma; font-size: 9px;"
                         href="planificaciones.php"></a>
-=======
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                     <div class="row d-block">
                         <div class="col">
 
 
                             <ul class='list-group'>
                                 <li class='list-group-item text-light' style="background: #232157;font-family:'FontAwesome',tahoma; font-size: 19px;">
-<<<<<<< HEAD
                                     <center><b>Planificación N°:</b> <?php echo $subplan ?></center><br>
                                     <b>Fecha de realización:</b> <?php echo $fecha ?><br>
                                     <b>Descripción:</b> Esta planificación es realizada especialmente para lucha contra: -
-=======
-                                    Planificación N°: <?php echo $subplan ?><br>
-                                    Fecha de realización: <?php echo $fecha ?><br>
-                                    Descripción: Esta planificación es realizada especialmente para lucha contra: -
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                     <?php echo $enfermedad ?> - con registro de presencia desde el día
                                     <?php echo $fechaInicio ?>
                                     <br>

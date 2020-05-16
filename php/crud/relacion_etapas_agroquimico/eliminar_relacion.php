@@ -8,7 +8,6 @@ $cod_eta=$_POST['cod_eta'];
 $cod_agr=$_POST['cod_agr'];
 $cod_afe=$_POST['cod_afe'];
 
-<<<<<<< HEAD
 //Primero verificar si ya no hay uno con 1-1
 
 $reem = "SELECT ima_eta FROM eta_x_afe WHERE cod_eta = '$cod_eta' AND cod_afe = '$cod_afe' and cod_agr='1-1'";
@@ -16,15 +15,11 @@ $res=pg_query($conexion,$reem);
 $fil=pg_num_rows($res);
 echo $fil;
 if($fil > 0 ){
-=======
-
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
     $ins = "DELETE FROM public.eta_x_afe
     WHERE cod_eta = '$cod_eta'
     AND cod_afe = '$cod_afe'
     AND cod_agr = '$cod_agr'";
-<<<<<<< HEAD
     echo $result = pg_query($conexion,$ins);
 
 }else{
@@ -40,9 +35,4 @@ if($fil > 0 ){
 
 
 
-=======
-    
-    echo $result = pg_query($conexion,$ins);
-
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 ?>

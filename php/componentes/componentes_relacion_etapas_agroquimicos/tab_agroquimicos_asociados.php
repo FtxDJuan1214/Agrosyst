@@ -4,10 +4,7 @@ require '../../conexion.php';
 session_start();
 $like = $_SESSION['idusuario'];
 $cod_etapa =$_POST['cod_etapa']; 
-<<<<<<< HEAD
 $cod_afe =$_POST['cod_afe'];
-=======
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 ?>      
                                          
 <div class="form-group" id="tab_mostrar" name="tab_mostrar">
@@ -23,11 +20,7 @@ $cod_afe =$_POST['cod_afe'];
                 <th></th>
             </tr>
         </thead>
-<<<<<<< HEAD
         <tbody id="myTable1">
-=======
-        <tbody id="myTable">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
             <?php 
         $like = $_SESSION['idusuario'];
         $sql = "";
@@ -38,12 +31,8 @@ $cod_afe =$_POST['cod_afe'];
         WHERE agroquimicos.cod_agr = eta_x_afe.cod_agr
         AND agroquimicos.cod_tag = tipo_agroquimico.cod_tag
         AND eta_x_afe.cod_eta = '$cod_etapa'
-<<<<<<< HEAD
         AND eta_x_afe.cod_afe = '$cod_afe'
         AND agroquimicos.cod_agr NOT LIKE '1-1'";
-=======
-        AND agroquimicos.cod_agr not like '1-1'";
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         
         $result=pg_query($conexion,$sql);
         while($ver=pg_fetch_row($result)){  
@@ -69,16 +58,9 @@ $cod_afe =$_POST['cod_afe'];
     <br>
     <center>
     <input type="button" name="cargar" class="btn btn-success sm-4" id="<?php echo $cod_etapa ?>"
-<<<<<<< HEAD
             data-toggle="tooltip" data-placement="top"
             title="Planificar otra tarea" value="Asociar"
             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
             onclick="asociar('<?php echo $cod_etapa ?>')">
-=======
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="Planificar otra tarea" value="Asociar"
-                                                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"
-                                                            onclick="asociar('<?php echo $cod_etapa ?>')">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 </center>
 </div>

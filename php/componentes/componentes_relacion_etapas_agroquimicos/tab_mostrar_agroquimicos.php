@@ -22,30 +22,18 @@ $cod_eta=$_POST['cod_eta'];
                 <th></th>
             </tr>
         </thead>
-<<<<<<< HEAD
         <tbody id="myTable2">
-=======
-        <tbody id="myTable">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
             <?php 
     $sql = "";
     $datos="";
 
     //Si es prevención lo filtra
-<<<<<<< HEAD
     if($cod_eta == '1-1'){
-=======
-    if($cod_eta == '1-0'){
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
         $sql="SELECT agroquimicos.cod_agr, agroquimicos.nom_agr, tipo_agroquimico.det_tag
         FROM public.agroquimicos, public.tipo_agroquimico
         WHERE agroquimicos.cod_tag = tipo_agroquimico.cod_tag       
-<<<<<<< HEAD
         AND agroquimicos.cod_agr NOT LIKE '1-1'
-=======
-        AND agroquimicos.cod_agr not like '1-1'
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         AND (agroquimicos.cod_agr LIKE '1-%' or agroquimicos.cod_agr LIKE '$like%')
 		AND fun_agr like 'Prevención'";
 
@@ -54,15 +42,9 @@ $cod_eta=$_POST['cod_eta'];
     $sql="SELECT agroquimicos.cod_agr, agroquimicos.nom_agr, tipo_agroquimico.det_tag
         FROM public.agroquimicos, public.tipo_agroquimico
         WHERE agroquimicos.cod_tag = tipo_agroquimico.cod_tag       
-<<<<<<< HEAD
         AND agroquimicos.cod_agr NOT LIKE '1-1'
         AND (agroquimicos.cod_agr LIKE '1-%' or agroquimicos.cod_agr LIKE '$like%')
 		AND fun_agr NOT LIKE 'Prevención'";
-=======
-        AND agroquimicos.cod_agr not like '1-1'
-        AND (agroquimicos.cod_agr LIKE '1-%' or agroquimicos.cod_agr LIKE '$like%')
-		AND fun_agr not like 'Prevención'";
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
     }
 
     $result=pg_query($conexion,$sql);

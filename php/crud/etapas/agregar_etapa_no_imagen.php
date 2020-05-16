@@ -18,11 +18,7 @@ if($filas1 > 0 ){
 
     $sql="INSERT INTO public.eta_x_afe(
         cod_afe, cod_eta, ima_eta, cod_agr)
-<<<<<<< HEAD
         VALUES ('$cod_afe', '$cod_eta', 'etapas/sinimagen.jpg', '1-1');";		 
-=======
-        VALUES ('$cod_afe', '$cod_eta', null, '1-1');";		 
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         echo $result=pg_query($conexion,$sql);
     
     }

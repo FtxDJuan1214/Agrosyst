@@ -541,6 +541,7 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                         <div class="progress">
                           <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="<?php echo $porcentaje ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $porcentaje."%" ?>"></div>
                         </div>
+                      </div>
                     </div>
                     <?php
                   }elseif ($porcentaje > 50 && $porcentaje <= 75) {
@@ -562,6 +563,7 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                         <div class="progress">
                           <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?php echo $porcentaje ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $porcentaje."%" ?>"></div>
                         </div>
+                      </div>
                     </div>
                     <?php
                   }elseif ($porcentaje >= 100) {
@@ -572,6 +574,7 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                         <div class="progress">
                           <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100%" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
                         </div>
+                      </div>
                     </div>
                     <?php
                   }
@@ -1113,7 +1116,6 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
 <script src="js/funciones_terceros.js"></script>
 <script src="js/funciones_fincas.js"></script>
 </body>
-<<<<<<< HEAD
 </html>
 
 
@@ -1122,7 +1124,3 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
     $("[data-toggle='tooltip']").tooltip();
   });
 </script>
-=======
-
-</html>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894

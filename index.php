@@ -37,9 +37,7 @@ require 'php/conexion.php';
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<html class="no-js" lang="es">
-<!--<![endif]-->
-
+<html class="no-js" lang="es"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -130,7 +128,51 @@ require 'php/conexion.php';
                  <div class="col-sm-3 col-md-3 col-lg-3">
                   <button type="button" class="btn btn-amarillo" data-toggle="modal" data-target="#modal-duenio"><i class="fas fa-user-plus"></i></button>
                 </div>
+              </div>
+              <div class="form-group mb-3">
+                <div class="input-group input-group-alternative">
+                 <select id="dep_fin" name="dep_fin" class="form-control"data-live-search="true">
+                  <option value="" disabled selected>Selecciona un departamento</option>
+                  <?php 
+                  $query="SELECT cod_dep,nom_dep FROM departamento";
+                  $result =pg_query($conexion,$query);
+                  while ($ver=pg_fetch_row($result)) {
+                   ?>
+                   <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
+                   <?php 
+                 }
+                 ?>
+               </select>
+             </div>
+           </div>
+
+
+           <div class="form-group mb-3">
+            <div class="input-group input-group-alternative" id="muni_dep">
             </div>
+          </div>
+
+
+          <div class="form-group mb-3">
+            <div class="input-group input-group-alternative">
+             <select id="uni_med" name="uni_med" class="form-control"data-live-search="true">
+              <option value="" disabled selected>Selecciona Uni. de medida</option>
+              <?php 
+              $query="SELECT cod_unm, des_unm FROM unidad_de_medida WHERE cod_tum='1'";
+              $result =pg_query($conexion,$query);
+              while ($ver=pg_fetch_row($result)) {
+               ?>
+               <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
+               <?php 
+             }
+             ?>
+           </select>
+         </div>
+       </div>
+
+       <div class="form-group mb-3">
+        <div class="input-group input-group-alternative" id="div_med_fin" >
+          <input style="border-color: #fb6340;" id="med_fin" name="med_fin" type="text" class="form-control" placeholder="Medida" autocomplete="off">
         </div>
       </div>
 
@@ -179,24 +221,24 @@ require 'php/conexion.php';
         $y = date("Y");
         $fecha=$y."-".$m."-".$d;
         ?>
-                    <br>
-                    <h2 style="color: #fff; font-weight: bold; padding-bottom: 10px;"><?php echo $fecha ?></h2>
-                </div>
+        <br>
+        <h2 style="color: #fff; font-weight: bold; padding-bottom: 10px;"><?php echo $fecha ?></h2>
+      </div>
 
-            </li>
+    </li>
 
-            <li>
-                <div class="heading">
-                    <h1>Fincas</h1>
-                    <span>Yo soy agricultor, y siempre tengo las mejores vistas desde mi oficina</span>
-                </div>
-                <div class="cd-half-width second-slide">
-                    <div class="container">
-                        <div class="row">
+    <li>
+      <div class="heading">
+        <h1>Fincas</h1>
+        <span>Yo soy agricultor, y siempre tengo las mejores vistas desde mi oficina</span> 
+      </div>
+      <div class="cd-half-width second-slide">   
+        <div class="container">
+          <div class="row">
 
-                            <div class="col-md-12">
-                                <div class="content second-content">
-                                    <?php 
+            <div class="col-md-12">
+              <div class="content second-content">
+                <?php 
                 $like = $_SESSION['idusuario'];
                 require 'php/conexion.php';
                 $sql="SELECT cod_fin,nom_fin,det_fin,nom_dep,nom_mun,des_tum,med_fin,des_unm,fot_fin from public.fincas INNER JOIN
@@ -207,25 +249,24 @@ require 'php/conexion.php';
                 $result=pg_query($conexion,$sql);
                 while ($ver=pg_fetch_row($result)) {
                   ?>
-                                    <form action="finca_actual.php" method="POST">
-                                        <div class="row" style="margin-bottom: 20px;">
-                                            <div class="col-md-7 left-image">
-                                                <img src="imagenes/<?php echo $ver[8] ?>">
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="right-about-text">
-                                                    <h4><?php echo $ver[1]?></h4>
-                                                    <p><?php echo $ver[2]?></p>
-                                                    <p>Ubicación: <?php echo $ver[4]?>, <?php echo $ver[3]?></p>
-                                                    <p>Medida: <?php echo $ver[6]?> <?php echo $ver[7]?></p>
-                                                    <input name="prueba" type="hidden" value="<?php echo $ver[0]?>" />
-                                                    <input name="btnLogA" type="submit" class="btn btn-amarillo"
-                                                        value="¡A trabajar!" />
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
+                  <form action="finca_actual.php" method="POST">
+                    <div class="row"style="margin-bottom: 20px;">
+                      <div class="col-md-7 left-image">
+                        <img src="imagenes/<?php echo $ver[8] ?>">
+                      </div>
+                      <div class="col-md-5">
+                        <div class="right-about-text">
+                          <h4><?php echo $ver[1]?></h4>                            
+                          <p ><?php echo $ver[2]?></p>
+                          <p>Ubicación: <?php echo $ver[4]?>, <?php echo $ver[3]?></p>
+                          <p>Medida: <?php echo $ver[6]?> <?php echo $ver[7]?></p>
+                          <input name="prueba"  type="hidden" value="<?php echo $ver[0]?>"/>                             
+                          <input name="btnLogA" type="submit" class="btn btn-amarillo" value="¡A trabajar!"/>                              
+                        </form>      
+                      </div>
+                    </div>
+                  </div>
+                  <?php
                 }
                 ?>
                 <div class="card-header border-0">
@@ -264,9 +305,57 @@ require 'php/conexion.php';
 
                 <div class="row">
 
-                            <button type="button" class="btn btn-amarillo" data-toggle="modal" data-target="#modal-form"
-                                id="btn_save">Crear finca</button>
-                        </div>
+                  <div class="col-md-6">
+
+                    <div class="form-group mb-3" style="display: none;">
+                      <div class="input-group input-group-alternative">
+                        <input id="ide_usuario" type="email" class="form-control" placeholder="Correo" value="<?php echo  $_SESSION['idusuario'] ?>">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_ide_ter">
+                        <input style="border-color: #fb6340;" id="ide_ter" type="text" class="form-control" placeholder="Cédula" autocomplete="off" maxlength="10">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_pno_ter">
+                        <input  style="border-color: #fb6340;" id="pno_ter" type="text" class="form-control" placeholder="Primer nombre" autocomplete="off" maxlength="20">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_sno_ter">
+                        <input style="border-color: #fb6340;" id="sno_ter" type="text" class="form-control" placeholder="Segundo nombre" autocomplete="off" maxlength="20">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_pap_ter">
+                        <input style="border-color: #fb6340;" id="pap_ter" type="text" class="form-control" placeholder="Primer apellido" autocomplete="off" maxlength="20">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_sap_ter">
+                        <input style="border-color: #fb6340;" id="sap_ter" type="text" class="form-control" placeholder="Segundo apellido" autocomplete="off" maxlength="20">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_tel_ter">
+                        <input style="border-color: #fb6340;" id="tel_ter" type="text" class="form-control" placeholder="Telefono" autocomplete="off" maxlength="10">
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative" id="div_eml_ter">
+                        <input style="border-color: #fb6340;" id="eml_ter" type="email" class="form-control" placeholder="Correo" autocomplete="off" maxlength="50">
+                      </div>
                     </div>
 
 
@@ -279,134 +368,19 @@ require 'php/conexion.php';
                     </div>
                   </div>
                 </div>
+
+                <div class="text-center">
+                  <button type="button" class="btn btn-default my-4" onclick="preloader_d();">Guardar</button>
                 </div>
-                </div>
-                </div>
-            </li>
-
-
-
-        </ul> <!-- .cd-hero-slider -->
-    </section> <!-- .cd-hero -->
-    <!-- modal para ingresar datos -->
-    <div class="col-md-4">
-        <div class="modal fade" id="modal-dueño" tabindex="-1" role="dialog" aria-labelledby="modal-form"
-            aria-hidden="true">
-            <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-
-                    <div class="modal-body p-0">
-
-
-                        <div class="card bg-secondary shadow border-0">
-                            <a href="#" data-dismiss="modal" aria-label="Close"
-                                style="margin: 10px 20px 0 0; text-align: right;">
-                                <span aria-hidden="true" style="left: 0;">×</span>
-                            </a>
-                            <div class="card-body px-lg-5 py-lg-5">
-                                <div class="text-center text-muted mb-4">
-                                    <h3>Agregar terero</h3>
-                                </div>
-                                <form role="form" id="form-add-ter">
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-
-                                            <div class="form-group mb-3" style="display: none;">
-                                                <div class="input-group input-group-alternative">
-                                                    <input id="ide_usuario" type="email" class="form-control"
-                                                        placeholder="Correo"
-                                                        value="<?php echo  $_SESSION['idusuario'] ?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative" id="div_ide_ter">
-                                                    <input style="border-color: #fb6340;" id="ide_ter" type="text"
-                                                        class="form-control" placeholder="Cédula" autocomplete="off"
-                                                        maxlength="10">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative" id="div_pno_ter">
-                                                    <input style="border-color: #fb6340;" id="pno_ter" type="text"
-                                                        class="form-control" placeholder="Primer nombre"
-                                                        autocomplete="off" maxlength="20">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative" id="div_sno_ter">
-                                                    <input style="border-color: #fb6340;" id="sno_ter" type="text"
-                                                        class="form-control" placeholder="Segundo nombre"
-                                                        autocomplete="off" maxlength="20">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative" id="div_pap_ter">
-                                                    <input style="border-color: #fb6340;" id="pap_ter" type="text"
-                                                        class="form-control" placeholder="Primer apellido"
-                                                        autocomplete="off" maxlength="20">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative" id="div_sap_ter">
-                                                    <input style="border-color: #fb6340;" id="sap_ter" type="text"
-                                                        class="form-control" placeholder="Segundo apellido"
-                                                        autocomplete="off" maxlength="20">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative" id="div_tel_ter">
-                                                    <input style="border-color: #fb6340;" id="tel_ter" type="text"
-                                                        class="form-control" placeholder="Telefono" autocomplete="off"
-                                                        maxlength="10">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative" id="div_eml_ter">
-                                                    <input style="border-color: #fb6340;" id="eml_ter" type="email"
-                                                        class="form-control" placeholder="Correo" autocomplete="off"
-                                                        maxlength="50">
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-group mb-3">
-                                                <div class="input-group input-group-alternative">
-                                                    <select id="tipo_per" disabled class="form-control"
-                                                        data-live-search="true">
-                                                        <option value="1" disabled selected>Dueño</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <button type="button" class="btn btn-default my-4"
-                                            onclick="preloader_d();">Guardar</button>
-                                    </div>
-                                </form>
-                                <img src="assets/img/icons/preloader.gif" id="preloaderd">
-                                <script>
-                                jQuery('#preloaderd').hide();
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </form>
+              <img src="assets/img/icons/preloader.gif" id="preloaderd">
+              <script>
+                jQuery('#preloaderd').hide();
+              </script>
             </div>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -428,5 +402,4 @@ require 'php/conexion.php';
   </a>
 </div>
 </body>
-
 </html>

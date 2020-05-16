@@ -29,40 +29,23 @@ $cod=pg_fetch_row($result1);
 $cod_ins = $cod[0] + 1;
 
 
-<<<<<<< HEAD
 $sql="INSERT INTO insumos(cod_ins, des_ins, cod_unm) VALUES ('$cod_ins','$like$des_ins', '$cod_unm')";
-=======
-$sql="INSERT INTO insumos(cod_ins, des_ins, cod_unm) VALUES ('$cod_ins','$des_ins', '$cod_unm')";
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 echo $result=pg_query($conexion,$sql);
 
 
 $sql2 ="INSERT INTO public.agroquimicos(
 	cod_agr, cod_ins, nom_agr, rap_agr, pcr_agr, pen_agr, pro_agr, cod_for, cod_tag, cod_tox, cod_iac, fun_agr)
-<<<<<<< HEAD
 	VALUES ('$like$cod_agr', $cod_ins, '$nom_agr', '$rap_agr', '$pcr_agr', '$pen_agr', '$pro_agr', '$cod_for', '$cod_tag', '$cod_tox','$cod_iac','$fun_agr')";
-=======
-	VALUES ('$like$cod_agr', $cod_ins, '$nom_agr', '$rap_agr', '$pcr_agr', '$pen_agr', '$pro_agr', '$cod_for', '$cod_tag', '$cod_tox','$cod_iac','$fun_agr');";
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
 echo $result2 = pg_query($conexion,$sql2);
 
 	for($i=0;$i<$length;$i++){
-<<<<<<< HEAD
 		$arreglo1 = explode("~",$arreglo[$i]);
 		$sql3="INSERT INTO public.recomendaciones_uso_agr(
 			cod_agr, det_rus)
 			VALUES ('$like$cod_agr','$arreglo1[1]')";
 
 		echo $result3=pg_query($conexion,$sql3);
-=======
-		$arreglo1 = explode(",",$arreglo[$i]);
-		$sql3="INSERT INTO public.recomendaciones_uso_agr(
-			cod_agr, det_rus)
-			VALUES ('$like$cod_agr','$arreglo1[1]');";
-
-		echo $result2=pg_query($conexion,$sql3);
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	}
 
 

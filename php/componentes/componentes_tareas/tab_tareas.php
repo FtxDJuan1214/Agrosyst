@@ -58,7 +58,6 @@ $codi_fin=$_SESSION['ide_finca'];
         $datos = $datos."||Cultural";
       }
 
-<<<<<<< HEAD
       // $tipo = "SELECT enf_fit FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
       // $res=pg_query($conexion,$tipo);
       // $filas=pg_num_rows($res);
@@ -67,16 +66,6 @@ $codi_fin=$_SESSION['ide_finca'];
       //   echo "Fitosanitaria<br>Enfermedad: $enf[0]";
       //   $datos = $datos."||Fitosanitaria. Enfermedad: $enf[0]";
       // }
-=======
-      /*$tipo = "SELECT enf_fit FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
-      $res=pg_query($conexion,$tipo);
-      $filas=pg_num_rows($res);
-      $enf=pg_fetch_row($res);
-      if($filas !=0){
-        echo "Fitosanitaria<br>Enfermedad: $enf[0]";
-        $datos = $datos."||Fitosanitaria. Enfermedad: $enf[0]";
-      }*/
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
       ?></td> 
       <td>Inicio: <?php echo $ver[3] ?><br>Fin: <?php echo $ver[4] ?></td>    

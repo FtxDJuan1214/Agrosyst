@@ -214,6 +214,7 @@ function preloaderup(){
 	
 	jQuery('#form-up-agroq').hide();
 	jQuery('#preloaderup').show();
+
 	cod_agr = global;
 	cod_ins = global1;
 	nom_agr=$('#nom_agr_up').val();
