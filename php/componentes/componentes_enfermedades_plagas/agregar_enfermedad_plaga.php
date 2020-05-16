@@ -23,12 +23,7 @@ require '../../conexion.php';
                                                 <div class="input-group input-group-alternative">
                                                     <select id="pla_o_enf" name="pla_o_enf" class="form-control"
                                                         data-live-search="true" onchange="cargar_select_tip()" required>
-<<<<<<< HEAD
                                                         <option value="" disabled selected>Plaga/Enfermedad
-=======
-                                                        <option value="" disabled selected>Plaga o
-                                                            Enfermedad
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                         </option>
                                                         <option value="Plaga">Plaga</option>
                                                         <option value="Enfermedad">Enfermedad</option>
@@ -48,11 +43,7 @@ require '../../conexion.php';
                                                     type="text" class="form-control" placeholder="Nombre común"
                                                     data-toggle="tooltip" data-placement="top"
                                                     title="Nombre de la enfermedad o plaga."
-<<<<<<< HEAD
                                                     autocomplete="off" pattern="[A-Za-z]{6,30}" required>
-=======
-                                                    autocomplete="off" maxlength="45" required>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                             </div>
                                         </div>
 
@@ -61,11 +52,7 @@ require '../../conexion.php';
                                             <div class="input-group input-group-alternative" id="div_des_ins">
                                                 <input style="border-color: #fb6340;" id="nomc_afe" name="nomc_afe"
                                                     type="text" class="form-control" placeholder="Nombre científico"
-<<<<<<< HEAD
                                                     autocomplete="off" pattern="[A-Za-z]{6,50}">
-=======
-                                                    autocomplete="off" maxlength="45">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                             </div>
                                         </div>
                                         <!-----------------------------Horario de ataque------------------------->
@@ -248,11 +235,7 @@ require '../../conexion.php';
                                     <div class="col-md-6">
                                         <br>
                                         <center>
-<<<<<<< HEAD
                                             <input type="button" name="cargarx" class="btn btn-primary sm-4"
-=======
-                                            <input type="button" name="cargar" class="btn btn-primary sm-4"
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                 data-toggle="tooltip" data-placement="top" title="Etapas" value="Seguir"
                                                 style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                                 onclick="guardarEnfer_Plaga()">

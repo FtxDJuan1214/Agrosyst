@@ -41,7 +41,6 @@ require 'php/conexion.php';
 <!--<![endif]-->
 
 <head>
-<<<<<<< HEAD
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Agrosyst Co</title>
@@ -84,57 +83,11 @@ require 'php/conexion.php';
   <link rel="stylesheet" href="librerias/Inicio/css/templatemo-style.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <script src="librerias/Inicio/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-=======
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Agrosyst</title>
-
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Argon CSS -->
-    <link href="assets/fonts/fonts/material-icons.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/scrollbar.css">
-    <link href="assets/img/brand/favicon.png" rel="icon" type="image/png">
-    <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <!-- Icons -->
-    <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-    <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <!-- Argon CSS -->
-    <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet">
-    <!-- jquery -->
-    <!-- sweet_alert -->
-    <script src="assets/sweetalert/sweetalert.min.js"></script>
-    <!-- Argon Scripts -->
-    <!-- Core -->
-    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Argon JS -->
-    <script src="assets/js/argon.js?v=1.0.0"></script>
-    <!-- funciones -->
-    <script src="js/funciones_fincas.js"></script>
-    <script src="js/funciones_index.js"></script>
-    <!-- sweet_alert -->
-    <script src="assets/sweetalert/sweetalert.min.js"></script>
-    <!-- toastr -->
-    <script src="assets/toastr/toastr.min.js"></script>
-    <link type="text/css" href="assets/toastr/toastr.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="librerias/Inicio/css/fontAwesome.css">
-    <link rel="stylesheet" href="librerias/Inicio/css/templatemo-style.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
-        rel="stylesheet">
-    <script src="librerias/Inicio/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
 
 </head>
 
 <body style="background-image:url(<?php echo 'imagenes/Agro'.rand(0,10).'.jpg' ?>);">
-<<<<<<< HEAD
   <div class="overlay"></div>
 
   <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
@@ -176,127 +129,9 @@ require 'php/conexion.php';
                  </div>
                  <div class="col-sm-3 col-md-3 col-lg-3">
                   <button type="button" class="btn btn-amarillo" data-toggle="modal" data-target="#modal-duenio"><i class="fas fa-user-plus"></i></button>
-=======
-    <div class="overlay"></div>
-
-    <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-        <div class="modal-dialog modal- modal-dialog-centered modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <div class="card bg-secondary shadow border-0">
-                        <a href="#" data-dismiss="modal" aria-label="Close"
-                            style="margin: 10px 20px 0 0; text-align: right;">
-                            <span aria-hidden="true" style="left: 0;">×</span>
-                        </a>
-                        <div class="card-body px-lg-5 py-lg-5">
-                            <div class="text-center text-muted mb-4">
-                                <h3>Agregar finca</h3>
-                            </div>
-                            <form role="form" id="form-add-finca" method="POST" enctype="multipart/form-data">
-
-                                <div class="form-group mb-3">
-                                    <div class="input-group input-group-alternative">
-                                        <input id="cod_fin" name="cod_fin" type="text" class="form-control"
-                                            placeholder="N° Escritura" autocomplete="off" maxlength="17">
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <div class="input-group input-group-alternative" id="div_nom_fin">
-                                        <input style="border-color: #fb6340;" id="nom_fin" name="nom_fin" type="text"
-                                            class="form-control" placeholder="Nombre" autocomplete="off" maxlength="25">
-                                    </div>
-                                </div>
-
-                                <label for="det_fin">Detalle</label>
-                                <div class="input-group-alternative" id="div_det_fin" style="margin-bottom: 25px;">
-                                    <textarea style="border-color: #fb6340;" id="det_fin" name="det_fin"
-                                        class="form-control" rows="2" maxlength="45"></textarea>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-9 col-md-9 col-lg-9">
-                                        <div id="dueños">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3 col-md-3 col-lg-3">
-                                        <button type="button" class="btn btn-amarillo" data-toggle="modal"
-                                            data-target="#modal-dueño"><i class="fas fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="input-group input-group-alternative">
-                                        <select id="dep_fin" name="dep_fin" class="form-control"
-                                            data-live-search="true">
-                                            <option value="" disabled selected>Selecciona un departamento</option>
-                                            <?php 
-                                              $query="SELECT cod_dep,nom_dep FROM departamento";
-                                              $result =pg_query($conexion,$query);
-                                              while ($ver=pg_fetch_row($result)) {
-                                              ?>
-                                            <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
-                                            <?php 
-                                                }
-                                                ?>
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group mb-3">
-                                    <div class="input-group input-group-alternative" id="muni_dep">
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group mb-3">
-                                    <div class="input-group input-group-alternative">
-                                        <select id="uni_med" name="uni_med" class="form-control"
-                                            data-live-search="true">
-                                            <option value="" disabled selected>Selecciona Uni. de medida</option>
-                                            <?php 
-                                                $query="SELECT cod_unm, des_unm FROM unidad_de_medida WHERE cod_tum='1'";
-                                                $result =pg_query($conexion,$query);
-                                                while ($ver=pg_fetch_row($result)) {
-                                                ?>
-                                            <option value="<?php echo $ver[0]; ?>"><?php echo $ver[1]; ?></option>
-                                            <?php 
-                                              }
-                                              ?>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <div class="input-group input-group-alternative" id="div_med_fin">
-                                        <input style="border-color: #fb6340;" id="med_fin" name="med_fin" type="text"
-                                            class="form-control" placeholder="Medida" autocomplete="off">
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="Logo_Semillero">Foto de la finca</label>
-                                    <input id="foto_fin" name="foto_fin" type="file" class="validate" autocomplete="off"
-                                        accept="image/*">
-                                </div>
-
-                                <div class="text-center">
-                                    <input name="btnLogB" type="button" id="btn_save" class="btn btn-default my-4"
-                                        value="Guardar" />
-                                </div>
-                            </form>
-                            <img src="assets/img/icons/preloader.gif" id="preloader" style="margin: 10px auto;">
-                            <script>
-                            jQuery('#preloader').hide();
-                            </script>
-                        </div>
-                    </div>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
       </div>
 
       <div class="form-group mb-3">
@@ -338,38 +173,6 @@ require 'php/conexion.php';
         <h1>Agrosyst Co</h1>
         <span>¡Bienvenido a tu sistema Agro!</span>
         <?php 
-=======
-    </div>
-    </div>
-    <section class="cd-hero">
-        <div class="cd-slider-nav">
-            <nav>
-                <span class="cd-marker item-1"></span>
-                <ul>
-                    <li class="selected"><a href="index.php">
-                            <div class="image-icon"><img src="librerias/Inicio/img/home-icon.png"></div>
-                            <h6>Inicio</h6>
-                        </a></li>
-                    <li><a href="lotes.php">
-                            <div class="image-icon"><img src="librerias/Inicio/img/about-icon.png"></div>
-                            <h6>Fincas</h6>
-                        </a></li>
-                    <li><a href="lotes.php">
-                            <div class="image-icon"><img src="librerias/Inicio/img/projects-icon.png"></div>
-                            <h6>Contactenos</h6>
-                        </a></li>
-                </ul>
-            </nav>
-        </div> <!-- .cd-slider-nav -->
-
-        <ul class="cd-hero-slider">
-
-            <li class="selected">
-                <div class="heading">
-                    <h1>AGROSYST</h1>
-                    <span>¡Bienvenido a tu sistema Agro!</span>
-                    <?php 
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         date_default_timezone_set('America/Bogota');
         $d = date("d");
         $m = date("m");
@@ -425,7 +228,6 @@ require 'php/conexion.php';
                         <?php
                 }
                 ?>
-<<<<<<< HEAD
                 <div class="card-header border-0">
 
                   <button type="button" class="btn btn-amarillo" data-toggle="modal" data-target="#modal-form" id="btn_save">Crear finca</button>
@@ -461,15 +263,11 @@ require 'php/conexion.php';
               <form role="form" id="form-add-ter" >
 
                 <div class="row">
-=======
-                        <div class="card-header border-0">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
                             <button type="button" class="btn btn-amarillo" data-toggle="modal" data-target="#modal-form"
                                 id="btn_save">Crear finca</button>
                         </div>
                     </div>
-<<<<<<< HEAD
 
 
                     <div class="form-group mb-3">
@@ -480,8 +278,6 @@ require 'php/conexion.php';
                       </div>
                     </div>
                   </div>
-=======
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                 </div>
                 </div>
                 </div>
@@ -612,7 +408,6 @@ require 'php/conexion.php';
             </div>
         </div>
     </div>
-<<<<<<< HEAD
   </div>
 </div>
 <input id="rr" type="email" class="form-control" placeholder="rr" autocomplete="off" style="display: none;">
@@ -632,26 +427,6 @@ require 'php/conexion.php';
     </button>
   </a>
 </div>
-=======
-    <input id="rr" type="email" class="form-control" placeholder="rr" autocomplete="off" style="display: none;">
-    <!-- ----------------------------------------------------------------------------------- -->
-
-    <script src="librerias/Inicio/js/vendor/bootstrap.min.js"></script>
-    <script src="librerias/Inicio/js/plugins.js"></script>
-    <script src="librerias/Inicio/js/main.js"></script>
-    <footer style="position:fied;">
-        <p>Copyright &copy; 2019
-    </footer>
-
-    <div class="contenedor" style="position: absolute; z-index: 300;">
-        <a href="php/logout.php">
-            <button class="botonF1">
-                <span><i class="material-icons" data-toggle="tooltip" data-placement="left" title="Cerrar sesion"
-                        data-original-title="Cerrar sesion" style="margin-top: 7px;">exit_to_app</i></span>
-            </button>
-        </a>
-    </div>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 </body>
 
 </html>

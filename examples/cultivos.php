@@ -36,7 +36,6 @@ if (isset($_SESSION['usuario'])) {
 <html>
 
 <head>
-<<<<<<< HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
@@ -59,30 +58,6 @@ if (isset($_SESSION['usuario'])) {
   <!-- toastr -->
   <script src="../assets/toastr/toastr.min.js"></script>
   <link type="text/css" href="../assets/toastr/toastr.css" rel="stylesheet">
-=======
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
-    <title>Agrosyst</title>
-    <!-- Favicon -->
-    <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <!-- Icons -->
-    <link href="../assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-    <link href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <!-- Argon CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/scrollbar.css">
-    <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
-    <!-- jquery -->
-    <script src="../assets/jquery/jquery-3.4.1.min.js"></script>
-    <!-- sweet_alert -->
-    <script src="../assets/sweetalert/sweetalert.min.js"></script>
-    <!-- toastr -->
-    <script src="../assets/toastr/toastr.min.js"></script>
-    <link type="text/css" href="../assets/toastr/toastr.css" rel="stylesheet">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 </head>
 
 <body>
@@ -149,7 +124,6 @@ if (isset($_SESSION['usuario'])) {
         $result=pg_query($conexion,$sql);
         $finca=pg_fetch_row($result);
         ?>
-<<<<<<< HEAD
         <a class="h2 mb-0 text-white text-uppercase  d-lg-inline-block"><?php echo $finca[1]." "?><i class="fas fa-angle-right"></i> CULTIVOS</a>
         <!-- Form -->
         <!-- Form -->
@@ -198,18 +172,6 @@ if (isset($_SESSION['usuario'])) {
                     <div class="row">
                       <div class="col-sm-6">
                         <div id="nombre_cultivo">
-=======
-                <a class="h2 mb-0 text-white text-uppercase  d-lg-inline-block"><?php echo $finca[1]." "?><i
-                        class="fas fa-angle-right"></i> CULTIVOS</a>
-                <!-- Form -->
-                <!-- Form -->
-                <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto">
-                    <div class="form-group mb-0" id="date-hour">
-                    </div>
-                </form>
-                <!-- User -->
-                <ul class="navbar-nav align-items-center d-none d-md-flex" id="actions-lg-scr">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
                 </ul>
             </div>
@@ -271,7 +233,6 @@ if (isset($_SESSION['usuario'])) {
                         //   echo 'La zona horaria del script y la zona horaria de la configuración ini coinciden.';
                         // }
                             ?>
-<<<<<<< HEAD
                             <input class="form-control datepicker" id="fin_cul" placeholder="Select date" type="text" value="<?php echo $fecha?>">
                           </div>
                         </div>
@@ -328,78 +289,6 @@ if (isset($_SESSION['usuario'])) {
                             <select id="cod_lot" class="form-control"data-live-search="true">
                               <option value="" disabled selected>Selecciona lote</option>
                               <?php 
-=======
-                                                            <input class="form-control datepicker" id="fin_cul"
-                                                                placeholder="Select date" type="text"
-                                                                value="<?php echo $fecha?>">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label> fecha de Finalización:</label>
-                                                        <div class="input-group input-group-alternative">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text"><i
-                                                                        class="ni ni-calendar-grid-58"></i></span>
-                                                            </div>
-                                                            <input class="form-control datepicker" id="fif_cul"
-                                                                placeholder="Select date" type="text"
-                                                                value="<?php echo $fecha?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group input-group-alternative">
-                                                            <input id="dur_cul" type="text" class="form-control"
-                                                                disabled placeholder="Duración del cultivo"
-                                                                autocomplete="off">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- ------------------------------------ -->
-                                                <div class="col-sm-6">
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group input-group-alternative"
-                                                            id="div_npl_cul">
-                                                            <input style="border-color: #fb6340;" id="npl_cul"
-                                                                type="text" class="form-control"
-                                                                placeholder="Numero de plantas" autocomplete="off">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group input-group-alternative">
-                                                            <select id="est_cul" class="form-control"
-                                                                data-live-search="true">
-                                                                <option value="" disabled selected>Estado del cultivo
-                                                                </option>
-                                                                <option value="1">Inicio</option>
-                                                                <option value="2">Crecimiento</option>
-                                                                <option value="3">Produccion</option>
-                                                                <option value="4">Finalización</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group mb-3" data-toggle="tooltip"
-                                                        data-placement="top" title="Tipo de cultivo">
-                                                        <div class="input-group input-group-alternative">
-                                                            <select id="tip_cul" disabled class="form-control"
-                                                                data-live-search="true">
-                                                                <option value="" disabled selected>Tipo de cultivo
-                                                                </option>
-                                                                <option value="1">Transitorio</option>
-                                                                <option value="2">Perenne</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group input-group-alternative">
-                                                            <select id="cod_lot" class="form-control"
-                                                                data-live-search="true">
-                                                                <option value="" disabled selected>Selecciona lote
-                                                                </option>
-                                                                <?php 
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                               $codi_fin=$_SESSION['ide_finca'];
                               require '../php/conexion.php';
                               $query="SELECT cod_lot, nom_lot
@@ -450,7 +339,6 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <form role="form" id="form-up-cultivo">
                   <div class="row " style="margin-bottom: 10px;">
                     <div class="col-md-12 c">
@@ -508,87 +396,6 @@ if (isset($_SESSION['usuario'])) {
                           <select id="cod_lot_up" class="form-control"data-live-search="true">
                             <option value="" disabled selected>Selecciona lote</option>
                             <?php 
-=======
-            </div>
-            <!-- modal para Editar datos -->
-            <div class="col-md-4">
-                <div class="modal fade" id="modal-form-up" tabindex="-1" role="dialog" aria-labelledby="modal-form"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body p-0">
-                                <div class="card bg-secondary shadow border-0">
-                                    <a href="#" data-dismiss="modal" aria-label="Close"
-                                        style="margin: 10px 20px 0 0; text-align: right;">
-                                        <span aria-hidden="true" style="left: 0;">×</span>
-                                    </a>
-                                    <div class="card-body px-lg-5 py-lg-5">
-                                        <div class="text-center text-muted mb-4">
-                                            <h3>Editar Cultivo</h3>
-                                        </div>
-                                        <form role="form" id="form-up-cultivo">
-
-                                            <div class="row">
-                                                <div class="col-sm-6">
-
-                                                    <div id="nombre_cultivo2">
-
-                                                    </div>
-                                                    <div id="fecha1"></div>
-                                                    <div id="fecha2"></div>
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group input-group-alternative">
-                                                            <input id="dur_cul_up" type="text" class="form-control"
-                                                                disabled placeholder="Duración del cultivo"
-                                                                autocomplete="off">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- ------------------------------------ -->
-                                                <div class="col-sm-6">
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group input-group-alternative"
-                                                            id="div_npl_cul_up">
-                                                            <input style="border-color: #fb6340;" id="npl_cul_up"
-                                                                type="text" class="form-control"
-                                                                placeholder="Numero de plantas" autocomplete="off">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group input-group-alternative">
-                                                            <select id="est_cul_up" class="form-control"
-                                                                data-live-search="true">
-                                                                <option value="" disabled selected>Estado del cultivo
-                                                                </option>
-                                                                <option value="1">Inicio</option>
-                                                                <option value="2">Crecimiento</option>
-                                                                <option value="3">Produccion</option>
-                                                                <option value="4">Finalización</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group mb-3" data-toggle="tooltip"
-                                                        data-placement="top" title="Tipo de cultivo">
-                                                        <div class="input-group input-group-alternative">
-                                                            <select id="tip_cul_up" disabled class="form-control"
-                                                                data-live-search="true">
-                                                                <option value="" disabled selected>Tipo de cultivo
-                                                                </option>
-                                                                <option value="1">Transitorio</option>
-                                                                <option value="2">Perenne</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group input-group-alternative">
-                                                            <select id="cod_lot_up" class="form-control"
-                                                                data-live-search="true">
-                                                                <option value="" disabled selected>Selecciona lote
-                                                                </option>
-                                                                <?php 
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                             require '../php/conexion.php';
                             $query="SELECT cod_lot, nom_lot
                             FROM public.lotes where cod_fin='$codi_fin'";
@@ -731,15 +538,9 @@ if (isset($_SESSION['usuario'])) {
                                                                 <?php 
                        }
                        ?>
-<<<<<<< HEAD
                        <?php 
                        $query="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter FROM terceros,duenio
                        where terceros.ide_ter=duenio.ide_ter AND  terceros.ide_ter LIKE'$like%'";
-=======
-                                                                <?php 
-                       $query="SELECT terceros.ide_ter,pno_ter,sno_ter,pap_ter,sap_ter FROM terceros,dueño
-                       where terceros.ide_ter=dueño.ide_ter AND  terceros.ide_ter LIKE'$like%'";
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                        $result =pg_query($conexion,$query);
                        while ($ver=pg_fetch_row($result)) {
                          ?>

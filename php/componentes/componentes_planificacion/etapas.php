@@ -19,7 +19,6 @@ $query="SELECT DISTINCT afeccion.cod_afe, etapas_crecimiento.cod_eta, eta_x_afe.
    $result =pg_query($conexion,$query);
    while ($ver=pg_fetch_row($result)) {
        if($ver[3] != 'Prevención'){
-<<<<<<< HEAD
 
         if($ver[2] != '' && $ver[2] != null){
             ?>
@@ -35,25 +34,16 @@ $query="SELECT DISTINCT afeccion.cod_afe, etapas_crecimiento.cod_eta, eta_x_afe.
 
 
         }else{
-=======
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
      ?>
      
     <label align="center" style="margin: 15px;">
     <p align='center'><?php echo $ver[3] ?></p>
         <input type="radio" name="etapa" onclick="selectEtapa('<?php echo $ver[1] ?>')">
-<<<<<<< HEAD
         <img src="../imagenes/sinimagen.jpg" width="200">
     </label>
     
         <?php
          }
-=======
-        <img src="../imagenes/<?php echo $ver[2] ?>" width="200">
-    </label>
-    
-    <?php 
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
    }
 }
 

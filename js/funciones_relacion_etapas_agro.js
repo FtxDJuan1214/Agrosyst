@@ -15,7 +15,6 @@ $(document).ready(function(){
 
   $("#myInput1").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-<<<<<<< HEAD
     $("#myTable1 tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
@@ -27,12 +26,6 @@ $("#myInput2").on("keyup", function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
   });
 });
-=======
-    $("#myTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-});
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 });
 
 function cerrar_menu() {
@@ -62,10 +55,7 @@ function objetoAjax() {
 cod_afe = "";
 cod_eta = "";
 function tablaAgro(cod_etapa, codi_afe){
-<<<<<<< HEAD
   alert(cod_etapa+', '+codi_afe);
-=======
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
   cod_eta=cod_etapa;
   cod_afe = codi_afe;
 	ajax = objetoAjax();
@@ -76,11 +66,7 @@ function tablaAgro(cod_etapa, codi_afe){
 		}
 	}
 	ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-<<<<<<< HEAD
 	ajax.send("cod_etapa="+ cod_etapa+"&cod_afe="+cod_afe);
-=======
-	ajax.send("cod_etapa="+ cod_etapa);
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 }
 
 //-----------------------------------------------------------//
@@ -112,13 +98,9 @@ function asociarFinal(cod_agr){
 		url:"../php/crud/relacion_etapas_agroquimico/crear_relacion.php",
 		data:datos,
 		success:function(r){
-<<<<<<< HEAD
       //alert(r);
       if(r.includes('utilizado')){
         
-=======
-      if(r.includes('utilizado')){
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         swal("", 'Este agroquímico ya está asociado a esta etapa' , "error");
       }else if(r.includes('Resource id')){	
 			
@@ -148,11 +130,7 @@ function eliminarAsociacion(cod_agr){
 		url:"../php/crud/relacion_etapas_agroquimico/eliminar_relacion.php",
 		data:datos,
 		success:function(r){
-<<<<<<< HEAD
       //alert(r);
-=======
-      alert(r);
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
       if(r.includes('Resource id')){	
 			
         swal(

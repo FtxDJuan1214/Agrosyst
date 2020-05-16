@@ -125,17 +125,10 @@ if (isset($_POST['cargar'])) {
         $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
         fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
         FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
-<<<<<<< HEAD
         public.municipio, public.duenio, public.tipo_unidad_medida
         WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
         AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
         AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
-=======
-        public.municipio, public.dueño, public.tipo_unidad_medida
-        WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
-        AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
-        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         $result=pg_query($conexion,$sql);
         $finca=pg_fetch_row($result);
         ?>
@@ -204,17 +197,11 @@ if (isset($_POST['cargar'])) {
                                                 <td><?php echo $ver[1] ?></td>
 
                                                 <td>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                     <?php $sql1="SELECT DISTINCT etapas_crecimiento.cod_eta, etapas_crecimiento.det_eta, eta_x_afe.ima_eta
                                                             FROM public.etapas_crecimiento, public.eta_x_afe, public.afeccion
                                                             WHERE afeccion.cod_afe = eta_x_afe.cod_afe
                                                             AND etapas_crecimiento.cod_eta = eta_x_afe.cod_eta
                                                             AND eta_x_afe.cod_afe = '$ver[0]'";
-<<<<<<< HEAD
                                                             
                                                             $result1=pg_query($conexion,$sql1);
 
@@ -222,9 +209,6 @@ if (isset($_POST['cargar'])) {
                                                             //echo $filas1;
                                                             if($filas1 == 1 ){                                                            
 
-=======
-                                                            $result1=pg_query($conexion,$sql1);
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                             while($ver1=pg_fetch_row($result1)){
                                                                 ?>
                                                     <br>
@@ -267,7 +251,6 @@ if (isset($_POST['cargar'])) {
                                                     <?php
                                                             }
                                                         }
-<<<<<<< HEAD
                                                     }else{
 
 
@@ -323,8 +306,6 @@ if (isset($_POST['cargar'])) {
 
 
                                                     }
-=======
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                         ?>
                                                 </td>
                                             </tr>
@@ -402,11 +383,7 @@ if (isset($_POST['cargar'])) {
 
                                                         <div class="float-md-right" style="margin-top: 5px;">
                                                             <input class="form-control" placeholder="Buscar en la tabla"
-<<<<<<< HEAD
                                                                 id="myInput2" type="text" autocomplete="off">
-=======
-                                                                id="myInput" type="text" autocomplete="off">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                         </div>
                                                         <div class="table-responsive" id="tabla_agroquimicos">
 

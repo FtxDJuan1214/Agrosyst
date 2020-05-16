@@ -118,7 +118,6 @@ function eliminarEtapa(datos){
                 url:"../php/crud/etapas/eliminar_etapa.php",
                 data:cadena,
                 success:function(r){
-<<<<<<< HEAD
                     if(r.includes('Resource id')){
                     swal("¡La etapa se ha eliminado!", {
                         icon: "success",
@@ -132,14 +131,6 @@ function eliminarEtapa(datos){
                 }
             });
             
-=======
-                    $('#tab_etapas').load('../php/componentes/componentes_etapas/tab_etapas.php');
-                }
-            });
-            swal("La etapa se ha eliminado!", {
-                icon: "success",
-            });
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         } else {
             swal("Cancelado!");
         }
@@ -157,10 +148,6 @@ function asociar(cod_eta){
 }
 
 function seleccion_afe(cod_afe){
-<<<<<<< HEAD
-=======
-alert(cod_afe);
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 cod_afec=cod_afe;
 $('#modal-list-dos').modal('toggle');
 $('#modal-list').modal('hide');
@@ -179,19 +166,13 @@ function validateFileType(){
         contentType: false,
         processData: false,
         success: function(r) {
-<<<<<<< HEAD
             //alert(r);
             if (r.includes('Resource id')) {               
-=======
-            alert(r);
-            if (r.includes('Resource id')) {                
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                 
                 toastr.success('¡Todo salió bien!','',{
                     "positionClass": "toast-bottom-right",
                     "closeButton": false,
                     "progressBar": true
-<<<<<<< HEAD
                 });                
                 $('#tab_etapas').load('../php/componentes/componentes_etapas/tab_etapas.php');
                 document.getElementById("imagen_esc").value = "";
@@ -201,11 +182,6 @@ function validateFileType(){
                 document.getElementById("imagen_esc").value = "";
                 $('#modal-list-dos').modal('hide');
                 
-=======
-                });
-            }else{
-                swal("Verifica los datos!", r , "error");
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
             }
         }
     });
@@ -220,11 +196,7 @@ function guardarSinImagen(info,nombre){
       url:"../php/crud/etapas/agregar_etapa_no_imagen.php",
       data:cadena,
       success:function(r){
-<<<<<<< HEAD
           //alert(r);
-=======
-          alert(r);
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
        if(r.includes('utilizado')){
         swal("Esta etapa ya tiene un registro de esta plaga o enfermedad", {
             icon: "error",
@@ -236,23 +208,17 @@ function guardarSinImagen(info,nombre){
               "closeButton": false,
               "progressBar": true
           });  
-<<<<<<< HEAD
           $('#tab_etapas').load('../php/componentes/componentes_etapas/tab_etapas.php');
           $('#modal-list-dos').modal('hide');
        }else{
           swal("Esta etapa ya está registrada",'' , "error");
           $('#modal-list-dos').modal('hide');
-=======
-       }else{
-          swal("Verifica los datos!", r , "error");
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
        }
       }
       });
   
     }
   
-<<<<<<< HEAD
 function eliminarAsociacion(cod_afe, cod_eta){
 
 swal({
@@ -294,9 +260,6 @@ swal({
     }
   });
 }
-=======
-
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
 //--------------------------------------Inicio----------------------------------------//
 $(document).ready(function() {
@@ -306,11 +269,8 @@ $(document).ready(function() {
     $('#tab_etapas').load('../php/componentes/componentes_etapas/tab_etapas.php');
     $('#menu').load('../php/componentes/menu/menu.php');
 
-<<<<<<< HEAD
    
 
-=======
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#myTable tr").filter(function() {
@@ -333,7 +293,6 @@ $(document).ready(function() {
         $('#modal-list').modal('toggle');
       })
 
-<<<<<<< HEAD
       swal(
         'Administrador de Etapas de Enfermedades/Plagas',
         'Aquí podrás determinar las etapas de desarrollo de cada enfermedad o plaga.',
@@ -344,11 +303,6 @@ $(document).ready(function() {
 
 
 
-=======
-
-});
-
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 function objetoAjax() {
     var xmlhttp = false;
     try {

@@ -116,17 +116,10 @@ if (isset($_SESSION['usuario'])) {
           $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
           fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
           FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
-<<<<<<< HEAD
           public.municipio, public.duenio, public.tipo_unidad_medida
           WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
           AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
           AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
-=======
-          public.municipio, public.dueño, public.tipo_unidad_medida
-          WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
-          AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
-          AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
           $result=pg_query($conexion,$sql);
           $finca=pg_fetch_row($result);
           ?>
@@ -173,14 +166,10 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="card bg-secondary shadow border-0">
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
-<<<<<<< HEAD
                                             <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Agregar Ingrediente Activo
                                             </h4>
-=======
-                                            <h3>Agregar Ingrediente Activo</h3>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                         </div>
                                         <form role="form" id="form-add-iac">
 
@@ -189,11 +178,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
                                                     <input style="border-color: #fb6340;" id="nom_iac" name ="nom_iac" type="text"
                                                         class="form-control" placeholder="Nombre Ingrediente" autocomplete="off"
-<<<<<<< HEAD
                                                         maxlength="45" required>                                                        
-=======
-                                                        maxlength="45">                                                        
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                 </div>                                                
                                             </div>  
 
@@ -227,13 +212,8 @@ if (isset($_SESSION['usuario'])) {
                                             <!--------------------------Botón guardar-------------------------------->
                                             
                                             <div class="text-center">
-<<<<<<< HEAD
                                                 <button type="button" class="btn btn-default my-4" id="btn_save" text style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                                     onclick="guadarIngrediente();" text style="font-family:'FontAwesome',tahoma; font-size: 11px;">Guardar</button>
-=======
-                                                <button type="button" class="btn btn-default my-4" id="btn_save"
-                                                    onclick="guadarIngrediente();">Guardar</button>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                             </div>
                                         </form>
                                         <img src="../assets/img/icons/preloader.gif" id="preloader"
@@ -264,14 +244,10 @@ if (isset($_SESSION['usuario'])) {
                                     </a>
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
-<<<<<<< HEAD
                                         <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Editar datos
                                             </h4>
-=======
-                                            <h2>Editar Datos</h2>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                         </div>
                                         <form role="form" id="form-up-sem">
 
@@ -280,12 +256,8 @@ if (isset($_SESSION['usuario'])) {
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
                                                     <input style="border-color: #fb6340;" id="nom_iac_up" name ="nom_iac" type="text"
                                                         class="form-control" placeholder="Nombre Ingrediente" autocomplete="off"
-<<<<<<< HEAD
                                                         maxlength="45" required data-toggle="tooltip" data-placement="top"
                                                     title="Nombre del ingrediente activo">                                                        
-=======
-                                                        maxlength="45">                                                        
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                 </div>                                                
                                             </div> 
 
@@ -304,12 +276,8 @@ if (isset($_SESSION['usuario'])) {
                                             
 
                                             <div class="text-center">
-<<<<<<< HEAD
                                                 <button type="button" class="btn btn-default my-4" id="btn_up" 
                                                 text style="font-family:'FontAwesome',tahoma; font-size: 11px;"
-=======
-                                                <button type="button" class="btn btn-default my-4" id="btn_up"
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                     onclick="actualizarIngrediente_g();">Guardar</button>
                                             </div>
                                             <input type="text" name="" id="rrr" style="display: none;">
@@ -329,22 +297,14 @@ if (isset($_SESSION['usuario'])) {
 
             <!-- Table -->
             <div class="row">
-<<<<<<< HEAD
                 <div class="col-md-1">
                 </div>
                 <div class="col-md-10">
-=======
-                <div class="col">
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                     <div class="card shadow">
                         <div class="card-header border-0">
                             <div class="float-md-left" style="margin-top: 5px;">
                                 <button type="button" class="btn btn-default" data-toggle="modal"
-<<<<<<< HEAD
                                     data-target="#modal-form" text style="font-family:'FontAwesome',tahoma; font-size: 11px;">Agregar</button>
-=======
-                                    data-target="#modal-form">Agregar</button>
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                             </div>
                             <div class="float-md-right" style="margin-top: 5px;">
                                 <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text"
@@ -357,11 +317,8 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="col-md-1">
                 </div>
-=======
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
             </div>
             <!-- Footer -->
 

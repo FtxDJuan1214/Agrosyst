@@ -117,17 +117,10 @@ if (isset($_SESSION['usuario'])) {
           $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
           fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
           FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
-<<<<<<< HEAD
           public.municipio, public.duenio, public.tipo_unidad_medida
           WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
           AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
           AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
-=======
-          public.municipio, public.dueño, public.tipo_unidad_medida
-          WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
-          AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
-          AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
           $result=pg_query($conexion,$sql);
           $finca=pg_fetch_row($result);
           ?>

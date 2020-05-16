@@ -344,15 +344,6 @@ alert("datos:\n "+ datos);
 //------------------------------------------------------------------------------------------------------------------------------//
 $(document).ready(function() {
 
-<<<<<<< HEAD
-=======
-  toastr.info('Por favor, mientras ingrese los productos de la compra no recargue la pagina', '', {
-      "positionClass": "toast-bottom-right",
-      "closeButton": true,
-      "progressBar": true
-  });
-
->>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
   jQuery('#ver2').hide();
   $('#date-hour').load('../php/componentes/menu/date-hour.php');
   $('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
