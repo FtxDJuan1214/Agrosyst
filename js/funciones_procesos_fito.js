@@ -168,9 +168,7 @@ $.ajax({
 }
 //------------------------------Terminar proceso --------------------------------------//
 
-function terminarProceso(cod_pfi,calificacion){
-
-
+function terminarProceso(cod_pfi){
 
     swal({
         title: "¡Importante!",
@@ -182,7 +180,6 @@ function terminarProceso(cod_pfi,calificacion){
     .then((willDelete) => {
         if (willDelete) {
 
-            if(calificacion != ''){
                 cadena ="cod_pfi="+cod_pfi.trim();
                 $.ajax({
                     type:"post",
@@ -198,11 +195,7 @@ function terminarProceso(cod_pfi,calificacion){
                             swal("","Por favor antes de terminar el proceso, agregue un comentario sobre su lucha contra esta enfermedad/plaga.", "info");    
                         }
                     }
-                });
-                }else{
-                    swal("","Por favor califique el desempeño de la labor", "info");
-            
-                }
+                });                
         }
 });
 

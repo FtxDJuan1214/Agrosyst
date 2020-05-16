@@ -163,8 +163,7 @@ if (isset($_POST['cargar'])) {
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-header border-0">
-                            <div class="float-md-left" style="margin-top: 5px;" 
-                            >
+                            <div class="float-md-left" style="margin-top: 5px;">
                                 <button type="button" id="div-btn-add-enf" name="div-btn-add-enf" class="btn btn-default" data-toggle="modal"
                                     data-target="#modal-form" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                     onclick="cargarVentana()">Agregar</button>

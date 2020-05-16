@@ -72,7 +72,7 @@ require '../../conexion.php';
     INNER JOIN cultivos ON cultivos.cod_cul = ejecutar.cod_cul
     INNER JOIN nombre_cultivo ON nombre_cultivo.cod_ncu = cultivos.cod_ncu
     WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
-    AND procesos_fitosanitarios.ffi_pfi IS null
+    AND procesos_fitosanitarios.ffi_pfi IS NOT null
     ORDER BY afeccion.nom_afe ASC"; 
      $result=pg_query($conexion,$sql);   
     
@@ -91,7 +91,7 @@ require '../../conexion.php';
     INNER JOIN afeccion ON afeccion.cod_afe = procesos_fitosanitarios.cod_afe
     INNER JOIN efectuar ON efectuar.cod_tar= tarea.cod_tar
     WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
-    AND procesos_fitosanitarios.ffi_pfi IS null
+    AND procesos_fitosanitarios.ffi_pfi IS NOT null
     AND procesos_fitosanitarios.cod_pfi = '$ver[4]'";
 
     $tar1=pg_query($conexion,$tar);
@@ -123,14 +123,14 @@ require '../../conexion.php';
                             ?>
                         <li data-toggle="tooltip" data-html="true" class='star selected' title='Inservible' data-value='1'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*1' ?>')"></i>
+                            ></i>
                         </li>
                         <?php
                         }else{
                         ?>
                         <li data-toggle="tooltip" data-html="true" class='star' title='Inservible' data-value='1'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*1' ?>')"></i>
+                            ></i>
                         </li>
                         <?php
                         }
@@ -140,14 +140,14 @@ require '../../conexion.php';
                             ?>
                         <li data-toggle="tooltip" data-html="true" class='star selected' title='Poco Efectiva' data-value='2'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*2' ?>')"></i>
+                                ></i>
                         </li>
                         <?php
                         }else{
                         ?>
                         <li data-toggle="tooltip" data-html="true" class='star' title='Poco Efectiva' data-value='2'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*2' ?>')"></i>
+                                ></i>
                         </li>
                         <?php
                         }
@@ -158,14 +158,14 @@ require '../../conexion.php';
                             ?>
                         <li data-toggle="tooltip" data-html="true" class='star selected' title='Aceptable' data-value='3'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*3' ?>')"></i>
+                                ></i>
                         </li>
                         <?php
                         }else{
                         ?>
                         <li data-toggle="tooltip" data-html="true" class='star' title='Aceptable' data-value='3'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*3' ?>')"></i>
+                               ></i>
                         </li>
                         <?php
                         }
@@ -175,14 +175,14 @@ require '../../conexion.php';
                             ?>
                         <li data-toggle="tooltip" data-html="true" class='star selected' title='Efectiva' data-value='4'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*4' ?>')"></i>
+                                ></i>
                         </li>
                         <?php
                         }else{
                         ?>
                         <li data-toggle="tooltip" data-html="true" class='star' title='Efectiva' data-value='4'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*4' ?>')"></i>
+                                ></i>
                         </li>
                         <?php
                         }
@@ -193,14 +193,14 @@ require '../../conexion.php';
                             ?>
                         <li data-toggle="tooltip" data-html="true" class='star selected' title='Muy Efectiva' data-value='5'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*5' ?>')"></i>
+                                ></i>
                         </li>
                         <?php
                         }else{
                         ?>
                         <li data-toggle="tooltip" data-html="true" class='star' title='Muy Efectiva' data-value='5'>
                             <i class='fa fa-star fa-fw' style="font-size:20px;"
-                                onclick="calificar('<?php  echo $tareas[0].'*5' ?>')"></i>
+                                ></i>
                         </li>
                         <?php
                         }
@@ -237,7 +237,7 @@ require '../../conexion.php';
             INNER JOIN insumos ON insumos.cod_ins = stock.cod_ins
             INNER JOIN agroquimicos ON insumos.cod_ins = agroquimicos.cod_ins
             WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
-            AND procesos_fitosanitarios.ffi_pfi IS null
+            AND procesos_fitosanitarios.ffi_pfi IS NOT null
             AND tarea.cod_tar = '$tareas[5]'";
             $quimicos=pg_query($conexion,$agro);
             $listado=""; 
@@ -272,79 +272,17 @@ require '../../conexion.php';
                     </div>
                 </div>
             </td>
-            <td>
-                <div class="text-center">
-                    <button type="button" class="btn btn-danger center-block" data-toggle="tooltip"
-                        title="Si ya no hay presencia de la plaga o enfermedad en el cultivo."
-                        style="font-family:'FontAwesome',tahoma; font-size: 9px;"
-                        onclick="terminarProceso(' <?php  echo $ver[4] ?> ')">Terminar proceso</button>
-
-                    <div id="sintomas-mostrar">
-                    </div>
-                </div>
-            </td>
         </tr>
         <?php   
         }
   ?>
     </tbody>
 </table>
+
+
+
 <script>
-$(document).ready(function() {
 
-    /* 1. Visualizing things on Hover - See next part for action on click */
-    $('#stars li').on('mouseover', function() {
-        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-
-        // Now highlight all the stars that's not after the current hovered star
-        $(this).parent().children('li.star').each(function(e) {
-            if (e < onStar) {
-                $(this).addClass('hover');
-            } else {
-                $(this).removeClass('hover');
-            }
-        });
-
-    }).on('mouseout', function() {
-        $(this).parent().children('li.star').each(function(e) {
-            $(this).removeClass('hover');
-        });
-    });
-
-
-    /* 2. Action to perform on click */
-    $('#stars li').on('click', function() {
-        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-        var stars = $(this).parent().children('li.star');
-
-        for (i = 0; i < stars.length; i++) {
-            $(stars[i]).removeClass('selected');
-        }
-
-        for (i = 0; i < onStar; i++) {
-            $(stars[i]).addClass('selected');
-        }
-
-        // JUST RESPONSE (Not needed)
-        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-        var msg = "";
-        if (ratingValue > 1) {
-            msg = "Thanks! You rated this " + ratingValue + " stars.";
-        } else {
-            msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
-        }
-        responseMessage(msg);
-
-    });
-
-
-});
-
-
-function responseMessage(msg) {
-    $('.success-box').fadeIn(200);
-    $('.success-box div.text-message').html("<span>" + msg + "</span>");
-}
   $(function () {
     $("[data-toggle='tooltip']").tooltip();
   });

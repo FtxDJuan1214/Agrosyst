@@ -170,7 +170,7 @@ if (isset($_POST['cargar'])) {
                                                         <!--------------------Primera Columna -------------------------->
                                                         <div class="col-md-4">
                                                             <!------------------Codigo planificación----------------------->
-                                                            <div class="form-group" id="cod_pla" name="cod_pla">
+                                                            <div class="form-group" id="cod_pla" name="cod_pla" hidden>
                                                                 <?php   
                                                               $user =  $_SESSION['idusuario'];
 
@@ -226,7 +226,8 @@ if (isset($_POST['cargar'])) {
                                                                 <div class="input-group input-group-alternative"
                                                                     id="epocaD">
                                                                     <select id="epoca" class="form-control"
-                                                                        data-live-search="true" required>
+                                                                        data-live-search="true" data-toggle="tooltip"
+                                                                        title="Clima actual" required>
                                                                         <option value="" disabled selected>Epoca
                                                                         </option>
                                                                         <option value="Invierno">Invierno</option>
@@ -241,7 +242,8 @@ if (isset($_POST['cargar'])) {
                                                             <div class="form-group">
                                                                 <div class="form-group">
                                                                     <textarea id="det_pla" class="form-control"
-                                                                        placeholder="Detalle" rows="1"></textarea>
+                                                                        placeholder="Detalle" data-toggle="tooltip"
+                                                                        title="¿Para qué quieres hacer esta planificación?" rows="1"></textarea>
                                                                 </div>
                                                             </div>
                                                             <!----------------------Tipo de tarea---------------------->
@@ -250,11 +252,10 @@ if (isset($_POST['cargar'])) {
                                                                     <div class="input-group input-group-alternative">
                                                                         <select id="tip_tar" name="tip_tar"
                                                                             class="form-control"
-                                                                            data-live-search="true">
+                                                                            data-live-search="true" required>
                                                                             <option value="" disabled selected>Tipo de
                                                                                 tarea
                                                                             </option>
-                                                                            <!--<option value="Nutrición">Nutrición</option>-->
                                                                             <option value="Prevención">Prevención
                                                                             </option>
                                                                             <option value="Curación">Curación</option>
@@ -316,9 +317,9 @@ if (isset($_POST['cargar'])) {
                                                         <div class="float-md-right">
                                                             <input type="button" name="cargar"
                                                                 class="btn btn-success sm-4" data-toggle="tooltip"
-                                                                data-placement="top" title="Planificar otra tarea"
-                                                                value="&#xf067    "
-                                                                style="font-family:'FontAwesome',tahoma; font-size: 12px;"
+                                                                data-placement="top" title="Agregar planificación"
+                                                                value="Agregar"
+                                                                style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                                                 onclick="new_planificacion()">
                                                         </div>
                                                     </div>
@@ -364,8 +365,8 @@ if (isset($_POST['cargar'])) {
                         <div style="display: flex; justify-content: center;">
                             <!--<a style="align-self: center;" href="#" class="btn btn-success my-4"
                                 onclick="comprar();">Comprar</a>-->
-                            <a style="align-self: center;" href="planificacion.php"
-                                class="btn btn-warning my-4">Cancelar</a>
+                            <a style="align-self: center; font-family:'FontAwesome',tahoma; font-size: 11px; color:white"
+                                class="btn btn-danger my-4" data-toggle="tooltip" data-placement="top" title="Cancelar planificación" onclick="cancelar_plan()">Cancelar</a>
 
                         </div>
                     </div>

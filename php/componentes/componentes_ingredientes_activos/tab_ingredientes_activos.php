@@ -37,6 +37,8 @@ require '../../conexion.php';
 	    AND cod_agr NOT LIKE '1-1' 
       AND agroquimicos.cod_iac = '$ver[0]'";
             $result1=pg_query($conexion,$sql1);
+
+    //Primero recorreré el mismo codigo para guardar los arreglos y combinar las celdas        
             while($ver1=pg_fetch_row($result1)){
 
 
@@ -68,17 +70,17 @@ require '../../conexion.php';
               
           <span class="badge badge-pill badge-warning text-uppercase"  data-toggle="tooltip" data-html="true" 
            data-placement="right" title="<ul class='list-group'>
-          <li class='list-group-item-info text-light' style='background: #000; color: #fff'>
+          <li class='list-group-item-info text-dark' style='background: #fff; color: #fff'>
           <center><b>Nombre:</b> <?php echo $res[0].'.' ?><center>
           <b>Tipo:</b> <?php echo $res[1].'.' ?><br>
           <b>Función:</b> <?php echo $res[2].'.' ?><br>
           <b>Formulación:</b> <?php echo $res[3].'.' ?><br>
           <b>Toxicidad:</b> <?php echo $res[5].'.' ?><br>
           </li>
-          <li class='list-group-item text-light' style='background: #000; color: #fff' >
+          <li class='list-group-item text-dark' style='background: #fff; color: #fff' >
             <br><b>Enfermedad/Plaga:</b><br>
             <?php while($imp=pg_fetch_row($resuld)){?>
-            • <?php echo $imp[0].'.'; }?><br>
+            • <?php echo $imp[0].'.'; }?> <br>
            </li>           
         </ul>" style="font-size: 0.7rem; margin: 5px;"><?php echo $ver1[1] ?></span><br>
       </center>
@@ -103,6 +105,7 @@ require '../../conexion.php';
   ?>
 </tbody>
 </table>
+
 <script>
   $(function () {
     $("[data-toggle='tooltip']").tooltip();
