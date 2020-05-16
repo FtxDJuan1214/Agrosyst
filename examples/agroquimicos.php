@@ -125,10 +125,17 @@ if (isset($_POST['cargar'])) {
                       $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
                       fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
                       FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
+<<<<<<< HEAD
                       public.municipio, public.duenio, public.tipo_unidad_medida
                       WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
                       AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
                       AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
+=======
+                      public.municipio, public.dueño, public.tipo_unidad_medida
+                      WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
+                      AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
+                      AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                       $result=pg_query($conexion,$sql);
                       $finca=pg_fetch_row($result);
                     ?>
@@ -156,6 +163,7 @@ if (isset($_POST['cargar'])) {
 
             </div>
         </div>
+<<<<<<< HEAD
 
         <!-- Page content -->
 
@@ -431,13 +439,45 @@ if (isset($_POST['cargar'])) {
                                     </div>
                                 </div>
                             </div>
+=======
+
+        <!-- Page content -->
+
+        <div class="container-fluid mt--7">
+            <!-- Table -->
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <center>
+                            <strong text style="font-family:'FontAwesome',tahoma; font-size: 15px;">Lista de agroquímicos</strong>
+                            </center>
+                            <div class="float-md-left" style="margin-top: 5px;" id="div-btn-add" name="div-btn-add">
+                                <button id="bt-add-agr" name="bt-add-agr" class="btn btn-success"
+                                    onclick="cargarAgro()" style="font-family:'FontAwesome',tahoma; font-size: 12px;">Agregar</button>
+                            </div>
+                            <div class="float-md-right" style="margin-top: 5px;">
+                                <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text"
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="table-responsive" id="tab_agroquimicos">
+                        </table>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                         </div>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             <!------------------------------ Recomendaciones de uso  --------------------------->
             <div class="col-md-4">
                 <div class="modal fade" id="modal-suge-dos" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+=======
+
+            <!----------------------- modal para Editar datos --------------------------->
+            <div class="col-md-4">
+                <div class="modal fade" id="modal-agr-up" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                     aria-hidden="true">
                     <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content">
@@ -449,6 +489,7 @@ if (isset($_POST['cargar'])) {
                                     </a>
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                         <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
                                         Editar recomendaciones de uso
                                     </h4>
@@ -466,12 +507,259 @@ if (isset($_POST['cargar'])) {
                                             onclick="actualizarRecomendaciones()">
                                         </center>
                                         </form>
+=======
+                                            <h3>Editar Agroquímico</h3>
+                                        </div>
+                                        <form role="form" id="form-up-agroq">
+
+                                            <div class="row">
+                                                <!-----------------Primera columna---------------------->
+                                                <div class="col-md-4">
+                                                    <!--Div Nombre Agroquímico-->
+                                                    <div class="form-group">
+
+                                                        <input type="text" class="form-control" id="nom_agr_up"
+                                                            name="nom_agr_up" placeholder="Nombre">
+
+                                                    </div>
+                                                    <!--Div Prentación-->
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="pre_agr_up"
+                                                            name="pre_agr_up" placeholder="Presentación">
+                                                    </div>
+
+                                                    <!--Div Ingredientes activos-->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="cod_iac_up" name="cod_iac_up"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>Ingrediente
+                                                                    Activo</option>
+                                                                <?php 
+                                                                       $query="SELECT cod_iac, des_iac FROM ingredientes_activos";
+                                                                       $result =pg_query($conexion,$query);
+                                                                       while ($ver=pg_fetch_row($result)) {
+                                                                   ?>
+                                                                <option value="<?php echo $ver[0]; ?>">
+                                                                    <?php echo $ver[1];?></option>
+
+                                                                <?php 
+                                                                      }
+                                                                    ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Div Tipo de agroquímico-->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="cod_tag_up" name="cod_tag_up"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>Tipo de
+                                                                    agroquímico</option>
+                                                                <?php 
+                                                            $query="SELECT * FROM tipo_agroquimico";
+                                                            $result =pg_query($conexion,$query);
+                                                             while ($ver=pg_fetch_row($result)) {
+                                                            ?>
+                                                                <option value="<?php echo $ver[0]; ?>">
+                                                                    <?php echo $ver[1]; ?></option>
+
+                                                                <?php 
+                                                            }
+                                                            ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Div Función-->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="fun_agr_up" name="fun_agr_up"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>Función</option>
+                                                                <option value="Curación">Curación</option>
+                                                                <option value="Prevención">Prevención</option>
+                                                                <option value="Nutrición">Nutrición</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Div Tipo de Formulación-->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="cod_for_up" name="cod_for_up"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>Formulación
+                                                                </option>
+                                                                <?php 
+                                                            $query="SELECT cod_for, nom_for, sig_for FROM formulacion";
+                                                            $result =pg_query($conexion,$query);
+                                                            while ($ver=pg_fetch_row($result)) {
+                                                            ?>
+                                                                <option value="<?php echo $ver[0]; ?>">
+                                                                    <?php echo $ver[1]." - ".$ver[2] ; ?></option>
+
+                                                                <?php 
+                                                            }
+                                                            ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Div Nombre Carencia-->
+                                                    <div class="form-group">
+
+                                                        <input type="number" class="form-control" id="pcr_agr_up"
+                                                            name="pcr_agr_up" placeholder="Horas de carencia">
+
+                                                    </div>
+
+                                                </div>
+                                                <!-----------------Segunda columna---------------------->
+                                                <div class="col-md-4">
+
+                                                    <!--Div Dosis-->
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="dos_agr_up"
+                                                            name="dos_agr_up" placeholder="Dosis">
+                                                    </div>
+
+                                                    <!--Div Prohibido-->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="pro_agr_up" name="pro_agr_up"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>¿Prohibido por
+                                                                    ICA?</option>
+                                                                <option value="SI">Si</option>
+                                                                <option value="NO">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Div Toxicidad-->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="cod_tox_up" name="cod_tox_up"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>Nivel de
+                                                                    Toxicidad</option>
+                                                                <?php 
+                                                        $query="SELECT * FROM toxicidad";
+                                                        $result =pg_query($conexion,$query);
+                                                        while ($ver=pg_fetch_row($result)) {
+                                                        ?>
+                                                                <option value="<?php echo $ver[0]; ?>">
+                                                                    <?php echo $ver[1]." - ".$ver[2]; ?></option>
+
+                                                                <?php 
+                                                        }
+                                                        ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Div Estado-->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="est_agr_up" name="est_agr_up"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>Estado</option>
+                                                                <option value="Solido">Sólido</option>
+                                                                <option value="Liquido">Líquido</option>
+                                                                <option value="Plasma">Plasma</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Div Tipo Unidad de Medida-->
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="tip_uni_med_up" name="tip_uni_med_up"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>Tipo de medida
+                                                                </option>
+                                                                <?php 
+                                                            $query="SELECT cod_tum,des_tum FROM tipo_unidad_medida";
+                                                            $result =pg_query($conexion,$query);
+                                                            while ($ver=pg_fetch_row($result)) {
+                                                            ?>
+                                                                <option value="<?php echo $ver[0]; ?>">
+                                                                    <?php echo $ver[1]; ?></option>
+
+                                                                <?php 
+                                                            }
+                                                            ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Div Unidad de Medida-->
+                                                    <div class="form-group" id="select2">
+                                                    </div>
+
+                                                    <!--Div Nombre Entrada-->
+                                                    <div class="form-group">
+
+                                                        <input type="number" class="form-control" id="pen_agr_up"
+                                                            name="pen_agr_up" placeholder="Horas de Entrada">
+
+                                                    </div>
+
+
+
+                                                </div>
+                                                <!-----------------Tercera columna---------------------->
+                                                <div class="col-md-4">
+                                                    <!-----------------Div Detalle Insumo---------------------->
+                                                    <div class="form-group">
+                                                        <label for="">Detalles</label><br>
+                                                        <textarea name="des_ins_up" id="des_ins_up" cols="18" rows="5"
+                                                            class="form-control"></textarea>
+                                                    </div>
+                                                    <!-----------------Div Detalle Insumo---------------------->
+                                                    <div class="form-group">
+                                                        <label for="">Sugerencias de aplicacion</label><br>
+                                                        <textarea name="rap_agr_up" id="rap_agr_up" cols="18" rows="5"
+                                                            class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                                <!-----------------Cuarta columna---------------------->
+                                                <!-- <div class="col-md-4">
+                                    
+                                           
+                                            <div class="form-group" id="tab_rus">
+                                            </div>
+
+                                           
+                                            <div class="form-group" id="tab_rus_agre">
+                                            </div>                             
+
+                                        </div>-->
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-default my-4" id="btn_up"
+                                                    onclick="preloaderup();">Guardar</button>
+                                            </div>
+                                        </form>
+                                        <img src="../assets/img/icons/preloader.gif" id="preloaderup"
+                                            style="margin: 10px auto;">
+                                        <script>
+                                        jQuery('#preloaderup').hide();
+                                        </script>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>    
+=======
+                </div>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
             </div>
 
 

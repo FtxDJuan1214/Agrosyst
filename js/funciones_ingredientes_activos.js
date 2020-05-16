@@ -184,6 +184,7 @@ function eliminarIngrediente(datos){
                 url:"../php/crud/ingredientes_activos/eliminar_ingrediente_activo.php",
                 data:cadena,
                 success:function(r){
+<<<<<<< HEAD
                     if(r.includes('Resource id')){
                         swal("¡Ingrediente activo eliminado!", {
                             icon: "success",
@@ -196,6 +197,14 @@ function eliminarIngrediente(datos){
                     }
                 }
             });            
+=======
+                    $('#tab_ingredientes_activos').load('../php/componentes/componentes_ingredientes_activos/tab_ingredientes_activos.php');
+                }
+            });
+            swal("El ingrediente activo se ha eliminado!", {
+                icon: "success",
+            });
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         } else {
             swal("Cancelado!");
         }

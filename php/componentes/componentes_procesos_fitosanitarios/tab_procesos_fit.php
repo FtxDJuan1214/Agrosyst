@@ -193,9 +193,15 @@ require '../../conexion.php';
                 </div>
 
             </td>
+<<<<<<< HEAD
             <!--<td><button type="button" class="btn btn-success center-block" data-toggle="tooltip"
                     title="Ver, editar y eliminar comentarios sobre el avance de este proceso fitosanitario"
                     style="font-family:'FontAwesome',tahoma; font-size: 10px;">Información</button></td>-->
+=======
+            <td><button type="button" class="btn btn-success center-block" data-toggle="tooltip"
+                    title="Ver, editar y eliminar comentarios sobre el avance de este proceso fitosanitario"
+                    style="font-family:'FontAwesome',tahoma; font-size: 10px;">Información</button>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
             <td>
                 <div class="text-center">
                     <button type="button" class="btn btn-dark center-block" data-toggle="tooltip"
@@ -212,7 +218,11 @@ require '../../conexion.php';
                     <button type="button" class="btn btn-danger center-block" data-toggle="tooltip"
                         title="Ver, editar y eliminar comentarios sobre el avance de este proceso fitosanitario"
                         style="font-family:'FontAwesome',tahoma; font-size: 10px;"
+<<<<<<< HEAD
                         onclick="terminarProceso(' <?php  echo $ver[8] ?> ','<?php  echo $ver[9] ?>')">Terminar proceso</button>
+=======
+                        onclick="modalComentarios(' <?php  echo $ver[8] ?> ')">Terminar proceso</button>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
                     <div id="sintomas-mostrar">
                     </div>

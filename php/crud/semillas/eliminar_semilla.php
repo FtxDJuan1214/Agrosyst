@@ -11,5 +11,5 @@ $result=pg_query($conexion,$sql1);
 
 $sql="DELETE FROM public.insumos
 WHERE cod_ins='$cod_ins'";
-echo $$result=pg_query($conexion,$sql);
+echo $result=pg_query($conexion,$sql);
 ?>

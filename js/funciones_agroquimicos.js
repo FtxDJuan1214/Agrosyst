@@ -2,6 +2,7 @@ function actualizar_tabla(){
 	$('#tab_agroquimicos').load('../php/componentes/componentes_agroquimicos/tab_agroquimicos.php');
 }
 
+<<<<<<< HEAD
 function qualityString(data) {
 
 	var res = false;
@@ -42,13 +43,18 @@ function qualityString(data) {
 			}else
 			return true;
 		}
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 //---------------------------------------------------------Guardar agroquímico--------------------------------------------//
 function guardar_agro(){
 	cod_agr=$('#cod_agr').val();
 	nom_agr=$('#nom_agr').val();
 	pre_agr=$("#pre_agr").val();  
 	dos_agr=$('#dos_agr').val();
+<<<<<<< HEAD
 	res = verificar_num_let(dos_agr);
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	des_ins= nom_agr+" " +pre_agr;
 	rap_agr=$('#rap_agr').val();
 	pcr_agr=$('#pcr_agr').val();
@@ -61,8 +67,13 @@ function guardar_agro(){
 	cod_iac=$('#cod_iac').val();
 	fun_agr=$('#fun_agr').val();
 	add_rus_agr = cadena_mostrar_rus;
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	cadena='cod_agr='+ cod_agr.trim()+
    '&nom_agr='+ nom_agr +' - '+pre_agr +
    '&des_ins='+ des_ins +
@@ -78,6 +89,7 @@ function guardar_agro(){
    '&cod_iac='+ cod_iac +
    '&fun_agr='+ fun_agr+ 
    '&add_rus_agr='+ add_rus_agr;
+<<<<<<< HEAD
 
    if(res == false){
 	toastr.error('Ejemplo: 1L/Ha','Por favor ingrese una dosis valida',{
@@ -88,12 +100,21 @@ function guardar_agro(){
    }else{
 	crear_agroquimico(cadena);
    }	
+=======
+	
+   crear_agroquimico(cadena);	
+	
+	
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 }
 
 cadena_mostrar_rus= "";
 
 function cargarTablaAdd(cad){
+<<<<<<< HEAD
 	alert("envia: "+cad);
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	if(cad != "_"){
 	datos=cad.split('_');
 	cod_agr = datos[0];
@@ -109,7 +130,11 @@ function cargarTablaAdd(cad){
 	}
 }
 
+<<<<<<< HEAD
 function mostrarTablaAdd(){
+=======
+function mostrarTablaAdd(cadena_mostrar_rus){
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	document.getElementById('rus_agr').value="";
 	ajax = objetoAjax();
 	ajax.open("POST","../php/componentes/componentes_agroquimicos/tab_rus_add.php",true);
@@ -162,13 +187,20 @@ function rem_rus(rus_agr) {
   
   }
 
+<<<<<<< HEAD
 function crear_agroquimico(cadena){	 
+=======
+function crear_agroquimico(cadena){	
+   
+	
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
     $.ajax({
      type:"post",
      url:"../php/crud/agroquimicos/agregar_agroquimico.php",
      data:cadena,
      success:function(r){
+<<<<<<< HEAD
 		 if(r.includes('Resource id')){			 
 			swal('Agroquímico agregado!',' ', 'success');			 
 			 actualizar_tabla();
@@ -177,6 +209,15 @@ function crear_agroquimico(cadena){
 
        }else{
 		swal("Ocurrio un error, no se guardo el agroquímico."," ", "error");
+=======
+		 alert("sdsadsdsadasd "+ r);
+		 if(r.includes('Resource id')){
+			 //No entra
+			 alert("asdad "+ r);
+			 swal("Agroquímico agregado!"," ", "success");
+       }else{
+		   
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	   }
      }
    });
@@ -193,10 +234,17 @@ function llenarform(datos){
 	sep =data[2].split("-");
 	$('#nom_agr_up').val(sep[0]);
 	$('#pre_agr_up').val(sep[1]); //dividir
+<<<<<<< HEAD
 	$('#cod_iac_up').val(data[13]);
 	$('#cod_tag_up').val(data[14]);
 	$('#fun_agr_up').val(data[4]);
 	$('#cod_for_up').val(data[15]);
+=======
+	$('#cod_iac_up').val(parseInt(data[13]));
+	$('#cod_tag_up').val(parseInt(data[14]));
+	$('#fun_agr_up').val(data[4]);
+	$('#cod_for_up').val(parseInt(data[15]));
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	$('#pcr_agr_up').val(data[8]);
 	$('#dos_agr_up').val(data[16]);
 	$('#pro_agr_up').val(data[10]);
@@ -206,21 +254,33 @@ function llenarform(datos){
 	$('#des_ins_up').val(data[20]);
 	$('#rap_agr_up').val(data[21]);	
 
+<<<<<<< HEAD
 	global = data[0].trim();
 	global1 = data[1].trim();
+=======
+	global = data[0];
+	global1 = data[1];
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 }
 
 function preloaderup(){
 	
 	jQuery('#form-up-agroq').hide();
 	jQuery('#preloaderup').show();
+<<<<<<< HEAD
 
+=======
+	jQuery('#form-up-form-up-plaga_enfe').hide();
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	cod_agr = global;
 	cod_ins = global1;
 	nom_agr=$('#nom_agr_up').val();
 	pre_agr=$("#pre_agr_up").val();  
 	dos_agr=$('#dos_agr_up').val();
+<<<<<<< HEAD
 	res = verificar_num_let(dos_agr);
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	des_ins=$('#des_ins_up').val();
 	rap_agr=$('#rap_agr_up').val();
 	pcr_agr=$('#pcr_agr_up').val();
@@ -262,10 +322,16 @@ function actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,
 			alert(r);
 			if(r.includes('Resource id')){
 				swal("¡Agroquímico Editado!"," ", "success");
+<<<<<<< HEAD
 
                 var form = document.querySelector('#form-up-agroq');
                 form.reset();
                 $('#modal-form-up-pe').modal('hide'); 
+=======
+                var form = document.querySelector('#form-up-agroq');
+                form.reset();
+                $('#modal-agr-up').modal('hide'); 
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                 jQuery('#preloaderup').hide();
 				jQuery('form-up-agroq').show();	
 				$('#tab_agroquimicos').load('../php/componentes/componentes_agroquimicos/tab_agroquimicos.php');
@@ -274,6 +340,7 @@ function actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,
 			jQuery('#preloaderup').hide();
 			jQuery('#form-up-agroq').show();
 			$('#tab_agroquimicos').load('../php/componentes/componentes_agroquimicos/tab_agroquimicos.php');        
+<<<<<<< HEAD
 		}
 	}
 });
@@ -438,6 +505,116 @@ function eliminar_agroquimico(datos) {
                 swal("¡Cancelado!");
             }
         });
+=======
+		}
+	}
+});
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
+}
+ //--------------------------------------------------Inicio---------------------------------------------------------//
+ function objetoAjax(){
+	var xmlhttp= false;
+	try {
+	  xmlhttp = new  ActiveXObject("MsxmL2.XMLHTTP");
+	}catch(e){
+	  try{
+		xmlhttp = new  ActiveXObject("Microsoft.XMLHTTP");
+	  }catch(E){
+		xmlhttp = false;
+	  }
+	}
+	if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+	  xmlhttp = new XMLHttpRequest();
+	}
+	return xmlhttp;
+  }
+
+
+  function cargarAgro(){
+
+	swal("¡Agregarás un agroquímico!","Recuerda que toda la información la podrás encontrar en la etiqueta del producto.", "");
+
+		$('#div-btn-add').hide();
+		$('#crear_agroq').load('../php/componentes/componentes_agroquimicos/add_agroquimicos.php');
+	}
+
+function cancelar(){
+
+	swal({
+		title: "¿Estás seguro?",
+		text: "Se perderá la información que has registrado",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	  })
+	  .then((willDelete) => {
+		if (willDelete) {
+		$('#tab_agroquimicos').load('../php/componentes/componentes_agroquimicos/tab_agroquimicos.php');
+         var form = document.querySelector('#form-add-agr');
+         form.reset();
+         jQuery('#preloader').hide();
+         jQuery('#form-add-agr').show();
+		 $('#modal-form').modal('hide');
+		 document.getElementById("crear_agroq").innerHTML = "";
+		 $('#div-btn-add').show();
+		}
+	  });
+
+<<<<<<< HEAD
+}	
+
+=======
+//-------------------------------------------------Eliminar agroquímico-------------------------------------------------//
+
+function eliminar_agroquimico(datos) {
+    cod = datos.split('||');
+    cod_ins = cod[1];
+    cod_agr = cod[0];
+
+    swal({
+            title: "¿Estás seguro?",
+            text: "¿Deseas eliminar este agroquímico?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: false,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                cadena = "cod_ins=" + cod_ins.trim() +
+                    "&cod_agr=" + cod_agr.trim();
+
+                $.ajax({
+                    type: "post",
+                    url: "../php/crud/agroquimicos/comprobar_agroquimico.php",
+                    data: cadena,
+                    success: function(r) {
+                        if (r.trim() == "") {
+                            $.ajax({
+                                type: "post",
+                                url: "../php/crud/agroquimicos/eliminar_agroquimico.php",
+                                data: cadena,
+                                success: function(res) {
+                                    alert(res);
+                                    if (res.includes('Resource id')) {
+
+                                        swal("El agroquímico se eliminó!", {
+                                            icon: "success",
+                                        });
+                                        location.reload();
+                                    }
+                                }
+                            });
+                        } else {
+                            swal(r, {
+                                icon: "info",
+                            });
+                        }
+                    }
+                });
+            } else {
+                swal("¡Cancelado!");
+            }
+        });
 }
  //--------------------------------------------------Inicio---------------------------------------------------------//
  function objetoAjax(){
@@ -490,6 +667,7 @@ function cancelar(){
 
 }	
 
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 $(document).ready(function(){
   
 	jQuery('#ver2').hide();
@@ -505,6 +683,7 @@ $(document).ready(function(){
         $("#myTable tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
+<<<<<<< HEAD
 	});  
 	
 	$('#modal-suge-dos').on('hidden.bs.modal', function (e) {
@@ -516,6 +695,9 @@ $(document).ready(function(){
 		$("#guardar_agrob").on("click",function(event){
 		//event.preventDefault();
 	 });
+=======
+    });  
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
   });
 
   function cerrar_menu() {

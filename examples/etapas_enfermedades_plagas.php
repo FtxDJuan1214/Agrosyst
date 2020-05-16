@@ -116,15 +116,26 @@ if (isset($_SESSION['usuario'])) {
           $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
           fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
           FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
+<<<<<<< HEAD
           public.municipio, public.duenio, public.tipo_unidad_medida
           WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
           AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
           AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
+=======
+          public.municipio, public.dueño, public.tipo_unidad_medida
+          WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
+          AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
+          AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
           $result=pg_query($conexion,$sql);
           $finca=pg_fetch_row($result);
           ?>
                 <a class="h2 mb-0 text-white text-uppercase  d-lg-inline-block"><?php echo $finca[1]." "?><i
+<<<<<<< HEAD
                         class="fas fa-angle-right"></i> Etapas Plagas y Enfermedades</a>
+=======
+                        class="fas fa-angle-right"></i> Etapas Plagas & Enfermedades</a>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                 <!-- Form -->
                 <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto">
                     <div class="form-group mb-0" id="date-hour">
@@ -164,6 +175,7 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="card bg-secondary shadow border-0">
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                             <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Etapas
@@ -172,19 +184,36 @@ if (isset($_SESSION['usuario'])) {
                                         <form role="form" id="form-add-eta">
 
                                             <!------------------------Nombre de la etapa------------------------->
+=======
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Etapas
+                                    </h4>
+                                        </div>
+                                        <form role="form" id="form-add-eta">
+
+                                            <!------------------------Nombre ingrediente activo---------------------->
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
                                                     <input style="border-color: #fb6340;" id="nom_eta" name="nom_eta"
                                                         type="text" class="form-control" placeholder="Nombre Etapa"
+<<<<<<< HEAD
                                                         autocomplete="off" maxlength="45" required>
+=======
+                                                        autocomplete="off" maxlength="45">
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                 </div>
                                             </div>
 
                                             <!--------------------------Botón guardar-------------------------------->
 
                                             <div class="text-center">
+<<<<<<< HEAD
                                                 <button type="button" class="btn btn-default my-4" id="btn_save" text
                                                     style="font-family:'FontAwesome',tahoma; font-size: 11px;"
+=======
+                                                <button type="button" class="btn btn-default my-4" id="btn_save"
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                     onclick="guadarEtapa();">Guardar</button>
                                             </div>
                                         </form>
@@ -215,6 +244,7 @@ if (isset($_SESSION['usuario'])) {
                                     </a>
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                             <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Editar datos
@@ -223,18 +253,35 @@ if (isset($_SESSION['usuario'])) {
                                         <form role="form" id="form-up-sem">
 
                                             <!------------------------Nombre de la etapa---------------------->
+=======
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Editar datos
+                                    </h4>
+                                        </div>
+                                        <form role="form" id="form-up-sem">
+
+                                            <!------------------------Nombre ingrediente activo---------------------->
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
                                                     <input style="border-color: #fb6340;" id="nom_eta_up" name="nom_eta"
                                                         type="text" class="form-control" placeholder="Nombre Etapa"
+<<<<<<< HEAD
                                                         autocomplete="off" maxlength="45" required>
+=======
+                                                        autocomplete="off" maxlength="45">
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                 </div>
                                             </div>
                                             <!---------------------------------------------------------------------------->
 
                                             <div class="text-center">
+<<<<<<< HEAD
                                                 <button type="button" class="btn btn-default my-4" id="btn_up" text
                                                     style="font-family:'FontAwesome',tahoma; font-size: 11px;"
+=======
+                                                <button type="button" class="btn btn-default my-4" id="btn_up"
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                     onclick="actualizarEtapa_g();">Guardar</button>
                                             </div>
                                             <input type="text" name="" id="rrr" style="display: none;">
@@ -267,10 +314,16 @@ if (isset($_SESSION['usuario'])) {
                                     </a>
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                             <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Lista de plagas y enfermedades
                                             </h4>
+=======
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Lista de plagas y enfermedades
+                                    </h4>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                         </div>
                                         <form role="form" id="form-list">
 
@@ -279,9 +332,15 @@ if (isset($_SESSION['usuario'])) {
                                                     <div class="card shadow">
                                                         <div class="card-header border-0">
                                                             <div class="float-md-right" style="margin-top: 5px;">
+<<<<<<< HEAD
                                                                 <input class="form-control text-center"
                                                                     placeholder="Buscar" id="myInput1" type="text"
                                                                     autocomplete="off">
+=======
+                                                                <input class="form-control"
+                                                                    placeholder="Buscar en la tabla" id="myInput1"
+                                                                    type="text" autocomplete="off">
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                             </div>
                                                         </div>
                                                         <div class="table-responsive" id="tabla_afecciones">
@@ -290,13 +349,19 @@ if (isset($_SESSION['usuario'])) {
                                                                 class="table align-items-center table-flush table-hover">
                                                                 <thead class="thead-light">
                                                                     <tr>
+<<<<<<< HEAD
                                                                         <th scope="col">
                                                                             <center>Nombre</center>
                                                                         </th>
+=======
+                                                                        <th scope="col">Nombre</th>
+                                                                        <th></th>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="myTable1">
                                                                     <?php 
+<<<<<<< HEAD
                                                                         $like = $_SESSION['idusuario'];
 
                                                                         $sql="SELECT nom_afe, cod_afe FROM afeccion WHERE (cod_afe LIKE '$like%' or cod_afe LIKE '1-%')"; 
@@ -311,6 +376,19 @@ if (isset($_SESSION['usuario'])) {
                                                                                 <?php echo $ver[0] ?>
                                                                             </center>
                                                                         </td>
+=======
+                                                            $like = $_SESSION['idusuario'];
+
+                                                            $sql="SELECT nom_afe, cod_afe FROM afeccion WHERE (cod_afe LIKE '$like%' or cod_afe LIKE '1-%')"; 
+                                                            
+                                                            $result=pg_query($conexion,$sql);
+                                                            while($ver=pg_fetch_row($result)){  
+                                                            ?>
+                                                                    <tr>
+                                                                        <td
+                                                                            onclick="seleccion_afe('<?php echo $ver[1] ?>')">
+                                                                            <?php echo $ver[0] ?></td>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                                     </tr>
                                                                     <?php 
                                                         }
@@ -346,6 +424,7 @@ if (isset($_SESSION['usuario'])) {
                                     </a>
                                     <div class="card-body px-lg-5 py-lg-5">
                                         <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                             <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Imagen de la etapa
@@ -367,12 +446,35 @@ if (isset($_SESSION['usuario'])) {
                                                     style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                                     onclick="guardarSinImagen()">
                                             </center>
+=======
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                        Imagen de la etapa
+                                    </h4>
+                                        </div>
+                                        <form role="form" id="form-list-dos">
+                                        <div class="card shadow">
+                                            <input style="font-family:'FontAwesome',tahoma; font-size: 14px;"
+                                            id="imagen_esc" name="imagen_esc" type="file" class="validate"
+                                                autocomplete="off" accept="image/*" onchange="validateFileType()">
+                                                <input id="codi_eta" name="codi_eta"></input>
+                                                <input id="codi_afe" name="codi_afe"></input>
+                                        </div>
+                                        <br>
+                                        <center>
+                                        <input type="button" name="cargar" class="btn btn-success sm-4"
+                                            data-toggle="tooltip" data-placement="top"
+                                            title="Planificar otra tarea" value="Guardar sin imagen"
+                                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"
+                                            onclick="guardarSinImagen()">
+                                        </center>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>
             </div>
             <!-- Table -->
@@ -413,6 +515,44 @@ if (isset($_SESSION['usuario'])) {
     <script src="../assets/js/argon.js?v=1.0.0"></script>
     <!-- funciones -->
     <script src="../js/funciones_etapas.js"></script>
+=======
+                </div>    
+            </div>
+
+                    <!-- Table -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="card-header border-0">
+                                    <div class="float-md-left" style="margin-top: 5px;">
+                                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                            data-target="#modal-form">Agregar</button>
+                                    </div>
+                                    <div class="float-md-right" style="margin-top: 5px;">
+                                        <input class="form-control" placeholder="Buscar en la tabla" id="myInput"
+                                            type="text" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="table-responsive" id="tab_etapas">
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+
+                </div>
+            </div>
+            <!-- Argon Scripts -->
+            <!-- Core -->
+            <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+            <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Argon JS -->
+            <script src="../assets/js/argon.js?v=1.0.0"></script>
+            <!-- funciones -->
+            <script src="../js/funciones_etapas.js"></script>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
 </body>
 

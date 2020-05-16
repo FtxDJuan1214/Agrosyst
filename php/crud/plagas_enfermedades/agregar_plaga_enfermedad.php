@@ -22,7 +22,11 @@ $metodos_f = $_POST['metodos_f'];
     $cod =pg_fetch_row($result);
     $sep = explode("-", $cod[0]);
     
+<<<<<<< HEAD
     $cod_afe = $sep[1]+1;
+=======
+         $cod_afe = $sep[1]+1;
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
     
         $add ="INSERT INTO public.afeccion(
         cod_afe, nom_afe, noc_afe, epo_afe, prv_afe, eat_afe, hat_afe)

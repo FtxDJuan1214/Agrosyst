@@ -19,14 +19,23 @@ require '../../conexion.php';
                             <td>
                                 <input type="text" hidden  id="cod_agr_rus" name="cod_agr_rus">
                                 <div>
+<<<<<<< HEAD
                                     <textarea id="rus_agr" name="rus_agr"class="form-control" pattern="[A-Za-z0-9]{1,200}"
                                              rows="4"></textarea>
+=======
+                                    <input type="text" name="rus_agr" id="rus_agr" class="form-control">
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                 </div>
                                 
                             </td>
                             <td>
+<<<<<<< HEAD
                                 <input type="button" name="add" class="btn btn-primary sm-3" data-toggle="tooltip" value="&#xf0a5"
                                 data-placement="top" title="Agregar recomendación" style="font-family:'FontAwesome', tahoma; font-size:10px;" 
+=======
+                                <input type="button" name="add" class="btn btn-info sm-3" data-toggle="tooltip" value="&#xf05a"
+                                data-placement="top" title="Agregar" style="font-family:'FontAwesome', tahoma; font-size:10px;" 
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                 onclick="cargarTablaAdd($('#cod_agr_rus').val()+'_'+$('#rus_agr').val())">
                             </td>
                         

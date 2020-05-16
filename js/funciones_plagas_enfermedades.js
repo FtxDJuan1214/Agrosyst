@@ -32,7 +32,11 @@ function cancelar(){
 //-----------Select escoger si se guarda enfermedad o plaga-------------//
 function cargar_select_tip() {
     pla_o_enf = $('#pla_o_enf').val();
+<<<<<<< HEAD
     //alert("a er "+ pla_o_enf);
+=======
+    alert("a er "+ pla_o_enf);
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
   
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/select_patogeno_tipo.php", true);
@@ -203,7 +207,11 @@ function guardarSintomas(datos,valores){
 }
 
 function cargarTextSintomas(sintomas) {  
+<<<<<<< HEAD
     //alert(sintomas);
+=======
+    alert(sintomas);
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/mostrar_sintomas.php", true);
     ajax.onreadystatechange = function() {
@@ -352,7 +360,11 @@ function guardarSinImagen(info,nombre){
     url:"../php/crud/plagas_enfermedades/agregar_etapa_no_imagen.php",
     data:cadena,
     success:function(r){
+<<<<<<< HEAD
         //alert(r);          
+=======
+        alert(r);          
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
      if(r.includes('Resource id')){
         toastr.success('¡Etapa agregada!','',{
             "positionClass": "toast-bottom-right",
@@ -527,11 +539,15 @@ function guardarEnfer_Plaga(){
     
     falta = "";
     pla_o_enf = $('#pla_o_enf').val();
+<<<<<<< HEAD
     sele_enf_pla1 = $('#sele_enf_pla1').val();
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
     nom_afe = $('#nom_afe').val();
     nomc_afe = $('#nomc_afe').val();
     horario = $('#horario').val();
     epoca_a = $('#epoca_a').val();
+<<<<<<< HEAD
 
     if(pla_o_enf == null || nom_afe == '' || epoca_a == '' || sele_enf_pla1 == null){
 
@@ -542,6 +558,8 @@ function guardarEnfer_Plaga(){
         });
 
     }else{
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
   
     partes_f = "";
     sintomas_f = "";
@@ -603,15 +621,21 @@ function guardarEnfer_Plaga(){
       success:function(r){
           alert(r);          
        if(r.includes('Resource id')){
+<<<<<<< HEAD
         $('#div-btn-add-enf').show();
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         $.ajax({
             type:"post",
             url:"../php/crud/plagas_enfermedades/agregar_plaga.php",
             data:cadena,
             success:function(res){
                 if(res.includes('Resource id')){
+<<<<<<< HEAD
 
                     $('#div-btn-add-enf').show();
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                 //-------------------------Ahora guardar las imagenes de las etapas-------------------------------//
                 $('#crear_enf_pla').load('../php/componentes/componentes_enfermedades_plagas/agregar_etapas.php');
 
@@ -622,7 +646,10 @@ function guardarEnfer_Plaga(){
                     url:"../php/crud/plagas_enfermedades/agregar_sintomas.php",
                     data:cadena,
                     success:function(r){
+<<<<<<< HEAD
                         $('#div-btn-add-enf').show();
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                     }
                   });
                 }else{
@@ -641,7 +668,11 @@ function guardarEnfer_Plaga(){
         url:"../php/crud/plagas_enfermedades/agregar_plaga_enfermedad.php",
         data:cadena,
         success:function(r){
+<<<<<<< HEAD
             //alert(r);          
+=======
+            alert(r);          
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
          if(r.includes('Resource id')){
           $.ajax({
               type:"post",
@@ -650,7 +681,10 @@ function guardarEnfer_Plaga(){
               success:function(res){
 
                 if(res.includes('Resource id')){
+<<<<<<< HEAD
                     $('#div-btn-add-enf').show();
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                     //-------------------------Ahora guardar las imagenes de las etapas-------------------------------//
                     $('#crear_enf_pla').load('../php/componentes/componentes_enfermedades_plagas/agregar_etapas.php');
                   //-----Guarda sintomas---//
@@ -660,7 +694,10 @@ function guardarEnfer_Plaga(){
                     url:"../php/crud/plagas_enfermedades/agregar_sintomas.php",
                     data:cadena,
                     success:function(r){
+<<<<<<< HEAD
                         $('#div-btn-add-enf').show();
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                     }
                   });
               }else{
@@ -676,7 +713,11 @@ function guardarEnfer_Plaga(){
 
 }
 }
+<<<<<<< HEAD
     }
+=======
+
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 }
 
 function finalizarall(){
@@ -689,8 +730,11 @@ function finalizarall(){
             'Nueva plaga creada!',
             'success'
           )
+<<<<<<< HEAD
           $('#div-btn-add-enf').show();
           setTimeout ("location.reload();", 1000);
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
     }else if(afeccion == "Enfermedad"){
         cambiarTabla('E');
         swal(
@@ -698,8 +742,11 @@ function finalizarall(){
             'Nueva enfermedad creada!',
             'success'
           )
+<<<<<<< HEAD
           $('#div-btn-add-enf').show();
           setTimeout ("location.reload();", 1000);
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
     }
     
 }
@@ -724,9 +771,15 @@ function cambiarTabla(dato){
 global="";
 tipod = "";
 function modalActualizar(datos,tipo){
+<<<<<<< HEAD
     //alert(datos);
     data= datos.split('||');
     $('#modal-form-up-pe').modal('toggle');
+=======
+    alert(datos);
+    data= datos.split('||');
+    $('#modal-form-up').modal('toggle');
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
     if(tipo == 'E'){
     $('#nom_afe_up').val(data[1]);
@@ -745,10 +798,15 @@ function modalActualizar(datos,tipo){
 }   
 
 function preloaderup(){
+<<<<<<< HEAD
 	
     jQuery('#form-up-edita').hide();
     jQuery('#preloaderup').show();
     
+=======
+	jQuery('#preloaderup').show();
+	jQuery('#form-up-edita').hide();
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	cod_afe = global;
 	nom_afe=$('#nom_afe_up').val();
 	noc_afe=$("#nomc_afe_up").val();  
@@ -765,12 +823,17 @@ function actualizar_enf_pla(cod_afe,nom_afe,noc_afe,epo_afe,hat_afe,tipo){
 	"&epo_afe="+epo_afe+
     "&hat_afe="+hat_afe+
     "&tipo="+tipo;
+<<<<<<< HEAD
 	//alert("cadena "+cadena);
+=======
+	alert("cadena "+cadena);
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 	$.ajax({
 		type:"post",
 		url:"../php/crud/plagas_enfermedades/actualizar_enfermedad_plaga.php",
 		data:cadena,
 		success:function(r){
+<<<<<<< HEAD
 			if(r.includes('Resource id')){
 
                 var form = document.querySelector('#form-up-edita-pe');
@@ -778,6 +841,14 @@ function actualizar_enf_pla(cod_afe,nom_afe,noc_afe,epo_afe,hat_afe,tipo){
                 $('#modal-form-up-pe').modal('hide'); 
                 jQuery('#preloaderup').hide();
                 jQuery('form-up-edita-pe').show();
+=======
+			if(r.includes('Resource id')){				
+                var form = document.querySelector('#form-up-edita');
+                form.reset();
+                $('#modal-form-up').modal('hide'); 
+                jQuery('#preloaderup').hide();
+                jQuery('form-up-edita').show();
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                 if(tipo=="P"){
                     swal("¡Plaga Editada!"," ", "success");
                     document.getElementById("tab_enfermedades").innerHTML = "";
@@ -789,7 +860,11 @@ function actualizar_enf_pla(cod_afe,nom_afe,noc_afe,epo_afe,hat_afe,tipo){
                 }	
 		}else{ 
 			jQuery('#preloaderup').hide();
+<<<<<<< HEAD
 			jQuery('#form-up-edita-pe').show();
+=======
+			jQuery('#form-up-edita').show();
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 			if(tipo=="E"){
                 document.getElementById("tab_enfermedades").innerHTML = "";
                 $('#tab_plagas').load('../php/componentes/componentes_enfermedades_plagas/tab_plagas.php');
@@ -807,7 +882,11 @@ function eliminar_plaga_enf(datos,tipo) {
     cod = datos.split('||');
     cod_afe = cod[0];
     tipoa = tipo;
+<<<<<<< HEAD
     //alert("tipo "+ tipoa);
+=======
+    alert("tipo "+ tipoa);
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
     swal({
             title: "¿Estás seguro?",

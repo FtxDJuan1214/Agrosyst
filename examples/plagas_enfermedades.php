@@ -125,10 +125,17 @@ if (isset($_POST['cargar'])) {
         $sql="SELECT fincas.cod_fin,fincas.nom_fin,fincas.det_fin,departamento.nom_dep,municipio.nom_mun,
         fincas.med_fin,unidad_de_medida.des_unm,terceros.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter
         FROM public.fincas, public.departamento, public.unidad_de_medida, public.terceros, 
+<<<<<<< HEAD
         public.municipio, public.duenio, public.tipo_unidad_medida
         WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
         AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
         AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter and fincas.cod_fin='$ide_ter'";
+=======
+        public.municipio, public.dueño, public.tipo_unidad_medida
+        WHERE municipio.cod_dep=departamento.cod_dep AND fincas.cod_mun=municipio.cod_mun 
+        AND fincas.cod_unm=unidad_de_medida.cod_unm AND unidad_de_medida.cod_tum=tipo_unidad_medida.cod_tum 
+        AND fincas.ide_ter=terceros.ide_ter AND terceros.ide_ter=dueño.ide_ter and fincas.cod_fin='$ide_ter'";
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         $result=pg_query($conexion,$sql);
         $finca=pg_fetch_row($result);
         ?>
@@ -163,17 +170,28 @@ if (isset($_POST['cargar'])) {
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-header border-0">
+<<<<<<< HEAD
                             <div class="float-md-left" style="margin-top: 5px;" 
                             >
                                 <button type="button" id="div-btn-add-enf" name="div-btn-add-enf" class="btn btn-default" data-toggle="modal"
                                     data-target="#modal-form" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                     onclick="cargarVentana()">Agregar</button>
 
+=======
+                            <div class="float-md-left" style="margin-top: 5px;" name="div-btn-add-enf"
+                                id="div-btn-add-enf">
+                                <button type="button" class="btn btn-default" data-toggle="modal"
+                                    data-target="#modal-form" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
+                                    onclick="cargarVentana()">Agregar</button>
+
+
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                             </div>
                             <div class="float-md-right" style="margin-top: 5px;">
                                 <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text"
                                     autocomplete="off">
                             </div>
+<<<<<<< HEAD
 
 
 
@@ -182,6 +200,14 @@ if (isset($_POST['cargar'])) {
 
                                 <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 9px;" onclick="cambiarTabla('E')" class="btn btn-outline-default">Enfermedades</button>
                                 
+=======
+                            <div class="text-center" style="margin-top: 5px;">
+                                <a href="#" onclick="cambiarTabla('P')"
+                                    style="font-family:'FontAwesome',tahoma; font-size: 13px;">Plagas</a>
+                                <a href="#" onclick="cambiarTabla('E')"
+                                    style="font-family:'FontAwesome',tahoma; font-size: 13px;"> | Enfermedades</a>
+                                </did>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                             </div>
                             <div class="table-responsive" id="tab_enfermedades">
                             </div>
@@ -193,7 +219,11 @@ if (isset($_POST['cargar'])) {
                 </div>
                 <!-------------------------------------------------------------------------------- modal para Editar datos ------------------------------------------------------------------------>
                 <div class="col-md-4">
+<<<<<<< HEAD
                     <div class="modal fade" id="modal-form-up-pe" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+=======
+                    <div class="modal fade" id="modal-form-up" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                         aria-hidden="true">
                         <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
@@ -205,12 +235,18 @@ if (isset($_POST['cargar'])) {
                                         </a>
                                         <div class="card-body px-lg-5 py-lg-5">
                                             <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                             <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Editar enfermedad o plaga
                                             </h4>
                                             </div>
                                             <form role="form" id="form-up-edita-pe">
+=======
+                                                <h3>Editar Enfermedad o plaga</h3>
+                                            </div>
+                                            <form role="form" id="form-up-edita">
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
                                                 <div class="row">
 
@@ -232,7 +268,11 @@ if (isset($_POST['cargar'])) {
                                                                     placeholder="Nombre común" data-toggle="tooltip"
                                                                     data-placement="top"
                                                                     title="Nombre de la enfermedad o plaga."
+<<<<<<< HEAD
                                                                     autocomplete="off" required pattern="[a-zA-Z ]{6,30}">
+=======
+                                                                    autocomplete="off" maxlength="45" required>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                             </div>
                                                         </div>
 
@@ -243,7 +283,11 @@ if (isset($_POST['cargar'])) {
                                                                 <input style="border-color: #fb6340;" id="nomc_afe_up"
                                                                     name="nomc_afe_up" type="text" class="form-control"
                                                                     placeholder="Nombre científico" autocomplete="off"
+<<<<<<< HEAD
                                                                     pattern="[a-zA-Z ]{6,50}">
+=======
+                                                                    maxlength="45">
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                             </div>
                                                         </div>
                                                         <!-----------------------------Horario de ataque------------------------->
@@ -253,7 +297,11 @@ if (isset($_POST['cargar'])) {
                                                                     <select id="horario_up" name="horario_up"
                                                                         class="form-control" data-live-search="true"
                                                                         required>
+<<<<<<< HEAD
                                                                         <option value="" >Horario
+=======
+                                                                        <option value="" disabled selected>Horario
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                                             ataque
                                                                         </option>
                                                                         <option value="Madrugada">Madrugada</option>
@@ -272,7 +320,11 @@ if (isset($_POST['cargar'])) {
                                                                     <select id="epoca_a_up" name="epoca_a_up"
                                                                         class="form-control" data-live-search="true"
                                                                         required>
+<<<<<<< HEAD
                                                                         <option value="" >Epoca de
+=======
+                                                                        <option value="" disabled selected>Epoca de
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                                             mayor ataque
                                                                         </option>
                                                                         <option value="Invierno">Invierno</option>
@@ -336,7 +388,62 @@ if (isset($_POST['cargar'])) {
                                                                 </div>
                                                             </div>
                                                         </div>
+<<<<<<< HEAD
                                                     </div>
+=======
+
+                                                    </div>
+                                                    <!--------------------Tercera Columna -------------------------->
+                                                   <!-- <div class="col-md-4">
+                                                       
+                                                        <div class="form-group" id="tab_rus">
+                                                            <div class="form-group" id="tab_met_pre_up" name="tab_met_pre_up"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="Recomendaciones que nos ayudan a recordarte como evitar la aparición de esta plaga o enfermedad. No es obligatorio.">
+                                                                <div class="card-shadow form-group">
+                                                                    <div class="card-header">
+                                                                        <p style="font-family:'FontAwesome',tahoma; font-size: 16px;"
+                                                                            align="center">Métodos de Prevención</P>
+                                                                    </div>
+                                                                    <table
+                                                                        class="table align-items-center table-flush table-hover">
+                                                                        <thead class="thead-light">
+                                                                            <tr>
+                                                                                <td>Método</td>
+                                                                                <td>Agregar</td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <input type="text" hidden
+                                                                                        id="cod_agr_rus"
+                                                                                        name="cod_agr_rus">
+                                                                                    <div>
+                                                                                        <input type="text"
+                                                                                            name="rus_agr" id="rus_agr"
+                                                                                            class="form-control">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input type="button" name="add"
+                                                                                        class="btn btn-success sm-3"
+                                                                                        data-toggle="tooltip"
+                                                                                        value="&#xf0a5"
+                                                                                        data-placement="top"
+                                                                                        title="Agregar"
+                                                                                        style="font-family:'FontAwesome', tahoma; font-size:10px;"
+                                                                                        onclick="cargarTablaAdd($('#cod_agr_rus').val()+'_'+$('#rus_agr').val())">
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
                                                     <!--------------------------------Tabla Métodos de Prevención Agregados-------------------->
                                                     <div class="col-md-12">
@@ -349,7 +456,11 @@ if (isset($_POST['cargar'])) {
 
 
                                                 <div class="text-center">
+<<<<<<< HEAD
                                                     <button type="button" class="btn btn-default my-4" id="btn_up" text style="font-family:'FontAwesome',tahoma; font-size: 11px;"
+=======
+                                                    <button type="button" class="btn btn-default my-4" id="btn_up"
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                         onclick="preloaderup();">Guardar</button>
                                                 </div>
                                             </form>
@@ -379,10 +490,14 @@ if (isset($_POST['cargar'])) {
                                         </a>
                                         <div class="card-body px-lg-5 py-lg-5">
                                             <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                             <h3 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Agregar partes
                                             </h3>
+=======
+                                                <h3>Agregar Partes</h3>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                             </div>
                                             <form role="form" id="form-add-partes">
 
@@ -435,10 +550,14 @@ if (isset($_POST['cargar'])) {
                                         </a>
                                         <div class="card-body px-lg-5 py-lg-5">
                                             <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                             <h3 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Agregar etapas
                                             </h3>
+=======
+                                                <h3>Agregar Etapas</h3>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                             </div>
                                             <form role="form" id="form-add-etapas">
 
@@ -491,10 +610,14 @@ if (isset($_POST['cargar'])) {
                                         </a>
                                         <div class="card-body px-lg-5 py-lg-5">
                                             <div class="text-center text-muted mb-4">
+<<<<<<< HEAD
                                             <h3 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
                                                 Agregar sintomas
                                             </h3>
+=======
+                                                <h3>Agregar Sintomas</h3>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                             </div>
                                             <form role="form" id="form-add-sintomas">
 

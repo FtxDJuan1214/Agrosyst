@@ -74,8 +74,11 @@ function addComentarioDB(datos){
             $('#modal-form-new').modal('hide');
             jQuery('#form-comentarios').show();
             jQuery('#preloader').hide();  
+<<<<<<< HEAD
 
             //setTimeout ("location.reload();", 1000);
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                    
             
         }else{
@@ -152,9 +155,13 @@ $.ajax({
 
         $('#modal-form-new').modal('hide');
         jQuery('#form-comentarios').show();
+<<<<<<< HEAD
         jQuery('#preloader').hide(); 
         
         setTimeout ("location.reload();", 1000);
+=======
+        jQuery('#preloader').hide();  
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
         
     
         
@@ -166,6 +173,7 @@ $.ajax({
 
 
 }
+<<<<<<< HEAD
 //------------------------------Terminar proceso --------------------------------------//
 
 function terminarProceso(cod_pfi,calificacion){
@@ -210,6 +218,8 @@ function terminarProceso(cod_pfi,calificacion){
     
  
 }
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
 
 //------------------------------------------------------------------------------------//
 

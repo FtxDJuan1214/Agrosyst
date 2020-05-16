@@ -5,9 +5,14 @@ require '../../conexion.php';
 <table class="table align-items-center table-flush table-hover">
   <thead class="thead-light">
     <tr>
+<<<<<<< HEAD
       <th scope="col"><center>Nombre</center></th>
       <th scope="col"><center>¿Prohibido ICA?</center></th>
       <th><center>Agroquímicos</center></th>
+=======
+      <th scope="col">Nombre</th>
+      <th scope="col">¿Prohibido por el ICA?</th>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
       <th></th>
     </tr>
   </thead>
@@ -29,6 +34,7 @@ require '../../conexion.php';
      ?>
      <tr>
 
+<<<<<<< HEAD
       <td><center><?php echo $ver[1] ?></center></td>
       <td><center><?php echo $ver[2] ?></center></td>
       <td>
@@ -86,6 +92,10 @@ require '../../conexion.php';
             }
             ?>
       </td>
+=======
+      <td><?php echo $ver[1] ?></td>
+      <td><?php echo $ver[2] ?></td>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
       <td class="text-right">
         <div class="dropdown">
           <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,9 +112,13 @@ require '../../conexion.php';
   }
   ?>
 </tbody>
+<<<<<<< HEAD
 </table>
 <script>
   $(function () {
     $("[data-toggle='tooltip']").tooltip();
   });
 </script>
+=======
+</table>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894

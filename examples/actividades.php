@@ -39,7 +39,11 @@ if (isset($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
+<<<<<<< HEAD
     <title>Agrosyst Co</title>
+=======
+    <title>Agrosyst</title>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
     <!-- Favicon -->
     <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
     <!-- Fonts -->
@@ -171,6 +175,7 @@ if (isset($_SESSION['usuario'])) {
                                         </div>
                                         <form role="form" id="form-add-tarea">
                                             <div class="row">
+<<<<<<< HEAD
                                                 <div class="col-sm-6">                                                   
                                                     <!------------------------Primera columna----------------------------->
                                                         
@@ -182,6 +187,52 @@ if (isset($_SESSION['usuario'])) {
                                                                     <option value="" disabled selected>Selecciona
                                                                         Cultivo</option>
                                                                     <?php 
+=======
+                                                <div class="col-sm-6">
+                                                    <div class="form-group mb-3">
+                                                        <div class="input-group input-group-alternative"
+                                                            id="div_des_tar">
+                                                            <input style="border-color: #fb6340;" id="des_tar"
+                                                                type="text" class="form-control"
+                                                                placeholder="Descripcion de la Tarea" autocomplete="off"
+                                                                maxlength="45">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-3">
+                                                        <div class="input-group input-group-alternative">
+                                                            <select id="tipo_lab" onchange="actividad();"
+                                                                class="form-control" data-live-search="true">
+                                                                <option value="" disabled selected>Tipo de tarea
+                                                                </option>
+                                                                <option value="1">comun</option>
+                                                                <option value="2">Fitosanitaria</option>
+                                                                <option value="3">Cultural</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div id="fitosanitario">
+                                                        <div class="form-group">
+                                                            <div class="input-group input-group-alternative"
+                                                                id="div_enf_fit">
+                                                                <input class="form-control"
+                                                                    style="border-color: #fb6340;" id="enf_fit"
+                                                                    placeholder="Enfermedad" type="text" maxlength="45">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group mb-3">
+                                                                <label> Cultivo a laborar</label>
+                                                                <div class="input-group input-group-alternative">
+                                                                    <select id="cod_cul" class="form-control"
+                                                                        data-live-search="true">
+                                                                        <option value="" disabled selected>Selecciona
+                                                                            Cultivo</option>
+                                                                        <?php 
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                                           $codi_fin=$_SESSION['ide_finca'];
                                                                           require '../php/conexion.php';
                                                                           $query="SELECT cultivos.cod_cul, nombre_cultivo.des_ncu , lotes.nom_lot ,cultivos.npl_cul
@@ -191,6 +242,7 @@ if (isset($_SESSION['usuario'])) {
                                                                           $result =pg_query($conexion,$query);
                                                                           while ($ver=pg_fetch_row($result)) {
                                                                           ?>
+<<<<<<< HEAD
                                                                     <option value="<?php echo $ver[0] ?>">
                                                                         <?php $array=explode("-", $ver[1]); echo $array[1]." - ".$ver[2]." - ".$ver[3]." Plantas"?>
                                                                     </option>
@@ -256,6 +308,48 @@ if (isset($_SESSION['usuario'])) {
                                                                       <span class="input-group-text"><i
                                                                                 class="ni ni-calendar-grid-58"></i></span>
                                                                   </div>
+=======
+                                                                        <option value="<?php echo $ver[0] ?>">
+                                                                            <?php $array=explode("-", $ver[1]); echo $array[1]." - ".$ver[2]." - ".$ver[3]." Plantas"?>
+                                                                        </option>
+
+                                                                        <?php 
+                                                                            }
+                                                                            ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-3">
+                                                                <div class="input-group input-group-alternative">
+                                                                    <select id="cod_lab" class="form-control"
+                                                                        data-live-search="true">
+                                                                        <option value="" disabled selected>Selecciona
+                                                                            Labor</option>
+                                                                        <?php 
+                                                                          $codi_fin=$_SESSION['ide_finca'];
+                                                                          $like =  $_SESSION['idusuario'];
+                                                                          require '../php/conexion.php';
+                                                                          $query="SELECT * FROM public.labores  where det_lab LIKE '$like%'";
+                                                                          $result =pg_query($conexion,$query);
+                                                                          while ($ver=pg_fetch_row($result)) {
+                                                                          ?>
+                                                                        <option value="<?php echo $ver[0] ?>">
+                                                                            <?php echo $ver[1]?></option>
+
+                                                                        <?php 
+                                                                          }
+                                                                          ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label> fecha de inicio:</label>
+                                                                <div class="input-group input-group-alternative">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"><i
+                                                                                class="ni ni-calendar-grid-58"></i></span>
+                                                                    </div>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                                     <?php 
                                                                       date_default_timezone_set('America/Bogota');
                                                                       $d = date("d");
@@ -263,6 +357,7 @@ if (isset($_SESSION['usuario'])) {
                                                                       $y = date("Y");
                                                                       $fecha= $y."-".$m."-".$d;
                                                                       ?>
+<<<<<<< HEAD
                                                                   <input class="form-control datepicker" id="fin_tar"
                                                                         placeholder="Select date" type="text"
                                                                         value="<?php echo $fecha?>">
@@ -270,6 +365,15 @@ if (isset($_SESSION['usuario'])) {
                                                           </div>
                                                             <div class="form-group">
                                                                 <label> Fecha de Finalización:</label>
+=======
+                                                                    <input class="form-control datepicker" id="fin_tar"
+                                                                        placeholder="Select date" type="text"
+                                                                        value="<?php echo $fecha?>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label> fecha de Finalización:</label>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                                 <div class="input-group input-group-alternative">
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text"><i
@@ -279,10 +383,18 @@ if (isset($_SESSION['usuario'])) {
                                                                         placeholder="Select date" type="text"
                                                                         value="<?php echo $fecha?>">
                                                                 </div>
+<<<<<<< HEAD
                                                             </div>                                                      
                                                     
                                                 </div>
                                                 <!-- -------------------------Segunda columna------------------------------ -->
+=======
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- ////////////////////////////////////////////// -->
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                 <div class="col-sm-6">
                                                     <div class="form-group mb-3">
                                                         <button id="btn-add-conv" class="btn btn-icon btn-3 btn-success"
@@ -397,6 +509,7 @@ if (isset($_SESSION['usuario'])) {
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                         </div>
                         <div class="table-responsive" id="tab_lab">
 
@@ -538,10 +651,24 @@ if (isset($_SESSION['usuario'])) {
             </div>
 
             <div class="modal fade" id="modal-gastos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+=======
+                        </div>
+                        <div class="table-responsive" id="tab_lab">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal  para agregar los convenios-->
+            <div class="modal fade" id="modal-convenios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                 aria-hidden="true">
                 <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+<<<<<<< HEAD
                             <div class="row col-12">
                                 <div class="col-md-12 text-center">
                                     <h2 class="modal-title centered">Agregar otros gastos</h2><br>
@@ -556,6 +683,55 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
 
                             </div>
+=======
+                            <h2 class="modal-title">Agregar convenios</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div id="tab_conve">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Terminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal  para agregar los insumos-->
+            <div class="modal fade" id="modal-insumos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Agregar insumos</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="tab_insumo">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Terminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="modal fade" id="modal-gastos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title text-center ">Agregar otros gastos</h2>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -580,12 +756,22 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="form-group">
                                             <div class="input-group ">
                                                 <?php 
+<<<<<<< HEAD
                                                     date_default_timezone_set('America/Bogota');
                                                     $d = date("d");
                                                     $m = date("m");
                                                     $y = date("Y");
                                                     $fecha=$y."-".$m."-".$d;  
                                                     ?>
+=======
+                                                  date_default_timezone_set('America/Bogota');
+                                                  $d = date("d");
+                                                  $m = date("m");
+                                                  $y = date("Y");
+                                                  $fecha=$y."-".$m."-".$d;  
+                                                  ?>
+
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                 <input class="form-control datepicker" id="date" name="date"
                                                     placeholder="Select date" type="text" value="<?php echo $fecha?>">
                                             </div>
@@ -620,6 +806,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <select id="insumo" class="form-control" data-live-search="true">
                                                     <option value="0" disabled selected>Selecciona gasto</option>
                                                     <?php 
+<<<<<<< HEAD
                                                         $codi_fin=$_SESSION['ide_finca'];
                                                         require '../php/conexion.php';
                                                         $query="SELECT insumos.cod_ins,des_ins,des_unm from public.insumos 
@@ -629,6 +816,17 @@ if (isset($_SESSION['usuario'])) {
                                                         $result =pg_query($conexion,$query);
                                                         while ($ver=pg_fetch_row($result)) {
                                                         ?>
+=======
+                                                      $codi_fin=$_SESSION['ide_finca'];
+                                                      require '../php/conexion.php';
+                                                      $query="SELECT insumos.cod_ins,des_ins,des_unm from public.insumos 
+                                                      INNER JOIN otros ON insumos.cod_ins=otros.cod_ins
+                                                      INNER JOIN unidad_de_medida ON insumos.cod_unm=unidad_de_medida.cod_unm
+                                                      where otros.det_otr LIKE '$like%'";
+                                                      $result =pg_query($conexion,$query);
+                                                      while ($ver=pg_fetch_row($result)) {
+                                                      ?>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                                     <option value="<?php echo $ver[0] ?>"><?php echo $ver[1]?></option>
 
                                                     <?php 
@@ -686,11 +884,17 @@ if (isset($_SESSION['usuario'])) {
                                                 <label id="tipo_tar"></label>
                                             </div>
                                         </div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                         <div class="form-group" style="display: none;">
                                             <div class="input-group">
                                                 <input id="cod_tar_up" type="text" class="form-control">
                                             </div>
                                         </div>
+<<<<<<< HEAD
                                         <div class="form-group mb-3">
                                             <div class="input-group input-group-alternative">
                                                 <select id="cod_lab_up" class="form-control" data-live-search="true">
@@ -711,6 +915,8 @@ if (isset($_SESSION['usuario'])) {
                                                 </select>
                                             </div>
                                         </div>
+=======
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                                         <div class="form-group">
                                             <label>Descripción</label>
                                             <div class="input-group">
@@ -754,6 +960,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+<<<<<<< HEAD
                             <div class="row col-12">
                                 <div class="col-md-12 text-center">
                                     <h2 class="modal-title centered">Efectuar convenios</h2><br>
@@ -779,6 +986,15 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                         <div class="modal-body">
 
+=======
+                            <h2 class="modal-title">Agregar convenios</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                             <div id="tab_conve2">
 
                             </div>
@@ -790,12 +1006,17 @@ if (isset($_SESSION['usuario'])) {
                 </div>
             </div>
 
+<<<<<<< HEAD
             <!-- Modal  para agregar los insumos-->
+=======
+            <!-- Modal  para agregar los convenios-->
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
             <div class="modal fade" id="modal-insumos2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+<<<<<<< HEAD
                             <div class="row col-12">
                                 <div class="col-md-12 text-center">
                                     <h2 class="modal-title centered">Agregar insumos</h2><br>
@@ -828,6 +1049,21 @@ if (isset($_SESSION['usuario'])) {
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal"
                                 onclick="asociarPlan();">Terminar</button>
+=======
+                            <h2 class="modal-title">Agregar insumos</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div id="tab_insumo2">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Terminar</button>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                         </div>
                     </div>
                 </div>
@@ -839,6 +1075,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+<<<<<<< HEAD
                             <div class="row col-12">
                                 <div class="col-md-12 text-center">
                                     <h2 class="modal-title centered">Agregar otros gastos</h2><br>
@@ -853,6 +1090,9 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
 
                             </div>
+=======
+                            <h2 class="modal-title">Agregar gastos</h2>
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -874,6 +1114,7 @@ if (isset($_SESSION['usuario'])) {
                 aria-labelledby="modal-notification" aria-hidden="true">
                 <div class="modal-dialog modal-success modal-dialog-centered modal-" role="document">
                     <div class="modal-content bg-gradient-verde">
+<<<<<<< HEAD
 
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -914,6 +1155,48 @@ if (isset($_SESSION['usuario'])) {
 
                         </div>
 
+=======
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="py-3 text-center">
+                                <i class="ni ni-calendar-grid-58" style="font-size: 4rem;"></i>
+                                <h3 class="heading mt-3">Específica las fechas</h3>
+                                <form>
+                                    <div class="form-group center col-md-10">
+                                        <label>Fecha inicial:</label>
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i
+                                                        class="ni ni-calendar-grid-58"></i></span>
+                                            </div>
+                                            <input class="form-control datepicker" id="fecha_ini_filtro"
+                                                placeholder="Select date" type="text" value="<?php echo $fecha?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group center col-md-10">
+                                        <label>Fecha final:</label>
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i
+                                                        class="ni ni-calendar-grid-58"></i></span>
+                                            </div>
+                                            <input class="form-control datepicker" id="fecha_fin_filtro"
+                                                placeholder="Select date" type="text" value="<?php echo $fecha?>">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+>>>>>>> 8413f4c33df2dae8e7aee7ec4cd79e75b50ce894
                         <div class="modal-footer">
                             <button type="button" class="btn btn-whiteml-auto" data-dismiss="modal"
                                 onclick="Cargar_tab_fechas();">Filtrar</button>
