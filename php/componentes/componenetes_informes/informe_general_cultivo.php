@@ -1,7 +1,10 @@
 <?php 
 require '../../conexion.php';
-$hoy = getdate();
-$fecha= $hoy['year'].'-'.$hoy['mon'].'-'.$hoy['mday'];
+date_default_timezone_set('America/Bogota');
+  $d = date("d");
+  $m = date("m");
+  $y = date("Y");
+  $fecha=$y."-".$m."-".$d;
 $cod_cul =$_GET['c'];
 
 $cultivos = "SELECT cultivos.cod_cul,cultivos.fin_cul,cultivos.fif_cul,cultivos.npl_cul,
