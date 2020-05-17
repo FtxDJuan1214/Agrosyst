@@ -29,7 +29,7 @@ $cod=pg_fetch_row($result1);
 $cod_ins = $cod[0] + 1;
 
 
-$sql="INSERT INTO insumos(cod_ins, des_ins, cod_unm) VALUES ('$cod_ins','$like$des_ins', '$cod_unm')";
+$sql="INSERT INTO insumos(cod_ins, des_ins, cod_unm) VALUES ('$cod_ins','$des_ins', '$cod_unm')";
 echo $result=pg_query($conexion,$sql);
 
 
