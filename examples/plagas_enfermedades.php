@@ -177,12 +177,12 @@ if (isset($_POST['cargar'])) {
 
 
                             <div class="text-center" style="margin-top: 5px;">
-                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 9px;" 
+                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 10px;" 
                                 onclick="cambiarTabla('P')" class="btn btn-outline-default" data-toggle="tooltip"
                                                                     data-placement="top"
                                                                     title="Ver tabla de las plagas">Plagas</button>
 
-                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 9px;" 
+                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 10px;" 
                                 onclick="cambiarTabla('E')" class="btn btn-outline-default" data-toggle="tooltip"
                                                                     data-placement="top"
                                                                     title="Ver tabla de las enfermedades">Enfermedades</button>
@@ -213,7 +213,7 @@ if (isset($_POST['cargar'])) {
                                                 ACTUALIZAR ENFERMEDAD O PLAGA
                                             </h4>
                                             </div>
-                                            <form role="form" id="form-actualizar-afeccion" name="form-actualizar-afeccion">
+                                            <form role="form" id="form-actualizar-afe" name="form-actualizar-afe">
 
                                                 <div class="row">
 
@@ -334,10 +334,10 @@ if (isset($_POST['cargar'])) {
                                                             <div class="text-center">
                                                                 <button type="button"
                                                                     class="btn btn-success center-block"
-                                                                    data-toggle="modal" data-target="#modal-sintomas"
+                                                                    data-toggle="modal" data-target="#modal-sintomas-up"
                                                                     style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                                                     data-toggle="tooltip" data-placement="top"
-                                                                    title="Sintomas que presenta la planta a cauda de la plaga o enfermedad.">Sintomas</button>
+                                                                    title="Sintomas que presenta la planta a cauda de la plaga o enfermedad."onclick="up_sintomas()">Sintomas</button>
 
                                                                 <div id="sintomas-mostrar" class="card-header"
                                                                     data-toggle="tooltip" data-placement="top"
@@ -544,6 +544,38 @@ if (isset($_POST['cargar'])) {
                                             <script>
                                             jQuery('#preloader1').hide();
                                             </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------- Modal para escoger sintomas presentados---------------------------------------------------- -->
+                <div class="col-md-4">
+                    <div class="modal fade" id="modal-sintomas-up" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card bg-secondary shadow border-0">
+                                        <a href="#" data-dismiss="modal" aria-label="Close"
+                                            style="margin: 10px 20px 0 0; text-align: right;">
+                                            <span aria-hidden="true" style="left: 0;">×</span>
+                                        </a>
+                                        <div class="card-body px-lg-5 py-lg-5">
+                                            <div class="text-center text-muted mb-4">
+                                            <h3 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
+                                                align="center">
+                                                Editar sintomas
+                                            </h3>
+                                            </div>
+                                            <form role="form" id="form-add-sintomas-up">
+
+                                            <div id="mostrar_sintomas_up">
+                                            </div>
+                                                
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

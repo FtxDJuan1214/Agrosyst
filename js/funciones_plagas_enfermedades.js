@@ -744,11 +744,9 @@ function modalActualizar(datos,tipo){
     tipod = tipo;
 }   
 
-function preloaderup(){
-	
+function preloaderup(){	
 
     jQuery('#form-actualizar-afeccion').hide();
-	jQuery('#preloaderup').show();
     
 	cod_afe = global;
 	nom_afe=$('#nom_afe_up').val();
@@ -756,7 +754,7 @@ function preloaderup(){
 	hat_afe=$('#horario_up').val();
 	epo_afe=$('#epoca_a_up').val();
 
-	setTimeout ("actualizar_enf_pla(cod_afe,nom_afe,noc_afe,epo_afe,hat_afe,tipod);", 1000);	
+	setTimeout ("actualizar_enf_pla(cod_afe,nom_afe,noc_afe,epo_afe,hat_afe,tipod);", 200);	
 }
 
 function actualizar_enf_pla(cod_afe,nom_afe,noc_afe,epo_afe,hat_afe,tipo){
@@ -783,16 +781,12 @@ function actualizar_enf_pla(cod_afe,nom_afe,noc_afe,epo_afe,hat_afe,tipo){
                     $('#tab_enfermedades').load('../php/componentes/componentes_enfermedades_plagas/tab_enfermedades.php');
                 }	
 
-                var formr = document.querySelector('#form-actualizar-afeccion');
-                formr.reset();
-                $('#modal-actualizar-afeccion').modal('hide'); 
-                jQuery('#preloaderup').hide();
-				jQuery('form-actualizar-afeccion').show();
-
-                
+                var formr = document.querySelector('#form-actualizar-afe');                
+                setTimeout ("formr.reset();", 500);
+                $('#modal-actualizar-afeccion').modal('hide');
+               jQuery('form-actualizar-afe').show();	
 		}else{ 
-			jQuery('#preloaderup').hide();
-			jQuery('#form-actualizar-afeccion').show();
+			jQuery('#form-actualizar-afe').show();
 			if(tipo=="E"){
                 $('#tab_enfermedades').load('../php/componentes/componentes_enfermedades_plagas/tab_plagas.php');
             }else{
@@ -958,6 +952,73 @@ function actualizarEtapas(){
             }
         });           
     }
+}
+//--------------------------------------------------Actualizar sintomas--------------------------------------------//
+function up_sintomas(){
+
+    ajax = objetoAjax();
+    ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/up_sintomas.php", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4) {     
+
+        document.getElementById("mostrar_sintomas_up").innerHTML = ajax.responseText;
+        }
+    }
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.send("cod_afe=" + global.trim());  
+
+}
+
+function actualizarSintomas(datos,valores){
+
+    codigo_sintoma = "";
+    datosS = datos.split('~');
+    valoresS = valores.split('~');
+    res = false;
+    add = "";
+    for(i=1;i<datosS.length;i++){
+        
+        resp=$('input:checkbox[name='+datosS[i]+']:checked').val();
+        if(resp == 'on'){
+            sintomas = sintomas +", "+valoresS[i];
+            codigo_sintoma = codigo_sintoma+"~"+datosS[i];
+            res=true;
+        }
+    }
+    if(res == false){
+
+        toastr.error('Por favor solo seleccione al menos una opción','',{
+            "positionClass": "toast-top-center",
+            "closeButton": false,
+            "progressBar": true
+        });
+    }else{
+
+        alert(codigo_sintoma);
+        cadena="sintomas="+codigo_sintoma+
+        "&cod_afe="+global.trim();
+        
+        $.ajax({
+            type:"post",
+            url:"../php/crud/plagas_enfermedades/actualizar_sintomas.php",
+            data:cadena,
+            success:function(r){
+                if(r.includes('Resource id')){
+                    toastr.success('¡Sintomas actualizados!','',{
+                        "positionClass": "toast-bottom-right",
+                        "closeButton": false,
+                        "progressBar": true
+                    });
+                      $('#modal-sintomas-up').modal('hide');
+                      if(tipod == 'E'){
+                        $('#tab_enfermedades').load('../php/componentes/componentes_enfermedades_plagas/tab_enfermedades.php');
+                      }else{
+                        $('#tab_enfermedades').load('../php/componentes/componentes_enfermedades_plagas/tab_plagas.php');
+                      }
+                }
+            }
+        });  
+    }                
 }
 
 

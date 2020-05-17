@@ -2,6 +2,11 @@
 require '../../conexion.php';
 ?>
 
+<div class="text-center text-muted mb-4">
+    <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+        LISTA DE PLAGAS
+    </h4>
+</div>
 <table class="table align-items-center table-flush table-hover">
     <thead class="thead-light">
         <tr>
@@ -56,7 +61,7 @@ require '../../conexion.php';
                       }
                     }
              ?></td>
-             <td><?php $sql1="SELECT partes_planta_afe.det_par FROM  public.afeccion, public.partes_planta_afe
+            <td><?php $sql1="SELECT partes_planta_afe.det_par FROM  public.afeccion, public.partes_planta_afe
 		  where partes_planta_afe.cod_afe = afeccion.cod_afe
 		  AND partes_planta_afe.cod_afe = '$ver[0]'";
                 $result1=pg_query($conexion,$sql1);
@@ -90,7 +95,7 @@ require '../../conexion.php';
                         <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#"  onclick="modalActualizar('<?php  echo $datos ?>','P')">
+                        <a class="dropdown-item" href="#" onclick="modalActualizar('<?php  echo $datos ?>','P')">
                             <div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div>
                         </a>
                         <a class="dropdown-item" href="#" onclick="eliminar_plaga_enf(' <?php  echo $datos ?> ','P')">

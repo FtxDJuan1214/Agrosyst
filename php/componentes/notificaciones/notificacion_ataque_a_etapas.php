@@ -37,7 +37,7 @@ while($ver=pg_fetch_row($result)){
 		$result1=pg_query($conexion,$sql2);
 		$notificacion .="Tu cultivo ".explode("-",$ver[9])[1]." con ".$ver[4]." plantas está en etapa Inicial.\n\nEstas son algunas de las plagas o enfermedades que podrían aparecer:\n\n";
 		while($see=pg_fetch_row($result1)){
-			$notificacion.="°".$see[0]."\n";
+			$notificacion.="".$see[0].",\n";
 		}
 
 	}
@@ -46,7 +46,7 @@ while($ver=pg_fetch_row($result)){
 		$result1=pg_query($conexion,$sql2);
 		$notificacion .="Tu cultivo ".explode("-",$ver[9])[1]." con ".$ver[4]." plantas está cerca a la etapa de crecimiento.\n\nEstas son algunas de las plagas o enfermedades que podrían aparecer:\n\n";
 		while($see=pg_fetch_row($result1)){
-			$notificacion.="°".$see[0]."\n";
+			$notificacion.="".$see[0].",\n";
 		}
 
 	}
@@ -55,7 +55,7 @@ while($ver=pg_fetch_row($result)){
 		$result1=pg_query($conexion,$sql2);
 		$notificacion .="Tu cultivo ".explode("-",$ver[9])[1]." con ".$ver[4]." plantas está cerca a la etapa de inicio de floración.\n\nEstas son algunas de las plagas o enfermedades que podrían aparecer:\n\n";
 		while($see=pg_fetch_row($result1)){
-			$notificacion.="°".$see[0]."\n";
+			$notificacion.="".$see[0].",\n";
 		}
 
 	}
@@ -65,7 +65,7 @@ while($ver=pg_fetch_row($result)){
 		$result1=pg_query($conexion,$sql2);
 		$notificacion .="Tu cultivo ".explode("-",$ver[9])[1]." con ".$ver[4]." plantas está cerca a la etapa de maxima floración.\n\nEstas son algunas de las plagas o enfermedades que podrían aparecer:\n\n";
 		while($see=pg_fetch_row($result1)){
-			$notificacion.="°".$see[0]."\n";
+			$notificacion.="".$see[0].",\n";
 		}
 
 	}
@@ -76,7 +76,7 @@ while($ver=pg_fetch_row($result)){
 		$notificacion .="Tu cultivo ".explode("-",$ver[9])[1]." con ".$ver[4]." plantas está cerca a la etapa de inicio de fructificación.\n\n Estas son algunas de las plagas o enfermedades que podrían aparecer:\n\n";
 		while($see=pg_fetch_row($result1)){
 
-			$notificacion.="°".$see[0]."\n";
+			$notificacion.="".$see[0].",\n";
 		}
 	}
 	if($Dias_actuales > 361 && $Dias_actuales <=369){
@@ -87,7 +87,7 @@ while($ver=pg_fetch_row($result)){
 		$notificacion .="Tu cultivo ".explode("-",$ver[9])[1]." con ".$ver[4]." plantas está iniciando producción.\n\nEstas son algunas de las plagas o enfermedades que podrían aparecer:\n\n";
 		while($see=pg_fetch_row($result1)){
 
-			$notificacion = $notificacion."°".$see[0]."\n";
+			$notificacion = $notificacion."".$see[0].",\n";
 		}
 		
 	}
