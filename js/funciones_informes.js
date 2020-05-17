@@ -338,3 +338,28 @@ function informe_aportes_socios(){
 		});
 	}
 }
+
+function informe_rendimiento_cul(){
+	cod_cul = $('#cod_cul').val();
+	if (cod_cul != null) {
+		window.open('../php/componentes/componenetes_informes/informe_rendimiento_cultivo.php/?c='+cod_cul);
+	}else{
+		swal("Atención!","Debe seleccionar el cultivo para poder generar este reporte", {
+			icon: "info",
+		});
+	}
+}
+
+
+function informe_produccion_cul(){
+	cod_cul = $('#cod_cul').val();
+	if (cod_cul != null) {
+		window.open('../php/componentes/componenetes_informes/informe_produccion_cultivo.php/?c='+cod_cul);
+	}else{
+		swal("Atención!","Debe seleccionar el cultivo para poder generar este reporte", {
+			icon: "info",
+		});
+	}
+}
+
+

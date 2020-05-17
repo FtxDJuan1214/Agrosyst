@@ -216,7 +216,7 @@ if (isset($_SESSION['usuario'])) {
                         <div class="input-group input-group-alternative">
                           <select id="tipo_per" class="form-control"data-live-search="true">
                             <option value="" disabled selected>Tipo de persona</option>
-                            <option value="1">Duenio</option>
+                            <option value="1">Dueño</option>
                             <option value="2">Socio</option>
                             <option value="3">Trabajador</option>
                             <option value="4">Proveedor</option>
@@ -307,7 +307,7 @@ if (isset($_SESSION['usuario'])) {
                       <div class="input-group input-group-alternative">
                         <select id="tipo_perup" class="form-control"data-live-search="true">
                           <option value="" disabled selected>Tipo de persona</option>
-                          <option value="1">Duenio</option>
+                          <option value="1">Dueño</option>
                           <option value="2">Socio</option>
                           <option value="3">Trabajador</option>
                           <option value="4">Proveedor</option>

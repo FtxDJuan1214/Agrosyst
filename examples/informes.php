@@ -287,7 +287,7 @@ if (isset($_SESSION['usuario'])) {
      </a>
    </div>
    <div class="col-sm-3 disabled" style="margin-top: 10px;" >
-    <a href="#" onclick="informex();" >
+    <a href="#" onclick="informe_rendimiento_cul();" >
       <div class="card card-stats ">
         <div class="card-body">
           <div class="row">
@@ -306,6 +306,25 @@ if (isset($_SESSION['usuario'])) {
    </a>
  </div>
  <div class="col-sm-3 disabled" style="margin-top: 10px;" >
+  <a href="#" onclick="informe_produccion_cul();" >
+    <div class="card card-stats ">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h5 class="card-title text-uppercase text-muted mb-0">Informe</h5>
+            <span class="h3 font-weight-bold mb-0">Producción del cultivo</span>
+          </div>
+          <div class="col-auto">
+            <div class="icon icon-shape bg-gradient-danger  text-white rounded-circle shadow">
+             <i class="fas fa-file-pdf"></i>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </a>
+</div>
+<div class="col-sm-3 disabled" style="margin-top: 10px;" >
   <a href="#" onclick="informex();" >
     <div class="card card-stats ">
       <div class="card-body">
@@ -323,25 +342,6 @@ if (isset($_SESSION['usuario'])) {
       </div>
     </div>
   </a>
-</div>
-<div class="col-sm-3 disabled" style="margin-top: 10px;" >
-  <a href="#" onclick="informex();" >
-    <div class="card card-stats ">
-      <div class="card-body">
-        <div class="row">
-          <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Informe</h5>
-            <span class="h3 font-weight-bold mb-0">Producción del cultivo</span>
-          </div>
-          <div class="col-auto">
-            <div class="icon icon-shape bg-gradient-danger  text-white rounded-circle shadow">
-             <i class="fas fa-file-pdf"></i>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </a>
 </div>
 <div class="col-sm-3 disabled" style="margin-top: 10px;" >
   <a href="#" onclick="informex();" >

@@ -147,23 +147,33 @@ if (pg_num_rows($resultasda) > 0) {
  		$especifico = explode("-",$aportes_det[$i]);
  		$html.='<p style="font-weight:bold">'.$especifico[0].'</p>
  		<p style="margin-left:7px;"> Aportes por :</p>
- 		<p style="margin-left:10px;"> °Convenios: $'.$especifico[1].'.</p>
- 		<p style="margin-left:10px;"> °Insumos: $'.$especifico[2].'.</p>
- 		<p style="margin-left:10px;"> °Gatos: $'.$especifico[3].'.</p>';
+ 		<p style="margin-left:10px;"> °Convenios: $'.$especifico[2].'.</p>
+ 		<p style="margin-left:10px;"> °Insumos: $'.$especifico[3].'.</p>
+ 		<p style="margin-left:10px;"> °Gatos: $'.$especifico[4].'.</p>';
 
  	}
  	$html.='
-
+ 	<div style="width:100%;background:#a892a8;"></div>
  	<h3>Inversión total:  $'.$aporte_total_cultivo.'</h3>
  	<div style="width:100%;background:#a892a8;"></div>
- 	aqui va la parte por porcentajes
+ 	<h3> A la fecha de :'.$fecha.', los aportes están así:</h3>';
+ 	for ($i=0; $i < count($aportes_det) -1; $i++) { 
+ 		$especifico = explode("-",$aportes_det[$i]);
+
+ 		$total_socio = ($especifico[2] + $especifico[3] + $especifico[4]);
+ 		$porcentaje = ($total_socio * 100 ) / $aporte_total_cultivo;
+
+ 		$html.='<p>'.$especifico[0].' aportó $'.$total_socio.' equivalentes al '.round($porcentaje).'% de la inversión total en el cultivo.</p>';
+
+ 	}
+ 	$html.='
  	</div>
  	</body>
  	</html>
  	';
 
 
- 	$nombre='informe de cultivo'.explode("-",$info[8])[1].' - '.$fecha.'.pdf';
+ 	$nombre='AgrosystCo - informe del cultivo'.explode("-",$info[8])[1].' - aportes por soio - '.$fecha.'.pdf';
 
  	$mpdf=new mPDF('c','A4');
 

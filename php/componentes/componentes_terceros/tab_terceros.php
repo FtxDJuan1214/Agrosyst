@@ -29,12 +29,12 @@ require '../../conexion.php';
             <td><?php echo $ver[1].' '.$ver[2].' '.$ver[3].' '.$ver[4] ?></td>
 
             <td>
-             <?php 
+               <?php 
 
-             $sql2="SELECT tel_ter
-             FROM public.tel_tercero where ide_ter='$ver[0]'"; 
-             $result2=pg_query($conexion,$sql2);
-             while($see1=pg_fetch_row($result2)){
+               $sql2="SELECT tel_ter
+               FROM public.tel_tercero where ide_ter='$ver[0]'"; 
+               $result2=pg_query($conexion,$sql2);
+               while($see1=pg_fetch_row($result2)){
                 $longitud = count($see1);
                 for($i=0; $i<$longitud; $i++){
                     echo $see1[$i]; 
@@ -108,7 +108,7 @@ require '../../conexion.php';
                     $result1=pg_query($conexion,$sql2);
                     $see=pg_fetch_row($result1);
                     if($see!=0){
-                        echo 'Duenio';
+                        echo 'Dueño';
                         $datos=$ver[0]."||".
                         $ver[1]."||".
                         $ver[2]."||".
