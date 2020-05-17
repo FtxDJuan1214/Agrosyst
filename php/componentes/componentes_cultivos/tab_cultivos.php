@@ -74,8 +74,8 @@ $codi_fin=$_SESSION['ide_finca'];
 
     $Dias_totales = $ver[3] ;
     $Dias_actuales = $tiempo[11];
-    // echo "dias totales = ".$Dias_totales."<br>";
-    // echo "dias actuales = ".$Dias_actuales."<br>";
+    echo "dias totales = ".$Dias_totales."<br>";
+    echo "dias actuales = ".$Dias_actuales."<br>";
 
     $porcentaje=intval((($Dias_actuales*100)/$Dias_totales));;
 

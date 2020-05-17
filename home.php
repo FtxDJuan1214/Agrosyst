@@ -1123,4 +1123,48 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
   $(function () {
     $("[data-toggle='tooltip']").tooltip();
   });
+
+  $(document).ready(function(){
+
+    //Agregar los convenios a la tarea
+    $.ajax({
+      type:"post",
+      url:"php/componentes/notificaciones/notificacion_ataque_a_etapas.php",
+      data:"",
+      success:function(r){
+        if (r!="") {
+          cultivos = r.split("||");
+          for (var i = 0; i < cultivos.length -1; i++) {
+            if(cultivos[i].trim() != ""){
+              toastr.info(cultivos[i],'Atención!!!!!!',{
+
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": 0,
+                "extendedTimeOut": 0,
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut",
+                "tapToDismiss": false
+
+              });
+            } 
+          }
+        }
+      }
+    });
+
+  });
+
+
 </script>
+
+
