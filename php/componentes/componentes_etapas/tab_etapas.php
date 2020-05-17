@@ -26,12 +26,12 @@ require '../../conexion.php';
      $ver[1]."||";
 
      ?>
-     <tr data-toggle="tooltip"
-        data-placement="top" title="<?php echo $ver[1] ?>">
+     <tr>
 
       <td><center><?php echo $ver[1] ?></center></td>
       <td>
-      <?php $sql1="SELECT DISTINCT afeccion.nom_afe, etapas_crecimiento.det_eta, eta_x_afe.ima_eta, afeccion.cod_afe, eta_x_afe.cod_eta
+      <?php $sql1="SELECT DISTINCT afeccion.nom_afe, etapas_crecimiento.det_eta, 
+                eta_x_afe.ima_eta, eta_x_afe.cod_afe, eta_x_afe.cod_eta
           FROM public.afeccion, public.eta_x_afe, public.etapas_crecimiento
           WHERE afeccion.cod_afe = eta_x_afe.cod_afe
           AND etapas_crecimiento.cod_eta = eta_x_afe.cod_eta
@@ -55,7 +55,7 @@ require '../../conexion.php';
                    src="../imagenes/<?php echo $ver1[2]?>"
                    alt="<?php echo $ver1[1] ?>" /></a><br>
                    </center>
-       <a style="color:#7A7894">___________________________________________</a><br>
+       <a style="color:#A0D39F">___________________________________________</a><br>
            
        <?php 
       }else{
@@ -66,7 +66,7 @@ require '../../conexion.php';
                    src="../imagenes/etapas/sinimagen.jpg"
                    alt="<?php echo $ver1[1] ?>" /></a>
                    </center>
-       <a style="color:#7A7894">_____________________________________________</a><br>
+       <a style="color:#A0D39F">_____________________________________________</a><br>
        
        <?php
           }
@@ -99,3 +99,9 @@ require '../../conexion.php';
   ?>
 </tbody>
 </table>
+
+<script>
+$(function() {
+    $("[data-toggle='tooltip']").tooltip();
+});
+</script>

@@ -14,10 +14,9 @@ $cod_afe =$_POST['cod_afe'];
         class="table align-items-center table-flush table-hover">
         <thead class="thead-light">
             <tr>
-                <th scope="col">Nombre Agroquímico</th>
-                <th scope="col">Tipo de agroquímico</th>
-                <th scope="col">Eliminar</th>
-                <th></th>
+                <th scope="col"><center>Nombre Agroquímico</center></th>
+                <th scope="col"><center>Tipo de agroquímico</center></th>
+                <th scope="col"><center>Eliminar</center></th>
             </tr>
         </thead>
         <tbody id="myTable1">
@@ -41,13 +40,13 @@ $cod_afe =$_POST['cod_afe'];
         $ver[1]."||";
         ?>
             <tr>
-                <td><?php echo $ver[1] ?></td>
-                <td><?php echo $ver[2] ?></td>
-                <td>
+                <td><center><?php echo $ver[1] ?></center></td>
+                <td><center><?php echo $ver[2] ?></center></td>
+                <td><center>
                         <input type="button" name="cargar" class="btn btn-danger sm-3" data-toggle="tooltip"
                             data-placement="top" title="Quitar" value="&#xf00d    "
                             style="font-family:'FontAwesome',tahoma; font-size: 10px;"
-                            onclick="eliminarAsociacion('<?php echo $ver[0] ?>')"></td>
+                            onclick="eliminarAsociacion('<?php echo $ver[0] ?>')"></center></td>
                 </tr>
             </tr>
             <?php 
@@ -64,3 +63,9 @@ $cod_afe =$_POST['cod_afe'];
             onclick="asociar('<?php echo $cod_etapa ?>')">
 </center>
 </div>
+
+<script>
+$(function() {
+    $("[data-toggle='tooltip']").tooltip();
+});
+</script>

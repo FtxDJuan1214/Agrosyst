@@ -5,7 +5,6 @@ session_start();
 $like = $_SESSION['idusuario'];
 
 $num_pla = $_POST['num_pla'];
-$det_pla = $_POST['det_pla'];
 $epoca = $_POST['epoca'];
 $fecha = $_POST['fecha'];
 $info = $_POST['info'];
@@ -21,7 +20,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 	$subplan = $num_pla+$i;
 	echo "<script type=\"text/javascript\">alert(\"$subplan \");</script>"; 
-   	$sep =explode("/", $planes[$i]); //Uno: Codigo agroquimico - Dos:codigo enfermedad
+   	$sep =explode("/", $planes[$i]); //Uno: Codigo agroquimico - Dos:codigo enfermedad - Cuatro: detalle
 
 	if($sep[2]=="Nutrición"){
 
@@ -71,7 +70,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 			$add = "INSERT INTO public.planificacion(
 				cod_pla, det_pla, fec_pla, epo_pla, cod_ppl, cod_pfi, agr_pla)
-				VALUES ('$like$subplan', '$det_pla', '$fecha', '$epoca ', '$like$num_pla', '$like$cod_pfi', '$sep[3]')";
+				VALUES ('$like$subplan', '$sep[4]', '$fecha', '$epoca ', '$like$num_pla', '$like$cod_pfi', '$sep[3]')";
 
 			echo $result=pg_query($conexion,$add);
 
@@ -80,7 +79,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 			$add = "INSERT INTO public.planificacion(
 				cod_pla, det_pla, fec_pla, epo_pla, cod_ppl, cod_pfi, agr_pla)
-				VALUES ('$like$subplan', '$det_pla', '$fecha', '$epoca ', '$like$num_pla', '$ver[0]', '$sep[3]')";
+				VALUES ('$like$subplan', '$sep[4]', '$fecha', '$epoca ', '$like$num_pla', '$ver[0]', '$sep[3]')";
 
 				echo $result=pg_query($conexion,$add);
 		}
@@ -128,7 +127,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 			$add = "INSERT INTO public.planificacion(
 				cod_pla, det_pla, fec_pla, epo_pla, cod_ppl, cod_pfi, agr_pla)
-				VALUES ('$like$subplan', '$det_pla', '$fecha', '$epoca ', '$like$num_pla', '$like$cod_pfi', '$sep[3]')";
+				VALUES ('$like$subplan', '$sep[4]', '$fecha', '$epoca ', '$like$num_pla', '$like$cod_pfi', '$sep[3]')";
 
 			echo $result=pg_query($conexion,$add);
 
@@ -137,7 +136,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 
 			$add = "INSERT INTO public.planificacion(
 				cod_pla, det_pla, fec_pla, epo_pla, cod_ppl, cod_pfi, agr_pla)
-				VALUES ('$like$subplan', '$det_pla', '$fecha', '$epoca ', '$like$num_pla', '$ver[0]', '$sep[3]')";
+				VALUES ('$like$subplan', '$sep[4]', '$fecha', '$epoca ', '$like$num_pla', '$ver[0]', '$sep[3]')";
 
 				echo $result=pg_query($conexion,$add);
 		}

@@ -42,3 +42,8 @@ while($ver1=pg_fetch_row($result1)){
 
     
 </div>
+<script>
+  $(function () {
+    $("[data-toggle='tooltip']").tooltip();
+  });
+</script>

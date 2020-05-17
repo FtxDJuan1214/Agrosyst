@@ -70,9 +70,10 @@ $contar=count($grupo)-1;
                     </table>
                 </div>
                 <div style="display: flex; justify-content: center;">
-                    <a style="align-self: center;" class="btn btn-success my-4"
+                    <a style="align-self: center; font-family:'FontAwesome',tahoma; font-size: 11px; color:white;" class="btn btn-success my-4"
                         onclick="agregar_plan()">Terminar planificación</a>
-                    <a style="align-self: center;" class="btn btn-warning my-4">Cancelar</a>
+                    <a style="align-self: center; font-family:'FontAwesome',tahoma; font-size: 11px; color:white;" class="btn btn-danger my-4"
+                    onclick="cancelar_plan()">Cancelar</a>
 
                 </div>
             </div>

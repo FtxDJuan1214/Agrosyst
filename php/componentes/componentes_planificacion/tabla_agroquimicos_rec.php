@@ -14,18 +14,17 @@ $stock = "";
 <div id="tab_agro" name="tab_agro">
     <div class="card shadow">
         <div class="card-header">
-            <strong>Agroquímicos Recomendados</strong>
+            <strong><center>Agroquímicos Recomendados</center></strong>
         </div>
 
         <table class="table align-items-center table-flush">
             <thead class="thead-light">
                 <tr>
-                    <th style="width:20px">Codigo</th>
-                    <th style="width:20px">Nombre</th>
-                    <th style="width:20px">Dosis</th>
-                    <th style="width:10px">Stock</th>
-                    <th style="width:5px">Info</th>
-                    <th style="width:5px">Agregar</th>
+                    <th style="width:20px"><center>Nombre</center></th>
+                    <th style="width:20px"><center>Dosis</center></th>
+                    <th style="width:10px"><center>Stock</center></th>
+                    <th style="width:5px"><center>Info</center></th>
+                    <th style="width:5px"><center>Agregar</center></th>
                 </tr>
             </thead>
             <tbody>
@@ -52,12 +51,11 @@ $stock = "";
                         while ($ver=pg_fetch_row($result)) {
                             ?>
                 <tr>
-                    <td><?php echo $ver[0] ?></td>
-                    <td><?php echo $ver[1] ?></td>
-                    <td><?php echo $ver[3] ?></td>
+                    <td><center><center><?php echo $ver[1] ?></center></td>
+                    <td><center><center><?php echo $ver[3] ?></center></td>
 
                     <!--Aquí debo hacer otra consulta para el stock-->
-                    <td><?php                     
+                    <td><center><?php                     
                     $consulta1="SELECT stock.can_sto
                     FROM public.agroquimicos, public.stock, public.insumos
                     WHERE stock.cod_ins = insumos.cod_ins
@@ -73,16 +71,16 @@ $stock = "";
                         echo '0';
                         $stock='0';
                     }    
-                    ?></td>
+                    ?></center></td>
 
-                    <td><input type="button" name="info" class="btn btn-info sm-3" data-toggle="tooltip"
-                            data-placement="top" title="<?php echo $ver[4] ?>" value="&#xf05a    "
-                            style="font-family:'FontAwesome',tahoma; font-size: 10px;"></td>
-                    <td><input type="button" name="add" class="btn btn-primary sm-3" data-toggle="tooltip"
+                    <td><center><input type="button" name="info" class="btn btn-warning sm-3" data-toggle="tooltip"
+                            data-placement="top" title="<?php echo 'Recomendación de aplicación: '.$ver[4] ?>" value="&#xf05a    "
+                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"></center></td>
+                    <td><center><input type="button" name="add" class="btn btn-dark sm-3" data-toggle="tooltip"
                             data-placement="top" title="Agregar" value="&#xf0a5    "
-                            style="font-family:'FontAwesome',tahoma; font-size: 10px;"
+                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                             onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$stock?>')">
-                    </td>
+                    </center></td>
 
                     <?php 
                                 }
@@ -108,10 +106,10 @@ $stock = "";
                                 while ($ver=pg_fetch_row($result)) {
                                     ?>
                 <tr>
-                    <td><?php echo $ver[0] ?></td>
-                    <td><?php echo $ver[1] ?></td>
-                    <td><?php echo $ver[3] ?></td>
-                    <td><?php                     
+                    <td><center><?php echo $ver[0] ?></center></td>
+                    <td><center><?php echo $ver[1] ?></center></td>
+                    <td><center><?php echo $ver[3] ?></center></td>
+                    <td><center><?php                     
                     $consulta1="SELECT stock.can_sto
                     FROM public.agroquimicos, public.stock, public.insumos
                     WHERE stock.cod_ins = insumos.cod_ins
@@ -127,15 +125,15 @@ $stock = "";
                         echo '0';
                         $stock='0';
                     }    
-                    ?></td>
-                    <td><input type="button" name="info" class="btn btn-info sm-3" data-toggle="tooltip"
-                            data-placement="top" title="<?php echo $ver[4] ?>" value="&#xf05a    "
-                            style="font-family:'FontAwesome',tahoma; font-size: 10px;"></td>
-                    <td><input type="button" name="add" class="btn btn-primary sm-3" data-toggle="tooltip"
+                    ?></center></td>
+                    <td><center><input type="button" name="info" class="btn btn-warning sm-3" data-toggle="tooltip"
+                            data-placement="top" title="<?php echo 'Recomendación de aplicación: '.$ver[4] ?>" value="&#xf05a    "
+                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"></center></td>
+                    <td><center><input type="button" name="add" class="btn btn-dark sm-3" data-toggle="tooltip"
                             data-placement="top" title="Agregar" value="&#xf0a5    "
-                            style="font-family:'FontAwesome',tahoma; font-size: 10px;"
+                            style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                             onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$stock?>')">
-                    </td>
+                    </center></td>
 
                     <?php 
 
@@ -145,13 +143,6 @@ $stock = "";
                 </tr>
             </tbody>
         </table>
-
-        <div style="display: flex; justify-content: center;">
-            <!--<a style="align-self: center;" href="#" class="btn btn-success my-4"
-                        onclick="comprar();">Agregar</a>
-                    <a style="align-self: center;" href="compras.php" class="btn btn-warning my-4">Cancelar</a>-->
-
-        </div>
     </div>
 </div>
 

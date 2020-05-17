@@ -233,13 +233,13 @@ swal({
 
     cadena ="cod_afe="+cod_afe+
     "&cod_eta="+cod_eta;
-//alert("cadena "+ cadena);
+    //alert("cadena "+ cadena);
     $.ajax({
       type:"post",
       url:"../php/crud/etapas/eliminar_etapa_afeccion.php",
       data:cadena,
       success:function(r){
-          alert(r);
+          //alert(r);
        if(r.includes('utilizado')){
         swal("Esta etapa/enfermedad/plaga ya se encuentra ligada a un agroquímico", {
             icon: "error",

@@ -5,7 +5,6 @@ session_start();
 $like = $_SESSION['idusuario'];
 
 
-$det_pla = $_POST['det_pla'];
 $epoca = $_POST['epoca'];
 $fecha = $_POST['fecha'];
 $info = $_POST['info'];
@@ -16,8 +15,7 @@ $contarPlanes=count($planes) - 1;
 
 $enfermedad = "";
 $tipo = "";
-
-//HOLAAAAAAAAAA 1-2/1-1/Curación/,1-2||1-4/1-2/Prevención/,1-4||
+$boton = false;
 
 for($i = 0; $i < $contarPlanes; $i++){
 
@@ -41,44 +39,42 @@ for($i = 0; $i < $contarPlanes; $i++){
         $got1=pg_fetch_row($res);
         $fechaInicio = $got1[1];
 
-        //Fecha actual
-        date_default_timezone_set('America/Bogota');
-        $d = date("d");
-        $m = date("m");
-        $y = date("Y");
-        $fecha_act=$y."-".$m."-".$d;
 
-
-
-  if($sep[2] == "Curación"){     
+  if($sep[2] == "Curación"){    
 ?>
 
-    <div class="row">
-        <div class="col 6">
-            <div class="card ">
-                <div class="card-body">
-                <a class="btn btn-primary sm-4" data-toggle="tooltip"
-                        data-placement="top" title="Listado de planificaciones"
-                        value="Inicio"
-                        style="font-family:'FontAwesome',tahoma; font-size: 9px;"
-                        href="planificaciones.php"></a>
-                    <div class="row d-block">
-                        <div class="col">
+<div class="row">
+    <div class="col 6">
+        <div class="card ">
+            <div class="card-body">
+                <div class="row d-block">
+                    <div class="col">
+                    <?php if($boton == false){?>
+                        <div style="display: flex; justify-content: center;">
+                            <a style="align-self: center; font-family:'FontAwesome',tahoma; font-size: 11px; color:white;"
+                                class="btn btn-success my-4" href="planificaciones.php" data-toggle="tooltip"
+                                title="Ir al listado de planificaciones">Planificaciones</a>
+                        </div>
+                        <?php
+                        $boton=true;
+                        }
+                        ?>
 
+                        <ul class='list-group'>
+                            <li class='list-group-item text-light'
+                                style="background: #16284C;font-family:'FontAwesome',tahoma; font-size: 17px;">
+                                <center><b>Planificación N°:</b> <?php echo $subplan ?></center><br>
+                                <b>Fecha de realización:</b> <?php echo $fecha ?><br>
+                                <b>Descripción:</b> Esta planificación es realizada especialmente para lucha contra: -
+                                <?php echo $enfermedad ?> - con registro de presencia desde el día
+                                <?php echo $fechaInicio ?>
+                                <br>
+                            </li>
+                            <!--------------------Agroquimicos------------------------>
 
-                            <ul class='list-group'>
-                                <li class='list-group-item text-light' style="background: #232157;font-family:'FontAwesome',tahoma; font-size: 19px;">
-                                    <center><b>Planificación N°:</b> <?php echo $subplan ?></center><br>
-                                    <b>Fecha de realización:</b> <?php echo $fecha ?><br>
-                                    <b>Descripción:</b> Esta planificación es realizada especialmente para lucha contra: -
-                                    <?php echo $enfermedad ?> - con registro de presencia desde el día
-                                    <?php echo $fechaInicio ?>
-                                    <br>
-                                </li>
-                                <!--------------------Agroquimicos------------------------>
-
-                                <li class='list-group-item text-light' style="background: #232157;font-family:'FontAwesome',tahoma; font-size: 15px;">
-                                    <?php 
+                            <li class='list-group-item text-light'
+                                style="background: #16284C;font-family:'FontAwesome',tahoma; font-size: 15px;">
+                                <?php 
 
                                   $cod_agroquimicos =explode(",", $sep[3]);
                                   $contarAgro=count($cod_agroquimicos);
@@ -93,33 +89,34 @@ for($i = 0; $i < $contarPlanes; $i++){
                                     $recr=pg_query($conexion,$rec);
                                     
                                     ?>
-                                    <br><b>Nombre:</b> <?php echo $info[2] ?> <br>
-                                    <b>Recomendación de aplicación:</b> <?php echo $info[3] ?> <br>
-                                    <b>Periodo de carencia:</b> <?php echo $info[4] ?> horas <br>
-                                    <b>Perido de entrada:</b> <?php echo $info[5] ?> horas <br>
-                                    <b>Dosis recomendada:</b> <?php echo $info[9] ?><br><br>
+                                <br><b>Nombre:</b> <?php echo $info[2] ?> <br>
+                                <b>Recomendación de aplicación:</b> <?php echo $info[3] ?> <br>
+                                <b>Periodo de carencia:</b> <?php echo $info[4] ?> horas <br>
+                                <b>Perido de entrada:</b> <?php echo $info[5] ?> horas <br>
+                                <b>Dosis recomendada:</b> <?php echo $info[9] ?><br><br>
 
-                                    <p style="color:red;" class="fas fa-exclamation-triangle"> RECOMENDACIONES DE USO:</p><br>
+                                <a style="color:red; font-family:'FontAwesome',tahoma;"
+                                    class="fas fa-exclamation-triangle"> RECOMENDACIONES DE USO:</a><br>
 
-                                    <?php                                
+                                <?php                                
                                     
                                       while($ver=pg_fetch_row($recr)){
-                                    ?>                                   
-                                      <?php echo $ver[0] ?><br>
+                                    ?>
+                                <?php echo '• '.$ver[0] ?><br>
 
-                                    <?php
+                                <?php
                                     }
                                   }
                                     ?>
-                                </li>
-                            </ul>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
+</div>
+<br>
 <?php
 }else if($sep[2] == "Prevención"){
 ?>
@@ -130,21 +127,31 @@ for($i = 0; $i < $contarPlanes; $i++){
                 <div class="row d-block">
                     <div class="col">
 
+                    <?php if($boton == false){?>
+                        <div style="display: flex; justify-content: center;">
+                            <a style="align-self: center; font-family:'FontAwesome',tahoma; font-size: 11px; color:white;"
+                                class="btn btn-success my-4" href="planificaciones.php" data-toggle="tooltip"
+                                title="Ir al listado de planificaciones">Planificaciones</a>
+                        </div>
+                        <?php
+                        $boton=true;
+                        }
+                        ?>
+
 
                         <ul class='list-group'>
-                            <li class='list-group-item' style="font-family:'FontAwesome',tahoma; font-size: 20px;">
-                                Planificación N°: <?php echo $subplan ?><br>
-                                Fecha de realización: <?php echo $fecha ?><br>
-                                Descripción: Esta planificación es realizada para la prevención de: -
+                            <li class='list-group-item' style="font-family:'FontAwesome',tahoma; font-size: 17px;">
+                                <b><center>Planificación N°:</b> <?php echo $subplan ?></center><br>
+                                <b>Fecha de realización:</b> <?php echo $fecha ?><br>
+                                <b>Descripción:</b> Esta planificación es realizada para la prevención de: -
                                 <?php echo $enfermedad ?> -
                                 <br>
                             </li>
-                            <li class='list-group-item text-light' style="background: #232157;font-family:'FontAwesome',tahoma; font-size: 20px;">
-
                                 <!--------------------Agroquimicos------------------------>
 
-                                <li class='list-group-item text-light' style="background: #232157;font-family:'FontAwesome',tahoma; font-size: 15px;">
-                                    <?php 
+                            <li class='list-group-item text-light'
+                                style="background: #16284C;font-family:'FontAwesome',tahoma; font-size: 15px;">
+                                <?php 
 
                                   $cod_agroquimicos =explode(",", $sep[3]);
                                   $contarAgro=count($cod_agroquimicos);
@@ -159,25 +166,26 @@ for($i = 0; $i < $contarPlanes; $i++){
                                     $recr=pg_query($conexion,$rec);
                                     
                                     ?>
-                                    <br><b>Nombre:</b> <?php echo $info[2] ?> <br>
-                                    <b>Recomendación de aplicación:</b> <?php echo $info[3] ?> <br>
-                                    <b>Periodo de carencia:</b> <?php echo $info[4] ?> horas <br>
-                                    <b>Perido de entrada:</b> <?php echo $info[5] ?> horas <br>
-                                    <b>Dosis recomendada:</b> <?php echo $info[9] ?><br><br>
+                                <br><b>Nombre:</b> <?php echo $info[2] ?> <br>
+                                <b>Recomendación de aplicación:</b> <?php echo $info[3] ?> <br>
+                                <b>Periodo de carencia:</b> <?php echo $info[4] ?> horas <br>
+                                <b>Perido de entrada:</b> <?php echo $info[5] ?> horas <br>
+                                <b>Dosis recomendada:</b> <?php echo $info[9] ?><br><br>
 
-                                    <p style="color:red;" class="fas fa-exclamation-triangle"> RECOMENDACIONES DE USO:</p><br>
+                                <a style="color:red; font-family:'FontAwesome',tahoma;"
+                                    class="fas fa-exclamation-triangle"> RECOMENDACIONES DE USO:</a><br>
 
-                                    <?php                                
+                                <?php                                
                                     
                                       while($ver=pg_fetch_row($recr)){
-                                    ?>                                   
-                                      -<?php echo $ver[0] ?><br>
+                                    ?>
+                                <?php echo '• '.$ver[0] ?><br>
 
-                                    <?php
+                                <?php
                                     }
                                   }
                                     ?>
-                                </li>
+                            </li>
                             </li>
 
                         </ul>
@@ -191,3 +199,8 @@ for($i = 0; $i < $contarPlanes; $i++){
 }
 }
 ?>
+<script>
+$(function() {
+    $("[data-toggle='tooltip']").tooltip();
+});
+</script>
