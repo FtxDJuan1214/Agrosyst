@@ -2,17 +2,29 @@
 require '../../conexion.php';
 ?>
 
+<div class="text-center text-muted mb-4">
+    <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+        LISTA DE INGREDIENTES ACTIVOS
+    </h4>
+</div>
+
 <table class="table align-items-center table-flush table-hover">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col"><center>Nombre</center></th>
-      <th scope="col"><center>¿Prohibido ICA?</center></th>
-      <th><center>Agroquímicos</center></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="myTable">
-    <?php 
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">
+                <center>Nombre</center>
+            </th>
+            <th scope="col">
+                <center>¿Prohibido ICA?</center>
+            </th>
+            <th>
+                <center>Agroquímicos</center>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        <?php 
     session_start();
     $like = $_SESSION['idusuario'];
 
@@ -27,12 +39,16 @@ require '../../conexion.php';
      $ver[2]."||";
 
      ?>
-     <tr>
+        <tr>
 
-      <td><center><?php echo $ver[1] ?></center></td>
-      <td><center><?php echo $ver[2] ?></center></td>
-      <td>
-      <?php $sql1="SELECT agroquimicos.cod_agr, agroquimicos.nom_agr FROM public.agroquimicos
+            <td>
+                <center><?php echo $ver[1] ?></center>
+            </td>
+            <td>
+                <center><?php echo $ver[2] ?></center>
+            </td>
+            <td>
+                <?php $sql1="SELECT agroquimicos.cod_agr, agroquimicos.nom_agr FROM public.agroquimicos
       WHERE (agroquimicos.cod_agr LIKE '1-%' or agroquimicos.cod_agr LIKE '$like%')
 	    AND cod_agr NOT LIKE '1-1' 
       AND agroquimicos.cod_iac = '$ver[0]'";
@@ -64,12 +80,12 @@ require '../../conexion.php';
     AND eta_x_afe.cod_agr = '$res[6]'";
     $resuld=pg_query($conexion,$dos);
 
-      ?>   
-       <center>
+      ?>
+                <center>
 
-              
-          <span class="badge badge-pill badge-warning text-uppercase"  data-toggle="tooltip" data-html="true" 
-           data-placement="right" title="<ul class='list-group'>
+
+                    <span class="badge badge-pill badge-warning text-uppercase" data-toggle="tooltip" data-html="true"
+                        data-placement="right" title="<ul class='list-group'>
           <li class='list-group-item-info text-dark' style='background: #fff; color: #fff'>
           <center><b>Nombre:</b> <?php echo $res[0].'.' ?><center>
           <b>Tipo:</b> <?php echo $res[1].'.' ?><br>
@@ -83,31 +99,36 @@ require '../../conexion.php';
             • <?php echo $imp[0].'.'; }?> <br>
            </li>           
         </ul>" style="font-size: 0.7rem; margin: 5px;"><?php echo $ver1[1] ?></span><br>
-      </center>
-      <?php
+                </center>
+                <?php
             }
             ?>
-      </td>
-      <td class="text-right">
-        <div class="dropdown">
-          <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-ellipsis-v"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-            <a class="dropdown-item" href="#" onclick="modalActualizar(' <?php  echo $datos ?> ')"><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
-            <a class="dropdown-item" href="#" onclick="eliminarIngrediente(' <?php  echo $datos ?> ')" ><div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div></a>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <?php 
+            </td>
+            <td class="text-right">
+                <div class="dropdown">
+                    <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" href="#" onclick="modalActualizar(' <?php  echo $datos ?> ')">
+                            <div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div>
+                        </a>
+                        <a class="dropdown-item" href="#" onclick="eliminarIngrediente(' <?php  echo $datos ?> ')">
+                            <div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div>
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <?php 
   }
   ?>
-</tbody>
+    </tbody>
 </table>
 
 <script>
-  $(function () {
+$(function() {
     $("[data-toggle='tooltip']").tooltip();
-  });
+});
 </script>

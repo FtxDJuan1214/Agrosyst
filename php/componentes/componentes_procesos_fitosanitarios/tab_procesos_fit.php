@@ -58,9 +58,8 @@ require '../../conexion.php';
     session_start();
     $like = $_SESSION['idusuario'];
 
-    $sql="SELECT DISTINCT planificacion.cod_pla, afeccion.nom_afe,
-    procesos_fitosanitarios.fin_pfi, 
-    planificacion.agr_pla, procesos_fitosanitarios.cod_pfi, nombre_cultivo.des_ncu
+    $sql="SELECT DISTINCT afeccion.nom_afe,
+    procesos_fitosanitarios.fin_pfi, procesos_fitosanitarios.cod_pfi, nombre_cultivo.des_ncu, cultivos.cod_cul
     FROM fitosanitaria 
     INNER JOIN planificacion ON fitosanitaria.cod_pla = planificacion.cod_pla
     INNER JOIN tarea ON tarea.cod_tar = fitosanitaria.cod_tar
@@ -78,7 +77,7 @@ require '../../conexion.php';
     
     while($ver=pg_fetch_row($result)){  
 
-     $sep = explode("-",$ver[5]);
+     $sep = explode("-",$ver[3]);
 
 //-------------------Centrales----------------------------//
     $tar = "SELECT fitosanitaria.cod_fit, labores.nom_lab, labores.det_lab, 
@@ -90,9 +89,13 @@ require '../../conexion.php';
     INNER JOIN procesos_fitosanitarios ON procesos_fitosanitarios.cod_pfi = planificacion.cod_pfi
     INNER JOIN afeccion ON afeccion.cod_afe = procesos_fitosanitarios.cod_afe
     INNER JOIN efectuar ON efectuar.cod_tar= tarea.cod_tar
+    INNER JOIN convenio ON efectuar.cod_con = convenio.cod_con
+    INNER JOIN ejecutar ON ejecutar.cod_con = convenio.cod_con
+    INNER JOIN cultivos ON cultivos.cod_cul = ejecutar.cod_cul
     WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
     AND procesos_fitosanitarios.ffi_pfi IS null
-    AND procesos_fitosanitarios.cod_pfi = '$ver[4]'";
+    AND cultivos.cod_cul = '$ver[4]'
+    AND procesos_fitosanitarios.cod_pfi = '$ver[2]'";
 
     $tar1=pg_query($conexion,$tar);
     $tar2=pg_query($conexion,$tar);
@@ -103,7 +106,7 @@ require '../../conexion.php';
      ?>
         <tr>
             <td data-toggle="tooltip" data-html="true" 
-                title="Presente desde: <?php  echo $ver[2] ?>"><?php echo $ver[1].' - '.$sep[1] ?></td>
+                title="Presente desde: <?php  echo $ver[1] ?>"><?php echo $ver[0].' - '.$sep[1] ?></td>
             <td><br><?php 
   
             while($tareas=pg_fetch_row($tar1)){             
@@ -266,7 +269,7 @@ require '../../conexion.php';
                     <button type="button" class="btn btn-dark center-block" data-toggle="tooltip"
                         title="Ver, editar y eliminar comentarios sobre el avance de este proceso fitosanitario"
                         style="font-family:'FontAwesome',tahoma; font-size: 9px;"
-                        onclick="modalComentarios(' <?php  echo $ver[4] ?> ')">Comentarios</button>
+                        onclick="modalComentarios(' <?php  echo $ver[2] ?> ')">Comentarios</button>
 
                     <div id="sintomas-mostrar">
                     </div>
@@ -277,7 +280,7 @@ require '../../conexion.php';
                     <button type="button" class="btn btn-danger center-block" data-toggle="tooltip"
                         title="Si ya no hay presencia de la plaga o enfermedad en el cultivo."
                         style="font-family:'FontAwesome',tahoma; font-size: 9px;"
-                        onclick="terminarProceso(' <?php  echo $ver[4] ?> ')">Terminar proceso</button>
+                        onclick="terminarProceso(' <?php  echo $ver[2] ?> ')">Terminar proceso</button>
 
                     <div id="sintomas-mostrar">
                     </div>

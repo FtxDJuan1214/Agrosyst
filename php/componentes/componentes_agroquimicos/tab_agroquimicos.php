@@ -5,7 +5,11 @@ session_start();
 $user =  $_SESSION['idusuario'];
 
 ?>
-
+<div class="text-center text-muted mb-4">
+    <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+        LISTA DE AGROQUÍMICOS
+    </h4>
+</div>
 <table class="table align-items-center table-flush table-hover">
     <thead class="thead-light">
         <tr>
@@ -24,7 +28,7 @@ $user =  $_SESSION['idusuario'];
             <th></th>
         </tr>
     </thead>
-    <tbody  id="myTable">
+    <tbody id="myTable">
         <?php 
     $sql="SELECT agroquimicos.cod_agr, agroquimicos.cod_ins, agroquimicos.nom_agr, 
     tipo_agroquimico.det_tag, agroquimicos.fun_agr, ingredientes_activos.des_iac, 

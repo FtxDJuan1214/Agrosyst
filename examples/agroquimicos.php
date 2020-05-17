@@ -165,11 +165,8 @@ if (isset($_POST['cargar'])) {
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-header border-0">
-                            <center>
-                            <strong text style="font-family:'FontAwesome',tahoma; font-size: 15px;">Lista de agroquímicos</strong>
-                            </center>
                             <div class="float-md-left" style="margin-top: 5px;" id="div-btn-add" name="div-btn-add">
-                                <button id="bt-add-agr" name="bt-add-agr" class="btn btn-success" type="button"
+                                <button id="bt-add-agr" name="bt-add-agr" class="btn btn-default" type="button"
                                     onclick="cargarAgro()" style="font-family:'FontAwesome',tahoma; font-size: 11px;">Agregar</button>
                             </div>
                             <div class="float-md-right" style="margin-top: 5px;">

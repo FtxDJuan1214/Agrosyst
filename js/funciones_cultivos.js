@@ -583,7 +583,8 @@ $.ajax({
       cultivos = r.split("||");
       for (var i = 0; i < cultivos.length -1; i++) {
         if(cultivos[i].trim() != ""){
-          toastr.info(cultivos[i],'Atención!!!!!!',{
+
+          toastr.info(cultivos[i].slice(0, -2)+'.','¡Atención!',{
 
             "closeButton": true,
             "debug": false,

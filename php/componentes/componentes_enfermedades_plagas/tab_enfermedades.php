@@ -2,6 +2,11 @@
 require '../../conexion.php';
 ?>
 
+<div class="text-center text-muted mb-4">
+    <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+        LISTA DE ENFERMEDADES
+    </h4>
+</div>
 <table class="table align-items-center table-flush table-hover">
     <thead class="thead-light">
         <tr>
@@ -11,7 +16,7 @@ require '../../conexion.php';
             <th scope="col">Etapa en planta ataque</th>
             <th scope="col">Partes atacadas</th>
             <th scope="col">Hora de ataque</th>
-            <th scope="col">Sintomas</th>            
+            <th scope="col">Sintomas</th>
             <th scope="col">Metodos P.</th>
             <th></th>
         </tr>
@@ -65,18 +70,19 @@ require '../../conexion.php';
                 while($ver1=pg_fetch_row($result1)){
                   echo $ver1[0]; ?><br><?php  
                 }
-                ?></td>            
+                ?></td>
             <td><?php echo $ver[6] ?></td>
+
             <td>
-                <?php $sep = explode('~',$ver[7]);
-                $contar=count($sep);
-                for($i=1;$i<$contar;$i++){ 
-                    if($sep[$i] != ''){               
-                        echo $sep[$i];?><br><?php  
-                            }
-                        }
-                    ?></td>
-                    <td>
+                <?php $sql1="SELECT sintomas_afe.det_sin FROM public.sin_x_afe, public.sintomas_afe
+		  WHERE sintomas_afe.cod_sin = sin_x_afe.cod_sin
+		  AND sin_x_afe.cod_afe = '$ver[0]'";
+                $result1=pg_query($conexion,$sql1);
+                while($ver1=pg_fetch_row($result1)){
+                  echo $ver1[0]; ?><br><?php  
+                }
+                ?></td>
+            <td>
                 <?php $sep = explode('~',$ver[4]);
             $contar=count($sep);
             for($i=1;$i<$contar;$i++){ 
@@ -92,7 +98,7 @@ require '../../conexion.php';
                         <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#"  onclick="modalActualizar('<?php  echo $datos ?>','E')">
+                        <a class="dropdown-item" href="#" onclick="modalActualizar('<?php  echo $datos ?>','E')">
                             <div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div>
                         </a>
                         <a class="dropdown-item" href="#" onclick="eliminar_plaga_enf(' <?php  echo $datos ?> ','E')">

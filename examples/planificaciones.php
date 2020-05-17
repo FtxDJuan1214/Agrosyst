@@ -165,17 +165,20 @@ if (isset($_SESSION['usuario'])) {
                     <div class="card shadow">
                         <div class="card-header border-0">
                             <div class="float-md-left" style="margin-top: 5px;">
-                                <a type="button" id="div-btn-add-enf" name="div-btn-add-enf" class="btn btn-default" data-toggle="tooltip"
-                                    style="font-family:'FontAwesome',tahoma; font-size: 11px;" title="Crear una nueva planificación"
-                                    href="planificacion.php">Crear</a>
+                                <a type="button" id="div-btn-add-enf" name="div-btn-add-enf" class="btn btn-default"
+                                    data-toggle="tooltip" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
+                                    title="Crear una nueva planificación" href="planificacion.php">Crear</a>
 
                             </div>
                             <div class="float-md-right" style="margin-top: 5px;">
                                 <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text"
                                     autocomplete="off">
                             </div>
-                            <p style="font-family:'FontAwesome',tahoma; font-size: 18px;" align="center">LISTADO TOTAL
-                                DE PLANIFICACIONES</p>
+                            <div class="text-center text-muted mb-4">
+                                <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                    LISTA TOTAL DE PLANIFICACIONES
+                                </h4>
+                            </div>
                         </div>
                         <div class="table-responsive" id="tab_ingredientes_activos">
 
