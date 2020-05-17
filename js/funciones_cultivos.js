@@ -646,9 +646,9 @@ function intervaloa(){
    $('#tip_cul').val(2);
  }
 
- if (dias_actuales > 0 && dias_actuales != total_dias) {
+ if (dias_actuales >= 0 && dias_actuales != total_dias) {
 
-  if(dias_actuales > 0 && dias_actuales <= 3){
+  if(dias_actuales >= 0 && dias_actuales <= 3){
     $('#est_cul').val(1);
   }else if(dias_actuales > 3 && dias_actuales <=210){
     $('#est_cul').val(2);
@@ -664,6 +664,10 @@ function intervaloa(){
 }else if(dias_actuales > 0 && dias_actuales == total_dias){
  $('#est_cul').val(7);
 }
+
+if(dias_actuales == 0){
+    $('#est_cul').val(1);
+  }
 
 }
 })

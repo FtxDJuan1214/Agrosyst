@@ -713,7 +713,7 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
             WHERE fincas.cod_fin=lotes.cod_fin AND nombre_cultivo.cod_ncu = cultivos.cod_ncu AND lotes.cod_lot=cultivos.cod_lot 
             AND cultivos.cod_cul=ejecutar.cod_cul AND ejecutar.cod_con=convenio.cod_con 
             AND convenio.cod_con=efectuar.cod_con AND efectuar.cod_tar=tarea.cod_tar AND tarea.cod_lab = labores.cod_lab and fincas.cod_fin = '$codi_fin'
-            ORDER BY tarea.fin_tar ASC limit 15"; 
+            ORDER BY tarea.fin_tar ASC limit 10"; 
             $result=pg_query($conexion,$sql);
             while($ver=pg_fetch_row($result)){
              $datos=$ver[0]."||".
@@ -811,10 +811,10 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                     $erre=pg_query($conexion,$terceros);
                     while($pers=pg_fetch_row($erre)){
                       if ($i == 1){
-                        echo 'Socio: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
+                        echo 'Trabajador: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
                         $i++;
                         }else{
-                         echo '<br>Trabajador: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
+                         echo '<br>Socio: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
                        }
                      }
                      ?><br>

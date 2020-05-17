@@ -363,3 +363,15 @@ function informe_produccion_cul(){
 }
 
 
+function informe_tareas_cultivo(){
+	cod_cul = $('#cod_cul').val();
+	if (cod_cul != null) {
+		window.open('../php/componentes/componenetes_informes/informe_tareas_cultivo.php/?c='+cod_cul);
+	}else{
+		swal("Atención!","Debe seleccionar el cultivo para poder generar este reporte", {
+			icon: "info",
+		});
+	}
+}
+
+

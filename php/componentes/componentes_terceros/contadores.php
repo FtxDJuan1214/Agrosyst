@@ -11,7 +11,7 @@ $like = $_SESSION['idusuario'];
       <a href="#" onclick="ver_duenios();">
         <div class="row">
           <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Duenios</h5>
+            <h5 class="card-title text-uppercase text-muted mb-0">Dueños</h5>
             <span class="h2 font-weight-bold mb-0">
               <?php 
               $sql="SELECT count(ide_ter) FROM duenio where ide_ter like '$like%'";
@@ -174,7 +174,7 @@ $like = $_SESSION['idusuario'];
   }
 
   function ver_duenios(){
-    $('#myInput').val('Duenio');
+    $('#myInput').val('Dueño');
     buscador();
   }
 

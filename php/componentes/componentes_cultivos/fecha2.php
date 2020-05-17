@@ -78,6 +78,10 @@ echo $cadena;
 					$('#est_cul_up').val(7);
 				}
 
+				if(dias_actuales == 0){
+					$('#est_cul').val(1);
+				}
+
 			}
 		})
 	}

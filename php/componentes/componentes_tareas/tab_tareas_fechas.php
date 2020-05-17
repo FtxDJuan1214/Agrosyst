@@ -125,10 +125,10 @@ $ffin = $_POST['ffin'];
             $erre=pg_query($conexion,$terceros);
             while($pers=pg_fetch_row($erre)){
               if ($i == 1){
-                echo 'Socio: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
+                echo 'Trabajador: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
                 $i++;
                 }else{
-                 echo '<br>Trabajador: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
+                 echo '<br>Socio: '.$pers[2].' '.$pers[3].' '.$pers[4].' '.$pers[5].'.'; 
                }
              }
              ?><br>

@@ -325,7 +325,7 @@ if (isset($_SESSION['usuario'])) {
  </a>
 </div>
 <div class="col-sm-3 disabled" style="margin-top: 10px;" >
-  <a href="#" onclick="informex();" >
+  <a href="#" onclick="informe_tareas_cultivo();" >
     <div class="card card-stats ">
       <div class="card-body">
         <div class="row">

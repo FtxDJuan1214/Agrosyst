@@ -38,7 +38,8 @@ $html='
 </div>
 <div style="width:100%;background:#a892a8;"></div>
 <div style="width:100%; text-align:center;"><h2>Cultivo '.explode("-",$info[8])[1].'</h2></div>
-<h2 style="font-weight:bold">Cultivo en el lote: '.$info[10].' con '.$info[3].' plantas</h2>';
+<h2 style="font-weight:bold">Cultivo en el lote: '.$info[10].' con '.$info[3].' plantas</h2>
+<h2 style="font-weight:bold">Producciones:</h2>';
 
  	//**************************Parte de producción del cultivo 
 
@@ -68,113 +69,119 @@ AND cultivos.cod_lot = lotes.cod_lot AND lotes.cod_fin = fincas.cod_fin AND tipo
 AND produccion.ide_ter = terceros.ide_ter AND cultivos.cod_cul = '$cod_cul' ORDER BY  produccion.cod_pro ASC"; 
 $result=pg_query($conexion,$sql);
 $result1=pg_query($conexion,$sql);
-$cont = 0;
-$veces = 0;
-$anterior = 0;
-$indice = 0;
-while($fila=pg_fetch_row($result1)){
-	$Lista[] = [$fila[0],(floatval($fila[5]) * floatval($fila[6]))];
 
-	if($fila[0] == $anterior){
-		$veces++;
-		$anterior = $fila[0];
-	}else{
-		if($cont == 0){
+$filas= pg_num_rows($result);
+if ($filas != 0) {
+	
+	$cont = 0;
+	$veces = 0;
+	$anterior = 0;
+	$indice = 0;
+	while($fila=pg_fetch_row($result1)){
+		$Lista[] = [$fila[0],(floatval($fila[5]) * floatval($fila[6]))];
+
+		if($fila[0] == $anterior){
 			$veces++;
 			$anterior = $fila[0];
 		}else{
-			$array[] = [$indice,$veces];
-			$veces = 1;
-			$anterior = $fila[0];
+			if($cont == 0){
+				$veces++;
+				$anterior = $fila[0];
+			}else{
+				$array[] = [$indice,$veces];
+				$veces = 1;
+				$anterior = $fila[0];
+			}
 		}
+
+		$indice = $fila[0];
+		$cont++;
 	}
+	$array[] = [$indice,$veces];
 
-	$indice = $fila[0];
-	$cont++;
-}
-$array[] = [$indice,$veces];
-
-$nant = $Lista[0][0];
-$total = 0;
-
-
-for ($i=0; $i < count($array) ; $i++) { 
-    //echo "Codigo: ".$array[$i][0]." Repite: ".$array[$i][1];
+	$nant = $Lista[0][0];
 	$total = 0;
-	for ($j=0; $j < count($Lista); $j++) { 
-		if ($array[$i][0] == $Lista[$j][0]) {
-			$total = ($total + $Lista[$j][01]);
+
+
+	for ($i=0; $i < count($array) ; $i++) { 
+    //echo "Codigo: ".$array[$i][0]." Repite: ".$array[$i][1];
+		$total = 0;
+		for ($j=0; $j < count($Lista); $j++) { 
+			if ($array[$i][0] == $Lista[$j][0]) {
+				$total = ($total + $Lista[$j][01]);
+			}
 		}
-	}
-	$totales[] = [$array[$i][0],$array[$i][1],$total];
+		$totales[] = [$array[$i][0],$array[$i][1],$total];
     //echo " Total : " . $total."<br>";
-}
-
-$index = 0;
-$i=0;
-$money = 0;
-$background = "#808B96";
-
-$recaudo_total=0;
-while($ver=pg_fetch_row($result)){   
-
-	if($ver[0] == $index){
-		$index = $ver[0];
-
-		$html.='<tr style="background:'.$background.';" >
-		<td align="center">';
-		$array=explode("-", $ver[2]);
-		$arra1=explode("-", $ver[9]);
-		$html.=''.$array[1].'<br> ['.$arra1[1].']</td>
-		<td align="center">'.$ver[3].'</td>
-		<td align="center">'.$ver[4].'Kg</td>
-		<td align="center">'.$ver[5].'</td>
-		<td align="center">$'.(floatval($ver[5]) * floatval($ver[6])).'</td>
-		</tr>';
-	}else{
-
-		if ($background == "#808B96") {
-			$background = "#CCD1D1";
-		}else{
-			$background = "#808B96";
-		}
-
-
-		$html.='<tr style="background:'.$background.';">
-
-		<td align="center" rowspan="'.$totales[$i][1].'">Producción: '.$int.'</td>
-		<td align="center">';
-		$array=explode("-", $ver[2]);
-		$arra1=explode("-", $ver[9]);
-		$html.=''.$array[1].'<br> ['.$arra1[1].']</td>
-		<td align="center">'.$ver[3].'</td>
-		<td align="center">'.$ver[4].'Kg</td>
-		<td align="center">'.$ver[5].'</td>
-		<td align="center">$'.(floatval($ver[5]) * floatval($ver[6])).'</td>
-		<td align="center" rowspan="'.$totales[$i][1].'">$'.$totales[$i][2].'</td>
-		<td align="center" rowspan="'.$totales[$i][1].'">'.$ver[11].' '.$ver[12].'<br>'.$ver[13].' '.$ver[14].'</td>
-		</tr>';
-		$recaudo_total = $recaudo_total + $totales[$i][2];
-		$index = $ver[0];
-		$i++;
-		$int++;
 	}
 
-}
-$html.='
-</tbody>
-</table>
-<p style="font-weight:bold;font-size:18px; text-decoration:underline;">Recaudo total de las produccinoes: $'.$recaudo_total.'.</p>
-';
+	$index = 0;
+	$i=0;
+	$money = 0;
+	$background = "#808B96";
+
+	$recaudo_total=0;
+	while($ver=pg_fetch_row($result)){   
+
+		if($ver[0] == $index){
+			$index = $ver[0];
+
+			$html.='<tr style="background:'.$background.';" >
+			<td align="center">';
+			$array=explode("-", $ver[2]);
+			$arra1=explode("-", $ver[9]);
+			$html.=''.$array[1].'<br> ['.$arra1[1].']</td>
+			<td align="center">'.$ver[3].'</td>
+			<td align="center">'.$ver[4].'Kg</td>
+			<td align="center">'.$ver[5].'</td>
+			<td align="center">$'.(floatval($ver[5]) * floatval($ver[6])).'</td>
+			</tr>';
+		}else{
+
+			if ($background == "#808B96") {
+				$background = "#CCD1D1";
+			}else{
+				$background = "#808B96";
+			}
+
+
+			$html.='<tr style="background:'.$background.';">
+
+			<td align="center" rowspan="'.$totales[$i][1].'">Producción: '.$int.'</td>
+			<td align="center">';
+			$array=explode("-", $ver[2]);
+			$arra1=explode("-", $ver[9]);
+			$html.=''.$array[1].'<br> ['.$arra1[1].']</td>
+			<td align="center">'.$ver[3].'</td>
+			<td align="center">'.$ver[4].'Kg</td>
+			<td align="center">'.$ver[5].'</td>
+			<td align="center">$'.(floatval($ver[5]) * floatval($ver[6])).'</td>
+			<td align="center" rowspan="'.$totales[$i][1].'">$'.$totales[$i][2].'</td>
+			<td align="center" rowspan="'.$totales[$i][1].'">'.$ver[11].' '.$ver[12].'<br>'.$ver[13].' '.$ver[14].'</td>
+			</tr>';
+			$recaudo_total = $recaudo_total + $totales[$i][2];
+			$index = $ver[0];
+			$i++;
+			$int++;
+		}
+
+	}
+	$html.='
+	</tbody>
+	</table>
+	<p style="font-weight:bold;font-size:18px; text-decoration:underline;">Recaudo total de las produccinoes: $'.$recaudo_total.'.</p>
+	';
 
 //**************************Parte de producción del cultivo 
-$nombre='AgrosystCo - informe de producción del cultivo'.explode("-",$info[8])[1].' - '.$fecha.'.pdf';
+	$nombre='AgrosystCo - informe de producción del cultivo'.explode("-",$info[8])[1].' - '.$fecha.'.pdf';
 
-$mpdf=new mPDF('c','A4');
+	$mpdf=new mPDF('c','A4');
 
-$mpdf->writeHTML($html);
-$mpdf->Output($nombre,'I');
+	$mpdf->writeHTML($html);
+	$mpdf->Output($nombre,'I');
 
-echo $html;
+}else{
+	echo "Este cultivo no tiene produccinoes.";
+}
 
 ?>

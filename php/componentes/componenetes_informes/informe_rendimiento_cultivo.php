@@ -141,16 +141,16 @@ if (pg_num_rows($resultasda) != 0) {
 	</body>
 	</html>
 	';
+
+	$nombre='AgrosystCo - informe de rendimiento del cultivo'.explode("-",$info[8])[1].' - '.$fecha.'.pdf';
+
+	$mpdf=new mPDF('c','A4');
+
+	$mpdf->writeHTML($html);
+	$mpdf->Output($nombre,'I');
+
 }else{
-	$html.='<h4 style="background:#a892a8;">Este cultivo aún no tiene producciones</h4>';
+	echo "El cultivo seleccinoado no tiene producciones.";
 }
-
- 	//**************************Parte del rendimiento del cultivo 
-$nombre='AgrosystCo - informe de rendimiento del cultivo'.explode("-",$info[8])[1].' - '.$fecha.'.pdf';
-
-$mpdf=new mPDF('c','A4');
-
-$mpdf->writeHTML($html);
-$mpdf->Output($nombre,'I');
 
 ?>
