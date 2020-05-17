@@ -58,14 +58,13 @@ $num = $_POST['num_reg'];
         $datos = $datos."||Cultural";
       }
 
-      // $tipo = "SELECT enf_fit FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
-      // $res=pg_query($conexion,$tipo);
-      // $filas=pg_num_rows($res);
-      // $enf=pg_fetch_row($res);
-      // if($filas !=0){
-      //   echo "Fitosanitaria<br>Enfermedad: $enf[0]";
-      //   $datos = $datos."||Fitosanitaria. Enfermedad: $enf[0]";
-      // }
+      $tipo = "SELECT cod_tar FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
+      $res=pg_query($conexion,$tipo);
+      $filas=pg_num_rows($res);
+      if($filas !=0){
+        echo "Fitosanitaria";
+        $datos = $datos."||Fitosanitaria";
+      }
 
       ?></td> 
       <td>Inicio: <?php echo $ver[3] ?><br>Fin: <?php echo $ver[4] ?></td>    

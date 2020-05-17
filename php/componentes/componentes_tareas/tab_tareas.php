@@ -57,15 +57,13 @@ $codi_fin=$_SESSION['ide_finca'];
         echo "Cultural";
         $datos = $datos."||Cultural";
       }
-
-      // $tipo = "SELECT enf_fit FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
-      // $res=pg_query($conexion,$tipo);
-      // $filas=pg_num_rows($res);
-      // $enf=pg_fetch_row($res);
-      // if($filas !=0){
-      //   echo "Fitosanitaria<br>Enfermedad: $enf[0]";
-      //   $datos = $datos."||Fitosanitaria. Enfermedad: $enf[0]";
-      // }
+      $tipo = "SELECT cod_tar FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
+      $res=pg_query($conexion,$tipo);
+      $filas=pg_num_rows($res);
+      if($filas !=0){
+        echo "Fitosanitaria";
+        $datos = $datos."||Fitosanitaria";
+      }
 
       ?></td> 
       <td>Inicio: <?php echo $ver[3] ?><br>Fin: <?php echo $ver[4] ?></td>    
@@ -157,89 +155,107 @@ $codi_fin=$_SESSION['ide_finca'];
         $filas=pg_num_rows($rex);
         if ($filas == 0) {
           $unm=explode("-",$dats[2]);
-          ?>
-          <span class="badge badge-pill badge-success text-uppercase" data-toggle="tooltip" data-placement="top" title="Insumo dado por: <?php echo '&nbsp;'. $dats[4].' '.$dats[5].'&nbsp;'.$dats[6].' '.$dats[7].'.' ?>" style="font-size: 0.7rem; margin: 5px;"><?php   echo $dats[0].".  Cantidad: ".$dats[1].". ". $unm[1].".<br>Total: $".$dats[3] ?></span><br>
-          <?php
+
+          $imp = "";
+          $pos = strpos($dats[0], "-");
+          if ($pos=="") {
+             $imp = $dats[0];
+         }else{
+           $imp = explode("-",$dats[0])[1];
         }
-      }
 
-      $sql1="SELECT DISTINCT insumos.des_ins, utilizar.cin_tar, unidad_de_medida.des_unm,  
-      utilizar.pin_tar, terceros.pno_ter, terceros.sno_ter, 
-      terceros.pap_ter, terceros.sap_ter, stock.cod_sto, stock.cod_ins , utilizar.cod_uti
-      FROM insumos, stock, registrar, compras, comprar, terceros, socio, unidad_de_medida, utilizar
-      WHERE insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
-      AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
-      AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=socio.ide_ter
-      AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
-      AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
-      $result1=pg_query($conexion,$sql1);
-      while($dats=pg_fetch_row($result1)){
-        $excluir="SELECT cod_ins from otros where cod_ins = '$dats[9]'"; 
-        $rex=pg_query($conexion,$excluir);
-        $filas=pg_num_rows($rex);
-        if ($filas == 0) {
-          $unm=explode("-",$dats[2]);
-          ?>
-          <span class="badge badge-pill badge-success text-uppercase" data-toggle="tooltip" data-placement="top" title="Insumo dado por: <?php echo '&nbsp;'. $dats[4].' '.$dats[5].'&nbsp;'.$dats[6].' '.$dats[7].'.' ?>" style="font-size: 0.7rem; margin: 5px;"><?php   echo $dats[0].".  Cantidad: ".$dats[1].". ". $unm[1].".<br>Total: $".$dats[3] ?></span><br>
-          <?php
-        }
-      } 
-
-      ?></td>
-      <td><?php 
-      $sql1="SELECT DISTINCT insumos.des_ins, utilizar.pin_tar,terceros.pno_ter, terceros.sno_ter, 
-      terceros.pap_ter, terceros.sap_ter, stock.cod_sto
-      FROM insumos, stock, registrar, compras, comprar, terceros, duenio, unidad_de_medida, utilizar, otros
-      WHERE otros.cod_ins = stock.cod_ins AND insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
-      AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
-      AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter
-      AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
-      AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
-      $result1=pg_query($conexion,$sql1);
-      while($dats=pg_fetch_row($result1)){
         ?>
-        <span class="badge badge-pill badge-info text-uppercase" data-toggle="tooltip" data-placement="top" title="Gasto hecho por: <?php echo '&nbsp;'. $dats[2].' '.$dats[3].'&nbsp;'.$dats[4].' '.$dats[5].'.' ?>"style="font-size: 0.7rem; margin: 5px;"><?php   echo $dats[0].".  Valor: ".$dats[1]."$"?></span><br>
-        <?php
-      } 
-
-      $sql1="SELECT DISTINCT insumos.des_ins, utilizar.pin_tar,terceros.pno_ter, terceros.sno_ter, 
-      terceros.pap_ter, terceros.sap_ter, stock.cod_sto
-      FROM insumos, stock, registrar, compras, comprar, terceros, socio, unidad_de_medida, utilizar, otros
-      WHERE otros.cod_ins = stock.cod_ins AND insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
-      AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
-      AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=socio.ide_ter
-      AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
-      AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
-      $result1=pg_query($conexion,$sql1);
-      while($dats=pg_fetch_row($result1)){
-        ?>
-        <span class="badge badge-pill badge-info text-uppercase" data-toggle="tooltip" data-placement="top" title="Gasto hecho por: <?php echo '&nbsp;'. $dats[2].' '.$dats[3].'&nbsp;'.$dats[4].' '.$dats[5].'.' ?>"style="font-size: 0.7rem; margin: 5px;"><?php   echo $dats[0].".  Valor: ".$dats[1]."$"?></span><br>
+        <span class="badge badge-pill badge-success text-uppercase" data-toggle="tooltip" data-placement="top" title="Insumo dado por: <?php echo '&nbsp;'. $dats[4].' '.$dats[5].'&nbsp;'.$dats[6].' '.$dats[7].'.' ?>" style="font-size: 0.7rem; margin: 5px;"><?php   echo $imp.".  Cantidad: ".$dats[1].". ". $unm[1].".<br>Total: $".$dats[3] ?></span><br>
         <?php
       }
+    }
 
-      ?></td>
-      <td><span style="border: dashed #2dce89; border-radius: 5px; padding: 4px; font-size: 1.1em; color: #2dce89;"><?php echo "$".$ver[2] ?></span></td>
-      <td><?php echo $ver[10] ?></td>
-      <td><?php echo  explode("-",$ver[7])[1]."<br>".$ver[8]." plantas<br> En lote: ".$ver[9]?></td>
-      <td class="text-right">
-        <div class="dropdown">
-          <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-ellipsis-v"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-            <a data-toggle="modal" data-target="#modal-convenios2" class="dropdown-item" href="#" onclick="edaddconvenios(' <?php  echo $datos ?> ')"><div><i class="fa fa-address-book" style="margin-right: 14px;"></i>Agregar convenios </div></a>
-            <a data-toggle="modal" data-target="#modal-insumos2" class="dropdown-item" href="#" onclick="edaddinsumos(' <?php  echo $datos ?> ')"><div><i class="fa fa-glass" style="margin-right: 14px;"></i>Agregar insumos </div></a>
-            <a data-toggle="modal" data-target="#modal-gastos2" class="dropdown-item" href="#" onclick="edaddgastos(' <?php  echo $datos ?> ')"><div><i class="fa fa-money" style="margin-right: 14px;"></i>Agregar gastos </div></a>
-            <a class="divider" href="#" ></a>
-            <a data-toggle="modal" data-target="#modal-editar" class="dropdown-item" href="#" onclick="llenarform(' <?php  echo $datos ?> ')"><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
-          </div>
+    $sql1="SELECT DISTINCT insumos.des_ins, utilizar.cin_tar, unidad_de_medida.des_unm,  
+    utilizar.pin_tar, terceros.pno_ter, terceros.sno_ter, 
+    terceros.pap_ter, terceros.sap_ter, stock.cod_sto, stock.cod_ins , utilizar.cod_uti
+    FROM insumos, stock, registrar, compras, comprar, terceros, socio, unidad_de_medida, utilizar
+    WHERE insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
+    AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
+    AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=socio.ide_ter
+    AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
+    AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
+    $result1=pg_query($conexion,$sql1);
+    while($dats=pg_fetch_row($result1)){
+      $excluir="SELECT cod_ins from otros where cod_ins = '$dats[9]'"; 
+      $rex=pg_query($conexion,$excluir);
+      $filas=pg_num_rows($rex);
+      if ($filas == 0) {
+        $unm=explode("-",$dats[2]);
+
+         $imp = "";
+          $pos = strpos($dats[0], "-");
+          if ($pos=="") {
+             $imp = $dats[0];
+         }else{
+           $imp = explode("-",$dats[0])[1];
+        }
+
+        ?>
+        <span class="badge badge-pill badge-success text-uppercase" data-toggle="tooltip" data-placement="top" title="Insumo dado por: <?php echo '&nbsp;'. $dats[4].' '.$dats[5].'&nbsp;'.$dats[6].' '.$dats[7].'.' ?>" style="font-size: 0.7rem; margin: 5px;"><?php   echo $imp.".  Cantidad: ".$dats[1].". ". $unm[1].".<br>Total: $".$dats[3] ?></span><br>
+        <?php
+      }
+    } 
+
+    ?></td>
+    <td><?php 
+    $sql1="SELECT DISTINCT insumos.des_ins, utilizar.pin_tar,terceros.pno_ter, terceros.sno_ter, 
+    terceros.pap_ter, terceros.sap_ter, stock.cod_sto
+    FROM insumos, stock, registrar, compras, comprar, terceros, duenio, unidad_de_medida, utilizar, otros
+    WHERE otros.cod_ins = stock.cod_ins AND insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
+    AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
+    AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=duenio.ide_ter
+    AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
+    AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
+    $result1=pg_query($conexion,$sql1);
+    while($dats=pg_fetch_row($result1)){
+      ?>
+      <span class="badge badge-pill badge-info text-uppercase" data-toggle="tooltip" data-placement="top" title="Gasto hecho por: <?php echo '&nbsp;'. $dats[2].' '.$dats[3].'&nbsp;'.$dats[4].' '.$dats[5].'.' ?>"style="font-size: 0.7rem; margin: 5px;"><?php   echo $dats[0].".  Valor: ".$dats[1]."$"?></span><br>
+      <?php
+    } 
+
+    $sql1="SELECT DISTINCT insumos.des_ins, utilizar.pin_tar,terceros.pno_ter, terceros.sno_ter, 
+    terceros.pap_ter, terceros.sap_ter, stock.cod_sto
+    FROM insumos, stock, registrar, compras, comprar, terceros, socio, unidad_de_medida, utilizar, otros
+    WHERE otros.cod_ins = stock.cod_ins AND insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
+    AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
+    AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=socio.ide_ter
+    AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
+    AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
+    $result1=pg_query($conexion,$sql1);
+    while($dats=pg_fetch_row($result1)){
+      ?>
+      <span class="badge badge-pill badge-info text-uppercase" data-toggle="tooltip" data-placement="top" title="Gasto hecho por: <?php echo '&nbsp;'. $dats[2].' '.$dats[3].'&nbsp;'.$dats[4].' '.$dats[5].'.' ?>"style="font-size: 0.7rem; margin: 5px;"><?php   echo $dats[0].".  Valor: ".$dats[1]."$"?></span><br>
+      <?php
+    }
+
+    ?></td>
+    <td><span style="border: dashed #2dce89; border-radius: 5px; padding: 4px; font-size: 1.1em; color: #2dce89;"><?php echo "$".$ver[2] ?></span></td>
+    <td><?php echo $ver[10] ?></td>
+    <td><?php echo  explode("-",$ver[7])[1]."<br>".$ver[8]." plantas<br> En lote: ".$ver[9]?></td>
+    <td class="text-right">
+      <div class="dropdown">
+        <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-ellipsis-v"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+          <a data-toggle="modal" data-target="#modal-convenios2" class="dropdown-item" href="#" onclick="edaddconvenios(' <?php  echo $datos ?> ')"><div><i class="fa fa-address-book" style="margin-right: 14px;"></i>Agregar convenios </div></a>
+          <a data-toggle="modal" data-target="#modal-insumos2" class="dropdown-item" href="#" onclick="edaddinsumos(' <?php  echo $datos ?> ')"><div><i class="fa fa-glass" style="margin-right: 14px;"></i>Agregar insumos </div></a>
+          <a data-toggle="modal" data-target="#modal-gastos2" class="dropdown-item" href="#" onclick="edaddgastos(' <?php  echo $datos ?> ')"><div><i class="fa fa-money" style="margin-right: 14px;"></i>Agregar gastos </div></a>
+          <a class="divider" href="#" ></a>
+          <a data-toggle="modal" data-target="#modal-editar" class="dropdown-item" href="#" onclick="llenarform(' <?php  echo $datos ?> ')"><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
         </div>
-      </td>
-    </tr>
-    <?php 
-  }
+      </div>
+    </td>
+  </tr>
+  <?php 
+}
 
-  ?>
+?>
 </tbody>
 
 <script>

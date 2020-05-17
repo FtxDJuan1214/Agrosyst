@@ -362,7 +362,7 @@ require 'php/conexion.php';
                     <div class="form-group mb-3">
                       <div class="input-group input-group-alternative">
                         <select id="tipo_per" disabled class="form-control"data-live-search="true">
-                          <option value="1" disabled selected >Duenio</option>
+                          <option value="1" disabled selected >Dueño</option>
                         </select>
                       </div>
                     </div>

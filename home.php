@@ -734,7 +734,6 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
               $filas=pg_num_rows($res);
               if($filas !=0){
                 echo "Común";
-                $datos = $datos."||Común";
               }
 
               $tipo = "SELECT cod_tar FROM public.cultural WHERE cod_tar = '$ver[0]'";
@@ -742,17 +741,14 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
               $filas=pg_num_rows($res);
               if($filas !=0){
                 echo "Cultural";
-                $datos = $datos."||Cultural";
               }
 
-      // $tipo = "SELECT enf_fit FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
-      // $res=pg_query($conexion,$tipo);
-      // $filas=pg_num_rows($res);
-      // $enf=pg_fetch_row($res);
-      // if($filas !=0){
-      //   echo "Fitosanitaria<br>Enfermedad: $enf[0]";
-      //   $datos = $datos."||Fitosanitaria. Enfermedad: $enf[0]";
-      // }
+              $tipo = "SELECT cod_tar FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
+              $res=pg_query($conexion,$tipo);
+              $filas=pg_num_rows($res);
+              if($filas !=0){
+                echo "Fitosanitaria";
+              }
 
               ?></td> 
               <td>Inicio: <?php echo $ver[3] ?><br>Fin: <?php echo $ver[4] ?></td>    
@@ -1126,41 +1122,41 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
 
   $(document).ready(function(){
 
-    //Agregar los convenios a la tarea
     $.ajax({
-      type:"post",
-      url:"php/componentes/notificaciones/notificacion_ataque_a_etapas.php",
-      data:"",
-      success:function(r){
-        if (r!="") {
-          cultivos = r.split("||");
-          for (var i = 0; i < cultivos.length -1; i++) {
-            if(cultivos[i].trim() != ""){
-              toastr.info(cultivos[i],'Atención!!!!!!',{
+  type:"post",
+  url:"php/componentes/notificaciones/notificacion_ataque_a_etapas.php",
+  data:"",
+  success:function(r){
+    if (r!="") {
+      cultivos = r.split("||");
+      for (var i = 0; i < cultivos.length -1; i++) {
+        if(cultivos[i].trim() != ""){
 
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-bottom-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": 0,
-                "extendedTimeOut": 0,
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut",
-                "tapToDismiss": false
+          toastr.info(cultivos[i].slice(0, -2)+'.','¡Atención!',{
 
-              });
-            } 
-          }
-        }
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": 0,
+            "extendedTimeOut": 0,
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "tapToDismiss": false
+
+          });
+        } 
       }
-    });
+    }
+  }
+});
 
   });
 

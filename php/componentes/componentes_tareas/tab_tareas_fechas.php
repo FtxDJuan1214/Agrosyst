@@ -58,15 +58,13 @@ $ffin = $_POST['ffin'];
         echo "Cultural";
         $datos = $datos."||Cultural";
       }
-
-      // $tipo = "SELECT enf_fit FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
-      // $res=pg_query($conexion,$tipo);
-      // $filas=pg_num_rows($res);
-      // $enf=pg_fetch_row($res);
-      // if($filas !=0){
-      //   echo "Fitosanitaria<br>Enfermedad: $enf[0]";
-      //   $datos = $datos."||Fitosanitaria. Enfermedad: $enf[0]";
-      // }
+      $tipo = "SELECT cod_tar FROM public.fitosanitaria WHERE cod_tar = '$ver[0]'";
+      $res=pg_query($conexion,$tipo);
+      $filas=pg_num_rows($res);
+      if($filas !=0){
+        echo "Fitosanitaria";
+        $datos = $datos."||Fitosanitaria";
+      }
 
       ?></td> 
       <td>Inicio: <?php echo $ver[3] ?><br>Fin: <?php echo $ver[4] ?></td>    
@@ -141,7 +139,7 @@ $ffin = $_POST['ffin'];
       }
       ?></td>
 
-      <td><?php 
+       <td><?php 
       $sql1="SELECT DISTINCT insumos.des_ins, utilizar.cin_tar, unidad_de_medida.des_unm,  
       utilizar.pin_tar, terceros.pno_ter, terceros.sno_ter, 
       terceros.pap_ter, terceros.sap_ter, stock.cod_sto, stock.cod_ins,  utilizar.cod_uti
@@ -158,35 +156,53 @@ $ffin = $_POST['ffin'];
         $filas=pg_num_rows($rex);
         if ($filas == 0) {
           $unm=explode("-",$dats[2]);
-          ?>
-          <span class="badge badge-pill badge-success text-uppercase" data-toggle="tooltip" data-placement="top" title="Insumo dado por: <?php echo '&nbsp;'. $dats[4].' '.$dats[5].'&nbsp;'.$dats[6].' '.$dats[7].'.' ?>" style="font-size: 0.7rem; margin: 5px;"><?php   echo $dats[0].".  Cantidad: ".$dats[1].". ". $unm[1].".<br>Total: $".$dats[3] ?></span><br>
-          <?php
+
+          $imp = "";
+          $pos = strpos($dats[0], "-");
+          if ($pos=="") {
+             $imp = $dats[0];
+         }else{
+           $imp = explode("-",$dats[0])[1];
         }
+
+        ?>
+        <span class="badge badge-pill badge-success text-uppercase" data-toggle="tooltip" data-placement="top" title="Insumo dado por: <?php echo '&nbsp;'. $dats[4].' '.$dats[5].'&nbsp;'.$dats[6].' '.$dats[7].'.' ?>" style="font-size: 0.7rem; margin: 5px;"><?php   echo $imp.".  Cantidad: ".$dats[1].". ". $unm[1].".<br>Total: $".$dats[3] ?></span><br>
+        <?php
       }
+    }
 
-      $sql1="SELECT DISTINCT insumos.des_ins, utilizar.cin_tar, unidad_de_medida.des_unm,  
-      utilizar.pin_tar, terceros.pno_ter, terceros.sno_ter, 
-      terceros.pap_ter, terceros.sap_ter, stock.cod_sto, stock.cod_ins , utilizar.cod_uti
-      FROM insumos, stock, registrar, compras, comprar, terceros, socio, unidad_de_medida, utilizar
-      WHERE insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
-      AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
-      AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=socio.ide_ter
-      AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
-      AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
-      $result1=pg_query($conexion,$sql1);
-      while($dats=pg_fetch_row($result1)){
-        $excluir="SELECT cod_ins from otros where cod_ins = '$dats[9]'"; 
-        $rex=pg_query($conexion,$excluir);
-        $filas=pg_num_rows($rex);
-        if ($filas == 0) {
-          $unm=explode("-",$dats[2]);
-          ?>
-          <span class="badge badge-pill badge-success text-uppercase" data-toggle="tooltip" data-placement="top" title="Insumo dado por: <?php echo '&nbsp;'. $dats[4].' '.$dats[5].'&nbsp;'.$dats[6].' '.$dats[7].'.' ?>" style="font-size: 0.7rem; margin: 5px;"><?php   echo $dats[0].".  Cantidad: ".$dats[1].". ". $unm[1].".<br>Total: $".$dats[3] ?></span><br>
-          <?php
+    $sql1="SELECT DISTINCT insumos.des_ins, utilizar.cin_tar, unidad_de_medida.des_unm,  
+    utilizar.pin_tar, terceros.pno_ter, terceros.sno_ter, 
+    terceros.pap_ter, terceros.sap_ter, stock.cod_sto, stock.cod_ins , utilizar.cod_uti
+    FROM insumos, stock, registrar, compras, comprar, terceros, socio, unidad_de_medida, utilizar
+    WHERE insumos.cod_ins=stock.cod_ins AND stock.cod_sto=registrar.cod_sto 
+    AND registrar.cod_com=compras.cod_com AND compras.cod_com=comprar.cod_com
+    AND comprar.ide_ter=terceros.ide_ter AND terceros.ide_ter=socio.ide_ter
+    AND unidad_de_medida.cod_unm=insumos.cod_unm AND utilizar.cod_sto = stock.cod_sto
+    AND utilizar.cod_tar='$ver[0]' ORDER BY  stock.cod_sto ASC";
+    $result1=pg_query($conexion,$sql1);
+    while($dats=pg_fetch_row($result1)){
+      $excluir="SELECT cod_ins from otros where cod_ins = '$dats[9]'"; 
+      $rex=pg_query($conexion,$excluir);
+      $filas=pg_num_rows($rex);
+      if ($filas == 0) {
+        $unm=explode("-",$dats[2]);
+
+         $imp = "";
+          $pos = strpos($dats[0], "-");
+          if ($pos=="") {
+             $imp = $dats[0];
+         }else{
+           $imp = explode("-",$dats[0])[1];
         }
-      } 
 
-      ?></td>
+        ?>
+        <span class="badge badge-pill badge-success text-uppercase" data-toggle="tooltip" data-placement="top" title="Insumo dado por: <?php echo '&nbsp;'. $dats[4].' '.$dats[5].'&nbsp;'.$dats[6].' '.$dats[7].'.' ?>" style="font-size: 0.7rem; margin: 5px;"><?php   echo $imp.".  Cantidad: ".$dats[1].". ". $unm[1].".<br>Total: $".$dats[3] ?></span><br>
+        <?php
+      }
+    } 
+
+    ?></td>
       <td><?php 
       $sql1="SELECT DISTINCT insumos.des_ins, utilizar.pin_tar,terceros.pno_ter, terceros.sno_ter, 
       terceros.pap_ter, terceros.sap_ter, stock.cod_sto

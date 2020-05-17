@@ -47,7 +47,9 @@ else if($tip_ins == "3"){
 	$cadena="<select id='cod_ins' name='cod_ins' class='form-control' data-live-search='true'>
 	<option value='' disabled selected>Seleccion de Agroquímico/Fertilizante</option>";
 	while ($ver=pg_fetch_row($result)) {
-		$cadena=$cadena.'<option value='.$ver[0].'>'.($ver[1]).' / '.($ver[2]).'</option>';
+		if($ver[0] != "7"){
+			$cadena=$cadena.'<option value='.$ver[0].'>'.($ver[1]).' / '.($ver[2]).'</option>';
+		}
 	}
 
 	echo $cadena.'</select>';

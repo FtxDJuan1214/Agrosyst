@@ -51,16 +51,17 @@ function preloader() {
       bien = false;
     }
 
-    if (fin_tar == fif_tar) {
+    // if (fin_tar == fif_tar) {
 
-      toastr.error('Las fechas de inicio y final no pueden ser las mismas', '', {
-        "positionClass": "toast-top-center",
-        "closeButton": true,
-        "progressBar": true
-      });
-      bien = false;
+    //   toastr.error('Las fechas de inicio y final no pueden ser las mismas', '', {
+    //     "positionClass": "toast-top-center",
+    //     "closeButton": true,
+    //     "progressBar": true
+    //   });
+    //   bien = false;
 
-    } else if (parseFloat(fechaInicio) > parseFloat(fechaFin)) {
+    // } else 
+    if (parseFloat(fechaInicio) > parseFloat(fechaFin)) {
 
       toastr.error('La fecha de finalización no puede ser anterior a la inicial', '', {
         "positionClass": "toast-top-center",
@@ -276,9 +277,6 @@ function verconvenios2(string_con_convenios) {
 
 
 function verinsumos() {
-
-
-
   tipo_lab = $('#tipo_lab').val();
   tip_actividad = tipo_lab;
   if (tipo_lab == '2') {
@@ -1101,13 +1099,13 @@ function preloaderup() {
       "closeButton": true,
       "progressBar": true
     });
-  } else if (ffin_tare == $('#fin_tare').val()) {
+  //}else if (ffin_tare == $('#fin_tare').val()) {
 
-    toastr.error('Las fechas de inicio y finalización no pueden ser las mismas.', '', {
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar": true
-    });
+  //   toastr.error('Las fechas de inicio y finalización no pueden ser las mismas.', '', {
+  //     "positionClass": "toast-top-center",
+  //     "closeButton": true,
+  //     "progressBar": true
+  //   });
   } else if (fechaInicio.getTime() > fechaFin.getTime()) {
 
     toastr.error('Las fecha de finalización no puede ser anterior a la inicial', '', {
