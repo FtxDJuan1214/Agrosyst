@@ -154,8 +154,6 @@ $.ajax({
         jQuery('#form-comentarios').show();
         jQuery('#preloader').hide(); 
         
-        setTimeout ("location.reload();", 1000);
-        
     
         
     }else{

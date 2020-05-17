@@ -179,8 +179,8 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                         <div class="table-responsive" id="tab_ingredientes_activos">
 
-                            <table class="table align-items-center table-dark table-flush">
-                                <thead class="thead-light">
+                            <table class="table align-items-center table-hover table-dark table-flush">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th style="width:10px">
                                             <center>N°</center>

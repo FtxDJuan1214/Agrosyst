@@ -1,7 +1,7 @@
 <?php 
 require_once '../../conexion.php';     
 $cod_afe = $_POST['cod_afe'];
-$cod_eta = $_POST['cod_afe'];
+$cod_eta = $_POST['cod_eta'];
 
 $rev="SELECT* from  eta_x_afe where cod_afe = '$cod_afe' and cod_eta = '$cod_eta'  and cod_agr NOT LIKE '1-1'";
 $result=pg_query($conexion,$rev);

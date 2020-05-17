@@ -133,7 +133,7 @@ if (isset($_POST['cargar'])) {
         $finca=pg_fetch_row($result);
         ?>
                 <a class="h2 mb-0 text-white text-uppercase  d-lg-inline-block"><?php echo $finca[1]." "?><i
-                        class="fas fa-angle-right"></i> Relación entre etapas de la plaga o enfermedad y los
+                        class="fas fa-angle-right"></i> Relación: etapas de la plaga/enfermedad y los
                     agroquímicos</a>
                 <!-- Form -->
                 <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto">
@@ -156,6 +156,40 @@ if (isset($_POST['cargar'])) {
                 <div class="header-body">
                     <!-- Card stats -->
                     <div class="row">
+                    <div class="col-md-6">
+                            <div class="card shadow">
+                                <div class="card-header border-0">
+                                    <div class="float-md-right" style="margin-top: 5px;">
+                                        <input class="form-control" placeholder="Buscar en la tabla" id="myInput1"
+                                            type="text" autocomplete="off">
+                                    </div>
+                                </div>
+                                <!-----------------------------Mostrar tabla de agroquimicos asociados------------------------->
+                                <div class="table-responsive" id="tablaAgro" name="tablaAgro">
+                                    <div class="form-group">
+                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                            Agroquímicos asociados por etapa</h4>
+                                        <table class="table align-items-center table-flush table-hover">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col"><center>Nombre Agroquímico</center></th>
+                                                    <th scope="col"><center>Tipo de agroquímico</center></th>
+                                                    <th scope="col"><center>Eliminar</center></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <br>
+                                        <center>
+                                            <input type="button" name="Asociar" class="btn btn-success sm-4"
+                                                data-toggle="tooltip" data-placement="top" title="Asociar"
+                                                value="Asociar"
+                                                style="font-family:'FontAwesome',tahoma; font-size: 12px;">
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="card shadow">
                                 <div class="card-header border-0">
@@ -166,15 +200,14 @@ if (isset($_POST['cargar'])) {
                                 </div>
                                 <!-----------------------------Mostrar tabla de agroquimicos asociados------------------------->
                                 <div class="table-responsive" id="principal">
-                                    <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                    <h4 style="font-family:'FontAwesome',tahoma; font-size: 15px;" align="center">
                                         Enfermedades y sus respectivas etapas
                                     </h4>
                                     <table class="table align-items-center table-flush table-hover">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Imagen de la etapa</th>
-                                                <th></th>
+                                                <th scope="col"><center>Nombre</center></th>
+                                                <th scope="col"><center>Imagen de la etapa</center></th>
                                             </tr>
                                         </thead>
                                         <tbody id="myTable">
@@ -213,7 +246,7 @@ if (isset($_POST['cargar'])) {
                                                                 ?>
                                                     <br>
                                                     <center>
-                                                        <a style="font-family:'FontAwesome',tahoma; font-size: 16px;"
+                                                        <a style="font-family:'FontAwesome',tahoma; font-size: 16px; color:black;"
                                                             title="<?php echo $ver1[1] ?>" href="#"
                                                             onclick="tablaAgro('<?php echo $ver1[0] ?>','<?php echo $ver[0] ?>')"><?php echo $ver1[1] ?></a>
                                                     </center>
@@ -233,8 +266,7 @@ if (isset($_POST['cargar'])) {
                                                                 src="../imagenes/<?php echo $ver1[2]?>"
                                                                 alt="<?php echo $ver1[1] ?>" /></a>
                                                     </center>
-                                                    <a
-                                                        style="color:#7A7894">_______________________________________________________</a>
+                                                    <a style="color:#A0D39F">_______________________________________________________</a>
                                                     <?php 
                                                                                                 }else{
                                                                                                     ?>
@@ -245,8 +277,7 @@ if (isset($_POST['cargar'])) {
                                                                 src="../imagenes/etapas/sinimagen.jpg"
                                                                 alt="<?php echo $ver1[1] ?>" /></a>
                                                     </center>
-                                                    <a
-                                                        style="color:#7A7894">_______________________________________________________</a>
+                                                    <a style="color:#A0D39F">_______________________________________________________</a>
 
                                                     <?php
                                                             }
@@ -265,7 +296,7 @@ if (isset($_POST['cargar'])) {
                                                             ?>
                                                 <br>
                                                 <center>
-                                                    <a style="font-family:'FontAwesome',tahoma; font-size: 16px;"
+                                                    <a style="font-family:'FontAwesome',tahoma; font-size: 16px; color:black;"
                                                         title="<?php echo $ver1[1] ?>" href="#"
                                                         onclick="tablaAgro('<?php echo $ver1[0] ?>','<?php echo $ver[0] ?>')"><?php echo $ver1[1] ?></a>
                                                 </center>
@@ -285,8 +316,7 @@ if (isset($_POST['cargar'])) {
                                                             src="../imagenes/<?php echo $ver1[2]?>"
                                                             alt="<?php echo $ver1[1] ?>" /></a>
                                                 </center>
-                                                <a
-                                                    style="color:#7A7894">_______________________________________________________</a>
+                                                <a style="color:#A0D39F">_______________________________________________________</a>
                                                 <?php 
                                                                                             }else{
                                                                                                 ?>
@@ -297,8 +327,7 @@ if (isset($_POST['cargar'])) {
                                                             src="../imagenes/etapas/sinimagen.jpg"
                                                             alt="<?php echo $ver1[1] ?>" /></a>
                                                 </center>
-                                                <a
-                                                    style="color:#7A7894">_______________________________________________________</a>
+                                                <a style="color:#A0D39F">_______________________________________________________</a>
 
                                                 <?php
                                                         }
@@ -317,40 +346,7 @@ if (isset($_POST['cargar'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card shadow">
-                                <div class="card-header border-0">
-                                    <div class="float-md-right" style="margin-top: 5px;">
-                                        <input class="form-control" placeholder="Buscar en la tabla" id="myInput1"
-                                            type="text" autocomplete="off">
-                                    </div>
-                                </div>
-                                <!-----------------------------Mostrar tabla de agroquimicos asociados------------------------->
-                                <div class="table-responsive" id="tablaAgro" name="tablaAgro">
-                                    <div class="form-group">
-                                        <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
-                                            Agroquímicos asociados por etapa</h4>
-                                        <table class="table align-items-center table-flush table-hover">
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col">Nombre Agroquímico</th>
-                                                    <th scope="col">Tipo de agroquímico</th>
-                                                    <th scope="col">Eliminar</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                        <br>
-                                        <center>
-                                            <input type="button" name="Asociar" class="btn btn-success sm-4"
-                                                data-toggle="tooltip" data-placement="top" title="Asociar"
-                                                value="Asociar"
-                                                style="font-family:'FontAwesome',tahoma; font-size: 12px;">
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

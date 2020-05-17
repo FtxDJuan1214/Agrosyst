@@ -290,12 +290,11 @@ function editarRecomendaciones(){
 		ajax.onreadystatechange = function(){
 			if(ajax.readyState==4){
 				document.getElementById("mostrar-tablas-rec").innerHTML = ajax.responseText;
-	
 			}
 		}
 		ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		ajax.send("cod_agr="+global);
-	}
+}
 	
 	function actualizarRec(dato){
 	
