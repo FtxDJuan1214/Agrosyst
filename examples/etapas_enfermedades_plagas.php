@@ -269,16 +269,16 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="text-center text-muted mb-4">
                                             <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
-                                                Lista de plagas y enfermedades
+                                                LISTA PLAGAS Y ENFERMEDADES
                                             </h4>
                                         </div>
                                         <form role="form" id="form-list">
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <div class="card shadow">
-                                                        <div class="card-header border-0">
-                                                            <div class="float-md-right" style="margin-top: 5px;">
+                                                    <div class="card bg-default shadow">
+                                                        <div class="card-header border-2">
+                                                            <div class="text-center" style="margin-top: 5px;">
                                                                 <input class="form-control text-center"
                                                                     placeholder="Buscar" id="myInput1" type="text"
                                                                     autocomplete="off">
@@ -287,8 +287,8 @@ if (isset($_SESSION['usuario'])) {
                                                         <div class="table-responsive" id="tabla_afecciones">
 
                                                             <table
-                                                                class="table align-items-center table-flush table-hover">
-                                                                <thead class="thead-light">
+                                                                class="table align-items-center table-dark table-flush table-hover">
+                                                                <thead class="thead-dark">
                                                                     <tr>
                                                                         <th scope="col">
                                                                             <center>Nombre</center>
@@ -413,6 +413,8 @@ if (isset($_SESSION['usuario'])) {
     <script src="../assets/js/argon.js?v=1.0.0"></script>
     <!-- funciones -->
     <script src="../js/funciones_etapas.js"></script>
+
+    
 
 </body>
 

@@ -55,7 +55,7 @@ function objetoAjax() {
 cod_afe = "";
 cod_eta = "";
 function tablaAgro(cod_etapa, codi_afe){
-  alert(cod_etapa+', '+codi_afe);
+  //alert(cod_etapa+', '+codi_afe);
   cod_eta=cod_etapa;
   cod_afe = codi_afe;
 	ajax = objetoAjax();
@@ -124,7 +124,7 @@ function eliminarAsociacion(cod_agr){
   datos ="cod_eta="+cod_eta+
   "&cod_agr="+cod_agr+
   "&cod_afe="+cod_afe;
-  alert("datos "+datos);
+  //alert("datos "+datos);
   $.ajax({
 		type:"post",
 		url:"../php/crud/relacion_etapas_agroquimico/eliminar_relacion.php",
@@ -153,13 +153,13 @@ function eliminarEtapa(cod_etapa, codi_afe){
 
   datos ="cod_eta="+cod_etapa+
   "&cod_afe="+codi_afe;
-  alert("datos "+datos);
+  //alert("datos "+datos);
   $.ajax({
 		type:"post",
 		url:"../php/crud/relacion_etapas_agroquimico/eliminar_etapa.php",
 		data:datos,
 		success:function(r){
-      alert(r);
+     // alert(r);
       if(r.includes('Resource id')){	
 			
         swal(

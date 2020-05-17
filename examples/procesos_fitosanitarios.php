@@ -150,9 +150,6 @@ if (isset($_SESSION['usuario'])) {
                     <!-- Card stats -->
                     <div class="row" style="width=50px;">
                         <br>
-                        <br>
-                        <br>
-                        <br>
                     </div>
                 </div>
             </div>

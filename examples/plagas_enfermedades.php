@@ -149,7 +149,7 @@ if (isset($_POST['cargar'])) {
         <div class="header pb-8 pt-5 pt-md-8"
             style="background: url('../assets/img/theme/plaga.jpg'); no-repeat; background-size: cover;">
             <span class="mask bg-gradient-fito opacity-8"></span>
-            <!------------------------------------------------Creacion de plagao enfermedad------------------------------------------->
+            <!------------------------------------------------Creacion de plagao  enfermedad------------------------------------------->
             <div class="container-fluid" id="crear_enf_pla">
                 <br>
                 <br>
@@ -163,8 +163,7 @@ if (isset($_POST['cargar'])) {
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-header border-0">
-                            <div class="float-md-left" style="margin-top: 5px;" 
-                            >
+                            <div class="float-md-left" style="margin-top: 5px;">
                                 <button type="button" id="div-btn-add-enf" name="div-btn-add-enf" class="btn btn-default" data-toggle="modal"
                                     data-target="#modal-form" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                     onclick="cargarVentana()">Agregar</button>
@@ -178,24 +177,28 @@ if (isset($_POST['cargar'])) {
 
 
                             <div class="text-center" style="margin-top: 5px;">
-                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 9px;" onclick="cambiarTabla('P')" class="btn btn-outline-default">Plagas</button>
+                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 9px;" 
+                                onclick="cambiarTabla('P')" class="btn btn-outline-default" data-toggle="tooltip"
+                                                                    data-placement="top"
+                                                                    title="Ver tabla de las plagas">Plagas</button>
 
-                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 9px;" onclick="cambiarTabla('E')" class="btn btn-outline-default">Enfermedades</button>
+                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 9px;" 
+                                onclick="cambiarTabla('E')" class="btn btn-outline-default" data-toggle="tooltip"
+                                                                    data-placement="top"
+                                                                    title="Ver tabla de las enfermedades">Enfermedades</button>
                                 
                             </div>
                             <div class="table-responsive" id="tab_enfermedades">
-                            </div>
-                            <div class="table-responsive" id="tab_plagas">
-                            </div>
+                            </div>                           
 
                         </div>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------------- modal para Editar datos ------------------------------------------------------------------------>
                 <div class="col-md-4">
-                    <div class="modal fade" id="modal-form-up-pe" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+                    <div class="modal fade" id="modal-actualizar-afeccion" name="modal-actualizar-afeccion"tabindex="-1" role="dialog" aria-labelledby="modal-form"
                         aria-hidden="true">
-                        <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
                                     <div class="card bg-secondary shadow border-0">
@@ -207,10 +210,10 @@ if (isset($_POST['cargar'])) {
                                             <div class="text-center text-muted mb-4">
                                             <h4 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                 align="center">
-                                                Editar enfermedad o plaga
+                                                ACTUALIZAR ENFERMEDAD O PLAGA
                                             </h4>
                                             </div>
-                                            <form role="form" id="form-up-edita-pe">
+                                            <form role="form" id="form-actualizar-afeccion" name="form-actualizar-afeccion">
 
                                                 <div class="row">
 
@@ -243,7 +246,9 @@ if (isset($_POST['cargar'])) {
                                                                 <input style="border-color: #fb6340;" id="nomc_afe_up"
                                                                     name="nomc_afe_up" type="text" class="form-control"
                                                                     placeholder="Nombre científico" autocomplete="off"
-                                                                    pattern="[a-zA-Z ]{6,50}">
+                                                                    pattern="[a-zA-Z ]{6,50}" data-toggle="tooltip"
+                                                                    data-placement="top"
+                                                                    title="Nombre científico.">
                                                             </div>
                                                         </div>
                                                         <!-----------------------------Horario de ataque------------------------->
@@ -252,7 +257,9 @@ if (isset($_POST['cargar'])) {
                                                                 <div class="input-group input-group-alternative">
                                                                     <select id="horario_up" name="horario_up"
                                                                         class="form-control" data-live-search="true"
-                                                                        required>
+                                                                        required data-toggle="tooltip"
+                                                                        data-placement="top"
+                                                                        title="Horario de ataque.">
                                                                         <option value="" >Horario
                                                                             ataque
                                                                         </option>
@@ -271,7 +278,9 @@ if (isset($_POST['cargar'])) {
                                                                 <div class="input-group input-group-alternative">
                                                                     <select id="epoca_a_up" name="epoca_a_up"
                                                                         class="form-control" data-live-search="true"
-                                                                        required>
+                                                                        required data-toggle="tooltip"
+                                                                        data-placement="top"
+                                                                        title="Epoca de mayor ataque.">
                                                                         <option value="" >Epoca de
                                                                             mayor ataque
                                                                         </option>
@@ -291,10 +300,10 @@ if (isset($_POST['cargar'])) {
                                                             <div class="text-center">
                                                                 <button type="button"
                                                                     class="btn btn-success center-block"
-                                                                    data-toggle="modal" data-target="#modal-partes-afe"
+                                                                    data-toggle="modal" data-target="#modal-partes-afe-up"
                                                                     style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                                                     data-toggle="tooltip" data-placement="top"
-                                                                    title="Partes de la planta que son afectadas por la plaga o enfermedad.">Partes
+                                                                    title="Partes de la planta que son afectadas por la plaga o enfermedad." onclick="up_partes()">Partes
                                                                     Afectadas</button>
 
                                                                 <div id="partes-mostrar" class="card-header"
@@ -308,10 +317,11 @@ if (isset($_POST['cargar'])) {
                                                             <br>
                                                             <div class="text-center">
                                                                 <button type="button" class="btn btn-success"
-                                                                    data-toggle="modal" data-target="#modal-etapas-afe"
+                                                                    data-toggle="modal" data-target="#modal-etapas-afe-up"
                                                                     style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                                                     data-toggle="tooltip" data-placement="top"
-                                                                    title="Etapas de la planta en la que son atacadas por la plaga o enfermedad.">Etapas
+                                                                    title="Etapas de la planta en la que son atacadas por la plaga o enfermedad."
+                                                                    onclick="up_etapas()">Etapas
                                                                     Afectadas</button>
 
                                                                 <div id="etapas-afe-mostrar" class="card-header"
@@ -358,6 +368,38 @@ if (isset($_POST['cargar'])) {
                                             <script>
                                             jQuery('#preloaderup').hide();
                                             </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------- Modal para escoger las partes afectadas de la planta --UPDATE------------------------------------- -->
+                <div class="col-md-4">
+                    <div class="modal fade" id="modal-partes-afe-up" tabindex="-1" role="dialog"
+                        aria-labelledby="modal-form" aria-hidden="true">
+                        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card bg-secondary shadow border-0">
+                                        <a href="#" data-dismiss="modal" aria-label="Close"
+                                            style="margin: 10px 20px 0 0; text-align: right;">
+                                            <span aria-hidden="true" style="left: 0;">×</span>
+                                        </a>
+                                        <div class="card-body px-lg-5 py-lg-5">
+                                            <div class="text-center text-muted mb-4">
+                                            <h3 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
+                                                align="center">
+                                                Actualizar partes
+                                            </h3>
+                                            </div>
+                                            <form role="form" id="form-add-partes-up">
+
+                                            <div id="mostrar_partes_up">
+                                            </div>     
+
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -421,6 +463,38 @@ if (isset($_POST['cargar'])) {
                         </div>
                     </div>
                 </div>
+                <!------------------------------- Modal para escoger etapas de la planta en que es afectada---UPDATE---------------------------------- -->
+                <div class="col-md-4">
+                    <div class="modal fade" id="modal-etapas-afe-up" tabindex="-1" role="dialog"
+                        aria-labelledby="modal-form" aria-hidden="true">
+                        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card bg-secondary shadow border-0">
+                                        <a href="#" data-dismiss="modal" aria-label="Close"
+                                            style="margin: 10px 20px 0 0; text-align: right;">
+                                            <span aria-hidden="true" style="left: 0;">×</span>
+                                        </a>
+                                        <div class="card-body px-lg-5 py-lg-5">
+                                            <div class="text-center text-muted mb-4">
+                                            <h3 style="font-family:'FontAwesome',tahoma; font-size: 14px;"
+                                                align="center">
+                                                Actualizar etapas
+                                            </h3>
+                                            </div>
+                                            <form role="form" id="form-add-etapas-up">
+
+                                            <div id="mostrar_etapas_up">
+                                            </div> 
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!------------------------------- Modal para escoger etapas de la planta en que es afectada------------------------------------- -->
                 <div class="col-md-4">
                     <div class="modal fade" id="modal-etapas-afe" tabindex="-1" role="dialog"
@@ -449,11 +523,11 @@ if (isset($_POST['cargar'])) {
                                                 <label><input type="checkbox" name="vegetativo" id="vegetativo">
                                                     Crecimiento</label><br>
                                                 <label><input type="checkbox" name="ifloracion" id="ifloracion">
-                                                    Inicio de floración</label><br>
+                                                    Inicio de floracion</label><br>
                                                 <label><input type="checkbox" name="mfloracion" id="mfloracion">
-                                                    Máxima floración</label><br>
+                                                    Maxima floracion</label><br>
                                                 <label><input type="checkbox" name="fructificacion" id="fructificacion">
-                                                    Inicio de fructificación</label><br>
+                                                    Inicio de fructificacion</label><br>
                                                 <label><input type="checkbox" name="cosecha" id="cosecha">
                                                     Cosecha</label>
 

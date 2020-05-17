@@ -164,6 +164,12 @@ if (isset($_SESSION['usuario'])) {
                 <div class="col-md-10">
                     <div class="card shadow">
                         <div class="card-header border-0">
+                            <div class="float-md-left" style="margin-top: 5px;">
+                                <a type="button" id="div-btn-add-enf" name="div-btn-add-enf" class="btn btn-default" data-toggle="tooltip"
+                                    style="font-family:'FontAwesome',tahoma; font-size: 11px;" title="Crear una nueva planificación"
+                                    href="planificacion.php">Crear</a>
+
+                            </div>
                             <div class="float-md-right" style="margin-top: 5px;">
                                 <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text"
                                     autocomplete="off">
@@ -173,8 +179,8 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                         <div class="table-responsive" id="tab_ingredientes_activos">
 
-                            <table class="table align-items-center table-dark table-flush">
-                                <thead class="thead-light">
+                            <table class="table align-items-center table-hover table-dark table-flush">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th style="width:10px">
                                             <center>N°</center>
