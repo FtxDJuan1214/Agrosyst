@@ -39,6 +39,9 @@ function cargar_select_tip() {
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             document.getElementById("sel_pat_tip").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -103,6 +106,9 @@ function cargarTextPartes(partes) {
             jQuery('#preloader').hide();
 
             document.getElementById("partes-mostrar").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -161,6 +167,9 @@ function cargarTextEtapas(etapas) {
             jQuery('#form-add-etapas').show();
             jQuery('#preloader1').hide();
             document.getElementById("etapas-afe-mostrar").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -213,6 +222,9 @@ function cargarTextSintomas(sintomas) {
             jQuery('#form-add-sintomas').show();
             jQuery('#preloader2').hide();
             document.getElementById("sintomas-mostrar").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -249,6 +261,9 @@ function mostrarTabEtapas() {
         ajax.onreadystatechange = function () {
             if (ajax.readyState == 4) {
                 document.getElementById("tab_eta_ima").innerHTML = ajax.responseText;
+                $(function() {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
             }
         }
         ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -330,6 +345,9 @@ function saveImage(info, nombre) {
                 ajax.onreadystatechange = function () {
                     if (ajax.readyState == 4) {
                         document.getElementById("etapas-des-mostrar").innerHTML = ajax.responseText;
+                        $(function() {
+                            $('[data-toggle="tooltip"]').tooltip()
+                        })
                     }
                 }
                 ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -367,6 +385,9 @@ function guardarSinImagen(info, nombre) {
                 ajax.onreadystatechange = function () {
                     if (ajax.readyState == 4) {
                         document.getElementById("etapas-des-mostrar").innerHTML = ajax.responseText;
+                        $(function() {
+                            $('[data-toggle="tooltip"]').tooltip()
+                        })
                     }
                 }
                 ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -439,6 +460,9 @@ function mostrarEtapasUp(listado_etapas, listado_fotos) {
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             document.getElementById("tab_eta_ima").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -473,6 +497,9 @@ function mostrarTablaAdd(cadena_mostrar_rus) {
     ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
             document.getElementById("tab_met_agre").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -815,6 +842,9 @@ function up_partes() {
         if (ajax.readyState == 4) {
 
             document.getElementById("mostrar_partes_up").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -897,6 +927,9 @@ function up_etapas() {
         if (ajax.readyState == 4) {
 
             document.getElementById("mostrar_etapas_up").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -971,6 +1004,9 @@ function up_sintomas() {
         if (ajax.readyState == 4) {
 
             document.getElementById("mostrar_sintomas_up").innerHTML = ajax.responseText;
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

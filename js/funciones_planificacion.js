@@ -26,6 +26,9 @@ function cargar_select_tip() {
   ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
           document.getElementById("sel_enf_pla").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
       }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -50,6 +53,9 @@ function cargar_enfermedades_plagas() {
   ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
           document.getElementById("enfe_plag").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
       }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -77,6 +83,9 @@ function cargar_etapas() {
   ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
           document.getElementById("etapasN").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
       }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -109,6 +118,9 @@ function selectEtapa(cod_etapa) {
   ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
           document.getElementById("tab_agr").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
       }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -166,6 +178,9 @@ function mostrarAgroquimicos(cadena) {
   ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
           document.getElementById("tab_agr2").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
       }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -254,6 +269,9 @@ function new_planificacion() {
   ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
           document.getElementById("tab_pla").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
           //actualizar_codigo();
       }
   }

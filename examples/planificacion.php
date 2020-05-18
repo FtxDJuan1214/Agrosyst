@@ -318,7 +318,7 @@ if (isset($_POST['cargar'])) {
                                                             <input type="button" name="cargar"
                                                                 class="btn btn-success sm-4" data-toggle="tooltip"
                                                                 data-placement="left" title="Agregar planificación"
-                                                                value="Agregar"
+                                                                value="Agregar esta planificación"
                                                                 style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                                                 onclick="new_planificacion()">
                                                         </div>

@@ -19,7 +19,6 @@ $cod_eta=$_POST['cod_eta'];
                 <th scope="col">Nombre Agroquímico</th>
                 <th scope="col">Tipo de agroquímico</th>
                 <th scope="col">Asociar</th>
-                <th></th>
             </tr>
         </thead>
         <tbody id="myTable2">
