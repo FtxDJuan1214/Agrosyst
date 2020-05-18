@@ -184,7 +184,7 @@ function terminarProceso(cod_pfi){
                     url:"../php/crud/procesos_fitosanitarios/terminar_proceso.php",
                     data:cadena,
                     success:function(r){
-                        alert(r);
+                        //alert(r);
                         if(r.includes('Resource id')){
                             swal("¡Proceso concluido!"," ", "success");
                             $('#tab_procesos_fit').load('../php/componentes/componentes_procesos_fitosanitarios/tab_procesos_fit.php');
@@ -219,4 +219,10 @@ function objetoAjax(){
       xmlhttp = new XMLHttpRequest();
     }
     return xmlhttp;
+  }
+
+  function cerrar_menu() {
+    $('#sidenav-main').remove();
+    jQuery('#ver1').hide();
+    jQuery('#ver2').show();
   }

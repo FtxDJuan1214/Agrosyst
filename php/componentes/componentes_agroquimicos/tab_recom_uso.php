@@ -6,7 +6,7 @@ require '../../conexion.php';
         <div class="card-header">
         <h4 style="font-family:'FontAwesome',tahoma; font-size: 12px;" align="center">Recomendaciones de Uso</h4>
         </div>
-                <table class="table align-items-center table-flush table-hover" data-toggle="tooltip" data-placement="top"
+                <table class="table align-items-center table-flush table-hover" data-toggle="tooltip" data-placement="left"
                     title="Recomendaciones que nos ayudan a recordarte a proteger tu salud. No es obligatorio.">
                     <thead class="thead-light">
                         <tr>
@@ -26,7 +26,7 @@ require '../../conexion.php';
                             </td>
                             <td>
                                 <input type="button" name="add" class="btn btn-primary sm-3" data-toggle="tooltip" value="&#xf0a5"
-                                data-placement="top" title="Agregar recomendación" style="font-family:'FontAwesome', tahoma; font-size:10px;" 
+                                data-placement="left" title="Agregar recomendación" style="font-family:'FontAwesome', tahoma; font-size:10px;" 
                                 onclick="cargarTablaAdd($('#cod_agr_rus').val()+'_'+$('#rus_agr').val())">
                             </td>
                         

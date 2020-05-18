@@ -177,14 +177,14 @@ if (isset($_POST['cargar'])) {
 
 
                             <div class="text-center" style="margin-top: 5px;">
-                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 10px;" 
+                                <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 10px; margin-left: 30px;" 
                                 onclick="cambiarTabla('P')" class="btn btn-outline-default" data-toggle="tooltip"
-                                                                    data-placement="top"
+                                                                    data-placement="left"
                                                                     title="Ver tabla de las plagas">Plagas</button>
 
                                 <button type="button" text style="font-family:'FontAwesome',tahoma; font-size: 10px;" 
                                 onclick="cambiarTabla('E')" class="btn btn-outline-default" data-toggle="tooltip"
-                                                                    data-placement="top"
+                                                                    data-placement="left"
                                                                     title="Ver tabla de las enfermedades">Enfermedades</button>
                                 
                             </div>
@@ -233,7 +233,7 @@ if (isset($_POST['cargar'])) {
                                                                 <input style="border-color: #fb6340;" id="nom_afe_up"
                                                                     name="nom_afe_up" type="text" class="form-control"
                                                                     placeholder="Nombre común" data-toggle="tooltip"
-                                                                    data-placement="top"
+                                                                    data-placement="left"
                                                                     title="Nombre de la enfermedad o plaga."
                                                                     autocomplete="off" required pattern="[a-zA-Z ]{6,30}">
                                                             </div>
@@ -247,7 +247,7 @@ if (isset($_POST['cargar'])) {
                                                                     name="nomc_afe_up" type="text" class="form-control"
                                                                     placeholder="Nombre científico" autocomplete="off"
                                                                     pattern="[a-zA-Z ]{6,50}" data-toggle="tooltip"
-                                                                    data-placement="top"
+                                                                    data-placement="left"
                                                                     title="Nombre científico.">
                                                             </div>
                                                         </div>
@@ -258,7 +258,7 @@ if (isset($_POST['cargar'])) {
                                                                     <select id="horario_up" name="horario_up"
                                                                         class="form-control" data-live-search="true"
                                                                         required data-toggle="tooltip"
-                                                                        data-placement="top"
+                                                                        data-placement="left"
                                                                         title="Horario de ataque.">
                                                                         <option value="" >Horario
                                                                             ataque
@@ -279,7 +279,7 @@ if (isset($_POST['cargar'])) {
                                                                     <select id="epoca_a_up" name="epoca_a_up"
                                                                         class="form-control" data-live-search="true"
                                                                         required data-toggle="tooltip"
-                                                                        data-placement="top"
+                                                                        data-placement="left"
                                                                         title="Epoca de mayor ataque.">
                                                                         <option value="" >Epoca de
                                                                             mayor ataque
@@ -302,12 +302,12 @@ if (isset($_POST['cargar'])) {
                                                                     class="btn btn-success center-block"
                                                                     data-toggle="modal" data-target="#modal-partes-afe-up"
                                                                     style="font-family:'FontAwesome',tahoma; font-size: 11px;"
-                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    data-toggle="tooltip" data-placement="left"
                                                                     title="Partes de la planta que son afectadas por la plaga o enfermedad." onclick="up_partes()">Partes
                                                                     Afectadas</button>
 
                                                                 <div id="partes-mostrar" class="card-header"
-                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    data-toggle="tooltip" data-placement="left"
                                                                     title="Partes de la planta que son afectadas por la plaga o enfermedad."
                                                                     required>
                                                                 </div>
@@ -319,13 +319,13 @@ if (isset($_POST['cargar'])) {
                                                                 <button type="button" class="btn btn-success"
                                                                     data-toggle="modal" data-target="#modal-etapas-afe-up"
                                                                     style="font-family:'FontAwesome',tahoma; font-size: 11px;"
-                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    data-toggle="tooltip" data-placement="left"
                                                                     title="Etapas de la planta en la que son atacadas por la plaga o enfermedad."
                                                                     onclick="up_etapas()">Etapas
                                                                     Afectadas</button>
 
                                                                 <div id="etapas-afe-mostrar" class="card-header"
-                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    data-toggle="tooltip" data-placement="left"
                                                                     title="Etapas de la planta en la que son atacadas por la plaga o enfermedad."
                                                                     required>
                                                                 </div>
@@ -336,11 +336,11 @@ if (isset($_POST['cargar'])) {
                                                                     class="btn btn-success center-block"
                                                                     data-toggle="modal" data-target="#modal-sintomas-up"
                                                                     style="font-family:'FontAwesome',tahoma; font-size: 11px;"
-                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    data-toggle="tooltip" data-placement="left"
                                                                     title="Sintomas que presenta la planta a cauda de la plaga o enfermedad."onclick="up_sintomas()">Sintomas</button>
 
                                                                 <div id="sintomas-mostrar" class="card-header"
-                                                                    data-toggle="tooltip" data-placement="top"
+                                                                    data-toggle="tooltip" data-placement="left"
                                                                     title="Sintomas que presenta la planta a cauda de la plaga o enfermedad."
                                                                     required>
                                                                 </div>
@@ -648,26 +648,6 @@ if (isset($_POST['cargar'])) {
                     </div>
                 </div>
 
-                <!-- Footer -->
-                <footer class="footer">
-                    <div class="row align-items-center justify-content-xl-between">
-                        <div class="col-xl-6">
-                            <div class="copyright text-center text-xl-left text-muted">
-                                &copy; 2019 <a href="#" class="font-weight-bold ml-1" target="_blank">Agrosyst</a>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link" target="_blank">Ver manual</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link" target="_blank">Sobre nosotros</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </footer>
             </div>
         </div>
         <!-- Argon Scripts -->

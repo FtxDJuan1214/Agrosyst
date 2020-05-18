@@ -26,7 +26,7 @@ $cod_agr= $_POST['cod_agr'];
                 <br>
                     <td>
                         <input type="button" name="add" class="btn btn-danger sm-3" data-toggle="tooltip"
-                            value="&#xf00d" data-placement="top" title="Quitar"
+                            value="&#xf00d" data-placement="left" title="Quitar"
                             style="font-family:'FontAwesome', tahoma; font-size:10px;"
                             onclick="quitarRec('<?php echo $ver1[0] ?>')">
                     </td>
@@ -45,7 +45,7 @@ $cod_agr= $_POST['cod_agr'];
         <div class="card-header">
             <h4 style="font-family:'FontAwesome',tahoma; font-size: 12px;" align="center">Agregar Recomendaciones de Uso</h4>
         </div>
-        <table class="table align-items-center table-flush table-hover" data-toggle="tooltip" data-placement="top"
+        <table class="table align-items-center table-flush table-hover" data-toggle="tooltip" data-placement="left"
             title="Recomendaciones que nos ayudan a recordarte a proteger tu salud. No es obligatorio.">
             <thead class="thead-light">
                 <tr>
@@ -65,7 +65,7 @@ $cod_agr= $_POST['cod_agr'];
                     </td>
                     <td>
                         <input type="button" name="add" class="btn btn-info sm-3" data-toggle="tooltip" value="&#xf0a5"
-                            data-placement="top" title="Agregar"
+                            data-placement="left" title="Agregar"
                             style="font-family:'FontAwesome', tahoma; font-size:10px;"
                             onclick="agregarRec()">
                     </td>

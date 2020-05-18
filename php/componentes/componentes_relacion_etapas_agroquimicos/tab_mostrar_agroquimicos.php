@@ -59,7 +59,7 @@ $cod_eta=$_POST['cod_eta'];
                 <td><input type="button" name="add"
                         class="btn btn-primary sm-3"
                         data-toggle="tooltip"
-                        data-placement="top" title="Asociar"
+                        data-placement="left" title="Asociar"
                         value="&#xf0a5    "
                         style="font-family:'FontAwesome',tahoma; font-size: 10px;"
                         onclick="asociarFinal('<?php echo $ver[0]?>')">

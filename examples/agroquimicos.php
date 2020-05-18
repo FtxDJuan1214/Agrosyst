@@ -206,14 +206,14 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
 
                                                         <input type="text" class="form-control" id="nom_agr_up" pattern="[A-Za-z0-9]{1,50}"
-                                                            name="nom_agr_up" placeholder="Nombre" required data-toggle="tooltip" data-placement="top"
+                                                            name="nom_agr_up" placeholder="Nombre" required data-toggle="tooltip" data-placement="left"
                                                     title="Nombre">
 
                                                     </div>
                                                     <!--Div Prentación-->
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" id="pre_agr_up" pattern="[A-Za-z0-9]{1,5}"
-                                                            name="pre_agr_up" placeholder="Presentación" required data-toggle="tooltip" data-placement="top"
+                                                            name="pre_agr_up" placeholder="Presentación" required data-toggle="tooltip" data-placement="left"
                                                     title="Presentación de producto. Ejemplo: 1L">
                                                     </div>
 
@@ -221,7 +221,7 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
                                                         <div class="input-group input-group-alternative">
                                                             <select required id="cod_iac_up" name="cod_iac_up"
-                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="top"
+                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="left"
                                                                     title="Ingrediente activo">
                                                                 <option value="" disabled selected>Ingrediente
                                                                     Activo</option>
@@ -245,7 +245,7 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
                                                         <div class="input-group input-group-alternative">
                                                             <select required id="cod_tag_up" name="cod_tag_up"
-                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="top"
+                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="left"
                                                                     title="Tipo de agroquímico">
                                                                 <option value="" disabled selected>Tipo de
                                                                     agroquímico</option>
@@ -268,7 +268,7 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
                                                         <div class="input-group input-group-alternative">
                                                             <select required id="fun_agr_up" name="fun_agr_up"
-                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="top"
+                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="left"
                                                                     title="Función del agroquímico">
                                                                 <option value="" disabled selected>Función</option>
                                                                 <option value="Curación">Curación</option>
@@ -282,7 +282,7 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
                                                         <div class="input-group input-group-alternative">
                                                             <select required id="cod_for_up" name="cod_for_up"
-                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="top"
+                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="left"
                                                                         title="Tipo de formulación">
                                                                 <option value="" disabled selected>Formulación
                                                                 </option>
@@ -305,7 +305,7 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
 
                                                         <input type="number" class="form-control" id="pcr_agr_up"
-                                                            name="pcr_agr_up" placeholder="Horas de carencia" data-toggle="tooltip" data-placement="top"
+                                                            name="pcr_agr_up" placeholder="Horas de carencia" data-toggle="tooltip" data-placement="left"
                                                     title="P.Carencia: Tiempo que debe transcurrir entre la última aplicación del producto y la cosecha.">
 
                                                     </div>
@@ -314,7 +314,7 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
 
                                                         <input type="number" class="form-control" id="pen_agr_up"
-                                                            name="pen_agr_up" placeholder="Días de Entrada" data-toggle="tooltip" data-placement="top"
+                                                            name="pen_agr_up" placeholder="Días de Entrada" data-toggle="tooltip" data-placement="left"
                                                     title="P. Entrada: Tiempo que debe transcurrir entre la última aplicación y el re ingreso de personas al cultivo.">
                                                     </div>
 
@@ -325,7 +325,7 @@ if (isset($_POST['cargar'])) {
                                                     <!--Div Dosis-->
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" id="dos_agr_up" pattern="[A-Za-z0-9]{1,10}"
-                                                            name="dos_agr_up" placeholder="Dosis" data-toggle="tooltip" data-placement="top"
+                                                            name="dos_agr_up" placeholder="Dosis" data-toggle="tooltip" data-placement="left"
                                                     title="Dosis recomendada a usar.">
                                                     </div>
 
@@ -333,7 +333,7 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
                                                         <div class="input-group input-group-alternative">
                                                             <select required id="pro_agr_up" name="pro_agr_up"
-                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="top"
+                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="left"
                                                                 title="¿Está prohibido por el ICA?">
                                                                 <option value="" disabled selected>¿Prohibido por
                                                                     ICA?</option>
@@ -347,7 +347,7 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
                                                         <div class="input-group input-group-alternative">
                                                             <select required id="cod_tox_up" name="cod_tox_up"
-                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="top"
+                                                                class="form-control" data-live-search="true" data-toggle="tooltip" data-placement="left"
                                                                 title="Nivel de toxicidad">
                                                                 <option value="" disabled selected>Nivel de
                                                                     Toxicidad</option>
@@ -398,14 +398,14 @@ if (isset($_POST['cargar'])) {
                                                     <div class="form-group">
                                                         <label for="">Sugerencias de aplicacion</label><br>
                                                         <textarea name="rap_agr_up" id="rap_agr_up" cols="18" rows="5"
-                                                            class="form-control" data-toggle="tooltip" data-placement="top"
+                                                            class="form-control" data-toggle="tooltip" data-placement="left"
                                                     title="Generalmente en la etiqueta viene esta sugerencia de aplicación, sí no, puede dejar el campo vacío."></textarea>
                                                     </div>
                                                             <!----Boton recomendaciones de uso---->
                                                     <div class="form-group">
                                                     <center>
                                                     <input type="button" name="cargar" class="btn btn-success sm-4"
-                                                            data-toggle="tooltip" data-placement="top"
+                                                            data-toggle="tooltip" data-placement="left"
                                                             title="Editar recomendaciones" value="Editar recomendaciones de uso"
                                                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                                             onclick="editarRecomendaciones()">
@@ -457,7 +457,7 @@ if (isset($_POST['cargar'])) {
                                         <br>
                                         <center>
                                         <input type="button" name="cargar" class="btn btn-success sm-4"
-                                            data-toggle="tooltip" data-placement="top"
+                                            data-toggle="tooltip" data-placement="left"
                                             title="Guardar" value="Guardar"
                                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                             onclick="actualizarRecomendaciones()">
@@ -471,27 +471,6 @@ if (isset($_POST['cargar'])) {
                 </div>    
             </div>
 
-
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="row align-items-center justify-content-xl-between">
-                    <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-left text-muted">
-                            &copy; 2019 <a href="#" class="font-weight-bold ml-1" target="_blank">Agrosyst</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" target="_blank">Ver manual</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" target="_blank">Sobre nosotros</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
     <!-- Argon Scripts -->

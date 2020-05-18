@@ -317,7 +317,7 @@ if (isset($_POST['cargar'])) {
                                                         <div class="float-md-right">
                                                             <input type="button" name="cargar"
                                                                 class="btn btn-success sm-4" data-toggle="tooltip"
-                                                                data-placement="top" title="Agregar planificación"
+                                                                data-placement="left" title="Agregar planificación"
                                                                 value="Agregar"
                                                                 style="font-family:'FontAwesome',tahoma; font-size: 11px;"
                                                                 onclick="new_planificacion()">
@@ -366,7 +366,7 @@ if (isset($_POST['cargar'])) {
                             <!--<a style="align-self: center;" href="#" class="btn btn-success my-4"
                                 onclick="comprar();">Comprar</a>-->
                             <a style="align-self: center; font-family:'FontAwesome',tahoma; font-size: 11px; color:white"
-                                class="btn btn-danger my-4" data-toggle="tooltip" data-placement="top" title="Cancelar planificación" onclick="cancelar_plan()">Cancelar</a>
+                                class="btn btn-danger my-4" data-toggle="tooltip" data-placement="left" title="Cancelar planificación" onclick="cancelar_plan()">Cancelar</a>
 
                         </div>
                     </div>

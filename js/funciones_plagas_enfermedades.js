@@ -605,7 +605,7 @@ function guardarEnfer_Plaga() {
                         success: function (r) {
                             //alert(r);          
                             if (r.includes('Resource id')) {
-                                $('#div-btn-add-enf').show();
+                                //$('#div-btn-add-enf').show();
                                 $.ajax({
                                     type: "post",
                                     url: "../php/crud/plagas_enfermedades/agregar_plaga.php",
@@ -613,7 +613,7 @@ function guardarEnfer_Plaga() {
                                     success: function (res) {
                                         if (res.includes('Resource id')) {
 
-                                            $('#div-btn-add-enf').show();
+                                            //$('#div-btn-add-enf').show();
                                             //-------------------------Ahora guardar las imagenes de las etapas-------------------------------//
                                             $('#crear_enf_pla').load('../php/componentes/componentes_enfermedades_plagas/agregar_etapas.php');
 
@@ -652,7 +652,7 @@ function guardarEnfer_Plaga() {
                                     success: function (res) {
 
                                         if (res.includes('Resource id')) {
-                                            $('#div-btn-add-enf').show();
+                                            //$('#div-btn-add-enf').show();
                                             //-------------------------Ahora guardar las imagenes de las etapas-------------------------------//
                                             $('#crear_enf_pla').load('../php/componentes/componentes_enfermedades_plagas/agregar_etapas.php');
                                             //-----Guarda sintomas---//
@@ -662,7 +662,7 @@ function guardarEnfer_Plaga() {
                                                 url: "../php/crud/plagas_enfermedades/agregar_sintomas.php",
                                                 data: cadena,
                                                 success: function (r) {
-                                                    $('#div-btn-add-enf').show();
+                                                    //$('#div-btn-add-enf').show();
                                                 }
                                             });
                                         } else {
@@ -1003,7 +1003,7 @@ function actualizarSintomas(datos, valores) {
         });
     } else {
 
-        alert(codigo_sintoma);
+        //alert(codigo_sintoma);
         cadena = "sintomas=" + codigo_sintoma +
             "&cod_afe=" + global.trim();
 
@@ -1125,3 +1125,9 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
+
+function cerrar_menu() {
+    $('#sidenav-main').remove();
+    jQuery('#ver1').hide();
+    jQuery('#ver2').show();
+  }

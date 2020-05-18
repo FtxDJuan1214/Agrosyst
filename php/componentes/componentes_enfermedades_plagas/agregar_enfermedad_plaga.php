@@ -41,7 +41,7 @@ require '../../conexion.php';
                                             <div class="input-group input-group-alternative" id="div_des_ins">
                                                 <input style="border-color: #fb6340;" id="nom_afe" name="nom_afe"
                                                     type="text" class="form-control" placeholder="Nombre común"
-                                                    data-toggle="tooltip" data-placement="top"
+                                                    data-toggle="tooltip" data-placement="left"
                                                     title="Nombre de la enfermedad o plaga."
                                                     autocomplete="off" pattern="[A-Za-z]{6,30}" required>
                                             </div>
@@ -98,11 +98,11 @@ require '../../conexion.php';
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-success center-block"
                                                     data-toggle="modal" data-target="#modal-partes-afe" style="font-family:'FontAwesome',tahoma; font-size: 11px;" 
-                                                    data-toggle="tooltip" data-placement="top"
+                                                    data-toggle="tooltip" data-placement="left"
                                                     title="Partes de la planta que son afectadas por la plaga o enfermedad.">Partes
                                                     Afectadas</button>
 
-                                                <div id="partes-mostrar" class="card-header" data-toggle="tooltip" data-placement="top"
+                                                <div id="partes-mostrar" class="card-header" data-toggle="tooltip" data-placement="left"
                                                     title="Partes de la planta que son afectadas por la plaga o enfermedad." required>
                                                 </div>                                                
                                             </div>
@@ -112,11 +112,11 @@ require '../../conexion.php';
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                                     data-target="#modal-etapas-afe" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
-                                                    data-toggle="tooltip" data-placement="top"
+                                                    data-toggle="tooltip" data-placement="left"
                                                     title="Etapas de la planta en la que son atacadas por la plaga o enfermedad.">Etapas
                                                     Afectadas</button>
 
-                                                <div id="etapas-afe-mostrar" class="card-header" data-toggle="tooltip" data-placement="top"
+                                                <div id="etapas-afe-mostrar" class="card-header" data-toggle="tooltip" data-placement="left"
                                                     title="Etapas de la planta en la que son atacadas por la plaga o enfermedad." required>
                                                 </div>
                                             </div>
@@ -124,10 +124,10 @@ require '../../conexion.php';
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-success center-block"
                                                     data-toggle="modal" data-target="#modal-sintomas" style="font-family:'FontAwesome',tahoma; font-size: 11px;"
-                                                    data-toggle="tooltip" data-placement="top"
+                                                    data-toggle="tooltip" data-placement="left"
                                                     title="Sintomas que presenta la planta a cauda de la plaga o enfermedad.">Sintomas</button>
 
-                                                <div id="sintomas-mostrar" class="card-header" data-toggle="tooltip" data-placement="top"
+                                                <div id="sintomas-mostrar" class="card-header" data-toggle="tooltip" data-placement="left"
                                                     title="Sintomas que presenta la planta a cauda de la plaga o enfermedad." required>
                                                 </div>
                                             </div>
@@ -138,7 +138,7 @@ require '../../conexion.php';
                                     <div class="col-md-4">
                                         <!--div tabla agre--->
                                         <div class="form-group" id="tab_rus">
-                                        <div class="form-group" id="tab_met_pre" name="tab_met_pre" data-toggle="tooltip" data-placement="top"
+                                        <div class="form-group" id="tab_met_pre" name="tab_met_pre" data-toggle="tooltip" data-placement="left"
                                             title="Recomendaciones que nos ayudan a recordarte como evitar la aparición de esta plaga o enfermedad. No es obligatorio.">
                                             <div class="card-shadow form-group">
                                                 <div class="card-header">
@@ -164,7 +164,7 @@ require '../../conexion.php';
                                                             <td>
                                                                 <input type="button" name="add"
                                                                     class="btn btn-success sm-3" data-toggle="tooltip"
-                                                                    value="&#xf0a5" data-placement="top" title="Agregar"
+                                                                    value="&#xf0a5" data-placement="left" title="Agregar"
                                                                     style="font-family:'FontAwesome', tahoma; font-size:10px;"
                                                                     onclick="cargarTablaAdd($('#cod_agr_rus').val()+'_'+$('#rus_agr').val())">
                                                             </td>
@@ -236,7 +236,7 @@ require '../../conexion.php';
                                         <br>
                                         <center>
                                             <input type="button" name="cargarx" class="btn btn-primary sm-4"
-                                                data-toggle="tooltip" data-placement="top" title="Etapas" value="Seguir"
+                                                data-toggle="tooltip" data-placement="left" title="Etapas" value="Seguir"
                                                 style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                                 onclick="guardarEnfer_Plaga()">
                                         </center>

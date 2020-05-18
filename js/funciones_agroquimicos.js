@@ -93,7 +93,7 @@ function guardar_agro(){
 cadena_mostrar_rus= "";
 
 function cargarTablaAdd(cad){
-	alert("envia: "+cad);
+	//alert("envia: "+cad);
 	if(cad != "_"){
 	datos=cad.split('_');
 	cod_agr = datos[0];
@@ -253,13 +253,13 @@ function actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,
 	"&cod_unm="+cod_unm+
 	"&cod_iac="+cod_iac+
 	"&fun_agr="+fun_agr;
-	alert("cadena "+cadena);
+	//alert("cadena "+cadena);
 	$.ajax({
 		type:"post",
 		url:"../php/crud/agroquimicos/actualizar_agroquimico.php",
 		data:cadena,
 		success:function(r){
-			alert(r);
+			//alert(r);
 			if(r.includes('Resource id')){
 				swal("¡Agroquímico Editado!"," ", "success");
 
@@ -270,7 +270,7 @@ function actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,
 				jQuery('form-up-agroq').show();	
 				$('#tab_agroquimicos').load('../php/componentes/componentes_agroquimicos/tab_agroquimicos.php');
 		}else{
-			alert(r); 
+			//alert(r); 
 			jQuery('#preloaderup').hide();
 			jQuery('#form-up-agroq').show();
 			$('#tab_agroquimicos').load('../php/componentes/componentes_agroquimicos/tab_agroquimicos.php');        
@@ -337,7 +337,7 @@ function editarRecomendaciones(){
 			url:"../php/crud/agroquimicos/eliminar_recomendacion.php",
 			data:cadena,
 			success:function(r){
-				alert(r);
+				//alert(r);
 				if(r.includes('Resource id')){
 					toastr.success('¡Recomendación eliminada!','',{
 						"positionClass": "toast-bottom-right",
@@ -365,7 +365,7 @@ function editarRecomendaciones(){
 			url:"../php/crud/agroquimicos/agregar_recomendacion.php",
 			data:cadena,
 			success:function(r){
-				alert(r);
+				//alert(r);
 				if(r.includes('Resource id')){
 					toastr.success('¡Recomendación agregada!','',{
 						"positionClass": "toast-bottom-right",
@@ -416,7 +416,7 @@ function eliminar_agroquimico(datos) {
                                 url: "../php/crud/agroquimicos/eliminar_agroquimico.php",
                                 data: cadena,
                                 success: function(res) {
-                                    alert(res);
+                                    //alert(res);
                                     if (res.includes('Resource id')) {
 
                                         swal("El agroquímico se eliminó!", {

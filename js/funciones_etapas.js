@@ -319,3 +319,9 @@ function objetoAjax() {
     }
     return xmlhttp;
   }
+
+  function cerrar_menu() {
+    $('#sidenav-main').remove();
+    jQuery('#ver1').hide();
+    jQuery('#ver2').show();
+  }
