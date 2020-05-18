@@ -106,7 +106,6 @@ $stock = "";
                                 while ($ver=pg_fetch_row($result)) {
                                     ?>
                 <tr>
-                    <td><center><?php echo $ver[0] ?></center></td>
                     <td><center><?php echo $ver[1] ?></center></td>
                     <td><center><?php echo $ver[3] ?></center></td>
                     <td><center><?php                     
@@ -145,9 +144,3 @@ $stock = "";
         </table>
     </div>
 </div>
-
-<script>
-$(function() {
-    $("[data-toggle='tooltip']").tooltip();
-});
-</script>

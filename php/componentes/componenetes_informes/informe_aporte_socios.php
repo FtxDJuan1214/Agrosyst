@@ -3,9 +3,7 @@
 require '../../conexion.php';
 session_start();
 $cod_cul =$_GET['c'];  
-?>
 
-<?php
 $queryasda="SELECT act_cul.ide_ter,terceros.pno_ter,terceros.sno_ter,terceros.pap_ter,terceros.sap_ter FROM public.act_cul 
 INNER JOIN terceros ON terceros.ide_ter = act_cul.ide_ter 
 where cod_cul='$cod_cul'";
@@ -108,11 +106,11 @@ if (pg_num_rows($resultasda) > 0) {
      $aporte_total_cultivo  =  $aporte_total_cultivo + $total_aporte + $total_insumos;
  }
  if ($aporte_total_cultivo != 0 ) {
-	date_default_timezone_set('America/Bogota');
-	$d = date("d");
-	$m = date("m");
-	$y = date("Y");
-	$fecha=$y."-".$m."-".$d;
+ 	date_default_timezone_set('America/Bogota');
+ 	$d = date("d");
+ 	$m = date("m");
+ 	$y = date("Y");
+ 	$fecha=$y."-".$m."-".$d;
  	$cod_cul =$_GET['c'];
 
  	$cultivos = "SELECT cultivos.cod_cul,cultivos.fin_cul,cultivos.fif_cul,cultivos.npl_cul,
@@ -183,7 +181,6 @@ if (pg_num_rows($resultasda) > 0) {
  	echo "El cultivo no tiene aportes";
  }
 }
-
 
 
 ?>
