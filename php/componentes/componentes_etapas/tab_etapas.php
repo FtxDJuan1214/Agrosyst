@@ -43,7 +43,7 @@ require '../../conexion.php';
              <?php echo $ver1[0] ?>
            </center>
            <input type="button" name="cargar" class="btn btn-danger sm-3" data-toggle="tooltip"
-           data-placement="top" title="Eliminar etapa para esta plaga o enfermedad." value="Quitar"
+           data-placement="left" title="Eliminar etapa para esta plaga o enfermedad." value="Quitar"
            style="font-family:'FontAwesome',tahoma; font-size: 10px;"
            onclick="eliminarAsociacion('<?php echo $ver1[3] ?>','<?php echo $ver1[4] ?>')">
 
@@ -76,7 +76,7 @@ require '../../conexion.php';
        </td>
        <td><center><input type="button" name="aso_eta"
          class="btn btn-success sm-4"
-         data-placement="top"
+         data-placement="left"
          title="Asociar Plaga/Enfermedad a Etapa"
          value="Asociar a etapa"
          style="font-family:'FontAwesome',tahoma; font-size: 10px;"

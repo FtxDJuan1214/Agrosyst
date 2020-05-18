@@ -74,10 +74,10 @@ $stock = "";
                     ?></center></td>
 
                     <td><center><input type="button" name="info" class="btn btn-warning sm-3" data-toggle="tooltip"
-                            data-placement="top" title="<?php echo 'Recomendación de aplicación: '.$ver[4] ?>" value="&#xf05a    "
+                            data-placement="left" title="<?php echo 'Recomendación de aplicación: '.$ver[4] ?>" value="&#xf05a    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"></center></td>
                     <td><center><input type="button" name="add" class="btn btn-dark sm-3" data-toggle="tooltip"
-                            data-placement="top" title="Agregar" value="&#xf0a5    "
+                            data-placement="left" title="Agregar" value="&#xf0a5    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                             onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$stock?>')">
                     </center></td>
@@ -127,10 +127,10 @@ $stock = "";
                     }    
                     ?></center></td>
                     <td><center><input type="button" name="info" class="btn btn-warning sm-3" data-toggle="tooltip"
-                            data-placement="top" title="<?php echo 'Recomendación de aplicación: '.$ver[4] ?>" value="&#xf05a    "
+                            data-placement="left" title="<?php echo 'Recomendación de aplicación: '.$ver[4] ?>" value="&#xf05a    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"></center></td>
                     <td><center><input type="button" name="add" class="btn btn-dark sm-3" data-toggle="tooltip"
-                            data-placement="top" title="Agregar" value="&#xf0a5    "
+                            data-placement="left" title="Agregar" value="&#xf0a5    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                             onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$stock?>')">
                     </center></td>

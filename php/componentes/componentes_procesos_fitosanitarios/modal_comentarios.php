@@ -21,7 +21,7 @@ while($ver1=pg_fetch_row($result1)){
             rows="3"><?php echo $ver1[1] ?></textarea>
         </div>
   <div class="col-sm-1">
-  <input type="button" name="cargar" class="btn btn-danger align-middle" data-toggle="tooltip" data-placement="top"
+  <input type="button" name="cargar" class="btn btn-danger align-middle" data-toggle="tooltip" data-placement="left"
         title="Eliminar Comentario" value="&#xf00d    " style="font-family:'FontAwesome',tahoma; font-size: 0.5rem; "
         onclick="eliminarComentario('<?php echo $ver1[1]?>')">
   </div>
@@ -36,7 +36,7 @@ while($ver1=pg_fetch_row($result1)){
         <textarea id="text-comentario" name="text-comentario" class="form-control" placeholder="Agrega otro comentario...." rows="2"></textarea>
     </div>
 
-    <input type="button" name="cargar" class="btn btn-success" data-toggle="tooltip" data-placement="top"
+    <input type="button" name="cargar" class="btn btn-success" data-toggle="tooltip" data-placement="left"
         title="Agregar Comentario" value="Agregar Comentario" style="font-family:'FontAwesome',tahoma; font-size: 10px; "
         onclick="addComentario('<?php echo $cod_pfi ?>')">
 

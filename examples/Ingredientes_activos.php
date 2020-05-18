@@ -256,7 +256,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <div class="input-group input-group-alternative" id="div_des_ins">
                                                     <input style="border-color: #fb6340;" id="nom_iac_up" name ="nom_iac" type="text"
                                                         class="form-control" placeholder="Nombre Ingrediente" autocomplete="off"
-                                                        maxlength="45" required data-toggle="tooltip" data-placement="top"
+                                                        maxlength="45" required data-toggle="tooltip" data-placement="left"
                                                     title="Nombre del ingrediente activo">                                                        
                                                 </div>                                                
                                             </div> 

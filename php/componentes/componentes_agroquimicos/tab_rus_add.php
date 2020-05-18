@@ -27,7 +27,7 @@ $lenght = count($array)-1;
                     </td>
                     <td>
                         <input type="button" name="add" class="btn btn-danger sm-3" data-toggle="tooltip"
-                            value="&#xf00d" data-placement="top" title="Quitar"
+                            value="&#xf00d" data-placement="left" title="Quitar"
                             style="font-family:'FontAwesome', tahoma; font-size:10px;"
                             onclick="rem_rus('<?php echo $ver[1]?>')">
                     </td>

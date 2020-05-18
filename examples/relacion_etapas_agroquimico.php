@@ -182,7 +182,7 @@ if (isset($_POST['cargar'])) {
                                         <br>
                                         <center>
                                             <input type="button" name="Asociar" class="btn btn-success sm-4"
-                                                data-toggle="tooltip" data-placement="top" title="Asociar"
+                                                data-toggle="tooltip" data-placement="left" title="Asociar"
                                                 value="Asociar"
                                                 style="font-family:'FontAwesome',tahoma; font-size: 12px;">
                                         </center>
@@ -403,26 +403,7 @@ if (isset($_POST['cargar'])) {
                 </div>
             </div>
 
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="row align-items-center justify-content-xl-between">
-                    <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-left text-muted">
-                            &copy; 2019 <a href="#" class="font-weight-bold ml-1" target="_blank">Agrosyst</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" target="_blank">Ver manual</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" target="_blank">Sobre nosotros</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
+         
         </div>
     </div>
     <!-- Argon Scripts -->

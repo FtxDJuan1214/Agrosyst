@@ -44,7 +44,7 @@ $cod_afe =$_POST['cod_afe'];
                 <td><center><?php echo $ver[2] ?></center></td>
                 <td><center>
                         <input type="button" name="cargar" class="btn btn-danger sm-3" data-toggle="tooltip"
-                            data-placement="top" title="Quitar" value="&#xf00d    "
+                            data-placement="left" title="Quitar" value="&#xf00d    "
                             style="font-family:'FontAwesome',tahoma; font-size: 10px;"
                             onclick="eliminarAsociacion('<?php echo $ver[0] ?>')"></center></td>
                 </tr>
@@ -57,7 +57,7 @@ $cod_afe =$_POST['cod_afe'];
     <br>
     <center>
     <input type="button" name="cargar" class="btn btn-success sm-4" id="<?php echo $cod_etapa ?>"
-            data-toggle="tooltip" data-placement="top"
+            data-toggle="tooltip" data-placement="left"
             title="Planificar otra tarea" value="Asociar"
             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
             onclick="asociar('<?php echo $cod_etapa ?>')">

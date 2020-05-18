@@ -50,7 +50,7 @@ if($cod[0]){
                                             <!--Div Prentación-->
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="pre_agr" name="pre_agr" pattern="[A-Za-z0-9]{1,5}"
-                                                data-toggle="tooltip" data-placement="top"
+                                                data-toggle="tooltip" data-placement="left"
                                                 title="Presentación de producto. Ejemplo: 1L"
                                                 placeholder="Presentación" required>
                                             </div>
@@ -60,7 +60,7 @@ if($cod[0]){
                                                 <div class="input-group input-group-alternative">
                                                     <select id="cod_iac" name="cod_iac" class="form-control"
                                                     data-live-search="true" data-toggle="tooltip"
-                                                    data-placement="top" title="Composición del producto" required>
+                                                    data-placement="left" title="Composición del producto" required>
                                                     <option value="" disabled selected>Ingrediente
                                                     Activo</option>
                                                     <?php 
@@ -143,7 +143,7 @@ if($cod[0]){
                                         <!--Div Dosis-->
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="dos_agr" name="dos_agr" pattern="[A-Za-z0-9]{1,10}"
-                                            data-toggle="tooltip" data-placement="top"
+                                            data-toggle="tooltip" data-placement="left"
                                             title="Dosis recomendada a usar." placeholder="Ej: 00cc/Ha" required>
                                         </div>
 
@@ -214,7 +214,7 @@ if($cod[0]){
                                     <div class="form-group">
 
                                         <input type="number" class="form-control" id="pen_agr" name="pen_agr"
-                                        data-toggle="tooltip" data-placement="top"
+                                        data-toggle="tooltip" data-placement="left"
                                         title="Tiempo que debe transcurrir entre la última aplicación y el re ingreso de personas al cultivo."
                                         placeholder="Días de Entrada">
 
@@ -224,7 +224,7 @@ if($cod[0]){
                                     <div class="form-group">
 
                                         <input type="number" class="form-control" id="pcr_agr" name="pcr_agr"
-                                        data-toggle="tooltip" data-placement="top"
+                                        data-toggle="tooltip" data-placement="left"
                                         title="Tiempo que debe transcurrir entre la última aplicación del producto y la cosecha."
                                         placeholder="Días de carencia">
 
@@ -237,7 +237,7 @@ if($cod[0]){
                                     <div class="form-group">
                                         <h4 style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                         align="center">Sugerencias de aplicacion</h4><br>
-                                        <textarea data-toggle="tooltip" data-placement="top"
+                                        <textarea data-toggle="tooltip" data-placement="left"
                                         title="Generalmente en la etiqueta viene esta sugerencia de aplicación, sí no, puede dejar el campo vacío."
                                         name="rap_agr" id="rap_agr" cols="18" rows="3"
                                         class="form-control"></textarea>
@@ -261,7 +261,7 @@ if($cod[0]){
                                 <div class="col-md-6">
                                     <center>
                                         <button class="btn btn-danger" text style="font-family:'FontAwesome',tahoma; font-size: 11px;"
-                                        data-toggle="tooltip" data-placement="top"
+                                        data-toggle="tooltip" data-placement="left"
                                         title="Cancelar operacion" 
                                         onclick="cancelar();">Cancelar
                                     </button>
@@ -271,7 +271,7 @@ if($cod[0]){
                                 <center>
                                     <button id="guardar_agrob" name="guardar_agrob" class="btn btn-success" 
                                     text style="font-family:'FontAwesome',tahoma; font-size: 11px;" 
-                                    data-toggle="tooltip" data-placement="top" type="button"
+                                    data-toggle="tooltip" data-placement="left" type="button"
                                     title="Guardar"
                                     onclick="guardar_agro();">Guardar
                                 </button>

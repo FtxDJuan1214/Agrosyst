@@ -362,7 +362,7 @@ if (isset($_SESSION['usuario'])) {
                                             <br>
                                             <center>
                                                 <input type="button" name="cargar" class="btn btn-success sm-4"
-                                                    data-toggle="tooltip" data-placement="top"
+                                                    data-toggle="tooltip" data-placement="left"
                                                     title="Planificar otra tarea" value="Guardar sin imagen"
                                                     style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                                                     onclick="guardarSinImagen()">
@@ -377,9 +377,9 @@ if (isset($_SESSION['usuario'])) {
             </div>
             <!-- Table -->
             <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="card shadow">
                         <div class="card-header border-0">
                             <div class="float-md-left" style="margin-top: 5px;">
