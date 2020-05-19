@@ -1,16 +1,16 @@
 function objetoAjax() {
   var xmlhttp = false;
   try {
-    xmlhttp = new ActiveXObject("MsxmL2.XMLHTTP");
+      xmlhttp = new ActiveXObject("MsxmL2.XMLHTTP");
   } catch (e) {
-    try {
-      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    } catch (E) {
-      xmlhttp = false;
-    }
+      try {
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (E) {
+          xmlhttp = false;
+      }
   }
   if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-    xmlhttp = new XMLHttpRequest();
+      xmlhttp = new XMLHttpRequest();
   }
   return xmlhttp;
 }
@@ -35,11 +35,11 @@ function cargar_select_tip() {
   ajax.send("tip_tar=" + tip_tar);
 
   
-  document.getElementById("sel_enf_pla").innerHTML = "";
-  document.getElementById("enfe_plag").innerHTML = "";
-  document.getElementById("etapasN").innerHTML = "";
-  document.getElementById("tab_agr").innerHTML = "";
-  document.getElementById("tab_agr2").innerHTML = "";
+      document.getElementById("sel_enf_pla").innerHTML = "";
+      document.getElementById("enfe_plag").innerHTML = "";
+      document.getElementById("etapasN").innerHTML = "";
+      document.getElementById("tab_agr").innerHTML = "";
+      document.getElementById("tab_agr2").innerHTML = "";
 }
 
 
@@ -61,11 +61,11 @@ function cargar_enfermedades_plagas() {
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   ajax.send("sele_enf_pla=" + enf_pla);
 
-  
-  document.getElementById("enfe_plag").innerHTML = "";
-  document.getElementById("etapasN").innerHTML = "";
-  document.getElementById("tab_agr").innerHTML = "";
-  document.getElementById("tab_agr2").innerHTML = "";
+      
+      document.getElementById("enfe_plag").innerHTML = "";
+      document.getElementById("etapasN").innerHTML = "";
+      document.getElementById("tab_agr").innerHTML = "";
+      document.getElementById("tab_agr2").innerHTML = "";
 
   
 }      
@@ -78,41 +78,43 @@ function cargar_etapas() {
 
   if(tip_tar == "Curación"){
    
-    ajax = objetoAjax();
-    ajax.open("POST", "../php/componentes/componentes_planificacion/etapas.php", true);
-    ajax.onreadystatechange = function() {
+  ajax = objetoAjax();
+  ajax.open("POST", "../php/componentes/componentes_planificacion/etapas.php", true);
+  ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
           document.getElementById("etapasN").innerHTML = ajax.responseText;
           $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
       }
-    }
-    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ajax.send("enf_o_plaga=" + cod_enf_pla);
+  }
+  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  ajax.send("enf_o_plaga=" + cod_enf_pla);
 
-  }else if(tip_tar == "Prevención"){
+}else if(tip_tar == "Prevención"){
 
-    selectEtapa("Prevención");
+  selectEtapa("Prevención");
   //alert("lo envio como prevencion");
 
 }else if(tip_tar == "Nutrición"){
 
 
 }
-document.getElementById("etapasN").innerHTML = "";
-document.getElementById("tab_agr").innerHTML = "";
-document.getElementById("tab_agr2").innerHTML = "";
+      document.getElementById("etapasN").innerHTML = "";
+      document.getElementById("tab_agr").innerHTML = "";
+      document.getElementById("tab_agr2").innerHTML = "";
 }
 
 
 //-----------------------------Mostrar tabla de agroquímicos para enfermedad según etapa--------------------------//
+cod_afe = "";
 function selectEtapa(cod_etapa) {
 
   tip_tar = $('#tip_tar').val();  
   enf_o_plg = $('#enf_o_plaga').val(); 
   cod = cod_etapa;
   cod_eta = cod + "/"+enf_o_plg;
+  cod_afe = enf_o_plg;
   ajax = objetoAjax();
   ajax.open("POST", "../php/componentes/componentes_planificacion/tabla_agroquimicos_rec.php", true);
   ajax.onreadystatechange = function() {
@@ -148,27 +150,59 @@ function cargarTablaAdd(info) {
   enf_o_plaga = $('#enf_o_plaga').val();
   tip_tar = $('#tip_tar').val();
 
+
   if(cadena_de_gastos_mostrar.includes(nom_agr)){
 
     toastr.error('Este agroquímico ya está en la lista','',{
       "positionClass": "toast-top-center",
       "closeButton": false,
       "progressBar": true
-    });
+  });
 
   }else{
 
-    agro=true;
 
-    cadena_de_gastos_mostrar = cadena_de_gastos_mostrar + cod_agr + "," + nom_agr + "," + rap_agr + "||";
-    cadena_nueva_planificacion = cadena_nueva_planificacion + nom_agr + "~" + des_iac + "~" + dos_agr + "~" + can_sto +"~"+enf_o_plaga+"~"+tip_tar+"||";
-    cod_agr_total = cod_agr_total+","+cod_agr;
 
     
-    document.getElementById("tab_agr2").innerHTML = "";
+  //Aquí es donde debo buscar las calificaciones antes de agergar, bueno, imprimir
+  cadena = "cod_afe=" + cod_afe +
+  "&cod_agr=" + cod_agr;
+//alert(cadena);
+$.ajax({
+  type: "post",
+  url: "../php/componentes/componentes_planificacion/comparacion_calificacion.php",
+  data: cadena,
+  success: function (r) {
+          if(r>0 && r<3){
+            swal("",nom_agr + " ha tenido un desemepeño bajo en las aplicaciones contra esta plaga/enfermedad, ¡Podrías intentarlo con uno nuevo!", "warning");
+           /*toastr.error('',nom_agr + " ha tenido un desemepeño bajo en las aplicaciones contra esta plaga/enfermedad, ¡Podrías intentarlo con uno nuevo!",{
+              "positionClass": "toast-top-center",
+              "closeButton": false,
+              "progressBar": true
+          });*/
+          }else if(r>=3 && r<=4){
+            swal("",nom_agr + " ha presentado un buen desempeño en las aplicaciones contra esta plaga/enfermedad", "info");
+          }else if(r>4){
+            swal("",nom_agr + " ha presentado un desempeño excelente en las aplicaciones contra esta plaga/enfermedad, esperamos que siga funcionando así", "success");
+          }
+          }
+});
 
-    mostrarAgroquimicos(cadena_de_gastos_mostrar);
-  }
+  //--------------------------------------------------------------------------------//
+
+  
+
+  agro=true;
+
+  cadena_de_gastos_mostrar = cadena_de_gastos_mostrar + cod_agr + "," + nom_agr + "," + rap_agr + "||";
+  cadena_nueva_planificacion = cadena_nueva_planificacion + nom_agr + "~" + des_iac + "~" + dos_agr + "~" + can_sto +"~"+enf_o_plaga+"~"+tip_tar+"||";
+  cod_agr_total = cod_agr_total+","+cod_agr;
+
+ 
+  document.getElementById("tab_agr2").innerHTML = "";
+
+  mostrarAgroquimicos(cadena_de_gastos_mostrar);
+}
 }
 
 function mostrarAgroquimicos(cadena) {
@@ -195,51 +229,51 @@ function rem_agr(cod_agr) {
   found = false;
 
   for (i = 0; i < sep.length - 1; i++) {
-    sepr = sep[i].split(',');
+      sepr = sep[i].split(',');
 
-    for (e = 0; e < sepr.length; e++) {
-      if (cod_agr == sepr[e]) {
-        indice = i;
-        found = true;
-        break;
+      for (e = 0; e < sepr.length; e++) {
+          if (cod_agr == sepr[e]) {
+              indice = i;
+              found = true;
+              break;
+          }
       }
-    }
 
-    if (found == true) {
-      break;
-    }
+      if (found == true) {
+          break;
+      }
   }
 
   if (found == true) {
-    cadena_de_gastos_mostrar = "";
+      cadena_de_gastos_mostrar = "";
 
-    for (i = 0; i < sep.length - 1; i++) {
+      for (i = 0; i < sep.length - 1; i++) {
 
-      if (indice != i) {
-        cadena_de_gastos_mostrar = cadena_de_gastos_mostrar + sep[i] + "||";
+          if (indice != i) {
+              cadena_de_gastos_mostrar = cadena_de_gastos_mostrar + sep[i] + "||";
+          }
       }
-    }
 
-    sep = cadena_de_gastos_insertar.split('||');
+      sep = cadena_de_gastos_insertar.split('||');
 
-    cadena_de_gastos_insertar = "";
+      cadena_de_gastos_insertar = "";
 
-    for (i = 0; i < sep.length - 1; i++) {
+      for (i = 0; i < sep.length - 1; i++) {
 
-      if (indice != i) {
-        cadena_de_gastos_insertar = cadena_de_gastos_insertar + sep[i] + "||";
+          if (indice != i) {
+              cadena_de_gastos_insertar = cadena_de_gastos_insertar + sep[i] + "||";
+          }
       }
-    }
 
-    sep = cadena_nueva_planificacion.split('||');
-    cadena_nueva_planificacion = "";
+      sep = cadena_nueva_planificacion.split('||');
+      cadena_nueva_planificacion = "";
 
-    for (i = 0; i < sep.length - 1; i++) {
+      for (i = 0; i < sep.length - 1; i++) {
 
-      if (indice != i) {
-        cadena_nueva_planificacion = cadena_nueva_planificacion + sep[i] + "||";
+          if (indice != i) {
+            cadena_nueva_planificacion = cadena_nueva_planificacion + sep[i] + "||";
+          }
       }
-    }
 
   }
 
@@ -260,27 +294,27 @@ function new_planificacion() {
 
   if(tip_pla != null && epoca != null && agro != false && det_pla != '' && cadena_de_gastos_mostrar != ''){
 
-    
-    info = cadena_nueva_planificacion;
+  
+      info = cadena_nueva_planificacion;
 
-    
-    ajax = objetoAjax();
-    ajax.open("POST", "../php/componentes/componentes_planificacion/tabla_planificaciones.php", true);
-    ajax.onreadystatechange = function() {
+  
+  ajax = objetoAjax();
+  ajax.open("POST", "../php/componentes/componentes_planificacion/tabla_planificaciones.php", true);
+  ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
           document.getElementById("tab_pla").innerHTML = ajax.responseText;
           $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
           //actualizar_codigo();
-        }
       }
-      ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      ajax.send("info=" + info);
+  }
+  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  ajax.send("info=" + info);
 
-      cadena_de_gastos_insertar = cadena_de_gastos_insertar + cod_agr +"/"+enf_o_plaga +"/"+tip_tar +"/"+cod_agr_total+ "/"+det_pla+"||";
-      cod_agr_total="";
-      
+  cadena_de_gastos_insertar = cadena_de_gastos_insertar + cod_agr +"/"+enf_o_plaga +"/"+tip_tar +"/"+cod_agr_total+ "/"+det_pla+"||";
+  cod_agr_total="";
+			
       document.getElementById("tip_tar").value = "";
       document.getElementById("det_pla").value = "";
       document.getElementById("sel_enf_pla").innerHTML = "";
@@ -292,11 +326,11 @@ function new_planificacion() {
       cadena_de_gastos_mostrar="";
       
 
-    }else{
-      swal("Advertencia..", "Por favor llene todos los campos." , "warning");
+}else{
+  swal("Advertencia..", "Por favor llene todos los campos." , "warning");
 
-    }
-  }
+}
+}
   
 //-----------------------------------------Guardar planificación------------------------------------------------//
 
@@ -311,56 +345,56 @@ function agregar_plan() {
 
   
   datos ="num_pla="+num_pla+
-  "&epoca="+epoca+
-  "&fecha="+fecha+  
+	"&epoca="+epoca+
+	"&fecha="+fecha+  
   "&info="+cadena_de_gastos_insertar+
   "&num_plan="+num_pla;
   $.ajax({
-    type:"post",
-    url:"../php/crud/planificacion/agregar_planificacion.php",
-    data:datos,
-    success:function(r){
-     if(r.includes('Resource id')){	
+		type:"post",
+		url:"../php/crud/planificacion/agregar_planificacion.php",
+		data:datos,
+		success:function(r){
+			if(r.includes('Resource id')){	
 
-      swal(
+        swal(
         'Todo salió bien!',
         'Planificación creada!',
         'success'
-        );
+      );
 
-      document.getElementById("mostrar_todo").innerHTML = "";    
-      ajax1 = objetoAjax();
-      ajax1.open("POST", "../php/componentes/componentes_planificacion/vista_planificacion.php", true);
-      ajax1.onreadystatechange = function() {
-        if (ajax1.readyState == 4) {
-          document.getElementById("mostrar_todo").innerHTML = ajax1.responseText;
-          document.getElementById("tab_pla").innerHTML = "";
-        }
-      }
-      ajax1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      ajax1.send("datos=" + datos);
-    }else{
-     swal("Verifica los datos!", r , "error");
-   }
- }
-});
+        document.getElementById("mostrar_todo").innerHTML = "";    
+          ajax1 = objetoAjax();
+          ajax1.open("POST", "../php/componentes/componentes_planificacion/vista_planificacion.php", true);
+          ajax1.onreadystatechange = function() {
+          if (ajax1.readyState == 4) {
+              document.getElementById("mostrar_todo").innerHTML = ajax1.responseText;
+              document.getElementById("tab_pla").innerHTML = "";
+          }
+          }
+          ajax1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          ajax1.send("datos=" + datos);
+		}else{
+			swal("Verifica los datos!", r , "error");
+		}
+	}
+  });
 
 }
 
 function cancelar_plan(){
 
   swal({
-    title: "¿Estás seguro?",
-    text: "Se perderá la información que has registrado",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
+		title: "¿Estás seguro?",
+		text: "Se perderá la información que has registrado",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	  })
+	  .then((willDelete) => {
+		if (willDelete) {
       setTimeout ("location.reload();", 300);
-    }
-  });
+		}
+	  });
 }
 
 
@@ -374,11 +408,11 @@ $(document).ready(function() {
   $('#menu').load('../php/componentes/menu/menu.php');
 
   $('#tip_tar').change(function() {
-    cargar_select_tip();
+      cargar_select_tip();
   });
 
   $(function() {
-    $('[data-toggle="tooltip"]').tooltip()
+      $('[data-toggle="tooltip"]').tooltip()
   })
 
 });

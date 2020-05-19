@@ -72,12 +72,12 @@
             </a>
             <div class="collapse" id="navbar-dashboards9">
               <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a href="agroquimicos.php" class="nav-link" style="color: #7D9CB4;">Agroquímicos</a>
-                </li>
-                <li class="nav-item">
+              <li class="nav-item">
                   <a href="Ingredientes_activos.php" class="nav-link" style="color: #7D9CB4;">Ingredientes activos</a>
                 </li>
+                <li class="nav-item">
+                  <a href="agroquimicos.php" class="nav-link" style="color: #7D9CB4;">Agroquímicos</a>
+                </li>                
               </ul>
             </div>
           </li>             
@@ -164,7 +164,7 @@
   <div class="collapse" id="navbar-dashboards4">
     <ul class="nav nav-sm flex-column">
       <li class="nav-item">
-        <a href="tipo_produccion.php" class="nav-link">Tipos de dproducción</a>
+        <a href="tipo_produccion.php" class="nav-link">Tipos de producción</a>
       </li>              
     </ul>
   </div>
@@ -186,11 +186,20 @@
 </ul>
 <!-- Divider -->
 <hr class="my-3">
+
+<ul class="navbar-nav headroom">
+  <li class="nav-item">
+    <a class="nav-link" href="historial_nutricional.php">
+      <i class="fas fa-seedling" style="color: #2E86C1;"></i>Historial nutricional
+    </a>
+  </li>
+</ul>
+
 <ul class="navbar-nav">
  <li class="nav-item">
   <a class="nav-link" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-dashboards">
     <i class="fa fa-bug" style="color: #2E86C1;  font-size: 17px;"></i>
-    <span class="nav-link-text">Plagas / Enfermedades</span>
+    <span class="nav-link-text">Plagas y Enfermedades</span>
   </a>
   <div class="collapse" id="navbar-dashboards">
     <ul class="nav nav-sm flex-column">
@@ -198,7 +207,7 @@
         <a href="etapas_enfermedades_plagas.php" class="nav-link">Etapas de desarrollo</a>
       </li>
       <li class="nav-item">
-        <a href="plagas_enfermedades.php" class="nav-link">Plagas / Enfermedades</a>
+        <a href="plagas_enfermedades.php" class="nav-link">Plagas y Enfermedades</a>
       </li>
     </ul>
   </div>
@@ -208,7 +217,7 @@
 <ul class="navbar-nav headroom">
   <li class="nav-item">
     <a class="nav-link" href="relacion_etapas_agroquimico.php">
-      <i class="fa fa-exclamation-triangle" style="color: #2E86C1;"></i>Etapas y Agroquímicos
+      <i class="fa fa-exclamation-triangle" style="color: #2E86C1;"></i>Etapas y agroquímicos
     </a>
   </li>
 </ul>

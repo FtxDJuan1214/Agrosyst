@@ -32,7 +32,7 @@ $lenght=count($array) - 1;
                     <td><center><?php echo $ver[1] ?></center></td>                    
                     <td><center>
                         <input type="button" name="cargar" class="btn btn-danger sm-3" data-toggle="tooltip"
-                        data-placement="left" title="Quitar" value="&#xf00d    "
+                        data-placement="left" value="&#xf00d    "
                             style="font-family:'FontAwesome',tahoma; font-size: 10px;"
                             onclick="rem_agr('<?php echo $ver[0] ?>')"></center></td>
                 </tr>

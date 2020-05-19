@@ -77,7 +77,7 @@ $stock = "";
                             data-placement="left" title="<?php echo 'Recomendación de aplicación: '.$ver[4] ?>" value="&#xf05a    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"></center></td>
                     <td><center><input type="button" name="add" class="btn btn-dark sm-3" data-toggle="tooltip"
-                            data-placement="left" title="Agregar" value="&#xf0a5    "
+                            data-placement="left" value="&#xf0a5    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                             onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$stock?>')">
                     </center></td>
@@ -106,6 +106,7 @@ $stock = "";
                                 while ($ver=pg_fetch_row($result)) {
                                     ?>
                 <tr>
+                    <td><center><?php echo $ver[0] ?></center></td>
                     <td><center><?php echo $ver[1] ?></center></td>
                     <td><center><?php echo $ver[3] ?></center></td>
                     <td><center><?php                     
@@ -129,7 +130,7 @@ $stock = "";
                             data-placement="left" title="<?php echo 'Recomendación de aplicación: '.$ver[4] ?>" value="&#xf05a    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"></center></td>
                     <td><center><input type="button" name="add" class="btn btn-dark sm-3" data-toggle="tooltip"
-                            data-placement="left" title="Agregar" value="&#xf0a5    "
+                            data-placement="left" value="&#xf0a5    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
                             onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$stock?>')">
                     </center></td>
@@ -144,3 +145,9 @@ $stock = "";
         </table>
     </div>
 </div>
+
+<script>
+$(function() {
+    $("[data-toggle='tooltip']").tooltip();
+});
+</script>

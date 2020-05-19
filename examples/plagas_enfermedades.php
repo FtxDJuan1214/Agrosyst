@@ -520,6 +520,8 @@ if (isset($_POST['cargar'])) {
                                                     que
                                                     son afectadas
                                                     por la plaga o enfermedad en registro.</p>
+                                                <label><input type="checkbox" name="inicio" id="inicio">
+                                                    Inicio</label><br>    
                                                 <label><input type="checkbox" name="vegetativo" id="vegetativo">
                                                     Crecimiento</label><br>
                                                 <label><input type="checkbox" name="ifloracion" id="ifloracion">

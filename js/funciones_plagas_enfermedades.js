@@ -121,6 +121,7 @@ etapas = "";
 function guardarEtapas() {
 
     etapas = "";
+    inicio = $('input:checkbox[name=inicio]:checked').val();
     vegetativo = $('input:checkbox[name=vegetativo]:checked').val();
     ifloracion = $('input:checkbox[name=ifloracion]:checked').val();
     mfloracion = $('input:checkbox[name=mfloracion]:checked').val();
@@ -128,7 +129,7 @@ function guardarEtapas() {
     cosecha = $('input:checkbox[name=cosecha]:checked').val();
 
 
-    if (vegetativo == undefined && ifloracion == undefined && mfloracion == undefined && fructificacion == undefined && cosecha == undefined) {
+    if (inicio == undefined && vegetativo == undefined && ifloracion == undefined && mfloracion == undefined && fructificacion == undefined && cosecha == undefined) {
 
         toastr.error('Por favor solo seleccione al menos una opción', '', {
             "positionClass": "toast-top-center",
@@ -137,7 +138,9 @@ function guardarEtapas() {
         });
 
     } else {
-        if (vegetativo != undefined) {
+        if (inicio != undefined) {
+            etapas = etapas + " - " + "Inicio";
+        }if (vegetativo != undefined) {
             etapas = etapas + " - " + "Crecimiento";
         } if (ifloracion != undefined) {
             etapas = etapas + " - " + "Inicio floracion";
@@ -941,6 +944,7 @@ function up_etapas() {
 function actualizarEtapas() {
 
     etapas = "";
+    inicio = $('input:checkbox[name=inicio]:checked').val();
     vegetativo = $('input:checkbox[name=vegetativo]:checked').val();
     ifloracion = $('input:checkbox[name=ifloracion]:checked').val();
     mfloracion = $('input:checkbox[name=mfloracion]:checked').val();
@@ -948,7 +952,7 @@ function actualizarEtapas() {
     cosecha = $('input:checkbox[name=cosecha]:checked').val();
 
 
-    if (vegetativo == undefined && ifloracion == undefined && mfloracion == undefined && fructificacion == undefined && cosecha == undefined) {
+    if (inicio == undefined && vegetativo == undefined && ifloracion == undefined && mfloracion == undefined && fructificacion == undefined && cosecha == undefined) {
 
         toastr.error('Por favor solo seleccione al menos una opción', '', {
             "positionClass": "toast-top-center",
@@ -957,7 +961,9 @@ function actualizarEtapas() {
         });
 
     } else {
-        if (vegetativo != undefined) {
+        if (inicio != undefined) {
+            etapas = etapas + " - " + "Inicio";
+        } if (vegetativo != undefined) {
             etapas = etapas + " - " + "Crecimiento";
         } if (ifloracion != undefined) {
             etapas = etapas + " - " + "Inicio floracion";
