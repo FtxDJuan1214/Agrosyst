@@ -237,7 +237,7 @@ function eliminar_otro(datos){
 			swal("Cancelado!");
 		}
 	});
-	$('#tab_otros').load('../php/componentes/componentes_semillas/tab_otros.php');
+	$('#tab_otros').load('../php/componentes/componentes_otros/tab_otros.php');
 }
 
 
