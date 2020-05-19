@@ -320,8 +320,6 @@ if (isset($_SESSION['usuario'])) {
                 <div class="col-md-1">
                 </div>
             </div>
-            <!-- Footer -->
-
         </div>
     </div>
     <!-- Argon Scripts -->

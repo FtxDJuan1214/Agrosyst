@@ -62,7 +62,10 @@ function tablaAgro(cod_etapa, codi_afe){
 	ajax.open("POST","../php/componentes/componentes_relacion_etapas_agroquimicos/tab_agroquimicos_asociados.php",true);
 	ajax.onreadystatechange = function(){
 		if(ajax.readyState==4){
-			document.getElementById("tablaAgro").innerHTML = ajax.responseText;
+      document.getElementById("tablaAgro").innerHTML = ajax.responseText;
+      $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 		}
 	}
 	ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");

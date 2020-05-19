@@ -24,9 +24,12 @@ function cargar_select_tip() {
   ajax = objetoAjax();
   ajax.open("POST", "../php/componentes/componentes_planificacion/tipo_tarea.php", true);
   ajax.onreadystatechange = function() {
-    if (ajax.readyState == 4) {
-      document.getElementById("sel_enf_pla").innerHTML = ajax.responseText;
-    }
+      if (ajax.readyState == 4) {
+          document.getElementById("sel_enf_pla").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+      }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   ajax.send("tip_tar=" + tip_tar);
@@ -48,9 +51,12 @@ function cargar_enfermedades_plagas() {
   ajax = objetoAjax();
   ajax.open("POST", "../php/componentes/componentes_planificacion/lista_plagas_enfermedades.php", true);
   ajax.onreadystatechange = function() {
-    if (ajax.readyState == 4) {
-      document.getElementById("enfe_plag").innerHTML = ajax.responseText;
-    }
+      if (ajax.readyState == 4) {
+          document.getElementById("enfe_plag").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+      }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   ajax.send("sele_enf_pla=" + enf_pla);
@@ -76,7 +82,10 @@ function cargar_etapas() {
     ajax.open("POST", "../php/componentes/componentes_planificacion/etapas.php", true);
     ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
-        document.getElementById("etapasN").innerHTML = ajax.responseText;
+          document.getElementById("etapasN").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
       }
     }
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -107,12 +116,12 @@ function selectEtapa(cod_etapa) {
   ajax = objetoAjax();
   ajax.open("POST", "../php/componentes/componentes_planificacion/tabla_agroquimicos_rec.php", true);
   ajax.onreadystatechange = function() {
-    if (ajax.readyState == 4) {
-      document.getElementById("tab_agr").innerHTML = ajax.responseText;
-      $(function() {
-        $('[data-toggle="tooltip"]').tooltip()
-      })
-    }
+      if (ajax.readyState == 4) {
+          document.getElementById("tab_agr").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+      }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   ajax.send("cod_eta=" + cod_eta);
@@ -167,9 +176,12 @@ function mostrarAgroquimicos(cadena) {
   ajax = objetoAjax();
   ajax.open("POST", "../php/componentes/componentes_planificacion/tabla_agroquimicos_add.php", true);
   ajax.onreadystatechange = function() {
-    if (ajax.readyState == 4) {
-      document.getElementById("tab_agr2").innerHTML = ajax.responseText;
-    }
+      if (ajax.readyState == 4) {
+          document.getElementById("tab_agr2").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+      }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   ajax.send("info=" + cadena);
@@ -256,7 +268,10 @@ function new_planificacion() {
     ajax.open("POST", "../php/componentes/componentes_planificacion/tabla_planificaciones.php", true);
     ajax.onreadystatechange = function() {
       if (ajax.readyState == 4) {
-        document.getElementById("tab_pla").innerHTML = ajax.responseText;
+          document.getElementById("tab_pla").innerHTML = ajax.responseText;
+          $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
           //actualizar_codigo();
         }
       }

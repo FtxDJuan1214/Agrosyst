@@ -116,6 +116,9 @@ function mostrarTablaAdd(){
 	ajax.onreadystatechange = function(){
 		if(ajax.readyState==4){
 			document.getElementById("tab_rus_agre").innerHTML = ajax.responseText;
+			$(function() {
+				$('[data-toggle="tooltip"]').tooltip()
+			})
 
 		}
 	}
@@ -290,6 +293,9 @@ function editarRecomendaciones(){
 		ajax.onreadystatechange = function(){
 			if(ajax.readyState==4){
 				document.getElementById("mostrar-tablas-rec").innerHTML = ajax.responseText;
+				$(function() {
+					$('[data-toggle="tooltip"]').tooltip()
+				})
 			}
 		}
 		ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
