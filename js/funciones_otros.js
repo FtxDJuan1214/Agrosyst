@@ -10,11 +10,23 @@ function preloader(){
 	det_otr=$('#det_otr').val();
 
 	if(des_ins == "" || cod_unm == null || det_otr == ""){
-		toastr.error('Todos los campos son requeridos','',{
-			"positionClass": "toast-top-center",
-			"closeButton": true,
-			"progressBar":true
-		});
+		if(des_ins == ""){
+
+			toastr.error('Por favor ingresa el nombre del gasto','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}else if(det_otr == ""){
+
+			toastr.error(' Ingresa la descripción del gasto','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}
 	}else{
 
 		if (des_ins.length < 6 ){
@@ -27,7 +39,7 @@ function preloader(){
 			});
 
 		}else if(det_otr.length < 11 ){
-			$('#div_det_smr').removeClass("input-group input-group-alternative");
+			$('#div_det_otr').removeClass("input-group input-group-alternative");
 			toastr.error('La descripción es muy corta.','',{
 				"positionClass": "toast-top-center",
 				"closeButton": true,
@@ -115,11 +127,23 @@ function preloaderup(){
 	det_otrup=$('#det_otrup').val();
 
 	if(des_insup == "" || uni_medup == null || det_otrup == ""){
-		toastr.error('Todos los campos son requeridos','',{
-			"positionClass": "toast-top-center",
-			"closeButton": true,
-			"progressBar":true
-		});
+		if(des_insup == ""){
+
+			toastr.error('Por favor ingresa el nombre del gasto','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}else if(det_otrup == ""){
+
+			toastr.error(' Ingresa la descripción del gasto','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}
 	}else{
 
 		if (des_insup.length < 6 ){

@@ -224,8 +224,8 @@ if (isset($_SESSION['usuario'])) {
                               <option value="" disabled selected>Estado del cultivo</option>
                               <option value="1">Inicio</option>
                               <option value="2">Crecimiento</option>
-                              <option value="3">Inicio afloración</option>
-                              <option value="4">Maxima afloración</option>
+                              <option value="3">Inicio floración</option>
+                              <option value="4">Maxima floración</option>
                               <option value="5">Inicio fructificación</option>
                               <option value="6">Cosecha</option>
                               <option value="7">Finalización</option>
@@ -339,8 +339,8 @@ if (isset($_SESSION['usuario'])) {
                             <option value="" disabled selected>Estado del cultivo</option>
                             <option value="1">Inicio</option>
                             <option value="2">Crecimiento</option>
-                            <option value="3">Inicio afloración</option>
-                            <option value="4">Maxima afloración</option>
+                            <option value="3">Inicio floración</option>
+                            <option value="4">Maxima floración</option>
                             <option value="5">Inicio fructificación</option>
                             <option value="6">Cosecha</option>
                             <option value="7">Finalización</option>

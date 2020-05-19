@@ -40,12 +40,38 @@ function preloader(){
 	expresion= /\w+@\w+\.+[a-z]/;
 	
 	if (ide_ter == "" || pno_ter == "" || pap_ter == "" || sap_ter == "" || tipo_per == null){
-		//alert("id: " + ide_ter + "\nP_nom: " + pno_ter + "\nS_nom: " + sno_ter + "\nS_ape: " + sap_ter + "\nTel: " + tel_ter +"\nTipo: " + tipo_per);
-		toastr.error('Algunos campos son obligatorios','',{
-			"positionClass": "toast-top-center",
-			"closeButton": true,
-			"progressBar":true
-		});
+		if(ide_ter == ""){
+			toastr.error('Por favor ingrese una cédula','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(pno_ter==""){
+			toastr.error('Por favor escriba el primer nombre','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(pap_ter==""){
+			toastr.error('Por favor escriba el primer apellido','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(sap_ter==""){
+			toastr.error('Por favor escriba el segundo nombre','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(tipo_per==null){
+			toastr.error('Por favor seleccione el tipo de tercero que será esta persona','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}
+		
 	}else{
 
 		if (isNaN(ide_ter)){
@@ -420,12 +446,32 @@ function preloaderup(){
 
 	
 
-	if(pno_terup == "" || pap_terup == "" || sap_terup == ""){
-		toastr.error('Algunos campos son obligatorios','',{
-			"positionClass": "toast-top-center",
-			"closeButton": true,
-			"progressBar":true
-		});
+	if(pno_terup == "" || pap_terup == "" || sap_terup == "" || tipo_perup == null){
+		if(pno_terup==""){
+			toastr.error('Por favor escriba el primer nombre','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(pap_terup==""){
+			toastr.error('Por favor escriba el primer apellido','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(sap_terup==""){
+			toastr.error('Por favor escriba el segundo apellido','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(tipo_perup == null){
+			toastr.error('Por favor el tipo de persona que será este tercero','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}
 	}else{
 
 		cond_tel_terup =  Boolean(false);

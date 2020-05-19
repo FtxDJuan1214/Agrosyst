@@ -612,7 +612,7 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                     $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
                     $ver[6]."||3||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
 
-                    echo "Inicio afloración";
+                    echo "Inicio floración";
                   }else if($Dias_actuales > 240 && $Dias_actuales <=300){
 
                     $sqlet = "UPDATE public.cultivos SET est_cul='4' WHERE cod_cul='$ver[0]'";
@@ -621,7 +621,7 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                     $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
                     $ver[6]."||4||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
 
-                    echo "Maxima afloración";
+                    echo "Maxima floración";
                   }else if($Dias_actuales > 300 && $Dias_actuales <=365){
 
                     $sqlet = "UPDATE public.cultivos SET est_cul='5' WHERE cod_cul='$ver[0]'";

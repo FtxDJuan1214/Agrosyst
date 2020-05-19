@@ -5,17 +5,39 @@
    medi_lote=$('#med_lot').val();
 
 
-   if(nomb_lote == "" || NFinca == "" || UniMedida == "" || medi_lote == ""){
-    toastr.error('Todos los campos son requridos','',{
-     "positionClass": "toast-top-center",
-     "closeButton": true,
-     "progressBar":true
-   });
+   if(nomb_lote == "" || NFinca == null || UniMedida == null || medi_lote == ""){
+    if(nomb_lote == ""){
+      toastr.error('Por favor escriba el nombre del lote','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(NFinca == null){
+      toastr.error('Por favor seleccione la finca en donde está el lote','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }
+    else if(UniMedida == null){
+      toastr.error('Por favor seleccione la unidad de medida del lote','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }
+    else if(medi_lote == ""){
+      toastr.error('Por favor ingrese la medida del lote','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }
   }else{
 
     if (isNaN(medi_lote)){
       $('#div_med_lot').removeClass("input-group input-group-alternative");
-      toastr.error('La medida del lote debe ser numerica.','',{
+      toastr.error('La medida del lote debe ser numérica.','',{
         "positionClass": "toast-top-center",
         "closeButton": true,
         "progressBar":true
@@ -151,7 +173,7 @@ function preloaderup(){
 }else{
   if (isNaN(med_lotup)){
     $('#div_med_lotup').removeClass("input-group input-group-alternative");
-    toastr.error('La medida del lote debe ser numerica.','',{
+    toastr.error('La medida del lote debe ser numérica.','',{
       "positionClass": "toast-top-center",
       "closeButton": true,
       "progressBar":true

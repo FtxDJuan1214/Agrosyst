@@ -220,7 +220,7 @@ if ($filas != 0) {
 	$result1=pg_query($conexion,$sql1);
 	while($dats=pg_fetch_row($result1)){
 
-		$html.='<span>'.$dats[2].' '.$dats[4].'<br>'.$dats[0].'.<br>Cantidad: '.$dats[1].' '. $unm[1].'.Valor: $'.$dats[1].'</span>
+		$html.='<span>'.$dats[2].' '.$dats[4].'<br>'.$dats[0].'.<br>Valor: $'.$dats[1].'</span>
 		<br>_____________________________<br>';
 	} 
 
@@ -235,7 +235,7 @@ if ($filas != 0) {
 	$result1=pg_query($conexion,$sql1);
 	while($dats=pg_fetch_row($result1)){
 
-		$html.='<span>'.$dats[2].' '.$dats[4].'<br>'.$dats[0].'.<br>Cantidad: '.$dats[1].' '. $unm[1].'.Valor: $'.$dats[1].'</span>
+		$html.='<span>'.$dats[2].' '.$dats[4].'<br>'.$dats[0].'.<br>Valor: $'.$dats[1].'</span>
 		<br>_____________________________<br>';
 	}
 

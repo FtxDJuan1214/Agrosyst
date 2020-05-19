@@ -63,7 +63,7 @@ $ffin = $_POST['ffin'];
       if($see!=0){
 
         ?>
-        <button type="button" class="btn btn-sm btn-white" data-toggle="tooltip" data-placement="top" title="<?php
+        <button type="button" class="btn btn-sm btn-white" data-toggle="tooltip" data-placement="left" title="<?php
         echo 'Horas a trabajar: '.$see[0].'Hrs.  Valor de la hora: '.$see[1].'$. Pago diario: '.($see[0]*$see[1]).'$.'?>">
         <?php echo 'Jornal';
         $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$see[0]."||".$see[1]."||".'1'."||".$ver[4]."||".$persona;
@@ -80,7 +80,7 @@ $ffin = $_POST['ffin'];
     $see=pg_fetch_row($result1);
     if($see!=0){
       ?>
-      <button type="button" class="btn btn-sm btn-white" data-toggle="tooltip" data-placement="bottom" title="<?php
+      <button type="button" class="btn btn-sm btn-white" data-toggle="tooltip" data-placement="left" title="<?php
       echo 'Valor contrato: '.$see[0].'$.  Fecha inicio: '.$see[1].'. Fecha fin: '.($see[2]).'. Objeto del contrato: '.$see[3].'.'?>">
       <?php echo 'Contrato'; 
       $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$see[0]."||".$see[1]."||".$see[2]."||".'2'."||".$see[3]."||".$ver[4]."||".$persona;   
@@ -113,9 +113,3 @@ $ffin = $_POST['ffin'];
 }
 ?>
 </tbody>
-
-<script>
-  $(function () {
-    $("[data-toggle='tooltip']").tooltip();
-  });
-</script>

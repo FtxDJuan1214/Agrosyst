@@ -11,11 +11,31 @@ function preloader(){
 
 
 	if(des_ins == "" || cod_tso == null || det_smr == ""){
-		toastr.error('Todos los campos son requeridos','',{
-			"positionClass": "toast-top-center",
-			"closeButton": true,
-			"progressBar":true
-		});
+		if(des_ins == ""){
+
+			toastr.error('Por favor ingresa el nombre del semillero','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}else if(cod_tso == null){
+
+			toastr.error('Por favor selecciona el tipo de semillero','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}else if(det_smr == ""){
+
+			toastr.error(' Ingresa la descripción del semillero','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}
 	}else{
 
 		if (des_ins.length < 6 ){
@@ -107,11 +127,31 @@ function preloaderup(){
 	det_smrup=$('#det_smrup').val();
 
 	if(des_insup == "" || cod_tsoup == null || det_smrup == ""){
-		toastr.error('Todos los campos son requeridos','',{
-			"positionClass": "toast-top-center",
-			"closeButton": true,
-			"progressBar":true
-		});
+		if(des_insup == ""){
+
+			toastr.error('Por favor ingresa el nombre del semillero','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}else if(cod_tsoup == null){
+
+			toastr.error('Por favor selecciona el tipo de semillero','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}else if(det_smrup == ""){
+
+			toastr.error(' Ingresa la descripción del semillero','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+
+		}
 	}else{
 
 		if (des_insup.length < 6 ){

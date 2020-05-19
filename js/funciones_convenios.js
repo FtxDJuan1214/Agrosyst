@@ -13,21 +13,55 @@
 
    if(fec_con == "" || trabajador == null || socio == null || cod_cul == null || tipo_con == null ){
 
-    toastr.error('Todos los campos son obligatorios','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
+    if(fec_con == ""){
+      toastr.error('Selecciona la fecha inicial del convenio','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(cod_cul == null){
+      toastr.error('Por favor selecciona el cultivo para este convenio','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(trabajador == null){
+      toastr.error('Por favor selecciona el trabajador de este convenio','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(socio == null){
+      toastr.error('Por favor selecciona el socio de este convenio','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(tipo_con == null){
+      toastr.error('Por favor selecciona el tipo de convenio','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }
 
   }else{
 
     if(tipo_con ==1){//JORNAL
       if(hor_jor == "" || vho_hor == ""){
-        toastr.error('Todos los campos son obligatorios','',{
-          "positionClass": "toast-top-center",
-          "closeButton": true,
-          "progressBar":true
-        });
+        if(hor_jor == "" ){
+          toastr.error('Por favor ingresa las horas del jornal','',{
+            "positionClass": "toast-top-center",
+            "closeButton": true,
+            "progressBar":true
+          });
+        }else if(vho_hor == "" ){
+          toastr.error('Por favor ingresa el valor de la hora','',{
+            "positionClass": "toast-top-center",
+            "closeButton": true,
+            "progressBar":true
+          });
+        }
       }else{
         bien = false;
 
@@ -106,11 +140,19 @@
     }else{//CONTRATO
 
       if(des_cont == "" || val_cont == ""){
-        toastr.error('Todos los campos son obligatorios','',{
-          "positionClass": "toast-top-center",
-          "closeButton": true,
-          "progressBar":true
-        });
+        if(des_cont == "" ){
+          toastr.error('Por favor especifica el objetivo del contrato','',{
+            "positionClass": "toast-top-center",
+            "closeButton": true,
+            "progressBar":true
+          });
+        }else if(val_cont == "" ){
+          toastr.error('Por favor ingresa el valor del contrato','',{
+            "positionClass": "toast-top-center",
+            "closeButton": true,
+            "progressBar":true
+          });
+        }
       }else{
         bien = false;
 
@@ -460,6 +502,9 @@ function Cargar_tab_n_registros(){
   ajax.onreadystatechange=function(){
     if ( ajax.readyState==4 ) {
       document.getElementById("tab_convenios").innerHTML=ajax.responseText;
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
     }
   }
   ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -485,6 +530,9 @@ function Cargar_tab_fechas(){
   ajax.onreadystatechange=function(){
     if ( ajax.readyState==4 ) {
       document.getElementById("tab_convenios").innerHTML=ajax.responseText;
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
     }
   }
   ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -493,6 +541,8 @@ function Cargar_tab_fechas(){
 
 
 $(document).ready(function(){
+
+
  jQuery('#ver2').hide();
  jQuery('#contrato').hide();
  jQuery('#jornal').hide();
@@ -504,7 +554,9 @@ $(document).ready(function(){
  $('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
 
  $('#tab_convenios').load('../php/componentes/componentes_convenio/tab_convenio.php');
+
  $('#menu').load('../php/componentes/menu/menu.php');
+
 
  $("#myInput").on("keyup", function() {
   var value = $(this).val().toLowerCase();

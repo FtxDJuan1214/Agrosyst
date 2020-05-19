@@ -113,7 +113,7 @@ $codi_fin=$_SESSION['ide_finca'];
 </tbody>
 
 <script>
-  $(function () {
-    $("[data-toggle='tooltip']").tooltip();
-  });
+ $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
 </script>

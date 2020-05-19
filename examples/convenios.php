@@ -292,7 +292,7 @@ if (isset($_SESSION['usuario'])) {
                   </div>
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative" id="div_vho_hor">
-                      <input style="border-color: #fb6340;" id="vho_hor" type="number" class="form-control" placeholder="Valor por hora de contrato" autocomplete="off">
+                      <input style="border-color: #fb6340;" id="vho_hor" type="number" class="form-control" placeholder="Valor por hora de trabajo" autocomplete="off">
                     </div>
                   </div>
                 </div>
