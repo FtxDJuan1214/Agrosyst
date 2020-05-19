@@ -3,7 +3,7 @@
     <div class="form-group mb-3">
       <div class="input-group input-group-alternative">
         <select id="nom_cul_up" class="form-control"data-live-search="true">
-          <option value="" disabled selected>Cultivo</option>
+          <option value="" disabled selected>Nombre del cultivo</option>
           <?php 
           session_start();
           $like = $_SESSION['idusuario'];

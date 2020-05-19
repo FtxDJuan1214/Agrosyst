@@ -8,11 +8,25 @@ function preloader(){
 	cod_unm=$('#cod_unm').val();
 	det_sem=$('#det_sem').val();	
 	if(des_ins == "" || cod_unm == null || det_sem == ""){
-		toastr.error('Todos los campos son requeridos','',{
-			"positionClass": "toast-top-center",
-			"closeButton": true,
-			"progressBar":true
-		});
+		if(des_ins == ""){
+			toastr.error('Por favor ingrese el nombre del fertilizante','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(cod_unm == null){
+			toastr.error('Por favor selecciona la unidad de medida','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(det_sem == ""){
+			toastr.error('Por ingresa una descripción para el fertilizante','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}
 	}else{
 
 		if (des_ins.length < 6 ){
@@ -92,7 +106,7 @@ function llenarform(datos){
 	data= datos.split('||');
 	$('#modal-form-up').modal('toggle');
 	$('#des_insup').val(data[2]);
-	$('#cod_unmup').val(parseInt(data[1]));
+	$('#cod_unmup').val(parseInt(data[3].trim()));
 	$('#det_semup').val(data[4].trim());
 	global = data[0];
 	global1 = data[1];

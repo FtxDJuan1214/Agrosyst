@@ -248,7 +248,7 @@ if (isset($_SESSION['usuario'])) {
          </div>
        </div>
 
-       <div class="col-sm-3 disabled" style="margin-top: 10px;" >
+       <div class="col-sm-6 disabled" style="margin-top: 10px;" >
         <a href="#" onclick="informe_general();" >
           <div class="card card-stats ">
             <div class="card-body">
@@ -267,7 +267,7 @@ if (isset($_SESSION['usuario'])) {
          </div>
        </a>
      </div>
-     <div class="col-sm-3 disabled" style="margin-top: 10px;" >
+     <div class="col-sm-6 disabled" style="margin-top: 10px;" >
       <a href="#" onclick="informe_aportes_socios();" >
         <div class="card card-stats ">
           <div class="card-body">
@@ -286,7 +286,7 @@ if (isset($_SESSION['usuario'])) {
        </div>
      </a>
    </div>
-   <div class="col-sm-3 disabled" style="margin-top: 10px;" >
+   <div class="col-sm-6 disabled" style="margin-top: 10px;" >
     <a href="#" onclick="informe_rendimiento_cul();" >
       <div class="card card-stats ">
         <div class="card-body">
@@ -305,7 +305,7 @@ if (isset($_SESSION['usuario'])) {
      </div>
    </a>
  </div>
- <div class="col-sm-3 disabled" style="margin-top: 10px;" >
+ <div class="col-sm-6 disabled" style="margin-top: 10px;" >
   <a href="#" onclick="informe_produccion_cul();" >
     <div class="card card-stats ">
       <div class="card-body">
@@ -324,7 +324,7 @@ if (isset($_SESSION['usuario'])) {
    </div>
  </a>
 </div>
-<div class="col-sm-3 disabled" style="margin-top: 10px;" >
+<div class="col-sm-6 disabled" style="margin-top: 10px;" >
   <a href="#" onclick="informe_tareas_cultivo();" >
     <div class="card card-stats ">
       <div class="card-body">
@@ -343,46 +343,8 @@ if (isset($_SESSION['usuario'])) {
     </div>
   </a>
 </div>
-<div class="col-sm-3 disabled" style="margin-top: 10px;" >
-  <a href="#" onclick="informex();" >
-    <div class="card card-stats ">
-      <div class="card-body">
-        <div class="row">
-          <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Informe</h5>
-            <span class="h3 font-weight-bold mb-0">Convenios ejecutados</span>
-          </div>
-          <div class="col-auto">
-            <div class="icon icon-shape bg-gradient-danger  text-white rounded-circle shadow">
-             <i class="fas fa-file-pdf"></i>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </a>
-</div>
-<div class="col-sm-3 disabled" style="margin-top: 10px;" >
-  <a href="#" onclick="informex();" >
-    <div class="card card-stats ">
-      <div class="card-body">
-        <div class="row">
-          <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Informe</h5>
-            <span class="h3 font-weight-bold mb-0">Insumos y gastos</span>
-          </div>
-          <div class="col-auto">
-            <div class="icon icon-shape bg-gradient-danger  text-white rounded-circle shadow">
-             <i class="fas fa-file-pdf"></i>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </a>
-</div>
-<div class="col-sm-3 disabled" style="margin-top: 10px;" >
-  <a href="#" onclick="informex();" >
+<div class="col-sm-6 disabled" style="margin-top: 10px;" >
+  <a href="#" onclick="Informe_completo_cultivo();" >
     <div class="card card-stats ">
       <div class="card-body">
         <div class="row">

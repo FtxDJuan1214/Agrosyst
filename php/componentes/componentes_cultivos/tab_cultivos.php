@@ -74,8 +74,8 @@ $codi_fin=$_SESSION['ide_finca'];
 
     $Dias_totales = $ver[3] ;
     $Dias_actuales = $tiempo[11];
-    echo "dias totales = ".$Dias_totales."<br>";
-    echo "dias actuales = ".$Dias_actuales."<br>";
+    // echo "dias totales = ".$Dias_totales."<br>";
+    // echo "dias actuales = ".$Dias_actuales."<br>";
 
     $porcentaje=intval((($Dias_actuales*100)/$Dias_totales));;
 
@@ -187,7 +187,7 @@ if($ver[7] != 7){
     $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
     $ver[6]."||3||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
 
-    echo "Inicio afloración";
+    echo "Inicio floración";
   }else if($Dias_actuales > 240 && $Dias_actuales <=300){
 
     $sqlet = "UPDATE public.cultivos SET est_cul='4' WHERE cod_cul='$ver[0]'";
@@ -196,7 +196,7 @@ if($ver[7] != 7){
     $datos=$ver[0]."||".$ver[1]."||".$ver[2]."||".$ver[3]."||".$ver[4]."||".$ver[5]."||".
     $ver[6]."||4||".$ver[8]."||".$ver[9]."||".$ver[10]."||".$ver[11]."||".$ver[12];
 
-    echo "Maxima afloración";
+    echo "Maxima floración";
   }else if($Dias_actuales > 300 && $Dias_actuales <=365){
 
     $sqlet = "UPDATE public.cultivos SET est_cul='5' WHERE cod_cul='$ver[0]'";
