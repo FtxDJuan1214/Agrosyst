@@ -123,11 +123,25 @@ function preloaderup(){
 	det_semup=$('#det_semup').val();
 
 	if(des_insup == "" || cod_unmup == null || det_semup == ""){
-		toastr.error('Todos los campos son requeridos','',{
-			"positionClass": "toast-top-center",
-			"closeButton": true,
-			"progressBar":true
-		});
+		if(des_insup == ""){
+			toastr.error('Por favor ingrese el nombre del fertilizante','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(cod_unmup == null){
+			toastr.error('Por favor selecciona la unidad de medida','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}else if(det_semup == ""){
+			toastr.error('Por ingresa una descripción para el fertilizante','',{
+				"positionClass": "toast-top-center",
+				"closeButton": true,
+				"progressBar":true
+			});
+		}
 	}else{
 
 		if (des_insup.length < 6 ){
