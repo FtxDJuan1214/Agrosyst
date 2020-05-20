@@ -103,20 +103,24 @@ require '../../conexion.php';
     WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
     AND procesos_fitosanitarios.ffi_pfi IS null
     AND cultivos.cod_cul = '$ver[4]'
+    AND fitosanitaria.aoi_fit IS NULL
     AND procesos_fitosanitarios.cod_pfi = '$ver[2]'";
 
     $tar1=pg_query($conexion,$tar);
     $tar2=pg_query($conexion,$tar);
     $tar3=pg_query($conexion,$tar);
     $tar4=pg_query($conexion,$tar);
+    $tar5=pg_query($conexion,$tar);
+    $resC=pg_num_rows($tar5);
 //-----------------------------------------------------------------//
 
      ?>
         <tr>
+            <?php if($resC!=0){?>
             <td data-toggle="tooltip" data-placement="left" data-html="true"
                 title="Presente desde: <?php  echo $ver[1] ?>"><?php echo $ver[0].' - '.$sep[1] ?></td>
             <td><br><?php 
-  
+            
             while($tareas=pg_fetch_row($tar1)){             
                 echo $tareas[1] ?> <br><br><br>
                 <?php
@@ -287,7 +291,7 @@ require '../../conexion.php';
                     <button type="button" class="btn btn-dark center-block" data-toggle="tooltip" data-placement="left"
                         title="Ver, editar y eliminar comentarios sobre el avance de este proceso fitosanitario"
                         style="font-family:'FontAwesome',tahoma; font-size: 9px;"
-                        onclick="modalComentarios(' <?php  echo $ver[2] ?> ')">Comentarios</button>
+                        onclick="modalComentarios(' <?php  echo $ver[2] ?> ',' <?php  echo $sep[1] ?> ')">Comentarios</button>
 
                     <div id="sintomas-mostrar">
                     </div>
@@ -298,7 +302,7 @@ require '../../conexion.php';
                     <button type="button" class="btn btn-danger center-block" data-toggle="tooltip"
                         data-placement="left" title="Si ya no hay presencia de la plaga o enfermedad en el cultivo."
                         style="font-family:'FontAwesome',tahoma; font-size: 9px;"
-                        onclick="terminarProceso(' <?php  echo $ver[2] ?> ')">Terminar proceso</button>
+                        onclick="terminarProceso(' <?php  echo $ver[2] ?> ', ' <?php  echo $ver[4] ?> ')">Terminar proceso</button>
 
                     <div id="sintomas-mostrar">
                     </div>
@@ -307,6 +311,7 @@ require '../../conexion.php';
         </tr>
         <?php   
         }
+    }
   ?>
     </tbody>
 </table>

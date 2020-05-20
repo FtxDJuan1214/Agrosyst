@@ -193,16 +193,32 @@ if (isset($_SESSION['usuario'])) {
             <div class="row">
                 <div class="col">
                     <div class="card shadow">
-                        <div class="card-header border-0">                        
+                        <div class="card-header border-0">  
+                        <div class="float-md-left" style="margin-top: 5px;">
+                                <div class="float-md-left" style="margin-top: 5px;">
+                                    <div class="form-group mb-3">
+                                        <div class="input-group input-group-alternative">
+                                            <select id="cod" class="form-control" data-live-search="true"
+                                                onchange="mostrar_tabla();">
+                                                <option value="" disabled selected>Selecciona tipo de procesos</option>
+                                                <option value="1">Activos</option>
+                                                <option value="2">Inactivos</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                      
                             <div class="float-md-right" style="margin-top: 5px;">                            
                                 <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text"
                                     autocomplete="off">
                             </div>
-                            <p style="font-family:'FontAwesome',tahoma; font-size: 18px;"  align="center">PROCESOS FITOSANITARIOS ACTIVOS</P>
+                            <p style="font-family:'FontAwesome',tahoma; font-size: 18px;"  align="center">PROCESOS FITOSANITARIOS</P>
                         </div>
                         <div class="table-responsive" id="tab_procesos_fit">
 
-                            </table>
+                        <h3 style="font-family:'FontAwesome',tahoma; font-size: 14px;" align="center">
+                                Por favor escoja una opción para visualizar la información.
+                            </h3>
                         </div>
                     </div>
                 </div>
