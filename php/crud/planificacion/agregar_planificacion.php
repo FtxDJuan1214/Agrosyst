@@ -120,7 +120,7 @@ for($i = 0; $i < $contarPlanes; $i++){
 			$cod_pfi=$cod_pfi+1;
 			$add = "INSERT INTO public.procesos_fitosanitarios(
 				cod_pfi, fin_pfi, ffi_pfi, cod_afe, tip_pfi)
-				VALUES ('$like$cod_pfi', '$fecha', null, '$sep[1]', 'Prevención');";
+				VALUES ('$like$cod_pfi', '$fecha', $fecha, '$sep[1]', 'Prevención');";
 
 			echo $result=pg_query($conexion,$add);
 			//Despues la planeación se ingresa
