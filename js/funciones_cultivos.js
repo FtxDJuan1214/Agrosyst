@@ -123,61 +123,61 @@ function preloader(){
   dia_cul=total_dias;
 
   if(fin_cul == "" || fif_cul == "" || npl_cul == "" || tip_cul == null || dur_cul == "" || est_cul == null || nom_cul == null || cod_lot == null || mod_cul == null || dia_cul == ""){
-  if(nom_cul == null){
-    toastr.error('Por favor seleccione el nombre del cultivo.','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }else if(fin_cul == "" ){
-    toastr.error('Por favor Ingrese la fecha de inicio del cultivo','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }else if(fif_cul == "" ){
-    toastr.error('Por favor Ingrese la fecha de finalización del cultivo','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }else if(dur_cul == "" ){
-    toastr.error('Por favor verifique las fechas','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }else if(est_cul == null ){
-    toastr.error('Algo fallo al momento de calcular el estado del cultivo, por favor notifique a alguno de los contacotos de soporte','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }else if(tip_cul == null ){
-    toastr.error('Algo fallo al momento de calcular el tipo de cultivo, por favor notifique a alguno de los contacotos de soporte','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }else if(npl_cul == "" ){
-    toastr.error('Por favor ingrese el número de plantas en el cultivo','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }else if(cod_lot == null ){
-    toastr.error('Por favor seleccione el lote donde estará el cultivo','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }else{
-    toastr.error('Por favor verifique las fechas','',{
-      "positionClass": "toast-top-center",
-      "closeButton": true,
-      "progressBar":true
-    });
-  }
+    if(nom_cul == null){
+      toastr.error('Por favor seleccione el nombre del cultivo.','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(fin_cul == "" ){
+      toastr.error('Por favor Ingrese la fecha de inicio del cultivo','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(fif_cul == "" ){
+      toastr.error('Por favor Ingrese la fecha de finalización del cultivo','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(dur_cul == "" ){
+      toastr.error('Por favor verifique las fechas','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(est_cul == null ){
+      toastr.error('Algo fallo al momento de calcular el estado del cultivo, por favor notifique a alguno de los contacotos de soporte','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(tip_cul == null ){
+      toastr.error('Algo fallo al momento de calcular el tipo de cultivo, por favor notifique a alguno de los contacotos de soporte','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(npl_cul == "" ){
+      toastr.error('Por favor ingrese el número de plantas en el cultivo','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else if(cod_lot == null ){
+      toastr.error('Por favor seleccione el lote donde estará el cultivo','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }else{
+      toastr.error('Por favor verifique las fechas','',{
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "progressBar":true
+      });
+    }
     
   }else{
 
@@ -408,7 +408,7 @@ function preloaderup(){
         "progressBar":true
       });
     }
-      
+
   }else{
 
     if(fif_cul == fin_cul){
@@ -725,6 +725,45 @@ $.ajax({
   }
 });
 
+//Agregar los convenios a la tarea
+$.ajax({
+  type:"post",
+  url:"../php/componentes/notificaciones/recordatorio_fertilizacion.php",
+  data:"",
+  success:function(r){
+    if (r!="") {
+      cultivos = r.split("||");
+
+for (var i = 0; i < cultivos.length -1; i++) {
+  if(cultivos[i].trim() != ""){
+
+    toastr.warning(cultivos[i],'¡Vamos a nutrirnos!',{
+
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-bottom-right",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": 0,
+      "extendedTimeOut": 0,
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut",
+      "background-color": "purple",
+      "tapToDismiss": false
+
+    });
+  } 
+}
+}
+}
+});
+
 
 var total_dias=0;
 
@@ -782,8 +821,8 @@ function intervaloa(){
 }
 
 if(dias_actuales == 0){
-    $('#est_cul').val(1);
-  }
+  $('#est_cul').val(1);
+}
 
 }
 })

@@ -113,7 +113,7 @@ require '../../conexion.php';
                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                           <?php  
                           $partes = explode("-", $ver[0]);
-                          if ($partes[0] != '1') {
+                          if ($partes[0] != '1' || $like == "1-") {
                             ?>
                             <a class="dropdown-item" href="#" onclick="modalActualizar(' <?php  echo $datos ?> ')">
                                 <div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div>

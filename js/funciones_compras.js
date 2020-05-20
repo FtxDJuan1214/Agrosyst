@@ -1,3 +1,73 @@
+function hallar_can_y_pre(){
+ $('#modal-paso_1').modal('hide');
+ setTimeout("$('#modal-paso_2').modal('toggle');", 200);
+}
+
+
+function habilitar_inpts(){
+  swal("Siguiente","Ingresa la cantidad y el costo unitario en los campos correspondientes.", "info");
+  $('#modal-paso_1').modal('hide');
+  $('#modal-paso_2').modal('hide');
+  $('#can_sto').prop("disabled", false); // Element(s) are now enabled.
+  $('#cos_uni').prop("disabled", false); // Element(s) are now enabled.
+
+  $("#can_sto").css("border-color", "#fb6340");
+  $("#cos_uni").css("border-color", "#fb6340");
+}
+
+
+
+function subir_datos(){
+
+  pass_cantidad = $('#pass_cantidad').val();
+  pass_presentación = $('#pass_presentación').val();
+  pass_costo = $('#pass_costo').val();
+
+  if (pass_cantidad == "" || parseFloat(pass_cantidad) == 0) {
+
+    toastr.error('La cantidad ingresada no es valida.','',{
+     "positionClass": "toast-top-center",
+     "closeButton": true,
+     "progressBar":true
+   });
+
+  }else if (pass_presentación == "" || parseFloat(pass_presentación) == 0) {
+
+    toastr.error('La presentación ingresada no es valida.','',{
+     "positionClass": "toast-top-center",
+     "closeButton": true,
+     "progressBar":true
+   });
+
+  }else if (pass_costo == "" || parseFloat(pass_costo) == 0) {
+
+    toastr.error('El costo ingresado no es valido.','',{
+     "positionClass": "toast-top-center",
+     "closeButton": true,
+     "progressBar":true
+   });
+
+  }else{
+
+    cantidad_total_uni = (pass_cantidad * pass_presentación);
+    cos_total_pres = (pass_cantidad * pass_costo);
+
+    cod_unit_uni = (cos_total_pres/cantidad_total_uni);
+
+    can_sto = $('#can_sto').val(parseInt(cantidad_total_uni));
+    cos_uni = $('#cos_uni').val(parseInt(cod_unit_uni));
+    cos_mul = $('#cos_mul').val(parseInt(cos_total_pres));
+
+    $('#modal-paso_2').modal('hide');
+
+
+    var form = document.querySelector('#form-pasos');
+    form.reset();
+    habilitar();
+  }
+
+}
+
 function comprar(){
   num_fact=$('#num_fact').val();
   if(num_fact != ""){
@@ -125,11 +195,13 @@ $(document).ready(function(){
 
   cargar_aportes();
 
- //  toastr.info('Por favor, mientras ingrese los productos de la compra no recargue la pagina','',{
- //   "positionClass": "toast-bottom-right",
- //   "closeButton": true,
- //   "progressBar":true
- // });
+  $('#can_sto').keydown(function(){
+    $("#can_sto").css("border-color", "#cad1d7");
+  });
+  $('#cos_uni').keydown(function(){
+    $("#cos_uni").css("border-color", "#cad1d7");
+  });
+
   jQuery('#ver2').hide();
   $('#date-hour').load('../php/componentes/menu/date-hour.php');
   $('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
@@ -213,13 +285,81 @@ function habilitar(){
   cost = $('#cos_mul').val();
   if (!isNaN(cost) && cost != '0') {
    $('#cargar').removeAttr("disabled" );
-    $('#cargar').addClass( "btn-default");
-  $('#cargar').removeClass('btn-danger');
+   $('#cargar').addClass( "btn-default");
+   $('#cargar').removeClass('btn-danger');
  }else{
 
   $('#cargar').removeClass( "btn-default" );
   $('#cargar').addClass('btn-danger');
 
   $("#cargar").attr("disabled", true);
+}
+}
+
+
+function validar(){
+
+   $('#can_sto').prop("disabled", true); // Element(s) are now enabled.
+  $('#cos_uni').prop("disabled", true); // Element(s) are now enabled.
+
+  num_fact = $('#num_fact').val();
+  date = $('#date').val();
+  time = $('#time').val();
+  cod_cul = $('#cod_cul').val();
+  cod_ter_soc = $('#cod_ter_soc').val();
+  proveedor = $('#proveedor').val();
+  ins_esc = $('#ins_esc').val();
+  cod_ins = $('#cod_ins').val();
+
+
+
+  if(num_fact = "" || date == "" || time == "" || cod_cul == null || cod_ter_soc == null || proveedor == null || cod_ins == null){
+
+    if(num_fact == ""){
+     toastr.error('El número de factura no es valido','',{
+       "positionClass": "toast-top-center",
+       "closeButton": true,
+       "progressBar":true
+     });
+   }else  if(date == ""){
+     toastr.error('Por favor ingresa una fecha','',{
+       "positionClass": "toast-top-center",
+       "closeButton": true,
+       "progressBar":true
+     });
+   }else  if(time == ""){
+     toastr.error('Ingrese una hora','',{
+       "positionClass": "toast-top-center",
+       "closeButton": true,
+       "progressBar":true
+     });
+   }else  if(cod_cul == null){
+     toastr.error('Antes de continuar, seleccione un cultivo.','',{
+       "positionClass": "toast-top-center",
+       "closeButton": true,
+       "progressBar":true
+     });
+   }else  if(cod_ter_soc == null){
+     toastr.error('Antes de continuar, seleccione el socio que pagará esta compra.','',{
+       "positionClass": "toast-top-center",
+       "closeButton": true,
+       "progressBar":true
+     });
+   }else  if(proveedor == null){
+     toastr.error('Antes de continuar, seleccione el proveedor que le venderá.','',{
+       "positionClass": "toast-top-center",
+       "closeButton": true,
+       "progressBar":true
+     });
+   }else  if(cod_ins == null){
+     toastr.error('Antes de continuar, seleccione el  tipo y el insumo que va a agregar a la compra.','',{
+       "positionClass": "toast-top-center",
+       "closeButton": true,
+       "progressBar":true
+     });
+   }
+
+ }else{
+  $('#modal-paso_1').modal('toggle');
 }
 }

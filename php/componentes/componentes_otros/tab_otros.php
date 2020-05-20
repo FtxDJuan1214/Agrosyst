@@ -44,7 +44,7 @@ require '../../conexion.php';
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 
             <?php  
-            if ($partes[0] != '1') {
+            if ($partes[0] != '1' || $like == "1-") {
               ?>
               <a class="dropdown-item" href="#" href="#" onclick="llenarform(' <?php  echo $datos ?> ')" ><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
               <a class="dropdown-item" href="#" onclick="eliminar_otro(' <?php  echo $datos ?> ')"><div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div></a>

@@ -36,7 +36,7 @@
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 
                   <?php  
-                  if ($array[0] != '1') {
+                  if ($array[0] != '1' || $like == "1-") {
                     ?>
                     <a class="dropdown-item" href="#" onclick="editar_nom_cul(' <?php  echo $datos ?> ')"><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
                     <a class="dropdown-item" href="#"  onclick="eliminar_nom_cul(' <?php  echo $ver[0] ?> ')"><div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div></a>

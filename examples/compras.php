@@ -100,7 +100,7 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
       $validar = explode("+", $_SESSION['productos']);
 
       if ($validar[count($validar) - 2] === $string) {
-        
+
       }else{
        $_SESSION['costo_total']=($_SESSION['costo_total']+$cos_mul)."$";
        $_SESSION['productos']=$_SESSION['productos'].$string."+";
@@ -428,86 +428,98 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <div class="input-group">
-                    <input  require id="can_sto" name="can_sto" type="number" class="form-control" placeholder="Cantidad" autocomplete="off">
-                  </div>
+                  <button type="button" class="btn btn-block btn-success mb-3"  onclick="validar();"> Cantidad y costo unitario</button>
                 </div>
+                <div class="row">
+                  <div class="col-md-6">
 
-                <div class="form-group">
-                  <div class="input-group">
-                    <input  require id="cos_uni"  name="cos_uni" type="number" class="form-control" placeholder="Costo Unitario" autocomplete="off">
+                   <div class="form-group">
+                    <div class="input-group">
+                      <input disabled require  data-placement="top" title="" data-original-title="¿Cuantas unidades va a comprar?r" id="can_sto" name="can_sto" type="number" class="form-control" placeholder="Cantidad" autocomplete="off">
+                    </div>
                   </div>
-                </div>
 
-                <div class="form-group">
-                  <div class="input-group">
-                    <input readonly id="cos_mul" name="cos_mul" type="text" class="form-control" placeholder="Costo Insumos" autocomplete="off">
+                </div>
+                <div class="col-md-6">
+
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input disabled require  data-placement="top" title="" data-original-title="¿Cuanto cuesta cada unidad?" id="cos_uni"  name="cos_uni" type="number" class="form-control" placeholder="Costo Unitario" autocomplete="off">
+                    </div>
                   </div>
-                </div>
 
-                <div class="form-group">
-                  <div class="input-group">
-
-                    <?php if (isset($_SESSION['costo_total'])) {
-                      ?>
-                      <input readonly id="cos_tot" name="cos_tot" type="text" class="form-control" placeholder="Costo Total" autocomplete="off" value="<?php echo $_SESSION['costo_total'] ?>">
-                      <?php 
-                    }else{
-                      ?>
-                      <input readonly id="cos_tot" name="cos_tot" type="text" class="form-control" placeholder="Costo Total" autocomplete="off">
-                    <?php } ?>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-            <div class="row" id="aportes_chart">
-
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="float-md-left">
-                  <a style="font-size: 18px;" href="terceros.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Agregar nuevo socio o duenio"><i class="fas fa-user-plus"></i></a>
-
-                  <a style="font-size: 18px;" href="cultivos.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Crear cultivos"><i class="fas fa-spa"></i></a>
-
-                  <a style="font-size: 18px;" href="#" class="btn btn-info bg-gradient-green" data-container="body" data-toggle="popover" data-placement="top" data-content="Si no puede agregar productos a su compra, asegurese de haber elegido el proveedor, el socio que pagará y el insumo que va a comprar."><i class="far fa-question-circle"></i></a>
-
-                  <a style="font-size: 18px;" href="compras.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Re-hacer la compra"><i class="fas fa-redo-alt"></i></a>
                 </div>
               </div>
 
-              <div class="col-md-6">
-                <div class="float-md-right">        
-                  <input type="submit" disabled id="cargar" name="cargar" class="btn btn-default my-4" data-toggle="tooltip" data-placement="top" title="Agregar insumo" value="&#xf217    " style="font-family:'FontAwesome',tahoma; font-size: 21px;">
+              <div class="form-group">
+                <div class="input-group">
+                  <input readonly id="cos_mul" name="cos_mul" type="text" class="form-control" placeholder="Costo Insumos" autocomplete="off">
                 </div>
               </div>
+
+              <div class="form-group">
+                <div class="input-group">
+
+                  <?php if (isset($_SESSION['costo_total'])) {
+                    ?>
+                    <input readonly id="cos_tot" name="cos_tot" type="text" class="form-control" placeholder="Costo Total" autocomplete="off" value="<?php echo $_SESSION['costo_total'] ?>">
+                    <?php 
+                  }else{
+                    ?>
+                    <input readonly id="cos_tot" name="cos_tot" type="text" class="form-control" placeholder="Costo Total" autocomplete="off">
+                  <?php } ?>
+                </div>
+              </div>
+
             </div>
-          </form>
 
-          <div class="col-md-12">
-            <div class="form-group">
-              <div class="input-group">
+          </div>
+          <div class="row" id="aportes_chart">
 
-                <input  id="informacion" name="informacion" type="text" style="display: none;" class="form-control" placeholder="información para hacer la compra" autocomplete="off" value="<?php echo $_SESSION['productos'];?>">
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="float-md-left">
+                <a style="font-size: 18px;" href="terceros.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Agregar nuevo socio o duenio"><i class="fas fa-user-plus"></i></a>
+
+                <a style="font-size: 18px;" href="cultivos.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Crear cultivos"><i class="fas fa-spa"></i></a>
+
+                <a style="font-size: 18px;" href="#" class="btn btn-info bg-gradient-green" data-container="body" data-toggle="popover" data-placement="top" data-content="Si no puede agregar productos a su compra, asegurese de haber elegido el proveedor, el socio que pagará y el insumo que va a comprar."><i class="far fa-question-circle"></i></a>
+
+                <a style="font-size: 18px;" href="compras.php" class="btn btn-info bg-gradient-green" data-toggle="tooltip" data-placement="top" title="Re-hacer la compra"><i class="fas fa-redo-alt"></i></a>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="float-md-right">        
+                <input type="submit" disabled id="cargar" name="cargar" class="btn btn-default my-4" data-toggle="tooltip" data-placement="top" title="Agregar insumo" value="&#xf217    " style="font-family:'FontAwesome',tahoma; font-size: 21px;">
               </div>
             </div>
           </div>
-          <div class="col-md-12">
-            <div class="form-group">
-              <div class="input-group">
-                <input  id="finca" name="finca" type="text" style="display: none;" class="form-control" placeholder="información para hacer la compra" autocomplete="off" value="<?php echo $_SESSION['ide_finca'] ?>">
-              </div>
+        </form>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <div class="input-group">
+
+              <input  id="informacion" name="informacion" type="text" style="display: none;" class="form-control" placeholder="información para hacer la compra" autocomplete="off" value="<?php echo $_SESSION['productos'];?>">
             </div>
           </div>
-          <div class="table-responsive"  id="tab_productos">
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <div class="input-group">
+              <input  id="finca" name="finca" type="text" style="display: none;" class="form-control" placeholder="información para hacer la compra" autocomplete="off" value="<?php echo $_SESSION['ide_finca'] ?>">
+            </div>
           </div>
+        </div>
+        <div class="table-responsive"  id="tab_productos">
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 </div>
@@ -565,26 +577,79 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
     </div>
   </div>
 </div>
-<!-- Footer -->
-<footer class="footer">
-  <div class="row align-items-center justify-content-xl-between">
-    <div class="col-xl-6">
-      <div class="copyright text-center text-xl-left text-muted">
-        &copy; 2019 <a href="#" class="font-weight-bold ml-1" target="_blank">Agrosyst Co</a>
+<!-- Modales -->
+
+<div class="modal fade" id="modal-paso_1" tabindex="-1" role="dialog" aria-labelledby="modal-paso_1" aria-hidden="true">
+  <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+    <div class="modal-content bg-gradient-primary">
+
+      <div class="modal-header">
+        <h6 class="modal-title" id="modal-title-notification">Paso 1</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="py-3 text-center">
+          <i class="fa fa-question-circle" style="font-size: 5rem;"></i>
+          <h4 class="heading mt-4">¿El insumo que va a comprar viene en presentaciones?</h4>
+          <p>Ejemplo: frascos, papeletas, galones etc.</p>
+        </div>
+
+        <div align="center">
+          <button type="button" class="btn btn-white" onclick="hallar_can_y_pre();">Si</button>
+          <button type="button" class="btn btn-white" onclick="habilitar_inpts();">No</button>
+        </div>
+
       </div>
     </div>
-    <div class="col-xl-6">
-      <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-        <li class="nav-item">
-          <a href="#" class="nav-link" target="_blank">Ver manual</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" target="_blank">Sobre nosotros</a>
-        </li>
-      </ul>
-    </div>
+
   </div>
-</footer>
+</div>
+
+
+<div class="modal fade" id="modal-paso_2" tabindex="-1" role="dialog" aria-labelledby="modal-paso_2" aria-hidden="true">
+  <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+    <div class="modal-content bg-gradient-primary">
+
+      <div class="modal-header">
+        <h6 class="modal-title" id="modal-title-notification">Paso 2</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="py-3 text-center">
+          <i class="fa fa-calculator" style="font-size: 5rem;"></i>
+          <p>Ingrese los valores en los campos</p>
+          <form id="form-pasos">
+            <div class="form-group">
+              <input id="pass_cantidad" type="number" class="form-control form-control-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="cantidad de frascos, papeletas, galones o unidades que va a comprar"placeholder="¿Cuantas unidades va a comprar?">
+
+            </div>
+            <div class="form-group">
+              <input id="pass_presentación" type="number" class="form-control form-control-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="La presnetación está en la etiqueta. Ejemplo: en un frasco las presentación puede ser de 400 Mililitros, o en una papeleta de 40 gramos."placeholder="¿De cuanto es la presentación?">
+            </div>
+            <div class="form-group">            
+              <input id="pass_costo" type="number" class="form-control form-control-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="El precio individual de cada frasco, papeleta, galon o unidad."placeholder="¿Cuanto cuesta cada unidad?">
+            </div>
+          </form>
+        </div>
+
+        <div align="center">
+          <button type="button" class="btn btn-white" onclick="subir_datos();">Terminar</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </div>
 </div>
 <!-- Argon Scripts -->
