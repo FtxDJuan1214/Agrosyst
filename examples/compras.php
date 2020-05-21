@@ -435,7 +435,7 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
 
                    <div class="form-group">
                     <div class="input-group">
-                      <input disabled require  data-placement="top" title="" data-original-title="¿Cuantas unidades va a comprar?r" id="can_sto" name="can_sto" type="number" class="form-control" placeholder="Cantidad" autocomplete="off">
+                      <input readonly require  data-placement="top" title="" data-original-title="¿Cuantas unidades va a comprar?r" id="can_sto" name="can_sto" type="number" class="form-control" placeholder="Cantidad" autocomplete="off">
                     </div>
                   </div>
 
@@ -444,7 +444,7 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
 
                   <div class="form-group">
                     <div class="input-group">
-                      <input disabled require  data-placement="top" title="" data-original-title="¿Cuanto cuesta cada unidad?" id="cos_uni"  name="cos_uni" type="number" class="form-control" placeholder="Costo Unitario" autocomplete="off">
+                      <input readonly require  data-placement="top" title="" data-original-title="¿Cuanto cuesta cada unidad?" id="cos_uni"  name="cos_uni" type="number" class="form-control" placeholder="Costo Unitario" autocomplete="off">
                     </div>
                   </div>
 
@@ -462,11 +462,11 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
 
                   <?php if (isset($_SESSION['costo_total'])) {
                     ?>
-                    <input readonly id="cos_tot" name="cos_tot" type="text" class="form-control" placeholder="Costo Total" autocomplete="off" value="<?php echo $_SESSION['costo_total'] ?>">
+                    <input disabled id="cos_tot" name="cos_tot" type="text" class="form-control" placeholder="Costo Total" autocomplete="off" value="<?php echo $_SESSION['costo_total'] ?>">
                     <?php 
                   }else{
                     ?>
-                    <input readonly id="cos_tot" name="cos_tot" type="text" class="form-control" placeholder="Costo Total" autocomplete="off">
+                    <input disabled id="cos_tot" name="cos_tot" type="text" class="form-control" placeholder="Costo Total" autocomplete="off">
                   <?php } ?>
                 </div>
               </div>

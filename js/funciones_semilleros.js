@@ -7,7 +7,7 @@ function preloader(){
 	
 	des_ins=$('#des_ins').val();
 	cod_tso=$('#cod_tso').val();
-	det_smr=$('#det_smr').val();	
+	det_smr=$('#det_smr').val().replace(/(\r\n|\n|\r)/gm," ");	
 
 
 	if(des_ins == "" || cod_tso == null || det_smr == ""){
@@ -124,7 +124,8 @@ function preloaderup(){
 	cod_ins = global1;
 	des_insup=$('#des_insup').val();
 	cod_tsoup=$('#cod_tsoup').val();
-	det_smrup=$('#det_smrup').val();
+	det_smrup=$('#det_smrup').val().replace(/(\r\n|\n|\r)/gm," ");	
+	
 
 	if(des_insup == "" || cod_tsoup == null || det_smrup == ""){
 		if(des_insup == ""){

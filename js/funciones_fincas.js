@@ -2,7 +2,7 @@
 
   cod_fin=$('#cod_fin').val();
   nom_fin=$('#nom_fin').val();
-  det_fin=$('#det_fin').val();
+  det_fin=$('#det_fin').val().replace(/(\r\n|\n|\r)/gm," "); 
   due_fin=$('#due_fin').val();
   dep_fin=$('#dep_fin').val();
   mun_dep=$('#mun_dep').val();
@@ -75,40 +75,40 @@ function crear_finca(cod_fin,nom_fin,det_fin,due_fin,dep_fin,mun_dep,uni_med,med
    processData: false,
    success:function(r){
      //alert("erre: " +r);
-    if(r.includes('Resource id')){
-     var form = document.querySelector('#form-add-finca');
-     form.reset();
-     jQuery('#preloader').hide();
-     jQuery('#form-add-finca').show();
-     $('#modal-form').modal('hide');
+     if(r.includes('Resource id')){
+       var form = document.querySelector('#form-add-finca');
+       form.reset();
+       jQuery('#preloader').hide();
+       jQuery('#form-add-finca').show();
+       $('#modal-form').modal('hide');
 
-     cadena='cod_fin='+ cod_fin+
-     '&nom_fin='+ nom_fin +
-     '&det_fin='+ det_fin +
-     '&due_fin='+ due_fin +
-     '&dep_fin='+ dep_fin +
-     '&mun_dep='+ mun_dep +
-     '&uni_med='+ uni_med +
-     '&med_fin='+ med_fin;
-     $.ajax({
+       cadena='cod_fin='+ cod_fin+
+       '&nom_fin='+ nom_fin +
+       '&det_fin='+ det_fin +
+       '&due_fin='+ due_fin +
+       '&dep_fin='+ dep_fin +
+       '&mun_dep='+ mun_dep +
+       '&uni_med='+ uni_med +
+       '&med_fin='+ med_fin;
+       $.ajax({
 
-       type:"post",
-       url:"php/crud/fincas/enviar_cod.php",
-       data:cadena,
-     })
-     $.ajax({
-       type:"post",
-       url:"finca_actual.php",
-       data:cadena,
-     });
-     swal("Finca agregada!"," ", "success");
-     jQuery('#preloader').hide();
-     jQuery('#form-add-finca').show();
-     location.href="home.php";
-   }else{
-    alert(r);
+         type:"post",
+         url:"php/crud/fincas/enviar_cod.php",
+         data:cadena,
+       })
+       $.ajax({
+         type:"post",
+         url:"finca_actual.php",
+         data:cadena,
+       });
+       swal("Finca agregada!"," ", "success");
+       jQuery('#preloader').hide();
+       jQuery('#form-add-finca').show();
+       location.href="home.php";
+     }else{
+      alert(r);
+    }
   }
-}
 });
 }
 
@@ -116,7 +116,7 @@ function crear_finca(cod_fin,nom_fin,det_fin,due_fin,dep_fin,mun_dep,uni_med,med
 function preloaderup(){
 
   nom_finup = $('#nom_finup').val(); 
-  det_finup = $('#det_finup').val(); 
+  det_finup = $('#det_finup').val().replace(/(\r\n|\n|\r)/gm," ");  
   due_finup = $('#ide_ter_up').val(); 
   dep_finup = $('#dep_finup').val(); 
   mun_fin_up = $('#mun_fin_up').val(); 
@@ -189,7 +189,7 @@ function actualizar_finca(){
     contentType: false,
     processData: false,
     success:function(e){
-        r=e.trim();
+      r=e.trim();
       if(r.includes('Resource id')){
         swal("¡Finca Editada!"," ", "success");
         var form = document.querySelector('#form-up-fin');

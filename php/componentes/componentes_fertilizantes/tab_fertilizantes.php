@@ -29,6 +29,9 @@ require '../../conexion.php';
       $ver[2]."||".
       $ver[3]."||".
       $partes[1];
+
+      $datos  = preg_replace("/\=\r\n$/","", $datos);
+
       ?>
       <tr>
 
@@ -44,9 +47,9 @@ require '../../conexion.php';
               <?php  
               if ($partes[0] != '1' || $like == "1-") {
                 ?>
-                <a class="dropdown-item" href="#" onclick="llenarform(' <?php  echo $datos ?> ')"><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
+                <a class="dropdown-item" href="#" onclick="llenarform('<?php  echo $datos ?>')"><div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div></a>
 
-                <a class="dropdown-item" href="#" onclick="eliminar_semilla(' <?php  echo $datos ?> ')" ><div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div></a>
+                <a class="dropdown-item" href="#" onclick="eliminar_semilla('<?php  echo $datos ?>')" ><div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div></a>
                 <?php
               }else{
                 ?>

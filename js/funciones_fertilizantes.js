@@ -6,7 +6,7 @@ function actualizar_tabla(){
 function preloader(){
 	des_ins=$('#des_ins').val();
 	cod_unm=$('#cod_unm').val();
-	det_sem=$('#det_sem').val();	
+	det_sem=$('#det_sem').val().replace(/(\r\n|\n|\r)/gm," ");
 	if(des_ins == "" || cod_unm == null || det_sem == ""){
 		if(des_ins == ""){
 			toastr.error('Por favor ingrese el nombre del fertilizante','',{
@@ -120,7 +120,7 @@ function preloaderup(){
 
 	des_insup=$('#des_insup').val();
 	cod_unmup=$('#cod_unmup').val();
-	det_semup=$('#det_semup').val();
+	det_semup=$('#det_semup').val().replace(/(\r\n|\n|\r)/gm," ");
 
 	if(des_insup == "" || cod_unmup == null || det_semup == ""){
 		if(des_insup == ""){

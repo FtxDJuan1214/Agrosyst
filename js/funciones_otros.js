@@ -7,7 +7,7 @@ function preloader(){
 
 	des_ins=$('#des_ins').val();	
 	cod_unm=$('#uni_med').val();
-	det_otr=$('#det_otr').val();
+	det_otr=$('#det_otr').val().replace(/(\r\n|\n|\r)/gm," ");	
 
 	if(des_ins == "" || cod_unm == null || det_otr == ""){
 		if(des_ins == ""){
@@ -124,7 +124,7 @@ function preloaderup(){
 	des_insup=$('#des_insup').val();
 	tip_uni_medup=$('#tip_uni_medup').val();
 	uni_medup=$('#uni_medup').val();
-	det_otrup=$('#det_otrup').val();
+	det_otrup=$('#det_otrup').val().replace(/(\r\n|\n|\r)/gm," ");	
 
 	if(des_insup == "" || uni_medup == null || det_otrup == ""){
 		if(des_insup == ""){

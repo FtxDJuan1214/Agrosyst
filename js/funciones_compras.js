@@ -54,17 +54,21 @@ function subir_datos(){
 
     cod_unit_uni = (cos_total_pres/cantidad_total_uni);
 
-    can_sto = $('#can_sto').val(parseInt(cantidad_total_uni));
-    cos_uni = $('#cos_uni').val(parseInt(cod_unit_uni));
-    cos_mul = $('#cos_mul').val(parseInt(cos_total_pres));
+   $('#can_sto').prop("disabled", false); // Element(s) are now enabled.
+   $('#cos_uni').prop("disabled", false); // Element(s) are now enabled.
+   // $('#cos_mul').prop("disabled", false); // Element(s) are now enabled.
+   // alert("Hols");
+   can_sto = $('#can_sto').val(parseInt(cantidad_total_uni));
+   cos_uni = $('#cos_uni').val(parseInt(cod_unit_uni));
+   cos_mul = $('#cos_mul').val(parseInt(cos_total_pres));
 
-    $('#modal-paso_2').modal('hide');
+   $('#modal-paso_2').modal('hide');
 
 
-    var form = document.querySelector('#form-pasos');
-    form.reset();
-    habilitar();
-  }
+   var form = document.querySelector('#form-pasos');
+   form.reset();
+   habilitar();
+ }
 
 }
 

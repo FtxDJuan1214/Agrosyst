@@ -6,7 +6,7 @@ function actualizar_tabla(){
 function preloader(){
 	
 	nom_lab=$('#nom_lab').val();
-	det_lab=$('#det_lab').val();
+	det_lab=$('#det_lab').val().replace(/(\r\n|\n|\r)/gm," ");	
 
 	if(nom_lab == "" || det_lab == "" ){
 
@@ -88,7 +88,7 @@ function preloaderup(){
 	
 	cod_lab = global;
 	nom_labup=$('#nom_labup').val();
-	det_labup=$('#det_labup').val();
+	det_labup=$('#det_labup').val().replace(/(\r\n|\n|\r)/gm," ");	
 
 	if(nom_labup == "" || det_labup == "" ){
 
