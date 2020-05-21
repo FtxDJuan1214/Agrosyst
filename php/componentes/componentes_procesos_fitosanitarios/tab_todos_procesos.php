@@ -253,7 +253,6 @@ require '../../conexion.php';
                 INNER JOIN insumos ON insumos.cod_ins = stock.cod_ins
                 INNER JOIN agroquimicos ON insumos.cod_ins = agroquimicos.cod_ins
                 WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
-                AND procesos_fitosanitarios.ffi_pfi IS NOT null
                 AND tarea.cod_tar = '$tareas[5]'";
                 $quimicos=pg_query($conexion,$agro);
                 $listado=""; 
@@ -296,9 +295,9 @@ require '../../conexion.php';
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                         
-                       <!-- <a class="dropdown-item" href="#" onclick="informe(' <?php  echo $datos ?> ')">
+                       <a class="dropdown-item" href="#" onclick="informe(' <?php  echo $datos ?> ')">
                             <div><i class="fas fa-envelope-open-text" style="margin-right: 14px;"></i>Descargar informe</div>
-                        </a>-->
+                        </a>
                         
                     </div>
                 </div>

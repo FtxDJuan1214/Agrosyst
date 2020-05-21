@@ -109,7 +109,6 @@ if($cod[0]){
                                                     <option value="" disabled selected>Función</option>
                                                     <option value="Curación">Curación</option>
                                                     <option value="Prevención">Prevención</option>
-                                                    <option value="Nutrición">Nutrición</option>
                                                 </select>
                                             </div>
                                         </div>

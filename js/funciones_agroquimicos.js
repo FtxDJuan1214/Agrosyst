@@ -50,7 +50,7 @@ function guardar_agro(){
 	dos_agr=$('#dos_agr').val();
 	res = verificar_num_let(dos_agr);
 	des_ins= nom_agr+" " +pre_agr;
-	rap_agr=$('#rap_agr').val();
+	rap_agr=$('#rap_agr').val().replace(/(\r\n|\n|\r)/gm," ");
 	pcr_agr=$('#pcr_agr').val();
 	pen_agr=$('#pen_agr').val();
 	pro_agr=$('#pro_agr').val();
@@ -207,7 +207,7 @@ function llenarform(datos){
 	$('#tip_uni_med_up').val(data[18]);
 	$('#pen_agr_up').val(data[9]);
 	$('#des_ins_up').val(data[20]);
-	$('#rap_agr_up').val(data[21]);	
+	$('#rap_agr_up').val(data[21]);
 
 	global = data[0].trim();
 	global1 = data[1].trim();
@@ -225,7 +225,7 @@ function preloaderup(){
 	dos_agr=$('#dos_agr_up').val();
 	res = verificar_num_let(dos_agr);
 	des_ins=$('#des_ins_up').val();
-	rap_agr=$('#rap_agr_up').val();
+	rap_agr=$('#rap_agr_up').val().replace(/(\r\n|\n|\r)/gm," ");
 	pcr_agr=$('#pcr_agr_up').val();
 	pen_agr=$('#pen_agr_up').val();
 	pro_agr=$('#pro_agr_up').val();
@@ -363,7 +363,7 @@ function editarRecomendaciones(){
 	
 	function agregarRec(){
 	
-		nuevo=$('#rus_agr').val();
+		nuevo=$('#rus_agr').val().replace(/(\r\n|\n|\r)/gm," ");
 		cadena='cod_agr='+ global.trim()+
 		'&nuevo='+ nuevo;
 		$.ajax({

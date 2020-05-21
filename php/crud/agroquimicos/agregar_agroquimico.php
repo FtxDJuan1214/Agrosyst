@@ -18,6 +18,7 @@ $cod_tag = $_POST['cod_tag'];
 $cod_tox = $_POST['cod_tox'];
 $cod_iac = $_POST['cod_iac'];
 $fun_agr = $_POST['fun_agr'];
+$dos_agr = $_POST['dos_agr'];
 $add_rus_agr = $_POST['add_rus_agr'];
 
 $arreglo = explode("||",$add_rus_agr);
@@ -34,8 +35,8 @@ echo $result=pg_query($conexion,$sql);
 
 
 $sql2 ="INSERT INTO public.agroquimicos(
-	cod_agr, cod_ins, nom_agr, rap_agr, pcr_agr, pen_agr, pro_agr, cod_for, cod_tag, cod_tox, cod_iac, fun_agr)
-	VALUES ('$like$cod_agr', $cod_ins, '$nom_agr', '$rap_agr', '$pcr_agr', '$pen_agr', '$pro_agr', '$cod_for', '$cod_tag', '$cod_tox','$cod_iac','$fun_agr')";
+	cod_agr, cod_ins, nom_agr, rap_agr, pcr_agr, pen_agr, pro_agr, cod_for, cod_tag, cod_tox, cod_iac, fun_agr, dos_agr)
+	VALUES ('$like$cod_agr', $cod_ins, '$nom_agr', '$rap_agr', '$pcr_agr', '$pen_agr', '$pro_agr', '$cod_for', '$cod_tag', '$cod_tox','$cod_iac','$fun_agr','$dos_agr')";
 
 echo $result2 = pg_query($conexion,$sql2);
 
