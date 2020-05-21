@@ -225,7 +225,7 @@ function informe(datos){
     cod_cul = data[0];
     cod_pfi=data[1];
     nom_cul=data[2];
-	alert(cod_cul+' y '+cod_pfi);
+	//alert(cod_cul+' y '+cod_pfi);
 		window.open('../php/componentes/componentes_procesos_fitosanitarios/informe.php/?c='+cod_cul+'&d='+cod_pfi+'&n='+nom_cul);
 	
 }

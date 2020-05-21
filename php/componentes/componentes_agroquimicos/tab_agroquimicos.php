@@ -73,7 +73,7 @@ $user =  $_SESSION['idusuario'];
            $ver[20]."||".
            $ver[21]."||";
            ?>
-           <tr>
+        <tr>
 
             <td><?php echo $ver[2] ?></td>
             <td><?php echo $ver[3] ?></td>
@@ -89,45 +89,44 @@ $user =  $_SESSION['idusuario'];
             $result1=pg_query($conexion,$sql1);
             while($ver1=pg_fetch_row($result1)){
               echo $ver1[0]; ?>
-              <br><?php 
+                <br><?php 
           }
           ?></td>
 
-          <td class="text-right">
-              <div class="dropdown">
-                <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-ellipsis-v"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                  <?php  
+            <td class="text-right">
+                <div class="dropdown">
+                    <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        <?php  
                   $partes = explode("-", $ver[0]);
-                  if ($partes[0] != '1' || $like == "1-") {
+                  if ($partes[0] != '1' || $user == "1-") {
                     ?>
-                    <a class="dropdown-item" href="#" onclick="llenarform(' <?php  echo $datos ?>')">
-                        <div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div>
-                    </a>
-                    <a class="dropdown-item" href="#" onclick="eliminar_agroquimico(' <?php  echo $datos ?> ')">
-                        <div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div>
-                    </a>
-                    <?php
-                }else{
-                    ?>
-                    <div class="text-center">
-                      <i class="fa fa-ban text-danger" aria-hidden="true" style="font-size: 1.1rem;"></i>
-                  </div>
+                        <a class="dropdown-item" href="#" onclick="llenarform(' <?php  echo $datos ?>')">
+                            <div><i class="fas fa-pencil-alt" style="margin-right: 14px;"></i>Editar</div>
+                        </a>
+                        <a class="dropdown-item" href="#" onclick="eliminar_agroquimico(' <?php  echo $datos ?> ')">
+                            <div><i class="fas fa-times" style="margin-right: 14px;"></i>Eliminar</div>
+                        </a>
+                        <?php
+                            }else{
+                                ?>
+                        <div class="text-center">
+                            <i class="fa fa-ban text-danger" aria-hidden="true" style="font-size: 1.1rem;"></i>
+                        </div>
 
-                  <?php
-              }
-              ?>
-          </div>
-      </div>
-  </td>
+                        <?php
+                            }
+                            ?>
+                    </div>
+                </div>
+            </td>
 
-</tr>
-<?php 
+        </tr>
+        <?php 
 }
 ?>
-</tbody>
+    </tbody>
 </table>
-
-
