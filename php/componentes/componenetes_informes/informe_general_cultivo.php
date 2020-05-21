@@ -61,8 +61,8 @@ if ($info[6] == 1) {
 	$html.='<p style="margin-left:7px;">A lafecha de '.$fecha.', el estado del cultivo es: Inicio de fructificacipon</p>';
 }else if($info[6] == 6){
 	$html.='<p style="margin-left:7px;">A lafecha de '.$fecha.', el estado del cultivo es: Cosecha</p>';
-}else if($info[6] == 6){
-	$html.='<p style="margin-left:7px;">Finalizado</p>';
+}else if($info[6] == 7){
+	$html.='<p style="margin-left:7px;">A lafecha de '.$fecha.', el estado del cultivo es: Finalizado</p>';
 }
 $html.='
 <p style="font-weight:bold">Socios del cultivo:</p>';

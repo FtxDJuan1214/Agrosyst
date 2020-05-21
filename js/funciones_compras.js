@@ -8,6 +8,11 @@ function habilitar_inpts(){
   swal("Siguiente","Ingresa la cantidad y el costo unitario en los campos correspondientes.", "info");
   $('#modal-paso_1').modal('hide');
   $('#modal-paso_2').modal('hide');
+
+  
+
+  $("#can_sto").prop("readonly", false);
+  $("#cos_uni").prop("readonly", false);
   $('#can_sto').prop("disabled", false); // Element(s) are now enabled.
   $('#cos_uni').prop("disabled", false); // Element(s) are now enabled.
 

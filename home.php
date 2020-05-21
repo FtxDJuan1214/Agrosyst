@@ -1045,9 +1045,9 @@ style="min-height: 600px; background-image: url(imagenes/<?php echo $vere[15]?>)
 
                             <div class="form-group mb-3">
                                 <div class="input-group input-group-alternative" id="div_det_finup">
-                                    <textarea style="border-color: #fb6340;" id="det_finup"
+                                    <input style="border-color: #fb6340;" id="det_finup"
                                     name="det_finup" class="form-control" rows="1"
-                                    maxlength="45"></textarea>
+                                    maxlength="45">
                                 </div>
                             </div>
 

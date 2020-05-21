@@ -116,7 +116,7 @@ require 'php/conexion.php';
 
                 <label for="det_fin">Detalle</label>
                 <div class="input-group-alternative" id="div_det_fin" style="margin-bottom: 25px;">
-                  <textarea style="border-color: #fb6340;" id="det_fin" name="det_fin" class="form-control" rows="2" maxlength="45"></textarea>
+                  <input style="border-color: #fb6340;" id="det_fin" name="det_fin" class="form-control" rows="2" maxlength="45">
                 </div>
 
                 <div class="row">
