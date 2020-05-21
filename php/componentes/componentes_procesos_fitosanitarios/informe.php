@@ -70,16 +70,58 @@ $html='
 $html.='<table>
             <thead style="width:100%;">
                 <tr style="width:100px;">
-                    <th style="width:100px;">Código</th>
-                    <th style="width:100px;">Descripción</th>
+                    <th style="width:100px;">Nombre Labor</th>
                     <th style="width:100px;">Fecha</th>
+                    <th style="width:100px;">Calificación Labor</th>
+                    <th style="width:100px;">Agroquímicos Utilizados</th>
+                    <th style="width:100px;">Comentarios</th>
+                    
                 </tr>
             </thead>
             <tbody>';
         $html.='<tr>
-                    <td>'.'HOLA'.'</td>
-                    <td>'.'SII'.'Kg</td>
+                    <td>';while($tareas=pg_fetch_row($tar2)){
+                        $html.='<p style="margin-left:7px;"> 	'.$tareas[1]; $html.='</p><br>';
+                    }
+                    $html.='</td>
+                    <td>';while($tareas=pg_fetch_row($tar3)){
+                        $html.='<p style="margin-left:7px;"> 	'.$tareas[4]; $html.='</p><br>';
+                    }
+                    $html.='</td>
+                    <td>';while($tareas=pg_fetch_row($tar4)){
+                        $html.='<p style="margin-left:7px;"> 	'.$tareas[3]; $html.='</p><br>';
+                    }
+                    $html.='</td>
+                    <td>';while($tareas=pg_fetch_row($tar5)){ 
+                
+                        $agro = "SELECT tarea.cod_tar,utilizar.cod_sto, stock.cod_ins, insumos.des_ins, agroquimicos.nom_agr
+                        FROM fitosanitaria 
+                        INNER JOIN planificacion ON fitosanitaria.cod_pla = planificacion.cod_pla
+                        INNER JOIN tarea ON tarea.cod_tar = fitosanitaria.cod_tar
+                        INNER JOIN procesos_fitosanitarios ON procesos_fitosanitarios.cod_pfi = planificacion.cod_pfi
+                        INNER JOIN afeccion ON afeccion.cod_afe = procesos_fitosanitarios.cod_afe
+                        INNER JOIN efectuar ON efectuar.cod_tar= tarea.cod_tar
+                        INNER JOIN utilizar ON utilizar.cod_tar = tarea.cod_tar
+                        INNER JOIN stock ON utilizar.cod_sto = stock.cod_sto
+                        INNER JOIN insumos ON insumos.cod_ins = stock.cod_ins
+                        INNER JOIN agroquimicos ON insumos.cod_ins = agroquimicos.cod_ins
+                        WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
+                        AND tarea.cod_tar = '$tareas[5]'";
+
+                        $quimicos=pg_query($conexion,$agro);
+                        $listado=""; 
+                        
+                        while($ragro=pg_fetch_row($quimicos)){ 
+
+                            $listado = $listado.'• '.$ragro[4]."\n";
+                            $html.='<p style="margin-left:7px;"> 	'.$listado; $html.='</p><br>';
+
+                            }
+
+                        }
+                    $html.='</td>
                     <td>'.'NOO'.'</td>
+
                 </tr>
             </tbody>
         </table>

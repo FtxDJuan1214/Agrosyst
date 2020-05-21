@@ -79,7 +79,7 @@ $stock = "";
                     <td><center><input type="button" name="add" class="btn btn-dark sm-3" data-toggle="tooltip"
                             data-placement="left" value="&#xf0a5    "
                             style="font-family:'FontAwesome',tahoma; font-size: 12px;"
-                            onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$stock?>')">
+                            onclick="cargarTablaAdd('<?php echo $ver[0].'_'.$ver[1].'_'.$ver[2].'_'.$ver[3].'_'.$ver[4].'_'.$stock?>');">
                     </center></td>
 
                     <?php 

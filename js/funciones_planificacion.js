@@ -286,7 +286,7 @@ function new_planificacion() {
 
   tip_pla = $('#tip_tar').val();
   epoca = $('#epoca').val();
-  det_pla = $('#det_pla').val();
+  det_pla = $('#det_pla').val().replace(/(\r\n|\n|\r)/gm," ");
   info = "";
   //
   enf_o_plaga = $('#enf_o_plaga').val();
@@ -338,7 +338,7 @@ function agregar_plan() {
   
   
   num_pla = $('#num_pla').val().split(' ')[2].trim();
-  det_pla = $('#det_pla').val();
+  det_pla = $('#det_pla').val().replace(/(\r\n|\n|\r)/gm," ");
   epoca = $('#epoca').val();
   fecha = $('#date').val();
   tip_tar = $('#tip_tar').val();
