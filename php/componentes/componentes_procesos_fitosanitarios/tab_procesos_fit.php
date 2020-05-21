@@ -59,6 +59,7 @@ require '../../conexion.php';
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody id="myTable">
@@ -86,6 +87,10 @@ require '../../conexion.php';
     while($ver=pg_fetch_row($result)){  
 
      $sep = explode("-",$ver[3]);
+
+     $datos=$ver[4]."||".
+     $ver[2]."||".
+     $sep[1]."||";
 
 //-------------------Centrales----------------------------//
     $tar = "SELECT fitosanitaria.cod_fit, labores.nom_lab, labores.det_lab, 
@@ -283,8 +288,8 @@ require '../../conexion.php';
                 </center>
                 <br>
                 <?php            
-        }
-        ?>
+                    }
+                    ?>
             </td>
             <td>
                 <div class="text-center">
@@ -305,6 +310,21 @@ require '../../conexion.php';
                         onclick="terminarProceso(' <?php  echo $ver[2] ?> ', ' <?php  echo $ver[4] ?> ')">Terminar proceso</button>
 
                     <div id="sintomas-mostrar">
+                    </div>
+                </div>
+            </td>
+            <td class="text-right">
+                <div class="dropdown">
+                    <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        
+                       <a class="dropdown-item" href="#" onclick="informeActivo(' <?php  echo $datos ?> ')">
+                            <div><i class="fas fa-envelope-open-text" style="margin-right: 14px;"></i>Descargar informe</div>
+                        </a>
+                        
                     </div>
                 </div>
             </td>
