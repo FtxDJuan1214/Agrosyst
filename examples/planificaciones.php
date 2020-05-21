@@ -259,9 +259,9 @@ if (isset($_SESSION['usuario'])) {
                                         </td>
                                         <td>
                                             <center><?php if($ver[9] == ''){
-                                                    echo "<p class='text-success' style='font-size: 0.9rem;' >Activa</>";
+                                                    echo "<p class='text-success' style='font-size: 0.9rem;' >Activo</>";
                                             }else{
-                                                    echo "<p class='text-warning' style='font-size: 0.9rem;' >Terminada</>";
+                                                    echo "<p class='text-warning' style='font-size: 0.9rem;' >Terminado</>";
                                             } ?></center>
                                         </td>
 

@@ -295,9 +295,9 @@ require '../../conexion.php';
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                         
-                       <!--<a class="dropdown-item" href="#" onclick="informe(' <?php  echo $datos ?> ')">
+                       <a class="dropdown-item" href="#" onclick="informe(' <?php  echo $datos ?> ')">
                             <div><i class="fas fa-envelope-open-text" style="margin-right: 14px;"></i>Descargar informe</div>
-                        </a>-->
+                        </a>
                         
                     </div>
                 </div>
