@@ -28,7 +28,7 @@ INNER JOIN cultivos ON cultivos.cod_cul = ejecutar.cod_cul
 WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
 AND procesos_fitosanitarios.ffi_pfi IS null
 AND cultivos.cod_cul = '$cod_cul'
-AND fitosanitaria.aoi_fit IS NOT NULL
+AND fitosanitaria.aoi_fit IS NULL
 AND procesos_fitosanitarios.cod_pfi = '$cod_pfi'";
 
 $tar1=pg_query($conexion,$tar);
@@ -62,16 +62,14 @@ $html='
             <h2>Proceso contra '.$info[6].' en el cultivo '.$nom_cul.'</h2>
         </div>
         <p style="font-weight:bold;">Estado: </p>
-        <p style="margin-left:7px; color:red"><b>TERMINADO</b></p>
+        <p style="margin-left:7px;color:#15CA19"><b>ACTIVO</b></p>
         <p style="font-weight:bold">Fecha de inicio de la plaga/enfermedad: </p>
         <p style="margin-left:7px;">'.$info[4].'</p>
-        <p style="font-weight:bold">Fecha de finalización de la plaga/enfermedad: </p>
-        <p style="margin-left:7px;">'.$info[7].'</p>
         <p style="font-weight:bold"></p>';
 
 $html.='<table>
             <thead style="width:100%;">
-                <tr style="background:#95BBED;">
+                <tr style="background:#BEBAD8;">
                     <th>Nombre Labor</th>
                     <th>Fecha Realización</th>
                     <th>Calificación Labor</th>
@@ -80,7 +78,7 @@ $html.='<table>
                 </tr>
             </thead>
             <tbody>';
-        $html.='<tr style="background:#DCE6F3;">
+        $html.='<tr style="background:#E4E3EA;">
                     <td>';while($tareas=pg_fetch_row($tar2)){
                         $html.='<p style="margin-left:7px;"> 	'.$tareas[1]; $html.='</p><br>';
                     }

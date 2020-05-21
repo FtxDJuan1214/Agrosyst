@@ -80,8 +80,8 @@ $user =  $_SESSION['idusuario'];
             <td><?php echo $ver[4] ?></td>
             <td><?php echo $ver[5] ?></td>
             <td><?php echo $ver[6]." - ".$ver[7]?></td>
-            <td><?php echo $ver[8]." hrs" ?></td>
-            <td><?php echo $ver[9]." hrs" ?></td>
+            <td><?php echo $ver[8]." días" ?></td>
+            <td><?php echo $ver[9]." días" ?></td>
             <td><?php echo $ver[10] ?></td>
             <td><?php echo $ver[11] ?></td>
             <td><?php echo $ver[12] ?></td>
