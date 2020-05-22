@@ -10,11 +10,19 @@ function preloader(){
 
 	if(nom_lab == "" || det_lab == "" ){
 
-		toastr.error('Todos los campos son obligatorios','',{
+		if(nom_lab == ""){
+			toastr.error('Por favor ingrese el nombre de la labor','',{
 			"positionClass": "toast-top-center",
 			"closeButton": true,
 			"progressBar":true
 		});
+		}else if(det_lab == ""){
+			toastr.error('Por favor ingrese la descripción de la labor','',{
+			"positionClass": "toast-top-center",
+			"closeButton": true,
+			"progressBar":true
+		});
+		}
 
 	}else if (nom_lab.length < 5){
 		$('#div_nom_lab').removeClass("input-group input-group-alternative");
@@ -92,11 +100,19 @@ function preloaderup(){
 
 	if(nom_labup == "" || det_labup == "" ){
 
-		toastr.error('Todos los campos son obligatorios','',{
+		if(nom_labup == ""){
+			toastr.error('Por favor ingrese el nombre de la labor','',{
 			"positionClass": "toast-top-center",
 			"closeButton": true,
 			"progressBar":true
 		});
+		}else if(det_labup == ""){
+			toastr.error('Por favor ingrese la descripción de la labor','',{
+			"positionClass": "toast-top-center",
+			"closeButton": true,
+			"progressBar":true
+		});
+		}
 
 	}else if (nom_labup.length < 5){
 		$('#div_nom_labup').removeClass("input-group input-group-alternative");

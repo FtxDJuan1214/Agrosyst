@@ -3,11 +3,19 @@ function preloader(){
   des_tpr=$('#des_tpr').val();
   cod_unm=$('#cod_unm').val();
   if (des_tpr== "" || cod_unm == null) {
-    toastr.error('Todos los campos son requeridos','',{
+    if(des_tpr==""){
+      toastr.error('Por favor ingrese el nombre del tipo de producción','',{
       "positionClass": "toast-top-center",
       "closeButton": true,
       "progressBar":true
     });
+    }else if ( cod_unm == null) {
+      toastr.error('Por favor seleccione la unidad de medida','',{
+      "positionClass": "toast-top-center",
+      "closeButton": true,
+      "progressBar":true
+    });
+    }
   }else{
 
     if (des_tpr.length < 4) {
@@ -77,11 +85,19 @@ function preloaderup(){
   cod_unm=$('#cod_unm').val();
 
   if (des_tpr== "" || cod_unm == null) {
-    toastr.error('Todos los campos son requeridos','',{
+    if(des_tpr==""){
+      toastr.error('Por favor ingrese el nombre del tipo de producción','',{
       "positionClass": "toast-top-center",
       "closeButton": true,
       "progressBar":true
     });
+    }else if ( cod_unm == null) {
+      toastr.error('Por favor seleccione la unidad de medida','',{
+      "positionClass": "toast-top-center",
+      "closeButton": true,
+      "progressBar":true
+    });
+    }
   }else{
 
     if (des_tpr.length < 4) {

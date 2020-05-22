@@ -183,6 +183,7 @@ if (isset($_SESSION['usuario'])) {
                     <form role="form" id="form-add-produccion">
                       <div class="col-md-12" style="margin-bottom: 10px;">
                         <a style="font-size: 1em;" href="terceros.php" class="btn btn-info btn-sm bg-gradient-green" data-toggle="tooltip" data-placement="top" title="" data-original-title="Agregar clientes"><i class="fas fa-user-plus"></i></a>
+                        <a style="font-size: 1em;" href="cultivos.php" class="btn btn-info btn-sm bg-gradient-green" data-toggle="tooltip" data-placement="top" title="" data-original-title="Crear un cultivo" aria-describedby="tooltip653723"><i class="fas fa-spa"></i></a>
                       </div>
                       <div class="form-group mb-3">
                         <div class="input-group input-group-alternative">

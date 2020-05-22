@@ -20,11 +20,19 @@ function preloader(){
 	cod_cul=$('#cultivo').val();
 	ide_ter=$('#cliente').val();
 	if(cod_cul == null || ide_ter == null){
-		toastr.error('Todos los campos son obligatorios.','',{
+		if (cod_cul){
+			toastr.error('Seleccione un cultivo','',{
 			"positionClass": "toast-top-center",
 			"closeButton": true,
 			"progressBar":true
 		});
+		}else if (ide_ter){
+			toastr.error('Seleccione el cliente de la producción','',{
+			"positionClass": "toast-top-center",
+			"closeButton": true,
+			"progressBar":true
+		});
+		}
 	}else{
 		jQuery('#preloader').show();
 		jQuery('#form-add-produccion').hide();
@@ -547,11 +555,38 @@ function validar(cod_tpr,cod_pro,fec_goz,ctp_goz,pre_goz,cpt_goz,cod_cul){
 	bien = true;
 
 	if(cod_tpr == null || fec_goz == "" || ctp_goz == "" || pre_goz == "" || cpt_goz == ""){
-		toastr.error('Todos los campos son obligatorios.','',{
+
+		if (cod_tpr == null) {
+			toastr.error('Selecione el tipo de producción','',{
 			"positionClass": "toast-top-center",
 			"closeButton": true,
 			"progressBar":true
 		});
+		}else if (fec_goz == "") {
+			toastr.error('Verdifique la fecha','',{
+			"positionClass": "toast-top-center",
+			"closeButton": true,
+			"progressBar":true
+		});
+		}else if (cpt_goz == "") {
+			toastr.error('Ingrese la capacidad de la canastilla o bulto','',{
+			"positionClass": "toast-top-center",
+			"closeButton": true,
+			"progressBar":true
+		});
+		}else if (ctp_goz == "") {
+			toastr.error('Ingrese la cantidad de canastillas o bultos recolectados','',{
+			"positionClass": "toast-top-center",
+			"closeButton": true,
+			"progressBar":true
+		});
+		}else if (pre_goz == "") {
+			toastr.error('Ingrese el precio por canastilla','',{
+			"positionClass": "toast-top-center",
+			"closeButton": true,
+			"progressBar":true
+		});
+		}
 		bien = false;
 	}else{
 

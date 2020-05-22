@@ -64,7 +64,6 @@ $codi_fin=$_SESSION['ide_finca'];
       <td><?php 
       $unm=explode("-",$ver[4]);
       echo $ver[1].$unm[1]?>
-
     </td>
     <td>
       <?php
@@ -124,7 +123,6 @@ while($ver=pg_fetch_row($result)){
 }?>
 
 </td>
-<td>
   <td><?php 
   $unm=explode("-",$ver[4]);
   echo $ver[1].$unm[1]?>

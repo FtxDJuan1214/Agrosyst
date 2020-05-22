@@ -1170,6 +1170,7 @@ style="min-height: 600px; background-image: url(imagenes/<?php echo $vere[15]?>)
 </form>
 <img src="assets/img/icons/preloader.gif" id="preloaderup"
 style="margin: 10px auto;">
+<h2 class="text-center">Subiendo imagen</h2>
 <script>
     jQuery('#preloaderup').hide();
 </script>

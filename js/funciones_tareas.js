@@ -30,12 +30,38 @@ function preloader() {
   var fechaInicio = new Date(fin_tar.trim()).getTime();
   var fechaFin = new Date(fif_tar.trim()).getTime();
 
-  if (des_tar == "" || fin_tar == null || fif_tar == null || actividad == null || cod_cul == null || labor == null) {
-    toastr.error('Todos los campos son obligatorios', '', {
+  if (des_tar == "" || fin_tar == "" || fif_tar == "" || actividad == null || cod_cul == null || labor == null) {
+    if(des_tar == ""){
+        toastr.error('Por favor ingrese la descripción de la tarea', '', {
       "positionClass": "toast-top-center",
       "closeButton": true,
       "progressBar": true
     });
+    }else if(fin_tar == "" || fif_tar == ""){
+        toastr.error('Por favor verifique las fechas', '', {
+      "positionClass": "toast-top-center",
+      "closeButton": true,
+      "progressBar": true
+    });
+    }else if(actividad == null){
+        toastr.error('Por favor seleccione el tipo de tarea', '', {
+      "positionClass": "toast-top-center",
+      "closeButton": true,
+      "progressBar": true
+    });
+    }else if(cod_cul == null){
+        toastr.error('Por favor seleccione el cultivo en el que desarrollará esta tarea', '', {
+      "positionClass": "toast-top-center",
+      "closeButton": true,
+      "progressBar": true
+    });
+    }else if(labor == null){
+        toastr.error('Por favor seleccione la labor a la que pertenece esta tarea', '', {
+      "positionClass": "toast-top-center",
+      "closeButton": true,
+      "progressBar": true
+    });
+    }
   } else {
     bien = true;
 
@@ -1086,13 +1112,20 @@ function preloaderup() {
   var fechaInicio = new Date($('#fin_tare').val());
   var fechaFin = new Date(ffin_tare);
 
-  if (descipcion == "" || ffin_tare == "") {
-    toastr.error('Todos los campos son obligatorios', '', {
+    if(descipcion == ""){
+      toastr.error('La descripción no puede estar vacia', '', {
       "positionClass": "toast-top-center",
       "closeButton": true,
       "progressBar": true
     });
-  } else if (descipcion.length < 4) {
+    }else if (ffin_tare == ""){
+       toastr.error('Por favor revise la fecha de finalización', '', {
+      "positionClass": "toast-top-center",
+      "closeButton": true,
+      "progressBar": true
+    });
+    
+  }else if (descipcion.length < 4) {
 
     toastr.error('La descripción es muy corta.', '', {
       "positionClass": "toast-top-center",
@@ -1254,6 +1287,9 @@ function Cargar_tab_n_registros() {
   ajax.onreadystatechange = function () {
     if (ajax.readyState == 4) {
       document.getElementById("tab_lab").innerHTML = ajax.responseText;
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
     }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -1279,6 +1315,9 @@ function Cargar_tab_fechas() {
   ajax.onreadystatechange = function () {
     if (ajax.readyState == 4) {
       document.getElementById("tab_lab").innerHTML = ajax.responseText;
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
     }
   }
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

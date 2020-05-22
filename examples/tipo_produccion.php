@@ -174,7 +174,7 @@ if (isset($_SESSION['usuario'])) {
 
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative" id="div_des_tpr">
-                      <input id="des_tpr" style="border-color: #fb6340;" type="text" class="form-control" placeholder="Descripción" autocomplete="off">
+                      <input id="des_tpr" style="border-color: #fb6340;" type="text" class="form-control" placeholder="Nombre (grueso, parejo, delgado etc)" autocomplete="off">
                     </div>
                   </div>
 

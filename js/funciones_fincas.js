@@ -170,6 +170,7 @@ function preloaderup(){
  }
 
  if(bien == true){
+  
   jQuery('#preloaderup').show();
   jQuery('#form-up-fin').hide();
   setTimeout ("actualizar_finca();", 1000);  
