@@ -160,7 +160,7 @@ function validateFileType(){
 
 var dato = document.getElementById("imagen_esc");
 
-if(dato.files[0].size < 1000000){
+if(dato.files[0].size < 3000000){
     var datos = new FormData($("#form-list-dos")[0]);
     $.ajax({
         type: "post",

@@ -353,7 +353,7 @@ if (isset($_SESSION['usuario'])) {
                                         </div>
                                         <form role="form" id="form-list-dos">
                                         <div class="alert alert-danger" role="alert"><center>
-                        Por favor asegurese de cargar imagenes menores a un peso de: <strong>1000KB o 1MB</strong>.</center></div>
+                                        Por favor asegurese de cargar imagenes menores a un peso de: <strong>3000KB o 3MB</strong>.</center></div>
                                             <div class="card shadow">
                                                 <input style="font-family:'FontAwesome',tahoma; font-size: 14px;"
                                                     id="imagen_esc" name="imagen_esc" type="file" class="validate"

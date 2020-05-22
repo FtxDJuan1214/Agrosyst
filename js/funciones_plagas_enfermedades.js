@@ -281,7 +281,7 @@ function validateFileType(info, nombre) {
 
     var dato = document.getElementById(info);
 
-    if(dato.files[0].size < 1000000){
+    if(dato.files[0].size < 3000000){
 
     document.getElementById("etapas-des-mostrar").innerHTML = "";
 

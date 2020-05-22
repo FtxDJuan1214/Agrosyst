@@ -25,7 +25,7 @@ $name="";
 
 <div id="tab_agro" name="tab_agro">
 <div class="alert alert-danger" role="alert"><center>
-                        Por favor asegurese de cargar imagenes menores a un peso de: <strong>1000KB o 1MB</strong>.</center></div>
+                        Por favor asegurese de cargar imagenes menores a un peso de: <strong>3000KB o 3MB</strong>.</center></div>
     <div class="card shadow">
         <div class="card-header">
             <h3 align='center' style="font-family:'FontAwesome',tahoma; font-size: 15px;">Etapas Agregadas</h3>
