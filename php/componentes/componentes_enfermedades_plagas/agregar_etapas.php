@@ -15,7 +15,7 @@ require '../../conexion.php';
                                     <!------------------------Columna Etapas plagas y enfermedades----------------------->
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <h3 align='center'>Etapas</h3>
+                                            <h3 align='center' style="font-family:'FontAwesome',tahoma; font-size: 15px;">ETAPAS</h3>
                                             <p>Escoja todas las etapas de crecimiento que tiene la
                                                 enfermedad o plaga:</p>
                                             <div class="input-group input-group-alternative">
