@@ -279,6 +279,10 @@ function mostrarTabEtapas() {
 listado_etapas_agregadas = "";
 function validateFileType(info, nombre) {
 
+    var dato = document.getElementById(info);
+
+    if(dato.files[0].size < 1000000){
+
     document.getElementById("etapas-des-mostrar").innerHTML = "";
 
     sep = listado_etapas.split('||');
@@ -301,6 +305,7 @@ function validateFileType(info, nombre) {
             break;
         }
     }
+    
 
     var fileName = document.getElementById(info).value;
     var idxDot = fileName.lastIndexOf(".") + 1;
@@ -321,6 +326,9 @@ function validateFileType(info, nombre) {
     $('#listado_fotos').val(listado_fotos);
 
     saveImage(info, nombre);
+    }else{
+        swal("¡La imagen es muy pesada!", 'Por favor seleccione otra' , "error");
+    }
 }
 
 function saveImage(info, nombre) {

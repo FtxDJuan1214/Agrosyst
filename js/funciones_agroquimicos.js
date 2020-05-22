@@ -266,11 +266,11 @@ function actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,
 			if(r.includes('Resource id')){
 				swal("¡Agroquímico Editado!"," ", "success");
 
-                var form = document.querySelector('#form-up-agroq');
-                form.reset();
-                $('#modal-form-up-pe').modal('hide'); 
+                var forme = document.querySelector('#form-up-agroq');
+                forme.reset();
+                $('#modal-agr-up').modal('hide');
                 jQuery('#preloaderup').hide();
-				jQuery('form-up-agroq').show();	
+				jQuery('#form-up-agroq').show();
 				$('#tab_agroquimicos').load('../php/componentes/componentes_agroquimicos/tab_agroquimicos.php');
 		}else{
 			//alert(r); 

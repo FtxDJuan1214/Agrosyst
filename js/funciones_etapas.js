@@ -158,6 +158,9 @@ $('#codi_eta').val(cod_etap);
 
 function validateFileType(){
 
+var dato = document.getElementById("imagen_esc");
+
+if(dato.files[0].size < 1000000){
     var datos = new FormData($("#form-list-dos")[0]);
     $.ajax({
         type: "post",
@@ -185,6 +188,10 @@ function validateFileType(){
             }
         }
     });
+    }else{
+        swal("¡La imagen es muy pesada!", 'Por favor seleccione otra' , "error");
+
+    }
 }
 
 function guardarSinImagen(info,nombre){
