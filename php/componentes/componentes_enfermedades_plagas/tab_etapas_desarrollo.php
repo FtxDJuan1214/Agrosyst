@@ -24,16 +24,18 @@ $name="";
 
 
 <div id="tab_agro" name="tab_agro">
+<div class="alert alert-danger" role="alert"><center>
+                        Por favor asegurese de cargar imagenes menores a un peso de: <strong>1000KB o 1MB</strong>.</center></div>
     <div class="card shadow">
         <div class="card-header">
-            <h3 align='center'>Etapas agregadas</h3>
+            <h3 align='center' style="font-family:'FontAwesome',tahoma; font-size: 15px;">Etapas Agregadas</h3>
         </div>
 
         <table class="table align-items-center table-flush" id="tab_ima">
             <thead class="thead-light">
                 <tr>
                     <th>Nombre etapa</th>
-                    <th>Imagen</th>
+                    <th>Imagen</th>                    
                     <th>Quitar</th>
                 </tr>
             </thead>
@@ -48,7 +50,8 @@ $name="";
                     ?>
 
                 <tr>
-                    <td><?php echo $ver[1]?></td>
+                    <td><?php echo $ver[1]?>
+                    </td>
                     <td>
                         <!--Verifico si ya tiene imagen-->
                         <?php
@@ -68,6 +71,8 @@ $name="";
                         <input id="<?php echo $ver[0] ?>" name="<?php echo $ver[0] ?>" type="file" class="validate"
                             autocomplete="off" accept="image/*"
                             onchange="validateFileType('<?php echo $ver[0]?>','<?php echo $ver[1]?>')">
+
+                            
                     </td>
 
                     <?php }else
@@ -99,6 +104,7 @@ $name="";
         </table>        
     </div>
     <br>
+    
     <center>
     <input type="button" name="cargar" class="btn btn-success sm-4"
                                                             data-toggle="tooltip" data-placement="top"
