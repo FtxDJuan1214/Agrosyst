@@ -26,7 +26,6 @@ INNER JOIN convenio ON efectuar.cod_con = convenio.cod_con
 INNER JOIN ejecutar ON ejecutar.cod_con = convenio.cod_con
 INNER JOIN cultivos ON cultivos.cod_cul = ejecutar.cod_cul
 WHERE (procesos_fitosanitarios.cod_pfi LIKE '1-%' OR procesos_fitosanitarios.cod_pfi LIKE '$like%')
-AND procesos_fitosanitarios.ffi_pfi IS null
 AND cultivos.cod_cul = '$cod_cul'
 AND fitosanitaria.aoi_fit IS NOT NULL
 AND procesos_fitosanitarios.cod_pfi = '$cod_pfi'";
