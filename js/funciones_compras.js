@@ -216,6 +216,8 @@ $(document).ready(function(){
   $('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
   $('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
   $('#menu').load('../php/componentes/menu/menu.php');
+  
+  $('#calculadora').load('../php/componentes/calculadora/calculadora.php');
 
   $('#cos_uni').keyup(function(){
 
@@ -372,3 +374,11 @@ function validar(){
   $('#modal-paso_1').modal('toggle');
 }
 }
+
+  //boton flotante
+  $('.botonF1').hover(function(){
+    $('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+    $('.flotante').removeClass('animacionVer');
+  })

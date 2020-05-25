@@ -21,12 +21,12 @@
       <i class="ni ni-align-left-2"></i>
       <span>Ver menu</span>
     </a>
-    <a href="../examples/profile.html" class="dropdown-item">
+    <a href="../examples/perfil.php" class="dropdown-item">
       <i class="ni ni-single-02"></i>
       <span>Mi Perfil</span>
     </a>
     <div class="dropdown-divider"></div>
-    <a href="#!" class="dropdown-item">
+    <a href="../php/Logout.php" class="dropdown-item">
       <i class="ni ni-user-run"></i>
       <span>Logout</span>
     </a>

@@ -494,6 +494,7 @@ $(document).ready(function(){
 	$('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
 	$('#tab_tipo_prod').load('../php/componentes/componentes_produccion/tab_produccion.php');
 	$('#menu').load('../php/componentes/menu/menu.php');
+	$('#calculadora').load('../php/componentes/calculadora/calculadora.php');
 
 	$.ajax({
 		type:"post",
@@ -671,3 +672,11 @@ function resetselects(){
 	$('#cliente').val(0);
 	$('#cultivo').val(0);
 }
+
+  //boton flotante
+  $('.botonF1').hover(function(){
+  	$('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+  	$('.flotante').removeClass('animacionVer');
+  })

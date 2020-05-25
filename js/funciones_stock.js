@@ -28,24 +28,35 @@ function ver_por_cultivo(){
 	ajax.send("seleccion="+ seleccion);
 }
 
-  $(document).ready(function(){
-    jQuery('#ver2').hide();
-    $('#date-hour').load('../php/componentes/menu/date-hour.php');
-    $('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
-    $('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
-    $('#menu').load('../php/componentes/menu/menu.php');
+$(document).ready(function(){
+	jQuery('#ver2').hide();
+	$('#date-hour').load('../php/componentes/menu/date-hour.php');
+	$('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
+	$('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
+	$('#menu').load('../php/componentes/menu/menu.php');
+	$('#calculadora').load('../php/componentes/calculadora/calculadora.php');
 
-    $("#myInput").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#myTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-    
-  });
+	$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myTable tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
+	
+});
 
-  function cerrar_menu(){
-    $('#sidenav-main').remove();
-    jQuery('#ver1').hide();
-    jQuery('#ver2').show();
-  }
+function cerrar_menu(){
+	$('#sidenav-main').remove();
+	jQuery('#ver1').hide();
+	jQuery('#ver2').show();
+}
+
+
+
+  //boton flotante
+  $('.botonF1').hover(function(){
+  	$('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+  	$('.flotante').removeClass('animacionVer');
+  })

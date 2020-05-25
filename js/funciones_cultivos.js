@@ -636,6 +636,7 @@ $(document).ready(function(){
  $('#nombre_cultivo').load('../php/componentes/componentes_cultivos/nom_cul.php');
  $('#nombre_cultivo2').load('../php/componentes/componentes_cultivos/nom_cul_up.php');
  $('#cultivos').load('../php/componentes/componentes_cultivos/sub_tab_cultivos.php');
+ $('#calculadora').load('../php/componentes/calculadora/calculadora.php');
  $('#menu').load('../php/componentes/menu/menu.php');
  jQuery('#btn_actualizar').hide();
  $('#fif_cul').blur(function() {setTimeout("intervaloa();",100)});
@@ -840,3 +841,11 @@ function cerrar_menu(){
   jQuery('#ver1').hide();
   jQuery('#ver2').show();
 }
+
+  //boton flotante
+  $('.botonF1').hover(function(){
+    $('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+    $('.flotante').removeClass('animacionVer');
+  })

@@ -552,6 +552,7 @@ $(document).ready(function(){
  $('#date-hour').load('../php/componentes/menu/date-hour.php');
  $('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
  $('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
+ $('#calculadora').load('../php/componentes/calculadora/calculadora.php');
 
  $('#tab_convenios').load('../php/componentes/componentes_convenio/tab_convenio.php');
 
@@ -620,3 +621,13 @@ function cargar_aportes(){
   ajax2.send("cod_cul="+$('#cod_cul').val()+ "&nom_cul=" + $("#cod_cul option:selected").text());
 }
 }
+
+
+
+  //boton flotante
+  $('.botonF1').hover(function(){
+    $('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+    $('.flotante').removeClass('animacionVer');
+  })

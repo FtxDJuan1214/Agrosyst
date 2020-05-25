@@ -340,26 +340,26 @@ if (isset($_SESSION['usuario'])) {
 </div>
 </div>
 
-<div class="contenedor">
-  <button class="botonF1">
-    <span><i class="material-icons" style="margin-top: 7px;">settings</i></span>
-  </button>
-  <a href="#">
-    <button class="flotante botonF3">
-      <span><i class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ayuda" style="margin-top: 5px;">info_outline</i></span>
+ <!-- -------------------------------FUNCIONALIDADES FLOTANTES--------------------------------------->
+  <div class="contenedor">
+    <button class="botonF1">
+      <span><i class="material-icons" style="margin-top: 7px;">settings</i></span>
     </button>
-  </a>
-  <a href="#">
-    <button class="flotante botonF2" data-toggle="modal" data-target="#modal-notification">
-      <span><i  class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Calculadora" style="margin-top: 5px;">exposure</i></span>
-    </button>
-  </a>
+    <a href="#">
+      <button class="flotante botonF3" data-toggle="modal" data-target="#modal-manual">
+        <span><i class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ayuda" style="margin-top: 5px;">info_outline</i></span>
+      </button>
+    </a>
+    <a href="#">
+      <button class="flotante botonF2" data-toggle="modal" data-target="#modal-notification">
+        <span><i  class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Calculadora" style="margin-top: 5px;">exposure</i></span>
+      </button>
+    </a>
 <!-- <button class="flotante botonF4">
   <span>+</span>
 </button> -->
 </div>
-<!-- --------------MODAL DE LA CALCULADORA-----------------------------------
--->
+<!-- modal para la calculadora -->
 <div class="col-md-4">
   <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
     <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
@@ -388,7 +388,21 @@ if (isset($_SESSION['usuario'])) {
       </div>
     </div>
   </div>
-  <!-- ------------------------------------------------------------------------ -->
+
+  <!-- modal para la información -->
+  <!-- Modal -->
+  <div class="modal fade" id="modal-manual" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content" style="border-radius: 4px;">
+      <div class="float-md-right"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button></div>
+           <embed src="../manuales/interfaz_lotes.pdf" type="application/pdf" width="100%" height="600"/>
+</div>
+</div>
+</div>
+<!------------------------------------------------------------------------- -->
+
 </div>
 
 <!-- Argon Scripts -->

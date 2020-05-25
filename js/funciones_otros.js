@@ -248,6 +248,7 @@ $(document).ready(function(){
 	$('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
 	$('#tab_otros').load('../php/componentes/componentes_otros/tab_otros.php');
 	$('#menu').load('../php/componentes/menu/menu.php');
+	$('#calculadora').load('../php/componentes/calculadora/calculadora.php');
 
 	$("#myInput").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
@@ -280,3 +281,12 @@ function cerrar_menu(){
 	jQuery('#ver1').hide();
 	jQuery('#ver2').show();
 }
+
+  //boton flotante
+  $('.botonF1').hover(function(){
+  	$('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+  	$('.flotante').removeClass('animacionVer');
+  })
+  

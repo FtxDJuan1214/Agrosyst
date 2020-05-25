@@ -78,10 +78,10 @@ function agregar_insumo(des_ins,cod_unm,det_sem){
 				jQuery('#form-add-sem').show();
 
 				$.ajax({
-						type:"post",
-						url:"../php/crud/semillas/agregar_semilla.php",
-						data:cadena,
-						success:function(r){
+					type:"post",
+					url:"../php/crud/semillas/agregar_semilla.php",
+					data:cadena,
+					success:function(r){
 							//alert(r);
 						}						
 					});	
@@ -173,109 +173,121 @@ function preloaderup(){
 
 
 
-	function actualizar_semilla(global,global1,des_insup,cod_unmup,det_semup){
-		cadena ="cod_sem="+global+
-		"&cod_ins="+global1+
-		"&des_insup="+des_insup+
-		"&cod_unmup="+cod_unmup+
-		"&det_semup="+det_semup;
-		$.ajax({
-			type:"post",
-			url:"../php/crud/semillas/actualizar_semilla.php",
-			data:cadena,
-			success:function(r){
-				if(r.includes('Resource id')){
-					swal("¡Fertilizante Editado!"," ", "success");
-					var form = document.querySelector('#form-up-sem');
-					form.reset();
-					$('#modal-form-up').modal('hide'); 
-					jQuery('#preloaderup').hide();
-					jQuery('#form-up-sem').show();				       
+function actualizar_semilla(global,global1,des_insup,cod_unmup,det_semup){
+	cadena ="cod_sem="+global+
+	"&cod_ins="+global1+
+	"&des_insup="+des_insup+
+	"&cod_unmup="+cod_unmup+
+	"&det_semup="+det_semup;
+	$.ajax({
+		type:"post",
+		url:"../php/crud/semillas/actualizar_semilla.php",
+		data:cadena,
+		success:function(r){
+			if(r.includes('Resource id')){
+				swal("¡Fertilizante Editado!"," ", "success");
+				var form = document.querySelector('#form-up-sem');
+				form.reset();
+				$('#modal-form-up').modal('hide'); 
+				jQuery('#preloaderup').hide();
+				jQuery('#form-up-sem').show();				       
+				actualizar_tabla();
+
+			}else{
+				alert(r); 
+				jQuery('#preloaderup').hide();
+				jQuery('#form-up-sem').show();
+				actualizar_tabla();        
+			}
+		}
+	});
+}
+
+
+function eliminar_semilla(datos){
+	data= datos.split('||');
+	global = data[0];
+	global1 = data[1];
+	swal({
+		title: "¿Estás seguro?",
+		text: "¿Deseas eliminar este fertilizante?",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	})
+	.then((willDelete) => {
+		if (willDelete) {
+			cadena="cod_sem="+global+
+			"&cod_ins="+global1;
+
+			$.ajax({
+				type:"post",
+				url:"../php/crud/semillas/eliminar_semilla.php",
+				data:cadena,
+				success:function(r){
 					actualizar_tabla();
-
-				}else{
-					alert(r); 
-					jQuery('#preloaderup').hide();
-					jQuery('#form-up-sem').show();
-					actualizar_tabla();        
 				}
-			}
-		});
-	}
-
-
-	function eliminar_semilla(datos){
-		data= datos.split('||');
-		global = data[0];
-		global1 = data[1];
-		swal({
-			title: "¿Estás seguro?",
-			text: "¿Deseas eliminar este fertilizante?",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-		})
-		.then((willDelete) => {
-			if (willDelete) {
-				cadena="cod_sem="+global+
-				"&cod_ins="+global1;
-
-				$.ajax({
-					type:"post",
-					url:"../php/crud/semillas/eliminar_semilla.php",
-					data:cadena,
-					success:function(r){
-						actualizar_tabla();
-					}
-				});
-				swal("El fertilizante se ha eliminado!", {
-					icon: "success",
-				});
-			} else {
-				swal("Cancelado!");
-			}
-		});
-		actualizar_tabla();
-	}
-
-
-	$(document).ready(function(){
-		$('#date-hour').load('../php/componentes/menu/date-hour.php');
-		$('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
-		$('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
-		actualizar_tabla();
-		$('#menu').load('../php/componentes/menu/menu.php');
-
-		$("#myInput").on("keyup", function() {
-			var value = $(this).val().toLowerCase();
-			$("#myTable tr").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 			});
+			swal("El fertilizante se ha eliminado!", {
+				icon: "success",
+			});
+		} else {
+			swal("Cancelado!");
+		}
+	});
+	actualizar_tabla();
+}
+
+
+$(document).ready(function(){
+	$('#date-hour').load('../php/componentes/menu/date-hour.php');
+	$('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
+	$('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
+	$('#calculadora').load('../php/componentes/calculadora/calculadora.php');
+	actualizar_tabla();
+	$('#menu').load('../php/componentes/menu/menu.php');
+
+	$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myTable tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
-
-
-
-		$('#des_ins').keydown(function(){
-			$('#div_des_ins').addClass("input-group input-group-alternative");
-		});
-
-		$('#det_sem').keydown(function(){
-			$('#div_det_sem').addClass("input-group-alternative");
-		});
-
-		$('#des_insup').keydown(function(){
-			$('#div_des_insup').addClass("input-group input-group-alternative");
-		});
-
-		$('#det_semup').keydown(function(){
-			$('#div_det_semup').addClass("input-group-alternative");
-		});
-
-
 	});
 
-	function cerrar_menu(){
-		$('#sidenav-main').remove();
-		jQuery('#ver1').hide();
-		jQuery('#ver2').show();
-	}
+
+
+	$('#des_ins').keydown(function(){
+		$('#div_des_ins').addClass("input-group input-group-alternative");
+	});
+
+	$('#det_sem').keydown(function(){
+		$('#div_det_sem').addClass("input-group-alternative");
+	});
+
+	$('#des_insup').keydown(function(){
+		$('#div_des_insup').addClass("input-group input-group-alternative");
+	});
+
+	$('#det_semup').keydown(function(){
+		$('#div_det_semup').addClass("input-group-alternative");
+	});
+
+
+});
+
+function cerrar_menu(){
+	$('#sidenav-main').remove();
+	jQuery('#ver1').hide();
+	jQuery('#ver2').show();
+}
+
+
+
+  //boton flotante
+  $('.botonF1').hover(function(){
+  	$('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+  	$('.flotante').removeClass('animacionVer');
+  })
+  

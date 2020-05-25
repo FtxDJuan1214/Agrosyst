@@ -112,7 +112,7 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                     <span>Mi Perfil</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="php/logout.php" class="dropdown-item">
                     <i class="ni ni-user-run"></i>
                     <span>Logout</span>
                 </a>
@@ -438,12 +438,12 @@ $vere[10]."||".$vere[11]."||".$vere[12]."||".$vere[13]."||".$vere[14]."||".$vere
                         <i class="ni ni-align-left-2"></i>
                         <span>Ver menu</span>
                     </a>
-                    <a href="examples/profile.html" class="dropdown-item">
+                    <a href="examples/perfil.php" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>Mi Perfil</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#!" class="dropdown-item">
+                    <a href="php/logout.php" class="dropdown-item">
                         <i class="ni ni-user-run"></i>
                         <span>Logout</span>
                     </a>
@@ -985,10 +985,7 @@ style="min-height: 600px; background-image: url(imagenes/<?php echo $vere[15]?>)
         <div class="col-xl-6">
             <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                 <li class="nav-item">
-                    <a href="#" class="nav-link" target="_blank">Ver manual</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" target="_blank">Sobre nosotros</a>
+                    <a href="manuales/manual_de_usuario.pdf" class="nav-link" target="_blank">Ver manual</a>
                 </li>
             </ul>
         </div>
@@ -1170,7 +1167,6 @@ style="min-height: 600px; background-image: url(imagenes/<?php echo $vere[15]?>)
 </form>
 <img src="assets/img/icons/preloader.gif" id="preloaderup"
 style="margin: 10px auto;">
-<h2 class="text-center">Subiendo imagen</h2>
 <script>
     jQuery('#preloaderup').hide();
 </script>

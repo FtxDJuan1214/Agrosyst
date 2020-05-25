@@ -54,36 +54,6 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
     $cod_cul = $_POST['cod_cul'];
 
     $valido = true;
-  //   $mensaje = "Error! algunos campos icorrectos, por favor vuelva a intentar verificando los datos";
-
-  //   if ($fec == "") {
-  //     $valido = false;
-  //     unset ($fec);
-  //   }
-
-  //   if (intval($cos_uni) != 0 && intval($can_sto) != 0 ) {
-  //     $valido = false;
-  //   }
-
-  //   if ($cos_uni != "" && $can_sto!="") {
-  //    if(!is_numeric($can_sto) || $can_sto==0 ){
-  //     $valido = false;
-  //     $mensaje = "Error! La cantidad ingresada no es valida, asegurese de ingresar los datos correctamente.";
-  //   }
-
-  //   if(!is_numeric($cos_uni) || $cos_uni==0 ){
-  //     $valido = false;
-  //     $mensaje = "Error! El costo unitario no es valido, asegurese de ingresar los datos correctamente.";
-  //   }
-  // }
-
-  // if($cos_mul==NaN){
-  //   $valido = false;
-  //   $mensaje = "Error! Valores incorrectos, verifique.";
-  // }
-
-
-
     if ($valido == true) {
 
       $string="$tip_ins,$cod_ins,$can_sto,$cos_uni,$cos_mul";
@@ -139,6 +109,8 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
   <!-- Icons -->
   <link href="../assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
   <link href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+  <link href="../assets/fonts/fonts/material-icons.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/css/scrollbar.css">
   <!-- Argon CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -650,6 +622,68 @@ if ((isset($_POST['proveedor'])) && (isset($_POST['tip_ins'])) && (isset($_POST[
   </div>
 </div>
 
+ <!-- -------------------------------FUNCIONALIDADES FLOTANTES--------------------------------------->
+  <div class="contenedor">
+    <button class="botonF1">
+      <span><i class="material-icons" style="margin-top: 7px;">settings</i></span>
+    </button>
+    <a href="#">
+      <button class="flotante botonF3" data-toggle="modal" data-target="#modal-manual">
+        <span><i class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ayuda" style="margin-top: 5px;">info_outline</i></span>
+      </button>
+    </a>
+    <a href="#">
+      <button class="flotante botonF2" data-toggle="modal" data-target="#modal-notification">
+        <span><i  class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Calculadora" style="margin-top: 5px;">exposure</i></span>
+      </button>
+    </a>
+<!-- <button class="flotante botonF4">
+  <span>+</span>
+</button> -->
+</div>
+<!-- modal para la calculadora -->
+<div class="col-md-4">
+  <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+      <div class="modal-content bg-gradient-opaco">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="py-3 text-center">
+            <!-- <i class="ni ni-bell-55 ni-3x"></i>
+              <h4 class="heading mt-4">You should read this!</h4> -->
+              <div id="calculadora">
+
+              </div>
+              <button style="align-self: center;" type="button" class="btn btn-white ml-auto " data-dismiss="modal" id="limpiar">Cerrar</button>
+            </div>
+          </div>
+          <!--    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>  -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- modal para la información -->
+  <!-- Modal -->
+  <div class="modal fade" id="modal-manual" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content" style="border-radius: 4px;">
+        <div class="float-md-right"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button></div>
+        <embed src="../manuales/interfaz_compras.pdf" type="application/pdf" width="100%" height="600"/>
+      </div>
+    </div>
+  </div>
+<!------------------------------------------------------------------------- -->
 </div>
 </div>
 <!-- Argon Scripts -->

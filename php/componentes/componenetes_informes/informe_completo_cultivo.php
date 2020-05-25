@@ -701,7 +701,7 @@ $html.='</div>
 ';
 
 
-$nombre='AgrosystCo - informe general del cultivo '.explode("-",$info[8])[1].' - '.$fecha.'.pdf';
+$nombre='AgrosystCo - informe completo del cultivo '.explode("-",$info[8])[1].' - '.$fecha.'.pdf';
 
 $mpdf=new mPDF('c','A4');
 

@@ -47,10 +47,11 @@ if (isset($_SESSION['usuario'])) {
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
   <link href="../assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="../assets/fonts/fonts/material-icons.css" rel="stylesheet">
   <link href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
-  <link rel="stylesheet" type="text/css" href="../assets/css/scrollbar.css">
   <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../assets/css/scrollbar.css">
   <!-- jquery -->
   <script src="../assets/jquery/jquery-3.4.1.min.js"></script>
   <!-- sweet_alert -->
@@ -74,7 +75,7 @@ if (isset($_SESSION['usuario'])) {
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none" id="actions-sm-scr">
-        
+
       </ul>
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="sidenav-collapse-main">
@@ -124,11 +125,11 @@ if (isset($_SESSION['usuario'])) {
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto">
           <div class="form-group mb-0" id="date-hour">
-            </div>
+          </div>
         </form>
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex" id="actions-lg-scr">
-         
+
         </ul>
       </div>
     </nav>
@@ -342,35 +343,77 @@ if (isset($_SESSION['usuario'])) {
             </div>
             <div class="float-md-right" style="margin-top: 5px;">
               <input class="form-control" placeholder="Buscar en la tabla" id="myInput" type="text" autocomplete="off">
-           </div>
-         </div>
-         <div class="table-responsive"  id="tab_terceros">
+            </div>
+          </div>
+          <div class="table-responsive"  id="tab_terceros">
 
-         </table>
-       </div>
-     </div>
-   </div>
- </div>
- <!-- Footer -->
- <footer class="footer">
-  <div class="row align-items-center justify-content-xl-between">
-    <div class="col-xl-6">
-      <div class="copyright text-center text-xl-left text-muted">
-        &copy; 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Agrosyst Co</a>
+          </table>
+        </div>
       </div>
     </div>
-    <div class="col-xl-6">
-      <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-        <li class="nav-item">
-          <a href="#" class="nav-link" target="_blank">Ver manual</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" target="_blank">Sobre nosotros</a>
-        </li>
-      </ul>
+  </div>
+  <!-- -------------------------------FUNCIONALIDADES FLOTANTES--------------------------------------->
+  <div class="contenedor">
+    <button class="botonF1">
+      <span><i class="material-icons" style="margin-top: 7px;">settings</i></span>
+    </button>
+    <a href="#">
+      <button class="flotante botonF3" data-toggle="modal" data-target="#modal-manual">
+        <span><i class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ayuda" style="margin-top: 5px;">info_outline</i></span>
+      </button>
+    </a>
+    <a href="#">
+      <button class="flotante botonF2" data-toggle="modal" data-target="#modal-notification">
+        <span><i  class="material-icons bslink" data-toggle="tooltip" data-placement="left" title="" data-original-title="Calculadora" style="margin-top: 5px;">exposure</i></span>
+      </button>
+    </a>
+<!-- <button class="flotante botonF4">
+  <span>+</span>
+</button> -->
+</div>
+<!-- modal para la calculadora -->
+<div class="col-md-4">
+  <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+      <div class="modal-content bg-gradient-opaco">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="py-3 text-center">
+            <!-- <i class="ni ni-bell-55 ni-3x"></i>
+              <h4 class="heading mt-4">You should read this!</h4> -->
+              <div id="calculadora">
+
+              </div>
+              <button style="align-self: center;" type="button" class="btn btn-white ml-auto " data-dismiss="modal" id="limpiar">Cerrar</button>
+            </div>
+          </div>
+          <!--    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>  -->
+
+        </div>
+      </div>
     </div>
   </div>
-</footer>
+
+  <!-- modal para la información -->
+  <!-- Modal -->
+  <div class="modal fade" id="modal-manual" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content" style="border-radius: 4px;">
+        <div class="float-md-right"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button></div>
+        <embed src="../manuales/interfaz_terceros.pdf" type="application/pdf" width="100%" height="600"/>
+      </div>
+    </div>
+  </div>
+  <!------------------------------------------------------------------------- -->
 </div>
 </div>
 <!-- Argon Scripts -->
@@ -381,8 +424,6 @@ if (isset($_SESSION['usuario'])) {
 <script src="../assets/js/argon.js?v=1.0.0"></script>
 <!-- funciones -->
 <script src="../js/funciones_terceros.js"></script>
-<!-- div to pdf -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
 </body>
 

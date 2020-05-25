@@ -1191,6 +1191,7 @@ $(document).ready(function () {
   $('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
   $('#tab_lab').load('../php/componentes/componentes_tareas/tab_tareas.php');
   $('#menu').load('../php/componentes/menu/menu.php');
+  $('#calculadora').load('../php/componentes/calculadora/calculadora.php');
 
   $('#modal-insumos').on('hidden.bs.modal', function (e) {
     $('#modal-form').modal('hide');
@@ -1368,61 +1369,11 @@ function asociarPlan() {
 }
 
 
-// function rem_agr(cod_agr) {
 
-//   sep = cadena_de_gastos_mostrar.split('||');
-//   indice = 0;
-//   found = false;
-
-//   for (i = 0; i < sep.length - 1; i++) {
-//       sepr = sep[i].split(',');
-
-//       for (e = 0; e < sepr.length; e++) {
-//           if (cod_agr == sepr[e]) {
-//               indice = i;
-//               found = true;
-//               break;
-//           }
-//       }
-
-//       if (found == true) {
-//           break;
-//       }
-//   }
-
-//   if (found == true) {
-//       cadena_de_gastos_mostrar = "";
-
-//       for (i = 0; i < sep.length - 1; i++) {
-
-//           if (indice != i) {
-//               cadena_de_gastos_mostrar = cadena_de_gastos_mostrar + sep[i] + "||";
-//           }
-//       }
-
-//       sep = cadena_de_gastos_insertar.split('||');
-
-//       cadena_de_gastos_insertar = "";
-
-//       for (i = 0; i < sep.length - 1; i++) {
-
-//           if (indice != i) {
-//               cadena_de_gastos_insertar = cadena_de_gastos_insertar + sep[i] + "||";
-//           }
-//       }
-
-//       sep = cadena_nueva_planificacion.split('||');
-//       cadena_nueva_planificacion = "";
-
-//       for (i = 0; i < sep.length - 1; i++) {
-
-//           if (indice != i) {
-//             cadena_nueva_planificacion = cadena_nueva_planificacion + sep[i] + "||";
-//           }
-//       }
-
-//   }
-
-//   mostrarAgroquimicos(cadena_de_gastos_mostrar);
-
-// }
+  //boton flotante
+  $('.botonF1').hover(function(){
+    $('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+    $('.flotante').removeClass('animacionVer');
+  })

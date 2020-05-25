@@ -673,6 +673,7 @@ $(document).ready(function(){
 	$('#date-hour').load('../php/componentes/menu/date-hour.php');
 	$('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
 	$('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
+	$('#calculadora').load('../php/componentes/calculadora/calculadora.php');
     //$('#footer').load('../php/componentes/menu/actions-sm-scr.php');
     $('#tab_terceros').load('../php/componentes/componentes_terceros/tab_terceros.php');
     $('#menu').load('../php/componentes/menu/menu.php');
@@ -714,9 +715,17 @@ $(document).ready(function(){
     });
 });
 
+  //boton flotante
+  $('.botonF1').hover(function(){
+  	$('.flotante').addClass('animacionVer');
+  })
+  $('.contenedor').mouseleave(function(){
+  	$('.flotante').removeClass('animacionVer');
+  })
 
-function cerrar_menu(){
-	$('#sidenav-main').remove();
-	jQuery('#ver1').hide();
-	jQuery('#ver2').show();
-}
+
+  function cerrar_menu(){
+  	$('#sidenav-main').remove();
+  	jQuery('#ver1').hide();
+  	jQuery('#ver2').show();
+  }
