@@ -38,6 +38,13 @@ body {
     <link rel="stylesheet" type="text/css" href="librerias/Login/css/util.css">
     <link rel="stylesheet" type="text/css" href="librerias/Login/css/main.css">
 <!--===============================================================================================-->
+<!-- toastr -->
+<script src="assets/toastr/toastr.min.js"></script>
+<link type="text/css" href="assets/toastr/toastr.css" rel="stylesheet">
+
+<!-- sweet_alert -->
+<script src="assets/sweetalert/sweetalert.min.js"></script>
+
 </head>
 <body>
     
@@ -46,43 +53,25 @@ body {
             <div class="wrap-login100">
                 <form method="post" action="php/logueo.php" class="formlog">
                     <span class="login100-form-title p-b-26">
-                        Bienvenido
+                        Recuperación de contraseña
                     </span>
                     <span class="login100-form-title p-b-48">
                         <img src="imagenes/Logo.png" alt="Logotipo Agrosyst Co" style="width:75px; align-self: center;">
                     </span>
+                    <div class="alert alert-info" role="alert"><center>
+                                        Por favor ingrese el correo con el que se registró.</center></div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                        <input class="input100" type="text"  required name="usuario" autocomplete="off">
-                        <span class="focus-input100" data-placeholder="Usuario"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <span class="btn-show-pass">
-                            <i class="zmdi zmdi-eye"></i>
-                        </span>
-                        <input class="input100" type="password"  required name="contraseña">
-                        <span class="focus-input100" data-placeholder="Contraseña"></span>
+                        <input class="input100" type="email" autocomplete="off" id="correo">
+                        <span class="focus-input100" data-placeholder="correo"></span>
                     </div>
 
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn" type="submit">
-                                Login
+                            <button class="login100-form-btn" type="button" onclick="recuperar();">
+                                Recuperar
                             </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4 p-t-20">
-                            <a class="" href="add_usu.php">
-                                Registrarse
-                            </a>
-                        </div>
-                        <div class="col-sm-8 p-t-20">
-                            <a class="" href="recuperar_contrasena.php">
-                                Olvide mi contraseña
-                            </a>
                         </div>
                     </div>
 
@@ -111,6 +100,9 @@ body {
     <script src="librerias/Login/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
     <script src="librerias/Login/js/main.js"></script>
+
+    <!-- funciones -->
+    <script src="js/funciones_login.js"></script>
 
 </body>
 </html>
