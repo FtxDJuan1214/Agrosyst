@@ -57,7 +57,8 @@
  if(bien == true){
   jQuery('#preloader').show();
   jQuery('#form-add-finca').hide();
-  setTimeout ("crear_finca(cod_fin,nom_fin,det_fin,due_fin,dep_fin,mun_dep,uni_med,med_fin);", 1000);
+  jQuery('#aviso').show();
+  setTimeout ("crear_finca(cod_fin,nom_fin,det_fin,due_fin,dep_fin,mun_dep,uni_med,med_fin);", 100);
 }
 }
 
@@ -74,7 +75,6 @@ function crear_finca(cod_fin,nom_fin,det_fin,due_fin,dep_fin,mun_dep,uni_med,med
    contentType: false,
    processData: false,
    success:function(r){
-     //alert("erre: " +r);
      if(r.includes('Resource id')){
        var form = document.querySelector('#form-add-finca');
        form.reset();

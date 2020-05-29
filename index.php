@@ -186,8 +186,10 @@ require 'php/conexion.php';
       </div>
     </form>
     <img src="assets/img/icons/preloader.gif" id="preloader" style="margin: 10px auto;">
+    <h3 id="aviso">Por favor espere mientras se sube la imagen</h3>
     <script>
       jQuery('#preloader').hide();
+      jQuery('#aviso').hide();
     </script>
   </div>
 </div>
