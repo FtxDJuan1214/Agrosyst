@@ -46,21 +46,14 @@ function preloader(){
 
 function agregar_usuario(nic_usu, ema_usu, usu_usu, pas_usu){
 
-    mensaje="<html>"+
-    "<head><title>BIENVENIDO</title></head>"+
-    "<body><h2>¡!</h2>"+
-    "Hola, Su usuario ha sido creado correctamente y ya puede utilizar nuestros servicios."+
-    "<br>"+
-    "<br>"+
-    "<p style='color:#C1C4C1;'>Agrosyst Co © 2020</p>"+
-    "</body>"+
-    "</html>";
-
+    mensaje="Bienvenido a Agrosyst Co, su usuario ya fue registrado y está listo para trabajar";
+    title = 'Bienvenido a Agrosyst Co';
     cadena="&nic_usu="+ nic_usu +
     "&ema_usu="+ ema_usu +
     "&usu_usu="+ usu_usu +
     "&pas_usu="+ pas_usu + 
-    "&mensaje="+ mensaje;
+    "&mensaje="+ mensaje + 
+    "&title=" + title;
     $.ajax({
 		type:"post",
 		data:cadena,
@@ -76,6 +69,7 @@ function agregar_usuario(nic_usu, ema_usu, usu_usu, pas_usu){
                     type: "post",
                     data: cadena,
                     url:"php/crud/usuarios/enviar_correo.php",
+                    
                     
                 });
 

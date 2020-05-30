@@ -26,9 +26,9 @@
       <span>Mi Perfil</span>
     </a>
     <div class="dropdown-divider"></div>
-    <a href="../php/Logout.php" class="dropdown-item">
+    <a href="../php/logout.php" class="dropdown-item">
       <i class="ni ni-user-run"></i>
-      <span>Logout</span>
+      <span>Cerrar sesión</span>
     </a>
   </div>
 </li>
@@ -174,15 +174,8 @@
     contraseña_nueva1 = $('#new_cont1').val();
     contraseña_nueva2 = $('#new_cont2').val();
 
-    mensaje="<html>"+
-    "<head><title></title></head>"+
-    "<body><h2>¡Cambio de contraseña exitoso!</h2>"+
-    "Hola, su contraseña se ha cambiado correctamente+ Deberá utilizarla la próxima vez que inicie sesión en el sistema+"+
-    "<br>"+
-    "<br>"+
-    "<p style='color:#C1C4C1;'>Agrosyst Co © 2020</p>"+
-    "</body>"+
-    "</html>";
+    mensaje="Hola, su contraseña se ha cambiado correctamente. Deberá utilizarla la próxima vez que inicie sesión en el sistema.";
+    title = 'Cambio de contraseña Agrosyst Co';
 
     if(contraseña_actual == ""){
 
@@ -243,10 +236,10 @@
 
                 $.ajax({
                   type: "post",
-                  data: "ema_usu=" + $('#email').val()+"&nic_usu=" +nick +"&mensaje="+mensaje,
+                  data: "ema_usu=" + $('#email').val().trim()+"&nic_usu=" +$('#nick').text().trim() +"&mensaje="+mensaje.trim()+"&title="+title.trim(),
                   url:"../php/crud/usuarios/enviar_correo.php",
                   success:function(r){
-                    setTimeout("window.location.replace('../php/Logout.php');",2000);
+                    setTimeout("window.location.replace('../php/logout.php');",2000);
                   }
                 });
 

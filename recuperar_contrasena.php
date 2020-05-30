@@ -12,9 +12,9 @@ body {
 } 
  
 </style>
-<head>
+<head><meta charset="gb18030">
     <title>Login Agrosyst Co</title>
-    <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->  
     <link rel="icon" type="image/png" href="assets/img/brand/favicon.png"/>
@@ -62,7 +62,7 @@ body {
                                         Por favor ingrese el correo con el que se registró.</center></div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                        <input class="input100" type="email" autocomplete="off" id="correo">
+                        <input class="input100" type="email" autocomplete="off" id="correo" pattern=".+@globex.com">
                         <span class="focus-input100" data-placeholder="correo"></span>
                     </div>
 
@@ -72,6 +72,13 @@ body {
                             <button class="login100-form-btn" type="button" onclick="recuperar();">
                                 Recuperar
                             </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 p-t-20">
+                            <a class="" href="login.php">
+                                Iniciar sesion
+                            </a>
                         </div>
                     </div>
 
