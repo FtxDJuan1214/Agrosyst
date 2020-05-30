@@ -282,6 +282,17 @@ require 'php/conexion.php';
       </div>
     </li>
 
+    <li >
+      <div class="heading">
+        <span style="font-size:1.2rem; font-weight: bold;">Si tienes sugerencias o dudas,<br>puedes contactarnos a los siguientes correos:</span>
+        <p><a style="color: #fff;"href="mailto:dcamilorojas@ucundinamarca.edu.co">dcamilorojas@ucundinamarca.edu.co</a></p>
+        <p><a style="color: #fff;"href="mailto:anataliareyes@ucundinamarca.edu.co">anataliareyes@ucundinamarca.edu.co</a></p>
+        <p><a style="color: #fff;"href="mailto:kygonzalez@ucundinamarca.edu.co">kygonzalez@ucundinamarca.edu.co</a></p>
+        <p><a style="color: #fff;"href="mailto:jchernandezortiz@ucundinamarca.edu.co">jchernandezortiz@ucundinamarca.edu.co</a></p>
+       
+      </div>
+
+    </li>
 
 
   </ul> <!-- .cd-hero-slider -->
