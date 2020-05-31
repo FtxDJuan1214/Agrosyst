@@ -675,14 +675,12 @@ $('#modal-form').on('show.bs.modal', function (e) {
   last_modal = "#modal-form";
 })
 
-$('#modal-cultivos').on('show.bs.modal', function (e) {
-  $('#modal-form-up').modal('hide'); 
-  $('#modal-form').modal('hide'); 
-})
-
 
 $('#modal-cultivos').on('hidden.bs.modal', function (e) {
-  $(last_modal).modal('toggle'); 
+  $('#modal-form-up').modal('hide');
+  $('#modal-form').modal('hide');
+  setTimeout ("$(last_modal).modal('toggle');", 1000);  
+  
 })
 
 $(function () {

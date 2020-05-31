@@ -96,7 +96,7 @@ require '../../conexion.php';
                                   <li class='list-group-item text-dark' style='background: #fff; color: #fff' >
                                     <br><b>Enfermedad/Plaga:</b><br>
                                     <?php while($imp=pg_fetch_row($resuld)){?>
-                                        • <?php echo $imp[0].'.'; }?> <br>
+                                        • <?php echo $imp[0].'.'."<br />"; }?> <br>
                                     </li>           
                                 </ul>" style="font-size: 0.7rem; margin: 5px;"><?php echo $ver1[1] ?></span><br>
                             </center>
