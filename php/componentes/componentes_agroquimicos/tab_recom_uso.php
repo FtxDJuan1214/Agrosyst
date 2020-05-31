@@ -26,7 +26,7 @@ require '../../conexion.php';
                             </td>
                             <td>
                                 <input type="button" name="add" class="btn btn-primary sm-3" data-toggle="tooltip" value="&#xf0a5"
-                                data-placement="left" title="Agregar recomendación" style="font-family:'FontAwesome', tahoma; font-size:10px;" 
+                                data-placement="left" title="Agregar recomendación" style="font-family:'FontAwesome', tahoma; font-size:15px;" 
                                 onclick="cargarTablaAdd($('#cod_agr_rus').val()+'_'+$('#rus_agr').val())">
                             </td>
                         

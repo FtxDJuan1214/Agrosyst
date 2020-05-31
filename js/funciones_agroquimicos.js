@@ -79,15 +79,190 @@ function guardar_agro(){
    '&fun_agr='+ fun_agr+ 
    '&add_rus_agr='+ add_rus_agr;
 
-   if(res == false){
-	toastr.error('Ejemplo: 1L/Ha','Por favor ingrese una dosis valida',{
-		"positionClass": "toast-top-center",
-		"closeButton": false,
-		"progressBar": true
-	});
-   }else{
-	crear_agroquimico(cadena);
-   }	
+   
+   d_alert= "";
+
+	if(cod_agr != "" && nom_agr != "" && pre_agr != "" && pcr_agr != "" && pen_agr != "" && pro_agr != "" && cod_for != "" && cod_tag != "" 
+	&& cod_tox != "" && cod_unm != "" && cod_iac != "" &&fun_agr != "" && tip_uni_med != ""){
+
+		imp_alert = false;
+		if(nom_agr.length > 50){
+
+			$('#div_nom_agr').removeClass("input-group input-group-alternative");
+			imp_alert=true;
+
+			toastr.error('Nombre del agroquímico demasiado extenso',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}else{
+			$('#div_nom_agr').addClass("input-group input-group-alternative");
+		}
+
+		if(pre_agr.length > 5){
+
+			$('#div_pre_agr').removeClass("input-group input-group-alternative");
+			imp_alert=true;
+
+			toastr.error('Presentación demasiado extensa',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}else{
+			$('#div_pre_agr').addClass("input-group input-group-alternative");
+		}
+
+		if(rap_agr.length > 200){
+
+			imp_alert=true;
+
+			toastr.error('Sugerencia de aplicación demasiado extensa',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}
+
+		if(pen_agr.length > 4){
+
+			$('#div_pen_agr').removeClass("input-group input-group-alternative");
+			imp_alert=true;
+
+			toastr.error('El periodo de carencia debe contener menos de 4 dígitos',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}else{
+			$('#div_pen_agr').addClass("input-group input-group-alternative");
+		}
+
+		if(pcr_agr.length > 4){
+
+			$('#div_pcr_agr').removeClass("input-group input-group-alternative");
+			imp_alert=true;
+
+			toastr.error('El periodo de re-entrada debe contener menos de 4 dígitos',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}else{
+			$('#div_pcr_agr').addClass("input-group input-group-alternative");
+		}
+
+
+	if(res == false){
+
+		
+			$('#div_dos_agr').removeClass("input-group input-group-alternative");
+		
+
+		toastr.error('Ejemplo: 1L/Ha','Por favor ingrese una dosis valida',{
+			"positionClass": "toast-bottom-right",
+			"closeButton": false,
+			"progressBar": true
+		});
+		}else{
+			$('#div_dos_agr').addClass("input-group input-group-alternative");
+
+			if(imp_alert == false){
+				crear_agroquimico(cadena);
+			}
+			
+		}
+
+	}else{
+
+		alert_i = false;
+		if(nom_agr == ""){
+
+			$('#div_nom_agr').removeClass("input-group input-group-alternative");
+			alert_i=true;
+		}else{
+			$('#div_nom_agr').addClass("input-group input-group-alternative");
+		}
+
+		if(pre_agr == ""){
+
+			$('#div_pre_agr').removeClass("input-group input-group-alternative");
+			alert_i=true;
+		}else{
+			$('#div_pre_agr').addClass("input-group input-group-alternative");
+		}
+
+		if(dos_agr == ""){
+
+			$('#div_dos_agr').removeClass("input-group input-group-alternative");
+			alert_i=true;
+		}else{
+			$('#div_dos_agr').addClass("input-group input-group-alternative");
+		}
+
+		if(pen_agr == ""){
+
+			$('#div_pen_agr').removeClass("input-group input-group-alternative");
+			alert_i=true;
+		}else{
+			$('#div_pen_agr').addClass("input-group input-group-alternative");
+		}
+
+		if(pcr_agr == ""){
+
+			$('#div_pcr_agr').removeClass("input-group input-group-alternative");
+			alert_i=true;
+		}else{
+			$('#div_pcr_agr').addClass("input-group input-group-alternative");
+		}
+
+		if(pro_agr == null){
+			d_alert= d_alert+"¿Prohibido por el ICA? \n";
+		}
+
+		if(cod_for == null){
+			d_alert= d_alert+"Formulación \n";
+		}
+
+		if(cod_tag == null){
+			d_alert= d_alert+"Tipo de agroquímico \n";
+		}
+
+		if(cod_tox == null){
+			d_alert= d_alert+"Nivel de toxicidad \n";
+		}
+
+		if(cod_unm == null){
+			d_alert= d_alert+"Unidad de medida \n";
+		}
+
+		if(cod_iac == null){
+			d_alert= d_alert+"Ingrediente activo \n";
+		}
+
+		if(cod_iac == null){
+			d_alert= d_alert+"Función del agroquímico \n";
+		}
+
+		if(d_alert != ""){
+
+			swal("Por favor escoja opcion en:",d_alert, "warning");
+
+		}else{
+			if(alert_i==true){
+
+			toastr.error('Por favor no deje campos vacíos.'+'',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+
+			}
+		}
+		
+
+}
 }
 
 cadena_mostrar_rus= "";
@@ -98,11 +273,21 @@ function cargarTablaAdd(cad){
 	datos=cad.split('_');
 	cod_agr = datos[0];
 	rus_agr = datos[1];
-	cadena_mostrar_rus = cadena_mostrar_rus + cod_agr + "~"  + rus_agr + "||";
-	mostrarTablaAdd(cadena_mostrar_rus);
+	if(rus_agr.length > 200){
+
+		toastr.error('Recomendación de uso demasiado extensa',{
+			"positionClass": "toast-bottom-right",
+			"closeButton": false,
+			"progressBar": true
+		});
+	}else{
+		cadena_mostrar_rus = cadena_mostrar_rus + cod_agr + "~"  + rus_agr + "||";
+		mostrarTablaAdd(cadena_mostrar_rus);
+	}
+	
 	}else{
 		toastr.error('El campo está vacío.','',{
-            "positionClass": "toast-top-center",
+            "positionClass": "toast-bottom-right",
             "closeButton": false,
             "progressBar": true
         });
@@ -215,9 +400,7 @@ function llenarform(datos){
 
 function preloaderup(){
 	
-	jQuery('#form-up-agroq').hide();
-	jQuery('#preloaderup').show();
-
+	
 	cod_agr = global;
 	cod_ins = global1;
 	nom_agr=$('#nom_agr_up').val();
@@ -236,7 +419,157 @@ function preloaderup(){
 	cod_iac=$('#cod_iac_up').val();
 	fun_agr=$('#fun_agr_up').val();
 
-	setTimeout ("actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,rap_agr,pcr_agr,pen_agr,pro_agr,cod_for,cod_tag,cod_tox,cod_unm,cod_iac,fun_agr);", 1000);	
+	d_alert= "";
+
+	if(cod_agr != "" && nom_agr != "" && pre_agr != "" && pcr_agr != "" && pen_agr != "" && pro_agr != "" && cod_for != "" && cod_tag != "" 
+	&& cod_tox != "" && cod_unm != "" && cod_iac != "" &&fun_agr != ""){
+
+		imp_alert = false;
+		if(nom_agr.length > 50){
+			
+			imp_alert=true;
+
+			toastr.error('Nombre del agroquímico demasiado extenso',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}
+
+		if(pre_agr.length > 5){
+
+			imp_alert=true;
+
+			toastr.error('Presentación demasiado extensa',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}
+
+		if(rap_agr.length > 200){
+
+			imp_alert=true;
+
+			toastr.error('Sugerencia de aplicación demasiado extensa',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}
+
+		if(pen_agr.length > 4){
+			imp_alert=true;
+
+			toastr.error('El periodo de carencia debe contener menos de 4 dígitos',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}
+
+		if(pcr_agr.length > 4){
+
+			imp_alert=true;
+
+			toastr.error('El periodo de re-entrada debe contener menos de 4 dígitos',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+		}
+
+
+	if(res == false){
+
+		toastr.error('Ejemplo: 1L/Ha','Por favor ingrese una dosis valida',{
+			"positionClass": "toast-bottom-right",
+			"closeButton": false,
+			"progressBar": true
+		});
+		}else{
+			if(imp_alert == false){
+
+				jQuery('#form-up-agroq').hide();
+				jQuery('#preloaderup').show();
+
+
+				setTimeout ("actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,rap_agr,pcr_agr,pen_agr,pro_agr,cod_for,cod_tag,cod_tox,cod_unm,cod_iac,fun_agr);", 1000);	
+			}
+			
+		}
+
+	}else{
+
+		alert_i = false;
+		if(nom_agr == ""){
+
+			alert_i=true;
+		}
+
+		if(pre_agr == ""){
+
+			alert_i=true;
+		}
+
+		if(dos_agr == ""){
+
+			alert_i=true;
+		}
+		if(pen_agr == ""){
+
+			alert_i=true;
+		}
+
+		if(pcr_agr == ""){
+
+			alert_i=true;
+		}
+
+		if(pro_agr == null){
+			d_alert= d_alert+"¿Prohibido por el ICA? \n";
+		}
+
+		if(cod_for == null){
+			d_alert= d_alert+"Formulación \n";
+		}
+
+		if(cod_tag == null){
+			d_alert= d_alert+"Tipo de agroquímico \n";
+		}
+
+		if(cod_tox == null){
+			d_alert= d_alert+"Nivel de toxicidad \n";
+		}
+
+		if(cod_iac == null){
+			d_alert= d_alert+"Ingrediente activo \n";
+		}
+
+		if(cod_iac == null){
+			d_alert= d_alert+"Función del agroquímico \n";
+		}
+
+		if(d_alert != ""){
+
+			swal("Por favor escoja opcion en:",d_alert, "warning");
+
+		}else{
+			if(alert_i==true){
+
+			toastr.error('Por favor no deje campos vacíos.'+'',{
+				"positionClass": "toast-bottom-right",
+				"closeButton": false,
+				"progressBar": true
+			});
+
+			}
+		}
+		
+
+}
+
+	
 }
 
 function actualizar_agroquimico(cod_agr,cod_ins,nom_agr,pre_agr,dos_agr,des_ins,rap_agr,pcr_agr,pen_agr,pro_agr,cod_for,cod_tag,cod_tox,cod_unm,cod_iac,fun_agr){
@@ -504,7 +837,28 @@ $(document).ready(function(){
 	$('#menu').load('../php/componentes/menu/menu.php');
 	$('#tab_agroquimicos').load('../php/componentes/componentes_agroquimicos/tab_agroquimicos.php');
 	$('#tab_rus').load('../php/componentes/componentes_agroquimicos/tab_recom_uso.php');
+
+	$('#nom_agr').keydown(function(){
+    	$('#div_nom_agr').addClass("input-group input-group-alternative");
+	});
 	
+	$('#pre_agr').keydown(function(){
+    	$('#div_pre_agr').addClass("input-group input-group-alternative");
+	});
+	
+	$('#dos_agr').keydown(function(){
+    	$('#div_dos_agr').addClass("input-group input-group-alternative");
+	});
+	
+	$('#pen_agr').keydown(function(){
+    	$('#div_pen_agr').addClass("input-group input-group-alternative");
+	});
+	
+	$('#pcr_agr').keydown(function(){
+    	$('#div_pcr_agr').addClass("input-group input-group-alternative");
+	});
+	
+
 	$("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#myTable tr").filter(function() {

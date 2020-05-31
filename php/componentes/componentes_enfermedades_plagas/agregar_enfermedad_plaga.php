@@ -17,7 +17,7 @@ require '../../conexion.php';
 
                                     <!--------------------Primera Columna -------------------------->
                                     <div class="col-md-4">
-                                        <!-----------------------------Horario de ataque------------------------->
+                                        <!-----------------------------Escoger entre plaga y enfermedad ------------------------->
                                         <div class="form-group">
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-alternative">
@@ -38,7 +38,7 @@ require '../../conexion.php';
                                         </div>
                                         <!------------------------Nombre común Enfermedad o plaga---------------------->
                                         <div class="form-group mb-3">
-                                            <div class="input-group input-group-alternative" id="div_des_ins">
+                                            <div class="input-group input-group-alternative" id="div_nom_afe">
                                                 <input style="border-color: #fb6340;" id="nom_afe" name="nom_afe"
                                                     type="text" class="form-control" placeholder="Nombre común"
                                                     data-toggle="tooltip" data-placement="left"
@@ -49,7 +49,7 @@ require '../../conexion.php';
 
                                         <!------------------------Nombre científico Enfermedad o plaga---------------------->
                                         <div class="form-group mb-3">
-                                            <div class="input-group input-group-alternative" id="div_des_ins">
+                                            <div class="input-group input-group-alternative" id="div_nomc_afe">
                                                 <input style="border-color: #fb6340;" id="nomc_afe" name="nomc_afe"
                                                     type="text" class="form-control" placeholder="Nombre científico"
                                                     autocomplete="off" pattern="[A-Za-z]{6,50}">
@@ -259,5 +259,14 @@ $(document).ready(function(){
     $('#cod_agr_rus').val(value);
 
    });
+
+
+   $('#nom_afe').keydown(function() {
+        $('#div_nom_afe').addClass("input-group input-group-alternative");
+    });
+
+    $('#nomc_afe').keydown(function() {
+        $('#div_nomc_afe').addClass("input-group input-group-alternative");
+    });
 });
 </script>

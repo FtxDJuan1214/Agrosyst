@@ -1,6 +1,4 @@
-
 //-------------------Abrir  y Cerrar Modal de Creación---------------------//
-
 function cargarVentana() {
 
     swal("¡Agregarás una enfermedad o una plaga!",
@@ -13,12 +11,12 @@ function cargarVentana() {
 function cancelar() {
 
     swal({
-        title: "¿Estás seguro?",
-        text: "Se perderá la información que has registrado",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
+            title: "¿Estás seguro?",
+            text: "Se perderá la información que has registrado",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
         .then((willDelete) => {
             if (willDelete) {
                 $('#tab_enfermedades').load('../php/componentes/componentes_enfermedades_plagas/tab_enfermedades.php');
@@ -36,7 +34,7 @@ function cargar_select_tip() {
 
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/select_patogeno_tipo.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
             document.getElementById("sel_pat_tip").innerHTML = ajax.responseText;
             $(function() {
@@ -51,6 +49,7 @@ function cargar_select_tip() {
 
 //--------------------------------Guardar partes afectadas----------------------------//
 partes = "";
+
 function guardarPartes() {
 
     partes = "";
@@ -74,17 +73,23 @@ function guardarPartes() {
     } else {
         if (frutos != undefined) {
             partes = partes + " - " + "Frutos";
-        } if (tallo != undefined) {
+        }
+        if (tallo != undefined) {
             partes = partes + " - " + "Tallo";
-        } if (hojas != undefined) {
+        }
+        if (hojas != undefined) {
             partes = partes + " - " + "Hojas";
-        } if (flores != undefined) {
+        }
+        if (flores != undefined) {
             partes = partes + " - " + "Flores";
-        } if (raiz != undefined) {
+        }
+        if (raiz != undefined) {
             partes = partes + " - " + "Raiz";
-        } if (enves != undefined) {
+        }
+        if (enves != undefined) {
             partes = partes + " - " + "Enves";
-        } if (aerea != undefined) {
+        }
+        if (aerea != undefined) {
             partes = partes + " - " + "Aerea";
         }
 
@@ -98,7 +103,7 @@ function guardarPartes() {
 function cargarTextPartes(partes) {
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/mostrar_partes.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
 
             $('#modal-partes-afe').modal('hide');
@@ -140,15 +145,20 @@ function guardarEtapas() {
     } else {
         if (inicio != undefined) {
             etapas = etapas + " - " + "Inicio";
-        }if (vegetativo != undefined) {
+        }
+        if (vegetativo != undefined) {
             etapas = etapas + " - " + "Crecimiento";
-        } if (ifloracion != undefined) {
+        }
+        if (ifloracion != undefined) {
             etapas = etapas + " - " + "Inicio floracion";
-        } if (mfloracion != undefined) {
+        }
+        if (mfloracion != undefined) {
             etapas = etapas + " - " + "Maxima floracion";
-        } if (fructificacion != undefined) {
+        }
+        if (fructificacion != undefined) {
             etapas = etapas + " - " + "Fructificacion";
-        } if (cosecha != undefined) {
+        }
+        if (cosecha != undefined) {
             etapas = etapas + " - " + "Cosecha";
         }
 
@@ -163,7 +173,7 @@ function cargarTextEtapas(etapas) {
     //alert(etapas);
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/mostrar_etapas.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
 
             $('#modal-etapas-afe').modal('hide');
@@ -182,6 +192,7 @@ function cargarTextEtapas(etapas) {
 //--------------------------------Sintomas presentados----------------------------//
 sintomas = "";
 codigo_sintoma = "";
+
 function guardarSintomas(datos, valores) {
 
     sintomas = "";
@@ -218,7 +229,7 @@ function cargarTextSintomas(sintomas) {
     //alert(sintomas);
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/mostrar_sintomas.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
 
             $('#modal-sintomas').modal('hide');
@@ -261,7 +272,7 @@ function mostrarTabEtapas() {
 
         ajax = objetoAjax();
         ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/tab_etapas_desarrollo.php", true);
-        ajax.onreadystatechange = function () {
+        ajax.onreadystatechange = function() {
             if (ajax.readyState == 4) {
                 document.getElementById("tab_eta_ima").innerHTML = ajax.responseText;
                 $(function() {
@@ -277,57 +288,58 @@ function mostrarTabEtapas() {
 }
 
 listado_etapas_agregadas = "";
+
 function validateFileType(info, nombre) {
 
     var dato = document.getElementById(info);
 
-    if(dato.files[0].size < 3000000){
+    if (dato.files[0].size < 3000000) {
 
-    document.getElementById("etapas-des-mostrar").innerHTML = "";
+        document.getElementById("etapas-des-mostrar").innerHTML = "";
 
-    sep = listado_etapas.split('||');
-    indice = 0;
-    found = false;
-    found = false;
+        sep = listado_etapas.split('||');
+        indice = 0;
+        found = false;
+        found = false;
 
-    for (i = 0; i < sep.length - 1; i++) {
-        sepr = sep[i].split('~');
+        for (i = 0; i < sep.length - 1; i++) {
+            sepr = sep[i].split('~');
 
-        for (e = 0; e < sepr.length; e++) {
-            if (info == sepr[e]) {
-                indice = i;
-                found = true;
+            for (e = 0; e < sepr.length; e++) {
+                if (info == sepr[e]) {
+                    indice = i;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true) {
                 break;
             }
         }
 
-        if (found == true) {
-            break;
+
+        var fileName = document.getElementById(info).value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+            if (found == true) {
+
+                listado_fotos = info + "~" + fileName + "||";
+
+            }
+        } else {
+            alert("Only jpg/jpeg and png files are allowed!");
         }
-    }
-    
 
-    var fileName = document.getElementById(info).value;
-    var idxDot = fileName.lastIndexOf(".") + 1;
-    var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-    if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
-        if (found == true) {
 
-            listado_fotos = info + "~" + fileName + "||";
+        //Guardar foto
+        $('#listado_etapas').val(listado_etapas);
+        $('#listado_fotos').val(listado_fotos);
 
-        }
+        saveImage(info, nombre);
     } else {
-        alert("Only jpg/jpeg and png files are allowed!");
-    }
-
-
-    //Guardar foto
-    $('#listado_etapas').val(listado_etapas);
-    $('#listado_fotos').val(listado_fotos);
-
-    saveImage(info, nombre);
-    }else{
-        swal("¡La imagen es muy pesada!", 'Por favor seleccione otra' , "error");
+        swal("¡La imagen es muy pesada!", 'Por favor seleccione otra', "error");
     }
 }
 
@@ -340,7 +352,7 @@ function saveImage(info, nombre) {
         data: datos,
         contentType: false,
         processData: false,
-        success: function (r) {
+        success: function(r) {
             if (r.includes('Resource id')) {
 
                 toastr.success('¡Etapa e imagen agregada!', '', {
@@ -353,7 +365,7 @@ function saveImage(info, nombre) {
 
                 ajax = objetoAjax();
                 ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/mostrar_etapas_desarrollo.php", true);
-                ajax.onreadystatechange = function () {
+                ajax.onreadystatechange = function() {
                     if (ajax.readyState == 4) {
                         document.getElementById("etapas-des-mostrar").innerHTML = ajax.responseText;
                         $(function() {
@@ -380,7 +392,7 @@ function guardarSinImagen(info, nombre) {
         type: "post",
         url: "../php/crud/plagas_enfermedades/agregar_etapa_no_imagen.php",
         data: cadena,
-        success: function (r) {
+        success: function(r) {
             //alert(r);          
             if (r.includes('Resource id')) {
                 toastr.success('¡Etapa agregada!', '', {
@@ -393,7 +405,7 @@ function guardarSinImagen(info, nombre) {
 
                 ajax = objetoAjax();
                 ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/mostrar_etapas_desarrollo.php", true);
-                ajax.onreadystatechange = function () {
+                ajax.onreadystatechange = function() {
                     if (ajax.readyState == 4) {
                         document.getElementById("etapas-des-mostrar").innerHTML = ajax.responseText;
                         $(function() {
@@ -468,7 +480,7 @@ function remFila(dato) {
 function mostrarEtapasUp(listado_etapas, listado_fotos) {
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/tab_etapas_desarrollo.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
             document.getElementById("tab_eta_ima").innerHTML = ajax.responseText;
             $(function() {
@@ -505,7 +517,7 @@ function mostrarTablaAdd(cadena_mostrar_rus) {
     document.getElementById('cod_agr_rus').value = "";
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/tab_metodos_agregados.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
             document.getElementById("tab_met_agre").innerHTML = ajax.responseText;
             $(function() {
@@ -560,6 +572,7 @@ function rem_rus(rus_agr) {
 
 //------------------------ Guardar enfermedad o plaga---------------------------//
 afeccion = "";
+
 function guardarEnfer_Plaga() {
 
 
@@ -570,14 +583,55 @@ function guardarEnfer_Plaga() {
     horario = $('#horario').val();
     epoca_a = $('#epoca_a').val();
 
+    d_alert = "";
 
     if (pla_o_enf == null || nom_afe == '' || epoca_a == '') {
 
-        toastr.error(falta, 'Por favor llene o escoja opciones en todos los campos', {
-            "positionClass": "toast-top-center",
-            "closeButton": false,
-            "progressBar": true
-        });
+        alert_i = false;
+        if (nom_afe == "") {
+
+            $('#div_nom_afe').removeClass("input-group input-group-alternative");
+            alert_i = true;
+        } else {
+            $('#div_nom_afe').addClass("input-group input-group-alternative");
+        }
+
+        if (nomc_afe == "") {
+
+            $('#div_nomc_afe').removeClass("input-group input-group-alternative");
+            alert_i = true;
+        } else {
+            $('#div_nomc_afe').addClass("input-group input-group-alternative");
+        }
+
+
+        if (pla_o_enf == null) {
+            d_alert = d_alert + "Plaga o Enfermedad \n";
+        }
+
+        if (horario == null) {
+            d_alert = d_alert + "Horario de ataque \n";
+        }
+
+        if (epoca_a == null) {
+            d_alert = d_alert + "Epoca de ataque \n";
+        }
+
+        if (d_alert != "") {
+
+            swal("Por favor escoja opcion en:", d_alert, "warning");
+
+        } else {
+            if (alert_i == true) {
+
+                toastr.error('Por favor no deje campos vacíos.' + '', {
+                    "positionClass": "toast-top-center",
+                    "closeButton": false,
+                    "progressBar": true
+                });
+
+            }
+        }
 
     } else {
 
@@ -594,7 +648,7 @@ function guardarEnfer_Plaga() {
             indiv = $('#sele_enf_pla2').val();
         }
 
-        if (indiv != null) {            
+        if (indiv != null) {
             //Etapas
             if (etapas != "") {
                 etapas_f = etapas;
@@ -623,100 +677,135 @@ function guardarEnfer_Plaga() {
                 });
             } else {
 
-                cadena = 'pla_o_enf=' + pla_o_enf +
-                    '&indiv=' + indiv +
-                    '&nom_afe=' + nom_afe +
-                    '&nomc_afe=' + nomc_afe +
-                    '&horario=' + horario +
-                    '&epoca_a=' + epoca_a +
-                    '&etapas_f=' + etapas_f +
-                    '&partes_f=' + partes_f +
-                    '&sintomas_f=' + sintomas_f +
-                    '&metodos_f=' + metodos_f;
 
-                if (pla_o_enf == "Plaga") {
+                imp_alert = false;
+                if (nom_afe.length > 30) {
 
-                    $.ajax({
-                        type: "post",
-                        url: "../php/crud/plagas_enfermedades/agregar_plaga_enfermedad.php",
-                        data: cadena,
-                        success: function (r) {
-                            //alert(r);          
-                            if (r.includes('Resource id')) {
-                                //$('#div-btn-add-enf').show();
-                                $.ajax({
-                                    type: "post",
-                                    url: "../php/crud/plagas_enfermedades/agregar_plaga.php",
-                                    data: cadena,
-                                    success: function (res) {
-                                        if (res.includes('Resource id')) {
+                    $('#div_nom_afe').removeClass("input-group input-group-alternative");
+                    imp_alert = true;
 
-                                            //$('#div-btn-add-enf').show();
-                                            //-------------------------Ahora guardar las imagenes de las etapas-------------------------------//
-                                            $('#crear_enf_pla').load('../php/componentes/componentes_enfermedades_plagas/agregar_etapas.php');
-
-                                            //-----Guarda sintomas---//
-                                            cadena = 'codigo_sintoma=' + codigo_sintoma;
-                                            $.ajax({
-                                                type: "post",
-                                                url: "../php/crud/plagas_enfermedades/agregar_sintomas.php",
-                                                data: cadena,
-                                                success: function (r) {
-                                                    $('#div-btn-add-enf').show();
-                                                }
-                                            });
-                                        } else {
-                                            swal("Verifica los datos!", res, "error");
-                                        }
-                                    }
-                                });
-                            } else {
-                                swal("Verifica los datos!", r, "error");
-                            }
-                        }
+                    toastr.error('Nombre de la plaga o afección demasiado extenso', {
+                        "positionClass": "toast-top-center",
+                        "closeButton": false,
+                        "progressBar": true
                     });
                 } else {
-                    $.ajax({
-                        type: "post",
-                        url: "../php/crud/plagas_enfermedades/agregar_plaga_enfermedad.php",
-                        data: cadena,
-                        success: function (r) {
-                            //alert(r);          
-                            if (r.includes('Resource id')) {
-                                $.ajax({
-                                    type: "post",
-                                    url: "../php/crud/plagas_enfermedades/agregar_enfermedad.php",
-                                    data: cadena,
-                                    success: function (res) {
-
-                                        if (res.includes('Resource id')) {
-                                            //$('#div-btn-add-enf').show();
-                                            //-------------------------Ahora guardar las imagenes de las etapas-------------------------------//
-                                            $('#crear_enf_pla').load('../php/componentes/componentes_enfermedades_plagas/agregar_etapas.php');
-                                            //-----Guarda sintomas---//
-                                            cadena = 'codigo_sintoma=' + codigo_sintoma;
-                                            $.ajax({
-                                                type: "post",
-                                                url: "../php/crud/plagas_enfermedades/agregar_sintomas.php",
-                                                data: cadena,
-                                                success: function (r) {
-                                                    //$('#div-btn-add-enf').show();
-                                                }
-                                            });
-                                        } else {
-                                            swal("Verifica los datos!", res, "error");
-                                        }
-                                    }
-                                });
-                            } else {
-                                swal("Verifica los datos!", r, "error");
-                            }
-                        }
-                    });
-
+                    $('#div_nom_afe').addClass("input-group input-group-alternative");
                 }
+
+                if (nomc_afe.length > 5) {
+
+                    $('#div_nomc_afe').removeClass("input-group input-group-alternative");
+                    imp_alert = true;
+
+                    toastr.error('Nombre científico demasiado extenso', {
+                        "positionClass": "toast-top-center",
+                        "closeButton": false,
+                        "progressBar": true
+                    });
+                } else {
+                    $('#div_nomc_afe').addClass("input-group input-group-alternative");
+                }
+
+
+                if (imp_alert == false) {
+
+                    cadena = 'pla_o_enf=' + pla_o_enf +
+                        '&indiv=' + indiv +
+                        '&nom_afe=' + nom_afe +
+                        '&nomc_afe=' + nomc_afe +
+                        '&horario=' + horario +
+                        '&epoca_a=' + epoca_a +
+                        '&etapas_f=' + etapas_f +
+                        '&partes_f=' + partes_f +
+                        '&sintomas_f=' + sintomas_f +
+                        '&metodos_f=' + metodos_f;
+
+                    if (pla_o_enf == "Plaga") {
+
+                        $.ajax({
+                            type: "post",
+                            url: "../php/crud/plagas_enfermedades/agregar_plaga_enfermedad.php",
+                            data: cadena,
+                            success: function(r) {
+                                //alert(r);          
+                                if (r.includes('Resource id')) {
+                                    //$('#div-btn-add-enf').show();
+                                    $.ajax({
+                                        type: "post",
+                                        url: "../php/crud/plagas_enfermedades/agregar_plaga.php",
+                                        data: cadena,
+                                        success: function(res) {
+                                            if (res.includes('Resource id')) {
+
+                                                //$('#div-btn-add-enf').show();
+                                                //-------------------------Ahora guardar las imagenes de las etapas-------------------------------//
+                                                $('#crear_enf_pla').load('../php/componentes/componentes_enfermedades_plagas/agregar_etapas.php');
+
+                                                //-----Guarda sintomas---//
+                                                cadena = 'codigo_sintoma=' + codigo_sintoma;
+                                                $.ajax({
+                                                    type: "post",
+                                                    url: "../php/crud/plagas_enfermedades/agregar_sintomas.php",
+                                                    data: cadena,
+                                                    success: function(r) {
+                                                        $('#div-btn-add-enf').show();
+                                                    }
+                                                });
+                                            } else {
+                                                swal("Verifica los datos!", res, "error");
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    swal("Verifica los datos!", r, "error");
+                                }
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            type: "post",
+                            url: "../php/crud/plagas_enfermedades/agregar_plaga_enfermedad.php",
+                            data: cadena,
+                            success: function(r) {
+                                //alert(r);          
+                                if (r.includes('Resource id')) {
+                                    $.ajax({
+                                        type: "post",
+                                        url: "../php/crud/plagas_enfermedades/agregar_enfermedad.php",
+                                        data: cadena,
+                                        success: function(res) {
+
+                                            if (res.includes('Resource id')) {
+                                                //$('#div-btn-add-enf').show();
+                                                //-------------------------Ahora guardar las imagenes de las etapas-------------------------------//
+                                                $('#crear_enf_pla').load('../php/componentes/componentes_enfermedades_plagas/agregar_etapas.php');
+                                                //-----Guarda sintomas---//
+                                                cadena = 'codigo_sintoma=' + codigo_sintoma;
+                                                $.ajax({
+                                                    type: "post",
+                                                    url: "../php/crud/plagas_enfermedades/agregar_sintomas.php",
+                                                    data: cadena,
+                                                    success: function(r) {
+                                                        //$('#div-btn-add-enf').show();
+                                                    }
+                                                });
+                                            } else {
+                                                swal("Verifica los datos!", res, "error");
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    swal("Verifica los datos!", r, "error");
+                                }
+                            }
+                        });
+
+                    }
+                }
+
             }
-        }else{
+        } else {
             toastr.error(falta, 'Por favor llene o escoja opciones en todos los campos', {
                 "positionClass": "toast-top-center",
                 "closeButton": false,
@@ -816,7 +905,7 @@ function actualizar_enf_pla(cod_afe, nom_afe, noc_afe, epo_afe, hat_afe, tipo) {
         type: "post",
         url: "../php/crud/plagas_enfermedades/actualizar_enfermedad_plaga.php",
         data: cadena,
-        success: function (r) {
+        success: function(r) {
             //alert(r);
             if (r.includes('Resource id')) {
 
@@ -849,7 +938,7 @@ function up_partes() {
 
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/up_partes.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
 
             document.getElementById("mostrar_partes_up").innerHTML = ajax.responseText;
@@ -886,17 +975,23 @@ function actualizarPartes() {
     } else {
         if (frutos != undefined) {
             partes = partes + " - " + "Frutos";
-        } if (tallo != undefined) {
+        }
+        if (tallo != undefined) {
             partes = partes + " - " + "Tallo";
-        } if (hojas != undefined) {
+        }
+        if (hojas != undefined) {
             partes = partes + " - " + "Hojas";
-        } if (flores != undefined) {
+        }
+        if (flores != undefined) {
             partes = partes + " - " + "Flores";
-        } if (raiz != undefined) {
+        }
+        if (raiz != undefined) {
             partes = partes + " - " + "Raiz";
-        } if (enves != undefined) {
+        }
+        if (enves != undefined) {
             partes = partes + " - " + "Enves";
-        } if (aerea != undefined) {
+        }
+        if (aerea != undefined) {
             partes = partes + " - " + "Aerea";
         }
 
@@ -907,7 +1002,7 @@ function actualizarPartes() {
             type: "post",
             url: "../php/crud/plagas_enfermedades/actualizar_partes.php",
             data: cadena,
-            success: function (r) {
+            success: function(r) {
                 if (r.includes('Resource id')) {
 
                     toastr.success('¡Partes afectadas actualizadas!', '', {
@@ -934,7 +1029,7 @@ function up_etapas() {
 
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/up_etapas.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
 
             document.getElementById("mostrar_etapas_up").innerHTML = ajax.responseText;
@@ -971,15 +1066,20 @@ function actualizarEtapas() {
     } else {
         if (inicio != undefined) {
             etapas = etapas + " - " + "Inicio";
-        } if (vegetativo != undefined) {
+        }
+        if (vegetativo != undefined) {
             etapas = etapas + " - " + "Crecimiento";
-        } if (ifloracion != undefined) {
+        }
+        if (ifloracion != undefined) {
             etapas = etapas + " - " + "Inicio floracion";
-        } if (mfloracion != undefined) {
+        }
+        if (mfloracion != undefined) {
             etapas = etapas + " - " + "Maxima floracion";
-        } if (fructificacion != undefined) {
+        }
+        if (fructificacion != undefined) {
             etapas = etapas + " - " + "Fructificacion";
-        } if (cosecha != undefined) {
+        }
+        if (cosecha != undefined) {
             etapas = etapas + " - " + "Cosecha";
         }
 
@@ -990,7 +1090,7 @@ function actualizarEtapas() {
             type: "post",
             url: "../php/crud/plagas_enfermedades/actualizar_etapas.php",
             data: cadena,
-            success: function (r) {
+            success: function(r) {
                 if (r.includes('Resource id')) {
 
                     toastr.success('¡Etapas afectadas actualizadas!', '', {
@@ -1014,7 +1114,7 @@ function up_sintomas() {
 
     ajax = objetoAjax();
     ajax.open("POST", "../php/componentes/componentes_enfermedades_plagas/up_sintomas.php", true);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
 
             document.getElementById("mostrar_sintomas_up").innerHTML = ajax.responseText;
@@ -1061,7 +1161,7 @@ function actualizarSintomas(datos, valores) {
             type: "post",
             url: "../php/crud/plagas_enfermedades/actualizar_sintomas.php",
             data: cadena,
-            success: function (r) {
+            success: function(r) {
                 if (r.includes('Resource id')) {
                     toastr.success('¡Sintomas actualizados!', '', {
                         "positionClass": "toast-bottom-right",
@@ -1089,12 +1189,12 @@ function eliminar_plaga_enf(datos, tipo) {
     //alert("tipo "+ tipoa);
 
     swal({
-        title: "¿Estás seguro?",
-        text: "¿Deseas eliminar esta plaga o enfermedad?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: false,
-    })
+            title: "¿Estás seguro?",
+            text: "¿Deseas eliminar esta plaga o enfermedad?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: false,
+        })
         .then((willDelete) => {
             if (willDelete) {
                 cadena = "cod_afe=" + cod_afe.trim() +
@@ -1103,13 +1203,13 @@ function eliminar_plaga_enf(datos, tipo) {
                     type: "post",
                     url: "../php/crud/plagas_enfermedades/comprobar_plaga_enfermedad.php",
                     data: cadena,
-                    success: function (r) {
+                    success: function(r) {
                         if (r.trim() == "") {
                             $.ajax({
                                 type: "post",
                                 url: "../php/crud/plagas_enfermedades/eliminar_plaga_enfermedad.php",
                                 data: cadena,
-                                success: function (res) {
+                                success: function(res) {
                                     if (res.includes('Resource id')) {
 
                                         if (tipo == "P") {
@@ -1135,27 +1235,38 @@ function eliminar_plaga_enf(datos, tipo) {
         });
 }
 //--------------------------------------Inicio----------------------------------------//
-$(document).ready(function () {
+$(document).ready(function() {
     $('#date-hour').load('../php/componentes/menu/date-hour.php');
     $('#actions-lg-scr').load('../php/componentes/menu/actions-lg-scr.php');
     $('#actions-sm-scr').load('../php/componentes/menu/actions-sm-scr.php');
     $('#tab_enfermedades').load('../php/componentes/componentes_enfermedades_plagas/tab_enfermedades.php');
     $('#menu').load('../php/componentes/menu/menu.php');
 
-    $("#myInput").on("keyup", function () {
+    $('#nom_afe').keydown(function() {
+        
+        $('#div_nom_afe').addClass("input-group input-group-alternative");
+    });
+
+    $('#nomc_afe').keydown(function() {
+        $('#div_nomc_afe').addClass("input-group input-group-alternative");
+    });
+
+    $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function () {
+        $("#myTable tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
 
-    $('#det_semup').keydown(function () {
+    $('#det_semup').keydown(function() {
         $('#div_det_semup').addClass("input-group-alternative");
     });
 
-    $('#modal-partes-afe').on('hidden.bs.modal', function (e) {
+    $('#modal-partes-afe').on('hidden.bs.modal', function(e) {
         $('#modal-form').modal('toggle');
     })
+
+
 
 });
 
@@ -1180,4 +1291,4 @@ function cerrar_menu() {
     $('#sidenav-main').remove();
     jQuery('#ver1').hide();
     jQuery('#ver2').show();
-  }
+}
