@@ -10,7 +10,7 @@
     <div class=" dropdown-header noti-title">
       <h6 class="text-overflow m-0">Acciones!</h6>
     </div>
-    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-perfil">
+    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-perfil1">
       <i class="ni ni-single-02"></i>
       <span>Mi Perfil</span>
     </a>
@@ -26,7 +26,7 @@
 
 <!-- Modales -->
 
-<div class="modal fade" id="modal-perfil" tabindex="-1" role="dialog" aria-labelledby="modal-perfil" aria-hidden="true" style="z-index: 1000;">
+<div class="modal fade" id="modal-perfil1" tabindex="-1" role="dialog" aria-labelledby="modal-perfil1" aria-hidden="true" style="z-index: 1000;">
   <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
     <div class="modal-content bg-gradient-primary">
 
@@ -49,7 +49,7 @@
         ?>
         <div class="py-3 text-center">
           <i class="fa fa-user" style="font-size: 5rem;"></i>
-          <h2 class="text-white" id="nick"><?php echo $datos[3]; ?></h2>
+          <h2 class="text-white" id="nick1"><?php echo $datos[3]; ?></h2>
         </div>
         <form>
 
@@ -59,7 +59,7 @@
               <div class="form-group mb-3">
                 <label>Usuario:</label>
                 <div class="input-group input-group-alternative">
-                  <input style="border-color: #fb6340;" id="usu_usu" type="text" disabled class="form-control" autocomplete="off" value="<?php echo $datos[1] ?>">
+                  <input style="border-color: #fb6340;" id="usu_usu1" type="text" disabled class="form-control" autocomplete="off" value="<?php echo $datos[1] ?>">
                 </div>
               </div>
 
@@ -69,7 +69,7 @@
               <div class="form-group mb-3">
                 <label>Correo:</label>
                 <div class="input-group input-group-alternative">
-                  <input style="border-color: #fb6340;" type="text" class="form-control" id="email" autocomplete="off" disabled value="<?php
+                  <input style="border-color: #fb6340;" type="text" class="form-control" id="email1" autocomplete="off" disabled value="<?php
                   echo $datos[4]?>">
                 </div>
               </div>
@@ -86,10 +86,10 @@
               <label>Contraseña actual: </label>
 
               <div class="form-group">
-                <div class="input-group" id="div_cont_act">
-                  <input class="form-control" placeholder="contraseña" type="password" id="cont_act">
+                <div class="input-group" id="div_cont_act1">
+                  <input class="form-control" placeholder="contraseña" type="password" id="cont_act1">
                   <div class="input-group-append">
-                    <span class="input-group-text"><a href="#" onclick="ver_con_1();"><i class="fa fa-eye-slash"></i></a></span>
+                    <span class="input-group-text"><a href="#" onclick="ver_con_11();"><i class="fa fa-eye-slash"></i></a></span>
                   </div>
                 </div>
               </div>
@@ -98,17 +98,17 @@
             <div class="form-group mb-3">
 
               <label>Nueva contraseña:</label>
-              <div class="alert alert-danger" role="alert" style="font-size:0.8rem;" id="alerta">
+              <div class="alert alert-danger" role="alert" style="font-size:0.8rem;" id="alerta1">
 
               </div>
               <script>
-                jQuery('#alerta').hide();
+                jQuery('#alerta1').hide();
               </script>
               <div class="form-group">
-                <div class="input-group" id="div_new_cont1">
-                  <input class="form-control" placeholder="contraseña" type="password" id="new_cont1">
+                <div class="input-group" id="div_new_cont11">
+                  <input class="form-control" placeholder="contraseña" type="password" id="new_cont11">
                   <div class="input-group-append">
-                    <span class="input-group-text"><a href="#" onclick="ver_con_2();"><i class="fa fa-eye-slash"></i></a></span>
+                    <span class="input-group-text"><a href="#" onclick="ver_con_22();"><i class="fa fa-eye-slash"></i></a></span>
                   </div>
                 </div>
               </div>
@@ -121,10 +121,10 @@
               <label>Confirmar contraseña: </label>
 
               <div class="form-group">
-                <div class="input-group" id="div_new_cont2">
-                  <input class="form-control" placeholder="contraseña" type="password" id="new_cont2">
+                <div class="input-group" id="div_new_cont22">
+                  <input class="form-control" placeholder="contraseña" type="password" id="new_cont22">
                   <div class="input-group-append">
-                    <span class="input-group-text"><a href="#" onclick="ver_con_3();"><i class="fa fa-eye-slash"></i></a></span>
+                    <span class="input-group-text"><a href="#" onclick="ver_con_33();"><i class="fa fa-eye-slash"></i></a></span>
                   </div>
                 </div>
               </div>
@@ -139,7 +139,7 @@
       </form>
 
       <div align="center">
-        <button type="button" class="btn btn-white" id="guardar" onclick="cambiar_contraseña()" disabled>Actualizar información</button>
+        <button type="button" class="btn btn-white" id="guardar1" onclick="cambiar_contraseña1()" disabled>Actualizar información</button>
       </div>
 
     </div>
@@ -151,22 +151,22 @@
 
 
 <script >
-  $('#modal-perfil').on('show.bs.modal', function (e) {
+  $('#modal-perfil1').on('show.bs.modal', function (e) {
     setTimeout("$('.modal-backdrop').removeClass('modal-backdrop');", 100);
   });
 
 
-  function cambiar_contraseña(){
-    contraseña_actual = $('#cont_act').val();
-    contraseña_nueva1 = $('#new_cont1').val();
-    contraseña_nueva2 = $('#new_cont2').val();
+  function cambiar_contraseña1(){
+    contraseña_actual = $('#cont_act1').val();
+    contraseña_nueva1 = $('#new_cont11').val();
+    contraseña_nueva2 = $('#new_cont22').val();
 
     mensaje="Hola, su contraseña se ha cambiado correctamente. Deberá utilizarla la próxima vez que inicie sesión en el sistema.";
     title = 'Cambio de contraseña Agrosyst Co';
 
     if(contraseña_actual == ""){
 
-      $("#cont_act").css("border-color", "#fb6340");
+      $("#cont_act1").css("border-color", "#fb6340");
       toastr.error('Debe digitar la contraseña actual.', '', {
         "positionClass": "toast-top-center",
         "closeButton": true,
@@ -174,7 +174,7 @@
       });
 
     }else if (contraseña_nueva1 == ""){
-     $("#new_cont1").css("border-color", "#fb6340");
+     $("#new_cont11").css("border-color", "#fb6340");
      toastr.error('Debe digitar la nueva contraseña actual.', '', {
       "positionClass": "toast-top-center",
       "closeButton": true,
@@ -182,7 +182,7 @@
     });
 
    }else if(contraseña_nueva2 ==""){
-    $("#new_cont2").css("border-color", "#fb6340");
+    $("#new_cont22").css("border-color", "#fb6340");
     toastr.error('Debe confirmar la nueva contraseña.', '', {
       "positionClass": "toast-top-center",
       "closeButton": true,
@@ -191,8 +191,8 @@
 
   }else if (contraseña_nueva1 != contraseña_nueva2) {
 
-    $("#new_cont1").css("border-color", "#fb6340");
-    $("#new_cont2").css("border-color", "#fb6340");
+    $("#new_cont11").css("border-color", "#fb6340");
+    $("#new_cont22").css("border-color", "#fb6340");
 
     toastr.error('Las contraseñas no coinciden, por favor verifique.', '', {
       "positionClass": "toast-top-center",
@@ -203,7 +203,7 @@
 
     $.ajax({
       type:"post",
-      data:"con_usu="+contraseña_actual+"&usu_usu="+$('#usu_usu').val(),
+      data:"con_usu="+contraseña_actual+"&usu_usu="+$('#usu_usu1').val(),
       url:"../php/crud/usuarios/verificar.php",
       success:function(r){
         if (r.trim() == "1") {
@@ -223,7 +223,7 @@
 
                 $.ajax({
                   type: "post",
-                  data: "ema_usu=" + $('#email').val().trim()+"&nic_usu=" +$('#nick').text().trim() +"&mensaje="+mensaje.trim()+"&title="+title.trim(),
+                  data: "ema_usu=" + $('#email1').val().trim()+"&nic_usu=" +$('#nick1').text().trim() +"&mensaje="+mensaje.trim()+"&title="+title.trim(),
                   url:"../php/crud/usuarios/enviar_correo.php",
                   success:function(r){
                     setTimeout("window.location.replace('../php/logout.php');",2000);
@@ -238,7 +238,7 @@
 
           });
         }else if(r.trim()== "0"){
-          $("#cont_act").css("border-color", "#fb6340");
+          $("#cont_act1").css("border-color", "#fb6340");
           toastr.error('La contraseña no actual no es correcta.', '', {
             "positionClass": "toast-top-center",
             "closeButton": true,
@@ -251,22 +251,22 @@
   }
 }
 
-$('#cont_act').keydown(function(){
-  $("#cont_act").css("border-color", "#cad1d7");
+$('#cont_act1').keydown(function(){
+  $("#cont_act1").css("border-color", "#cad1d7");
 });
-$('#new_cont1').keyup(function(){
- $("#new_cont1").css("border-color", "#cad1d7");
- medidor();
+$('#new_cont11').keyup(function(){
+ $("#new_cont11").css("border-color", "#cad1d7");
+ medidor1();
 });
-$('#new_cont2').keydown(function(){
-  $("#new_cont2").css("border-color", "#cad1d7");
+$('#new_cont22').keydown(function(){
+  $("#new_cont22").css("border-color", "#cad1d7");
 });
 
 
-function medidor(){
+function medidor1(){
   mensaje = "";
 
-  contraseña = $('#new_cont1').val();
+  contraseña = $('#new_cont11').val();
   var espacios = false;
   var letras = false;
   var mayusculas = false;
@@ -341,97 +341,97 @@ if (!special.test(contraseña)) {
 
 if (espacios) {
   mensaje += "☹️ La contraseña no puede contener espacios en blanco<br>";
-  $('#alerta').removeClass("alert-info");
-  $('#alerta').removeClass("alert-success");
-  $('#alerta').removeClass("alert-warning");
+  $('#alerta1').removeClass("alert-info");
+  $('#alerta1').removeClass("alert-success");
+  $('#alerta1').removeClass("alert-warning");
 
-  $('#alerta').addClass("alert-danger");
+  $('#alerta1').addClass("alert-danger");
 
-  $('#guardar').prop("disabled", true); 
+  $('#guardar1').prop("disabled", true); 
 
 }else{
 
   if (fuerza >= 0 && fuerza < 2) {
 
-    $('#alerta').removeClass("alert-info");
-    $('#alerta').removeClass("alert-success");
-    $('#alerta').removeClass("alert-warning");
+    $('#alerta1').removeClass("alert-info");
+    $('#alerta1').removeClass("alert-success");
+    $('#alerta1').removeClass("alert-warning");
 
-    $('#alerta').addClass("alert-danger");
+    $('#alerta1').addClass("alert-danger");
 
   }else if (fuerza >=2 && fuerza < 4){
-    $('#alerta').removeClass("alert-info");
-    $('#alerta').removeClass("alert-success");
-    $('#alerta').removeClass("alert-danger");
+    $('#alerta1').removeClass("alert-info");
+    $('#alerta1').removeClass("alert-success");
+    $('#alerta1').removeClass("alert-danger");
 
-    $('#alerta').addClass("alert-warning");
+    $('#alerta1').addClass("alert-warning");
 
   }
   else if (fuerza == 4){
-    $('#alerta').removeClass("alert-danger");
-    $('#alerta').removeClass("alert-success");
-    $('#alerta').removeClass("alert-warning");
+    $('#alerta1').removeClass("alert-danger");
+    $('#alerta1').removeClass("alert-success");
+    $('#alerta1').removeClass("alert-warning");
 
-    $('#alerta').addClass("alert-info");
+    $('#alerta1').addClass("alert-info");
 
   }else if (fuerza ==5){
-    $('#alerta').removeClass("alert-info");
-    $('#alerta').removeClass("alert-warning");
-    $('#alerta').removeClass("alert-danger");
+    $('#alerta1').removeClass("alert-info");
+    $('#alerta1').removeClass("alert-warning");
+    $('#alerta1').removeClass("alert-danger");
 
-    $('#alerta').addClass("alert-success");
+    $('#alerta1').addClass("alert-success");
 
     mensaje += "🙂 La contraseña es segura<br>";
-    $('#guardar').prop("disabled", false); 
+    $('#guardar1').prop("disabled", false); 
   }
   if (fuerza != 5){
-   $('#guardar').prop("disabled", true); 
+   $('#guardar1').prop("disabled", true); 
  }
 }
-document.getElementById("alerta").innerHTML = mensaje;
-jQuery('#alerta').show();
+document.getElementById("alerta1").innerHTML = mensaje;
+jQuery('#alerta1').show();
 
 }else{
- jQuery('#alerta').hide();
+ jQuery('#alerta1').hide();
 }
 
 }
 
-function ver_con_1(){
-  if($('#div_cont_act input').attr("type") == "text"){
-    $('#div_cont_act input').attr('type', 'password');
-    $('#div_cont_act i').addClass( "fa-eye-slash" );
-    $('#div_cont_act i').removeClass( "fa-eye" );
-  }else if($('#div_cont_act input').attr("type") == "password"){
-    $('#div_cont_act input').attr('type', 'text');
-    $('#div_cont_act i').removeClass( "fa-eye-slash" );
-    $('#div_cont_act i').addClass( "fa-eye" );
+function ver_con_11(){
+  if($('#div_cont_act1 input').attr("type") == "text"){
+    $('#div_cont_act1 input').attr('type', 'password');
+    $('#div_cont_act1 i').addClass( "fa-eye-slash" );
+    $('#div_cont_act1 i').removeClass( "fa-eye" );
+  }else if($('#div_cont_act1 input').attr("type") == "password"){
+    $('#div_cont_act1 input').attr('type', 'text');
+    $('#div_cont_act1 i').removeClass( "fa-eye-slash" );
+    $('#div_cont_act1 i').addClass( "fa-eye" );
   }
 }
 
 
-function ver_con_2(){
-  if($('#div_new_cont1 input').attr("type") == "text"){
-    $('#div_new_cont1 input').attr('type', 'password');
-    $('#div_new_cont1 i').addClass( "fa-eye-slash" );
-    $('#div_new_cont1 i').removeClass( "fa-eye" );
-  }else if($('#div_new_cont1 input').attr("type") == "password"){
-    $('#div_new_cont1 input').attr('type', 'text');
-    $('#div_new_cont1 i').removeClass( "fa-eye-slash" );
-    $('#div_new_cont1 i').addClass( "fa-eye" );
+function ver_con_22(){
+  if($('#div_new_cont11 input').attr("type") == "text"){
+    $('#div_new_cont11 input').attr('type', 'password');
+    $('#div_new_cont11 i').addClass( "fa-eye-slash" );
+    $('#div_new_cont11 i').removeClass( "fa-eye" );
+  }else if($('#div_new_cont11 input').attr("type") == "password"){
+    $('#div_new_cont11 input').attr('type', 'text');
+    $('#div_new_cont11 i').removeClass( "fa-eye-slash" );
+    $('#div_new_cont11 i').addClass( "fa-eye" );
   }
 }
 
 
-function ver_con_3(){
-  if($('#div_new_cont2 input').attr("type") == "text"){
-    $('#div_new_cont2 input').attr('type', 'password');
-    $('#div_new_cont2 i').addClass( "fa-eye-slash" );
-    $('#div_new_cont2 i').removeClass( "fa-eye" );
-  }else if($('#div_new_cont2 input').attr("type") == "password"){
-    $('#div_new_cont2 input').attr('type', 'text');
-    $('#div_new_cont2 i').removeClass( "fa-eye-slash" );
-    $('#div_new_cont2 i').addClass( "fa-eye" );
+function ver_con_33(){
+  if($('#div_new_cont22 input').attr("type") == "text"){
+    $('#div_new_cont22 input').attr('type', 'password');
+    $('#div_new_cont22 i').addClass( "fa-eye-slash" );
+    $('#div_new_cont22 i').removeClass( "fa-eye" );
+  }else if($('#div_new_cont22 input').attr("type") == "password"){
+    $('#div_new_cont22 input').attr('type', 'text');
+    $('#div_new_cont22 i').removeClass( "fa-eye-slash" );
+    $('#div_new_cont22 i').addClass( "fa-eye" );
   }
 }
 </script>
